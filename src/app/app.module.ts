@@ -11,6 +11,11 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BodyComponent } from './components/body/body.component';
 import { VehiclesMantComponent } from './components/vehicles/vehicles-mant/vehicles-mant.component';
 import { VehiclesIndexComponent } from './components/vehicles/vehicles-index/vehicles-index.component';
+import { UsersComponent } from './components/features/users/users.component';
+import { TransportRequestComponent } from './components/features/transport-request/transport-request.component';
+import { ManagerviewComponent } from './components/features/managerview/managerview.component';
+import { RequestListComponent } from './components/features/request-list/request-list.component';
+import { AssignVPComponent } from './components/features/assign-v-p/assign-v-p.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +24,12 @@ import { VehiclesIndexComponent } from './components/vehicles/vehicles-index/veh
     DashboardComponent,
     BodyComponent,
     VehiclesMantComponent,
-    VehiclesIndexComponent
+    VehiclesIndexComponent,
+    UsersComponent,
+    TransportRequestComponent,
+    ManagerviewComponent,
+    RequestListComponent,
+    AssignVPComponent
   ],
   imports: [
     BrowserModule,
