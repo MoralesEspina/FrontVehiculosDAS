@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'dashboard',pathMatch: 'full'},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'vehicles', component: VehiclesIndexComponent},
-  {path: 'vehicles/add', component: VehiclesIndexComponent},
+  {path: 'vehicles/add', component: VehiclesMantComponent},
   {path: 'transportRequest', component: TransportRequestComponent},
   {path: 'requestList', component: RequestListComponent},
   {path: 'reportsVehicles', component: ReportsVehiclesComponent},
