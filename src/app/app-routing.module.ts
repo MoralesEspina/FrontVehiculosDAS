@@ -20,7 +20,8 @@ const routes: Routes = [
   {path: 'reportsVehicles', component: ReportsVehiclesComponent},
   {path: 'managerView', component: ManagerviewComponent},
   {path: 'assignVP', component: AssignVPComponent},
-  {path: 'users', component: UsersComponent},
+  {path: 'users', component: UsersComponent}, 
+  
 ];
 
 @NgModule({

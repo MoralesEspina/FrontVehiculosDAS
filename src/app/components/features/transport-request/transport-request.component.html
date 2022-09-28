@@ -1,1 +1,27 @@
-<p>transport-request works!</p>
+<body>
+  <section class="form-register">
+    <h4>Formulario Solicitud de Transporte</h4>
+
+    <label class="form-label"><b>Seleccione el Origen:</b></label>
+    <select class="form-control" placeholder="Seleccionar">
+      <option value=""  disabled>Seleccionar</option>
+      <option value="0"  *ngFor="let places of places">{{places.name}}</option>
+    </select>
+
+   
+    <br>
+    <label class="form-label"><b>Seleccione el Destino:</b></label>
+    <select class="form-control" placeholder="Seleccionar">
+      <option value=""  disabled>Seleccionar</option>
+      <option value="0"  *ngFor="let places of places">{{places.name}}</option>
+    </select>
+  <br>
+    <div class="form-group">
+      <label class = "form-label"><b>Motivo</b></label>
+      <input type="text" class="form-control" placeholder="Ingrese el motivo"required>
+    </div>
+
+    <input class="botons" type="submit" value="Enviar">
+
+  </section>
+</body>
