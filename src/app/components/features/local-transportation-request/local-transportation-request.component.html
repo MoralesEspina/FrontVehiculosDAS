@@ -1,0 +1,153 @@
+<div class="wrapper">
+    <div class="main">
+        <main class="content">
+            <div class="container-fluid">
+                <div class="header">
+                    <h1 class="header-title">
+                     Registro de Solicitud de Vehiculos Local
+                    </h1>
+                    <!--- Migaja de Pan -->
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Dashboard</a></li>
+                            <li class="breadcrumb-item"><a [routerLink]="['/vehicles']"> Vehiculos</a></li>
+                            <li class="breadcrumb-item"><a>Registro de Solicitud de Vehiculos Local</a></li>
+                        </ol>
+                    </nav>
+                    <!--- Migaja de Pan -->
+                </div>
+
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title">Completa el Formulario</h5>
+
+                        </div>
+                        <div class="card-body">
+                            <!--- INICIO DE FORMULARIO-->
+                            <form>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label class="form-label"><b>Lugar</b></label>
+                                            <input type="text" list="items" class="form-control"
+                                                placeholder="Ingrese el lugar" required>
+                                            <!-- Lista de opciones -->
+                                            <datalist id="items">
+                                                <option *ngFor="let places of places">{{places.name}}</option>
+                                            </datalist>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label class="form-label"><b>Fecha</b></label>
+                                            <input type="date" id="start" name="trip-start" class="form-control"
+                                                placeholder="Seleccione la fecha" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label class="form-label"><b>Unidad, Sección o Departamento</b></label>
+                                            <input type="text" list="items" class="form-control"
+                                                placeholder="Ingrese la unidad, sección o departamento" required>
+                                            <!-- Lista de opciones -->
+                                            <datalist id="items">
+                                                <option *ngFor="let places of places">{{places.name}}</option>
+                                            </datalist>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label class="form-label"><b>Nombre del Solicitante</b></label>
+                                            <input type="text" class="form-control"
+                                                placeholder="Ingrese el nombre del solicitante" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label class="form-label"><b>Cargo del Solicitante</b></label>
+                                            <input type="text" class="form-control"
+                                                placeholder="Ingrese el cargo del solicitante" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label class="form-label"><b>Tel. oficina o móvil</b></label>
+                                            <input type="number" class="form-control"
+                                                placeholder="Ingrese el Tel. oficina o móvil" required>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <label class="form-label"><b>Fecha de Salida</b></label>
+                                            <input type="date" id="start" name="trip-start" class="form-control"
+                                                placeholder="Seleccione la fecha" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <label class="form-label"><b>Fecha de Entrada</b></label>
+                                            <input type="date" id="start" name="trip-start" class="form-control"
+                                                placeholder="Seleccione la fecha" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <label class="form-label"><b>Hora de Salida</b></label>
+                                            <input type="time" class="form-control" placeholder="Seleccione la hora"
+                                                required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="form-group">
+                                            <label class="form-label"><b>Destino Especifico a Visitar</b></label>
+                                            <input type="text" class="form-control"
+                                                placeholder="Ingrese el destino especifico a visitar" required>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <label class="form-label"><b>No. Personas</b></label>
+                                            <input type="number" class="form-control"
+                                                placeholder="Ingrese el No. de personas" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label class="form-label"><b>Objeto de la Comisión</b></label>
+                                            <input type="text" class="form-control"
+                                                placeholder="Ingrese el objeto de la comisión" required>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-lg-8">
+                                        <div class="form-group">
+                                            <label class="form-label"><b>Observaciones</b></label>
+                                            <input type="text" class="form-control" placeholder="Ingrese observaciones"
+                                                required>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                                <button type="submit" class="btn btn-primary">Registrar</button>
+                            </form>
+                            <!--- FIN DE FORMULARIO-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>

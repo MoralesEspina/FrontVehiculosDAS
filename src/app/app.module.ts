@@ -16,6 +16,7 @@ import { TransportRequestComponent } from './components/features/transport-reque
 import { ManagerviewComponent } from './components/features/managerview/managerview.component';
 import { RequestListComponent } from './components/features/request-list/request-list.component';
 import { AssignVPComponent } from './components/features/assign-v-p/assign-v-p.component';
+import { LocalTransportationRequestComponent } from './components/features/local-transportation-request/local-transportation-request.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AssignVPComponent } from './components/features/assign-v-p/assign-v-p.c
     TransportRequestComponent,
     ManagerviewComponent,
     RequestListComponent,
-    AssignVPComponent
+    AssignVPComponent,
+    LocalTransportationRequestComponent
   ],
   imports: [
     BrowserModule,
