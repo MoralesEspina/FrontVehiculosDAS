@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequestListComponent implements OnInit {
 
+  public p:number = 1;
+  public productos = ["Prueba", "Prueba2", "Prueba3"]
   constructor() { }
 
   ngOnInit(): void {

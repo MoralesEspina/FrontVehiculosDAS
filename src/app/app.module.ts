@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {  HttpClientModule } from '@angular/common/http';
 
@@ -19,6 +20,11 @@ import { ManagerviewComponent } from './components/features/managerview/managerv
 import { RequestListComponent } from './components/features/request-list/request-list.component';
 import { AssignVPComponent } from './components/features/assign-v-p/assign-v-p.component';
 
+import { LocalTransportationRequestComponent } from './components/features/local-transportation-request/local-transportation-request.component';
+
+import { ReportsVehiclesComponent } from './components/features/reports-vehicles/reports-vehicles.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,17 +37,27 @@ import { AssignVPComponent } from './components/features/assign-v-p/assign-v-p.c
     TransportRequestComponent,
     ManagerviewComponent,
     RequestListComponent,
-    AssignVPComponent
+    AssignVPComponent,
+
+    LocalTransportationRequestComponent
+
+    ReportsVehiclesComponent,
+
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    NgxPaginationModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule
+
+    ReactiveFormsModule,
+    NgxPaginationModule,
+
   ],
+
+
   providers: [],
   bootstrap: [AppComponent]
 })

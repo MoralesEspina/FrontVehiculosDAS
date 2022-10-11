@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-transport-request',
-  templateUrl: './transport-request.component.html',
-  styleUrls: ['./transport-request.component.css']
+  selector: 'app-local-transportation-request',
+  templateUrl: './local-transportation-request.component.html',
+  styleUrls: ['./local-transportation-request.component.css']
 })
-export class TransportRequestComponent implements OnInit {
+export class LocalTransportationRequestComponent implements OnInit {
 
   places = [
     {name: 'Jalapa'},
@@ -17,7 +17,7 @@ export class TransportRequestComponent implements OnInit {
     {name: 'San Carlos Alzatate'},
    
   ];
-
+  
   constructor() { }
 
   ngOnInit(): void {
