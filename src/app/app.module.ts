@@ -23,7 +23,6 @@ import { AssignVPComponent } from './components/features/assign-v-p/assign-v-p.c
 import { LocalTransportationRequestComponent } from './components/features/local-transportation-request/local-transportation-request.component';
 
 import { ReportsVehiclesComponent } from './components/features/reports-vehicles/reports-vehicles.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -38,9 +37,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ManagerviewComponent,
     RequestListComponent,
     AssignVPComponent,
-
-    LocalTransportationRequestComponent
-
+    LocalTransportationRequestComponent,
     ReportsVehiclesComponent,
 
   ],
@@ -50,9 +47,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
-
-    ReactiveFormsModule,
+    HttpClientModule,
     NgxPaginationModule,
 
   ],
