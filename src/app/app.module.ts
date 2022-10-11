@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import {  HttpClientModule } from '@angular/common/http';
 
 import {NgxPaginationModule} from 'ngx-pagination';
 
@@ -35,7 +37,10 @@ import { AssignVPComponent } from './components/features/assign-v-p/assign-v-p.c
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

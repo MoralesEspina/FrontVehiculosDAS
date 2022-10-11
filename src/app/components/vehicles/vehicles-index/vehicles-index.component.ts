@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { VehicleService } from 'src/app/services/vehicle.service';
 
 @Component({
   selector: 'app-vehicles-index',
@@ -8,10 +9,21 @@ import { Component, OnInit } from '@angular/core';
 export class VehiclesIndexComponent implements OnInit {
 
   public p:number = 1;
-  public productos = ["Prueba", "Prueba2", "Prueba3"]
-  constructor() { }
+  public vehicles;
+  constructor(private _vehicleService: VehicleService,) { }
 
   ngOnInit(): void {
+    this.getVehicles();
   }
 
+  getVehicles(){
+    this._vehicleService.getVehicles().subscribe(
+      response =>{
+        console.log(response)
+        this.vehicles = response.data;
+      }, error =>{
+
+      }
+    )
+  }
 }

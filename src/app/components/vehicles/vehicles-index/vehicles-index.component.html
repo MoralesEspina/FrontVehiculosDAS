@@ -49,24 +49,23 @@
                 <!--- TITULOS DE LA TABLA -->
                 <thead >
                   <tr>
+                    <th style="text-align: center;">Chasis</th>
                     <th style="text-align: center;">Placa</th>
+                    <th style="text-align: center;">Tipo</th>
                     <th style="text-align: center;">Marca</th>
                     <th style="text-align: center;">Modelo</th>
-                    <th style="text-align: center;">Color</th>
-                    <th style="text-align: center;">Estado</th>
                     <th style="text-align: center;">Opciones</th>
                   </tr>
                 </thead>
                 <!--- TITULOS DE LA TABLA -->
 
                 <!--- CUERPO DE LA TABLA -->
-                <tbody *ngFor="let item of productos | paginate: { itemsPerPage: 8, currentPage: p }">
-                    <td style="text-align: center;">{{item}}</td>
-                    <td style="text-align: center;">{{item}}</td>
-                    <td style="text-align: center;">{{item}}</td>
-                    <td style="text-align: center;">{{item}}</td>
-                    <td style="text-align: center;">{{item}}</td>
-
+                <tbody *ngFor="let item of vehicles | paginate: { itemsPerPage: 8, currentPage: p }">
+                    <td style="text-align: center;">{{item.vin}}</td>
+                    <td style="text-align: center;">{{item.plate}}</td>
+                    <td style="text-align: center;">{{item.type}}</td>
+                    <td style="text-align: center;">{{item.brand}}</td>
+                    <td style="text-align: center;">{{item.model}}</td>
                     <td style="text-align: center;">
                       <div class="btn-group">
                         <button type="button" class="btn mb-1 btn-secondary dropdown-toggle"
