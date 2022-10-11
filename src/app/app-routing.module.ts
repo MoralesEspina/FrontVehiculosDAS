@@ -9,6 +9,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ReportsVehiclesComponent } from './components/features/reports-vehicles/reports-vehicles.component';
+import { LocalTransportationRequestComponent } from './components/features/local-transportation-request/local-transportation-request.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'dashboard',pathMatch: 'full'},
@@ -20,6 +21,12 @@ const routes: Routes = [
   {path: 'reportsVehicles', component: ReportsVehiclesComponent},
   {path: 'managerView', component: ManagerviewComponent},
   {path: 'assignVP', component: AssignVPComponent},
+
+  {path: 'users', component: UsersComponent},
+  {path: 'localtransportRequest', component: LocalTransportationRequestComponent},
+
+ 
+
   {path: 'users', component: UsersComponent}, 
   
 ];

@@ -14,9 +14,11 @@ import { TransportRequestComponent } from './components/features/transport-reque
 import { ManagerviewComponent } from './components/features/managerview/managerview.component';
 import { RequestListComponent } from './components/features/request-list/request-list.component';
 import { AssignVPComponent } from './components/features/assign-v-p/assign-v-p.component';
+
+import { LocalTransportationRequestComponent } from './components/features/local-transportation-request/local-transportation-request.component';
+
 import { ReportsVehiclesComponent } from './components/features/reports-vehicles/reports-vehicles.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 
 @NgModule({
   declarations: [
@@ -31,6 +33,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ManagerviewComponent,
     RequestListComponent,
     AssignVPComponent,
+
+    LocalTransportationRequestComponent
+
     ReportsVehiclesComponent,
 
   ],
