@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-
-import {NgxPaginationModule} from 'ngx-pagination';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
@@ -16,7 +14,11 @@ import { TransportRequestComponent } from './components/features/transport-reque
 import { ManagerviewComponent } from './components/features/managerview/managerview.component';
 import { RequestListComponent } from './components/features/request-list/request-list.component';
 import { AssignVPComponent } from './components/features/assign-v-p/assign-v-p.component';
+
 import { LocalTransportationRequestComponent } from './components/features/local-transportation-request/local-transportation-request.component';
+
+import { ReportsVehiclesComponent } from './components/features/reports-vehicles/reports-vehicles.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,14 +33,22 @@ import { LocalTransportationRequestComponent } from './components/features/local
     ManagerviewComponent,
     RequestListComponent,
     AssignVPComponent,
+
     LocalTransportationRequestComponent
+
+    ReportsVehiclesComponent,
+
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    NgxPaginationModule
+    ReactiveFormsModule,
+    NgxPaginationModule,
+
   ],
+
+
   providers: [],
   bootstrap: [AppComponent]
 })

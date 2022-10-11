@@ -1,1 +1,67 @@
-<p>assign-v-p works!</p>
+<div class="wrapper">
+  <div class="main">
+    <main class="content">
+    <div class="container-fluid">
+        <div class="header">
+            <h1 class="header-title">
+                Asigancion de Vehiculos y Pilotos
+            </h1>
+            <!--- Migaja de Pan -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Dashboard</a></li>
+                  <li class="breadcrumb-item"><a [routerLink]="['/vehicles']"> Vehiculos</a></li>
+                  <li class="breadcrumb-item"><a> Asignación de Vehiculos y Pilotos</a></li>
+                </ol>
+            </nav>
+            <!--- Migaja de Pan -->
+        </div>
+
+        <div class="col-12">
+        <div class="card">
+          <div class = "card-header">
+            <h5 class = "card-title">Completa el Formulario</h5>
+            <h6 class = "card-subtitle text-muted">Asignación</h6>
+          </div>
+          <div class="card-body">
+            <!--- INICIO DE FORMULARIO-->
+            <form>
+              <div class="row">
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label class = "form-label"><b>No</b></label>
+                    <input type="text" class="form-control" placeholder="Número de Asignación"required>
+                  </div>
+                </div>
+                <div class="col-lg-5">
+                  <div class = "form-group">
+                    <label class = "form-label"><b>Ruta</b></label>
+                    <input type="text" class="form-control" placeholder="Ingrese la Ruta del Vehiculo" required>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class = "form-group">
+                    <label class = "form-label"><b>Piloto</b></label>
+                    <input type="text" class="form-control" placeholder="Ingrese nombre del Piloto"  required>
+                  </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <div class = "form-group">
+                    <label class = "form-label"><b>Tipo de Vehiculo</b></label>
+                    <select class="form-control"required>
+                      <option value="" disabled>Seleccionar</option>
+                    </select>
+                  </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" >Asignar</button>
+            </form>
+            <!--- FIN DE FORMULARIO-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</div>

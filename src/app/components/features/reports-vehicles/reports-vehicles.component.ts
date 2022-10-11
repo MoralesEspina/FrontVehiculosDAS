@@ -1,4 +1,7 @@
+import { formatCurrency } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormControl, Validators} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-reports-vehicles',
@@ -7,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportsVehiclesComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
   }
