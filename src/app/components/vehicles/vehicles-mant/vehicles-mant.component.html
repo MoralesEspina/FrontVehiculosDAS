@@ -25,18 +25,25 @@
           </div>
           <div class="card-body">
             <!--- INICIO DE FORMULARIO-->
-            <form>
+            <!--- Nombre Formulario dentro del Form-->
+            <!--- #vehicleForm="ngForm"-->
+            <form #vehicleForm="ngForm">
               <div class="row">
                 <div class="col-lg-3">
                   <div class="form-group">
                     <label class = "form-label"><b>Marca</b></label>
-                    <input type="text" class="form-control" placeholder="Ingrese la Marca del Vehiculo"required>
+                    <!--- En cada input se debe agregar la referencia al NGModel-->
+
+                    <!--- #NOMBRE="ngModel" NOMBRE="NOMBRE" [(ngModel)]="VEHICLE.NOMBRE"-->
+                    <input #brand="ngModel" brand="brand" [(ngModel)]="vehicle.brand"
+                    type="text" class="form-control" placeholder="Ingrese la Marca del Vehiculo"required>
                   </div>
                 </div>
                 <div class="col-lg-3">
                   <div class = "form-group">
                     <label class = "form-label"><b>Modelo</b></label>
-                    <input type="text" class="form-control" placeholder="Ingrese el Modelo del Vehiculo" required>
+                    <input #model="ngModel" model="model" [(ngModel)]="vehicle.model"
+                     type="text" class="form-control" placeholder="Ingrese el Modelo del Vehiculo" required>
                   </div>
                 </div>
                 <div class="col-lg-3">

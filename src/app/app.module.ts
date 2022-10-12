@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { NgxPaginationModule } from 'ngx-pagination';
+
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import {  HttpClientModule } from '@angular/common/http';
+
+import {NgxPaginationModule} from 'ngx-pagination';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
@@ -18,7 +23,6 @@ import { AssignVPComponent } from './components/features/assign-v-p/assign-v-p.c
 import { LocalTransportationRequestComponent } from './components/features/local-transportation-request/local-transportation-request.component';
 
 import { ReportsVehiclesComponent } from './components/features/reports-vehicles/reports-vehicles.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,6 +38,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RequestListComponent,
     AssignVPComponent,
 
+
     LocalTransportationRequestComponent,
 
     ReportsVehiclesComponent,
@@ -44,6 +49,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
     NgxPaginationModule,
 
   ],
