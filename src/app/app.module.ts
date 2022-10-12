@@ -34,7 +34,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RequestListComponent,
     AssignVPComponent,
 
-    LocalTransportationRequestComponent
+    LocalTransportationRequestComponent,
 
     ReportsVehiclesComponent,
 
