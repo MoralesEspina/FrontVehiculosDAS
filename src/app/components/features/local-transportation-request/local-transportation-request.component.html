@@ -17,7 +17,7 @@
                     <!--- Migaja de Pan -->
                 </div>
 
-                <div class="col-12">
+                <div class="col-lg-8" >
                     <div class="card">
                         <div class="card-header">
                             <h5 class="card-title">Completa el Formulario</h5>
@@ -26,26 +26,30 @@
                         <div class="card-body">
                             <!--- INICIO DE FORMULARIO-->
                             <form>
+                                <p> </p>
                                 <div class="row">
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-7">
                                         <div class="form-group">
                                             <label class="form-label"><b>Lugar</b></label>
                                             <input type="text" list="items" class="form-control"
                                                 placeholder="Ingrese el lugar" required>
                                             <!-- Lista de opciones -->
                                             <datalist id="items">
-                                                <option *ngFor="let places of places">{{places.name}}</option>
+                                            <option *ngFor="let places of places">{{places.name}}</option>
                                             </datalist>
+                                      
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
+                                    <p> </p>
+                                    <div class="col-lg-7">
                                         <div class="form-group">
                                             <label class="form-label"><b>Fecha</b></label>
                                             <input type="date" id="start" name="trip-start" class="form-control"
                                                 placeholder="Seleccione la fecha" required>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
+                                    <p> </p>
+                                    <div class="col-lg-7">
                                         <div class="form-group">
                                             <label class="form-label"><b>Unidad, Sección o Departamento</b></label>
                                             <input type="text" list="items" class="form-control"
@@ -56,25 +60,22 @@
                                             </datalist>
                                         </div>
                                     </div>
-
-
-
-
-                                    <div class="col-lg-4">
+                                    
+                                    <div class="col-lg-7">
                                         <div class="form-group">
                                             <label class="form-label"><b>Nombre del Solicitante</b></label>
                                             <input type="text" class="form-control"
                                                 placeholder="Ingrese el nombre del solicitante" required>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-7">
                                         <div class="form-group">
                                             <label class="form-label"><b>Cargo del Solicitante</b></label>
                                             <input type="text" class="form-control"
                                                 placeholder="Ingrese el cargo del solicitante" required>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-7">
                                         <div class="form-group">
                                             <label class="form-label"><b>Tel. oficina o móvil</b></label>
                                             <input type="number" class="form-control"
@@ -83,28 +84,28 @@
                                     </div>
 
 
-                                    <div class="col-lg-2">
+                                    <div class="col-lg-7">
                                         <div class="form-group">
                                             <label class="form-label"><b>Fecha de Salida</b></label>
                                             <input type="date" id="start" name="trip-start" class="form-control"
                                                 placeholder="Seleccione la fecha" required>
                                         </div>
                                     </div>
-                                    <div class="col-lg-2">
+                                    <div class="col-lg-7">
                                         <div class="form-group">
                                             <label class="form-label"><b>Fecha de Entrada</b></label>
                                             <input type="date" id="start" name="trip-start" class="form-control"
                                                 placeholder="Seleccione la fecha" required>
                                         </div>
                                     </div>
-                                    <div class="col-lg-2">
+                                    <div class="col-lg-7">
                                         <div class="form-group">
                                             <label class="form-label"><b>Hora de Salida</b></label>
                                             <input type="time" class="form-control" placeholder="Seleccione la hora"
                                                 required>
                                         </div>
                                     </div>
-                                    <div class="col-lg-5">
+                                    <div class="col-lg-7">
                                         <div class="form-group">
                                             <label class="form-label"><b>Destino Especifico a Visitar</b></label>
                                             <input type="text" class="form-control"
@@ -114,14 +115,14 @@
 
 
 
-                                    <div class="col-lg-2">
+                                    <div class="col-lg-7">
                                         <div class="form-group">
                                             <label class="form-label"><b>No. Personas</b></label>
                                             <input type="number" class="form-control"
                                                 placeholder="Ingrese el No. de personas" required>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-7">
                                         <div class="form-group">
                                             <label class="form-label"><b>Objeto de la Comisión</b></label>
                                             <input type="text" class="form-control"
