@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { VehicleService } from 'src/app/services/vehicle.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-vehicles-index',
@@ -25,5 +26,35 @@ export class VehiclesIndexComponent implements OnInit {
 
       }
     )
+  }
+
+  deleteVehicle(id){
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "No podras revertir esta acción!",
+      icon: 'warning',
+      showCancelButton: true,
+      cancelButtonText: 'No, Cancelar!',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, Borralo!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._vehicleService.deleteOneVehicle(id).subscribe(data => {
+          Swal.fire(
+            'Eliminado!',
+            'Vehiculo Eliminado con Exito',
+            'success'
+          )
+          this.getVehicles();
+        }, error => {
+          Swal.fire({
+            icon: 'error',
+            title: 'No se ha podido eliminar el producto',
+            text: error.error.data,
+          })
+        });
+      }
+    })
   }
 }
