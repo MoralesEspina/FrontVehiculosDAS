@@ -14,8 +14,11 @@ import { LocalTransportationRequestComponent } from './components/features/local
 const routes: Routes = [
   {path: '', redirectTo: 'dashboard',pathMatch: 'full'},
   {path: 'dashboard', component: DashboardComponent},
+  //TODO RUTAS VEHICULOS
   {path: 'vehicles', component: VehiclesIndexComponent},
   {path: 'vehicles/add', component: VehiclesMantComponent},
+  {path: 'vehicles/edit/:id', component: VehiclesMantComponent},
+  //TODO RUTAS DE SOLICITUDES
   {path: 'transportRequest', component: TransportRequestComponent},
   {path: 'requestList', component: RequestListComponent},
   {path: 'reportsVehicles', component: ReportsVehiclesComponent},
@@ -25,10 +28,10 @@ const routes: Routes = [
   {path: 'users', component: UsersComponent},
   {path: 'localtransportRequest', component: LocalTransportationRequestComponent},
 
- 
 
-  {path: 'users', component: UsersComponent}, 
-  
+
+  {path: 'users', component: UsersComponent},
+
 ];
 
 @NgModule({

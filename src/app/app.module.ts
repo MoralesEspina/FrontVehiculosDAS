@@ -37,10 +37,7 @@ import { ReportsVehiclesComponent } from './components/features/reports-vehicles
     ManagerviewComponent,
     RequestListComponent,
     AssignVPComponent,
-
-
     LocalTransportationRequestComponent,
-
     ReportsVehiclesComponent,
 
   ],
