@@ -3,6 +3,7 @@
     <main class="content">
     <div class="container-fluid">
         <div class="header">
+          <div class="col-8">
             <h1 class="header-title">
                 Registro de Vehiculos
             </h1>
@@ -16,8 +17,8 @@
             </nav>
             <!--- Migaja de Pan -->
         </div>
-
-        <div class="col-12">
+      </div>
+        <div class="col-8">
         <div class="card">
           <div class = "card-header">
             <h5 class = "card-title">Completa el Formulario</h5>
@@ -67,7 +68,7 @@
                   <div class = "form-group">
                     <label class = "form-label"><b>Modelo</b></label>
                     <input #model="ngModel" name="model" [(ngModel)]="vehicle.model"
-                    type="number" class="form-control" placeholder="0" required>
+                    type="number" class="form-control" placeholder="" required>
                   </div>
                 </div>
                 <div class="col-lg-3" >
