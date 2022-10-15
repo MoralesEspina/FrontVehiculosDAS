@@ -24,8 +24,8 @@ const routes: Routes = [
   {path: 'assignVP', component: AssignVPComponent},
 
   {path: 'users', component: UsersComponent},
-  {path: 'localtransportRequest', component: LocalTransportationRequestComponent},
-
+  {path: 'localtransportRequest/add', component: LocalTransportationRequestComponent},
+  {path: 'localtransportRequest/edit/:id', component: LocalTransportationRequestComponent},
  
 
   {path: 'users', component: UsersComponent}, 

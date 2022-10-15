@@ -56,8 +56,8 @@
                                     <div class="col-lg-10">
                                         <div class="form-group">
                                             <label class="form-label"><b>Fecha:</b></label>
-                                            <input #dates="ngModel" name="dates" [(ngModel)]="transportation.dates"
-                                            type="date" id="start" name="trip-start" required>
+                                            <input #date="ngModel" name="date" [(ngModel)]="transportation.date"
+                                            type="text" placeholder="YYYY/MM/DD" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-10">
@@ -103,25 +103,25 @@
     <div class="col-lg-4">
         <div class="form-group">
             <label class="form-label"><b>Fecha Del:</b></label>
-            <input name="dateDel" [(ngModel)]="detail.dateDel" type="date" required>
+            <input name="dateOf" [(ngModel)]="detailrequest.dateOf" type="date" required>
         </div>
     </div>
     <div class="col-lg-4">
         <div class="form-group">
             <label class="form-label"><b>Fecha Al:</b></label>
-            <input name="dateAl" [(ngModel)]="detail.dateAl" type="date" required>
+            <input name="dateTo" [(ngModel)]="detailrequest.dateTo" type="date" required>
         </div>
     </div>
     <div class="col-lg-4">
         <div class="form-group">
             <label class="form-label"><b>Hora de salida:</b></label>
-            <input name="schedule" [(ngModel)]="detail.schedule" type="time" required>
+            <input name="schedule" [(ngModel)]="detailrequest.schedule" type="time" required>
         </div>
     </div>
     <div class="col-lg-7">
         <div class="form-group">
             <label class="form-label"><b>Destino Especifico a visitar:</b></label>
-            <select  name="destiny" [(ngModel)]="detail.destiny" required>
+            <select  name="destiny" [(ngModel)]="detailrequest.destiny" required>
                 <option value="" disabled>Seleccionar</option>
                 <option *ngFor="let visitar of placess">{{visitar.name}}</option>
               </select>
@@ -130,14 +130,14 @@
     <div class="col-lg-4">
         <div class="form-group">
             <label class="form-label"><b>No Persona:</b></label>
-            <input name="numpeople" [(ngModel)]="detail.numpeople"
+            <input name="peopleNumber" [(ngModel)]="detailrequest.peopleNumber"
             type="number" placeholder="Ingrese No. de personas" required>
         </div>
     </div>
     <div class="col-lg-6">
         <div class="form-group">
             <label class="form-label"><b>Objeto de la Comision:</b></label>
-            <input name="commission" [(ngModel)]="detail.commission"
+            <input name="comission" [(ngModel)]="detailrequest.comission"
             type="text" placeholder="Ingrese el Objeto de la Comision" required>
         </div>
         <button class="btn btn-primary pull-left" type="submit">Agregar a la tabla</button>
@@ -163,13 +163,13 @@
                   </tr>
                 </thead>
             <!---    TITULOS DE LA TABLA -->
-                <tbody *ngFor="let detail of details" >
-                    <td style="text-align: center;">{{detail.dateDel}}</td>
-                    <td style="text-align: center;">{{detail.dateAl}}</td>
-                    <td style="text-align: center;">{{detail.schedule}}</td>
-                    <td style="text-align: center;">{{detail.destiny}}</td>
-                    <td style="text-align: center;">{{detail.numpeople}}</td>
-                    <td style="text-align: center;">{{detail.commission}}</td>
+                <tbody *ngFor="let detailrequest of details" >
+                    <td style="text-align: center;">{{detailrequest.dateOf}}</td>
+                    <td style="text-align: center;">{{detailrequest.dateTo}}</td>
+                    <td style="text-align: center;">{{detailrequest.schedule}}</td>
+                    <td style="text-align: center;">{{detailrequest.destiny}}</td>
+                    <td style="text-align: center;">{{detailrequest.peopleNumber}}</td>
+                    <td style="text-align: center;">{{detailrequest.comission}}</td>
                 </tbody>
               </table>
              <!---   TABLA -->

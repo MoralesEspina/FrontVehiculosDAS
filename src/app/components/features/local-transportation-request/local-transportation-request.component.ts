@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { localtrasportationI } from 'src/app/models/local_trasportation.interface';
 import { dateillocaltrasportationI } from 'src/app/models/detaillocal-transportation.interface';
 import { RequestlocalService } from 'src/app/services/requestlocal.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-local-transportation-request',
@@ -12,6 +13,10 @@ export class LocalTransportationRequestComponent implements OnInit {
 
   public transportation;
   public datetransportation;
+  public editing: boolean=false;
+  public id_entrada;
+  details:any[] = [];
+  detailrequest:any = {};
 
   placess = [
     {id:7,name: 'Jalapa'},
@@ -24,16 +29,36 @@ export class LocalTransportationRequestComponent implements OnInit {
   ];
 
 
- star=new Date()
 
-  constructor(private requestlocalService:RequestlocalService) {
-    this.transportation=new localtrasportationI("","","","","","","",0,"")
+  constructor(private requestlocalService:RequestlocalService, private router:ActivatedRoute) {
+    this.transportation=new localtrasportationI("","","","","","","",0,"",[])
    }
 
   ngOnInit(): void {
+    this.id_entrada=this.router.snapshot.params['id'];
+    this.loadlocaltransportation()
   }
 
+  loadlocaltransportation(){
+    if (this.id_entrada) {
+      this.editing=true
+      this.requestlocalService.getOnerequestLocal(this.id_entrada).subscribe(
+        response=>{
+         
+          this.transportation=response.data[0]
+          console.log(this.transportation)
+    
+        }, err=>{
+    
+        }
+      )
+      }else{
+     this.editing=false
+      }
 
+  }
+
+ 
   
 
   create(local_trasportationForm){
@@ -43,20 +68,21 @@ export class LocalTransportationRequestComponent implements OnInit {
       plate:  local_trasportationForm.value.plate,
 
        place: local_trasportationForm.value.place,
-       dates: local_trasportationForm.value.dates,
+       date: local_trasportationForm.value.date,
        section: local_trasportationForm.value.section,
        applicantsName:  local_trasportationForm.value.applicantsName,
        position: local_trasportationForm.value.position,
        phoneNumber:  local_trasportationForm.value.phoneNumber,
-       observations: local_trasportationForm.value.observations
+       observations: local_trasportationForm.value.observations,
+       detail:this.details
    }
    console.log(transportation_local)
 
    if (local_trasportationForm.valid) {
-  this.requestlocalService.createonrequestLocal(local_trasportationForm).subscribe(
+  this.requestlocalService.createonrequestLocal(transportation_local).subscribe(
     response=>{
       console.log("Se registro la solicitud del vehiculo correctamente");
-      this.transportation=new localtrasportationI("","","","","","","",0,"")
+      this.transportation=new localtrasportationI("","","","","","","",0,"",[])
 
     }, err=>{
 
@@ -69,33 +95,22 @@ export class LocalTransportationRequestComponent implements OnInit {
 
 
 
-
-
-
-
-
-   // los datos se van guardando en un arreglo, el cual se usa para
-  // desplegar la tabla
-  details:any[] = [];
-
-  // los input del formulario se asocian con un modelo
-  detail:any = {};
   createdetail(trasportationForm){
   
     const person:dateillocaltrasportationI = {
-      dateDel: trasportationForm.value.dateDel,
-      dateAl: trasportationForm.value.dateAl,
+      dateOf: trasportationForm.value.dateOf,
+      dateTo: trasportationForm.value.dateTo,
       schedule: trasportationForm.value.schedule,
       destiny: trasportationForm.value.destiny,
-      numpeople: trasportationForm.value.numpeople,
-      commission:trasportationForm.value.commission
+      peopleNumber: trasportationForm.value.peopleNumber,
+      comission:trasportationForm.value.comission
   }
 
   console.log(person)
     // se inserta el dato en el arreglo
-    this.details.push(this.detail);
+    this.details.push(this.detailrequest);
     // se crea un nuevo objeto para almacenar nuevos datos
-    this.detail = {};
+    this.detailrequest = {};
 
   }
 

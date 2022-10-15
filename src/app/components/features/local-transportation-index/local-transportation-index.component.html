@@ -36,7 +36,7 @@
                                             </button>
                                             <div class="dropdown-menu" x-placement="bottom-start"
                                                 style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 31px, 0px);">
-                                                <a class="dropdown-item" [routerLink]="['/localtransportRequest']">Registrar</a>
+                                                <a class="dropdown-item" [routerLink]="['/localtransportRequest/add']">Registrar</a>
                                             </div>
                                         </div>
                                     </div>
@@ -73,8 +73,8 @@
                                                 <i class="fas fa-cog"></i>
                                             </button>
                                             <div class="dropdown-menu">
-                                                <a class="dropdown-item">Editar Vehiculo</a>
-                                                <a class="dropdown-item">Eliminar Vehiculo</a>
+                                                <a class="dropdown-item" [routerLink]="['/localtransportRequest/edit/',item.uuid]">Editar Registro</a>
+                                                <a class="dropdown-item">Eliminar Registro</a>
                                             </div>
                                         </div>
                                     </td>

@@ -3,12 +3,13 @@ export class localtrasportationI{
       public pilotName:string,
       public plate:string,
       public place:string,
-      public dates:string,
+      public date:string,
       public section: string,
       public applicantsName:string,
       public position:string,
       public phoneNumber:number,
       public observations:string,
+      public detail: Array<any> = []
     )
     {
   
