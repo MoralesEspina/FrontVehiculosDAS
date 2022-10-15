@@ -28,19 +28,11 @@ const routes: Routes = [
 
   {path: 'users', component: UsersComponent},
 
+  //TODO RUTAS DE SOLICITUD LOCAL
+  {path: 'localtransportRequest-index', component: LocalTransportationIndexComponent},
   {path: 'localtransportRequest/add', component: LocalTransportationRequestComponent},
   {path: 'localtransportRequest/edit/:id', component: LocalTransportationRequestComponent},
- 
-
-  {path: 'users', component: UsersComponent}, 
-  {path: 'localtransportRequest-index', component: LocalTransportationIndexComponent},
-
-  
   {path: 'localtransportRequest', component: LocalTransportationRequestComponent},
-
-
-
-  {path: 'users', component: UsersComponent},
 
 ];
 
