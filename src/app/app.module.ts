@@ -23,6 +23,8 @@ import { AssignVPComponent } from './components/features/assign-v-p/assign-v-p.c
 import { LocalTransportationRequestComponent } from './components/features/local-transportation-request/local-transportation-request.component';
 
 import { ReportsVehiclesComponent } from './components/features/reports-vehicles/reports-vehicles.component';
+import { PersonFormComponent } from './components/person/person-form/person-form.component';
+import { PersonTableComponent } from './components/person/person-table/person-table.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { ReportsVehiclesComponent } from './components/features/reports-vehicles
     AssignVPComponent,
     LocalTransportationRequestComponent,
     ReportsVehiclesComponent,
+    PersonFormComponent,
+    PersonTableComponent,
 
   ],
   imports: [
