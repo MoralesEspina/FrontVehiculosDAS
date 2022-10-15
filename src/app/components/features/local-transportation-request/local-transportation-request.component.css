@@ -1,6 +1,6 @@
 input{
     background: none;
-    color: rgb(97, 8, 142);
+    color: rgb(0, 0, 0);
     font-size: 18px;
     display: block;
     border: none;
@@ -23,12 +23,7 @@ input{
 }
 
 button{
-  height:30px;
-  width:150px;
-  margin: -20px -50px;
-  position:relative;
-  top:50%;
-  left:50%;
+  margin: auto;
 }
 
 #destino{
@@ -37,9 +32,7 @@ button{
   font-size: 22px;
 }
 
-#btndestino{
-  margin: 0 auto;
-}
+
 .col-lg-10{
     margin: 0 auto;
   }
@@ -48,7 +41,7 @@ button{
   }
 select{
     background: none;
-    color: rgb(97, 8, 142);
+    color: rgb(48, 0, 220);
     font-size: 18px;
     display: block;
     width: 100%;
@@ -61,11 +54,11 @@ select{
 }
 select:focus{
     outline: none;
-    color: rgb(89, 8, 229);
+    color: rgb(48, 0, 220);
 }
 
 input:focus{
     outline: none;
-    color: rgb(89, 8, 229);
+    color: rgb(48, 0, 220);
 }
 
