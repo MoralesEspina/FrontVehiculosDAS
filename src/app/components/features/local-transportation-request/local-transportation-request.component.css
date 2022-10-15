@@ -1,0 +1,36 @@
+input{
+    background: none;
+    color: rgb(97, 8, 142);
+    font-size: 18px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid;
+    height : 30px;
+    width : 65%;
+    float: right;
+   
+}
+select{
+    background: none;
+    color: rgb(97, 8, 142);
+    font-size: 18px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid;
+    height : 30px;
+    width : 65%;
+    float: right;
+   
+}
+select:focus{
+    outline: none;
+    color: rgb(89, 8, 229);
+}
+
+input:focus{
+    outline: none;
+    color: rgb(89, 8, 229);
+}
+
