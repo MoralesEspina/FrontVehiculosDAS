@@ -49,22 +49,23 @@
                                 <!--- TITULOS DE LA TABLA -->
                                 <thead>
                                     <tr>
-                                        <th style="text-align: center;">Nombre del Piloto</th>
-                                        <th style="text-align: center;">Lugar</th>
-                                        <th style="text-align: center;">Fecha</th>
-                                        <th style="text-align: center;">Unidad, Sección o Departamento</th>
+                                        <th style="text-align: center;">Solicitud No.</th>
+                                        
+                                        <th style="text-align: center;">Salida</th>
+                                        
+                                        <th style="text-align: center;">Solicitante</th>
                                         <th style="text-align: center;">Estado</th>
-                                        <th style="text-align: center;">Opciones</th>
+                                        <th style="text-align: center;">Aceptar/Denegar</th>
+                        
                                     </tr>
                                 </thead>
                                 <!--- TITULOS DE LA TABLA -->
 
                                 <!--- CUERPO DE LA TABLA -->
                                 <tbody *ngFor="let item of requestsLocal | paginate: { itemsPerPage: 8, currentPage: p }">
-                                    <td style="text-align: center;">{{item.pilotName}}</td>
-                                    <td style="text-align: center;">{{item.place}}</td>
+                                    <td style="text-align: center;">{{item.id}}</td>
                                     <td style="text-align: center;">{{item.date}}</td>
-                                    <td style="text-align: center;">{{item.section}}</td>
+                                    <td style="text-align: center;">{{item.applicantsName}}</td>
                                     <td style="text-align: center;">{{item.status}}</td>
                                     <td style="text-align: center;">
                                         <div class="btn-group">
@@ -73,7 +74,7 @@
                                                 <i class="fas fa-cog"></i>
                                             </button>
                                             <div class="dropdown-menu">
-                                                <a class="dropdown-item" [routerLink]="['/localtransportRequest/edit/',item.uuid]">Ver Registro</a>
+                                                <a class="dropdown-item" [routerLink]="['/localtransportRequest/edit/',item.id]">Ver Registro</a>
                                                
                                             </div>
                                         </div>
