@@ -12,7 +12,6 @@ import { ActivatedRoute } from '@angular/router';
 export class LocalTransportationRequestComponent implements OnInit {
 
   public transportation;
-  public datetransportation;
   public editing: boolean=false;
   public id_entrada;
   details:any[] = [];
@@ -45,8 +44,9 @@ export class LocalTransportationRequestComponent implements OnInit {
       this.requestlocalService.getOnerequestLocal(this.id_entrada).subscribe(
         response=>{
          
-          this.transportation=response.data[0]
-          console.log(this.transportation)
+          console.log(response)
+          this.transportation=response.data.request[0]
+          this.details=response.data.detailRequest
     
         }, err=>{
     
