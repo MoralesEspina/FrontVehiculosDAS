@@ -6,10 +6,12 @@ import { TransportRequestComponent } from './components/features/transport-reque
 import { VehiclesIndexComponent } from './components/vehicles/vehicles-index/vehicles-index.component';
 import { VehiclesMantComponent } from './components/vehicles/vehicles-mant/vehicles-mant.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ReportsVehiclesComponent } from './components/features/reports-vehicles/reports-vehicles.component';
 import { LocalTransportationRequestComponent } from './components/features/local-transportation-request/local-transportation-request.component';
+import { OutsidevehicleIndexComponent } from './components/oustidevehicle/outsidevehicle-index/outsidevehicle-index.component';
+import { OutsidevehicleMantComponent } from './components/oustidevehicle/outsidevehicle-mant/outsidevehicle-mant.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'dashboard',pathMatch: 'full'},
@@ -31,6 +33,9 @@ const routes: Routes = [
 
 
   {path: 'users', component: UsersComponent},
+{path: 'OutsidevehicleIndex', component: OutsidevehicleIndexComponent},
+{path: 'OutsidevehicleMant', component: OutsidevehicleMantComponent},
+
 
 ];
 

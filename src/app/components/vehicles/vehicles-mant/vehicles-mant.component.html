@@ -33,12 +33,12 @@
                   <div class="form-group">
                     <label class = "form-label"><b>VIN</b></label>
                     <!--- En cada input se debe agregar la referencia al NGModel-->
-
                     <!--- #NOMBRE="ngModel" name="NOMBRE" [(ngModel)]="VEHICLE.NOMBRE"-->
                     <input type="text" class="form-control" #vin="ngModel" name="vin" [(ngModel)]="vehicle.vin"
                      placeholder="Ingrese el número de VIN del Vehiculo"required>
                   </div>
                 </div>
+
                 <div class="col-lg-6">
                   <div class = "form-group">
                     <label class = "form-label"><b>Placa</b></label>
@@ -46,6 +46,7 @@
                      type="text" class="form-control" placeholder="Ingrese la Placa del Vehiculo" required>
                   </div>
                 </div>
+
                 <div class="col-lg-6">
                   <div class = "form-group">
                     <label class = "form-label"><b>Tipo de Vehiculo</b></label>

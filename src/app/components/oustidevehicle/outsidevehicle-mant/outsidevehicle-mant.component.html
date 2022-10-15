@@ -1,0 +1,171 @@
+<div class="wrapper">
+    <div class="main">
+      <main class="content">
+      <div class="container-fluid">
+          <div class="header">
+              <h1 class="header-title">
+                  Registro de Solicitud de Transporte Exterior
+              </h1>
+              <!--- Migaja de Pan -->
+              <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Dashboard</a></li>
+                    <li class="breadcrumb-item"><a [routerLink]="['/vehicles']"> Vehiculos</a></li>
+                    <li class="breadcrumb-item"><a> Solicitud de Transporte Exterior</a></li>
+                  </ol>
+              </nav>
+              <!--- Migaja de Pan -->
+          </div>
+  
+          <div class="col-12">
+          <div class="card">
+            <div class = "card-header">
+              <h5 class = "card-title">Completa el Formulario</h5>
+              <h6 class = "card-subtitle text-muted">Transporte Exterior</h6>
+            </div>
+            <div class="card-body">
+              
+              <!--- INICIO DE FORMULARIO-->
+              <form>
+
+                <div class="row">
+
+                    <div class="col-lg-6">
+                        <div class = "form-group">
+                          <label class = "form-label"><b>Unidad Solicitante</b></label>
+                          <select class="form-control" #type="ngModel" name="type" [(ngModel)]="outsidevehiclemant.unit"required>
+                            <option value="" disabled>Seleccionar</option>
+                            <option value="{{item.idvtype}}" *ngFor="let item of types">{{item.type_name}}</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-6">
+                        <div class = "form-group">
+                          <label class = "form-label"><b>Responsable de comision</b></label>
+                          <select class="form-control" #type="ngModel" name="type" [(ngModel)]="outsidevehiclemant.responsible"required>
+                            <option value="" disabled>Seleccionar</option>
+                            <option value="{{item.idvtype}}" *ngFor="let item of types">{{item.type_name}}</option>
+                          </select>
+                        </div>
+                      </div>
+                      
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class = "form-label"><b>Fecha</b></label>
+                      <input #date="ngModel" name="date" [(ngModel)]="outsidevehiclemant.date" required
+                          type="text" class="form-control" placeholder="ingrese fecha" >
+                    </div>
+                  </div>
+
+                  <div class="col-lg-6">
+                    <div class = "form-group">
+                      <label class = "form-label"><b>Duracion en Dias</b></label>
+                      <input #day="ngModel" name="day" [(ngModel)]="outsidevehiclemant.day" required
+                      type="text" class="form-control" placeholder="ingrese duracion de los dias" >
+                    </div>
+                  </div>
+
+                  <div class="col-lg-6">
+                    <div class = "form-group">
+                      <label class = "form-label"><b>Departamento</b></label>
+                      <select class="form-control" #type="ngModel" name="type" [(ngModel)]="outsidevehiclemant.departament" required>
+                        <option value="" disabled>Seleccionar</option>
+                        <option value="{{item.idvtype}}" *ngFor="let item of types">{{item.type_name}}</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-6">
+                    <div class = "form-group">
+                      <label class = "form-label"><b>Municipio </b></label>
+                      <select class="form-control" #type="ngModel" name="type" [(ngModel)]="outsidevehiclemant.municipality" required>
+                        <option value="" disabled>Seleccionar</option>
+                        <option value="{{item.idvtype}}" *ngFor="let item of types">{{item.type_name}}</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-6">
+                    <div class = "form-group">
+                      <label class = "form-label"><b>Aldea </b></label>
+                      <select class="form-control" #type="ngModel" name="type" [(ngModel)]="outsidevehiclemant.village" required>
+                        <option value="" disabled>Seleccionar</option>
+                        <option value="{{item.idvtype}}" *ngFor="let item of types">{{item.type_name}}</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-6" >
+                    <div class = "form-group">
+                      <label class = "form-label"><b>Numero de Personas</b></label>
+                      <input #person="ngModel" name="person" [(ngModel)]="outsidevehiclemant.person" required
+                      type="text" class="form-control" placeholder="ingrese numero de personas" >
+                    </div>
+                  </div>
+
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class = "form-label"><b>Viaje Programado del</b></label>
+                      <input #trip="ngModel" name="trip" [(ngModel)]="outsidevehiclemant.trip" required
+                      type="text" class="form-control" placeholder="ingrese Viaje" >
+                    </div>
+                  </div>
+                  
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class = "form-label"><b>Hora de Salida</b></label>
+                      <input #hour="ngModel" name="hour" [(ngModel)]="outsidevehiclemant.hour" required
+                      type="text" class="form-control" placeholder="ingrese hora" >
+                    </div>
+                  </div>
+
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class = "form-label"><b>Retorno del viaje</b></label>
+                      <input #returnn="ngModel" name="returnn" [(ngModel)]="outsidevehiclemant.returnn " required
+                      type="text" class="form-control" placeholder="ingrese retorno" >
+                    </div>
+                  </div>
+
+                  <div class="col-lg-6">
+                    <div class = "form-group">
+                      <label class = "form-label"><b>Proporcion de Combustible </b></label>
+                      <select class="form-control" #type="ngModel" name="type" [(ngModel)]="outsidevehiclemant.gas" required>
+                        <option value="" disabled>Seleccionar</option>
+                        <option value="{{item.idvtype}}" *ngFor="let item of types">{{item.type_name}}</option>
+                      </select>
+                    </div>
+                  </div>
+
+                     <div class="col-lg-6">
+                  <div class = "form-group">
+                    <label class = "form-label"><b>Proporcion de Viatico </b></label>
+                    <select class="form-control" #type="ngModel" name="type" [(ngModel)]="outsidevehiclemant.Viatic"required>
+                      <option value="" disabled>Seleccionar</option>
+                      <option value="{{item.idvtype}}" *ngFor="let item of types">{{item.type_name}}</option>
+                    </select>
+                  </div>
+                </div>
+
+                  <div class="col-lg-6">
+                    <div class = "form-group">
+                      <label class = "form-label"><b>Celular de Contacto</b></label>
+                      <input #Cell="ngModel" name="Cell" [(ngModel)]="outsidevehiclemant.Cell" required
+                      type="text" class="form-control" placeholder="ingrese Celular" >
+                    </div>
+                  </div>
+  
+              </div>
+              <button type="submit" class="btn btn-primary" >Solicitar</button>
+            
+              </form>
+              <!--- FIN DE FORMULARIO-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  </div>
+  
