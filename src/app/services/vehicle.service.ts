@@ -25,8 +25,8 @@ export class VehicleService {
       })
     }
 
-    createonVehicle(form: VehicleI) {
-      return this._http.post(this.url + 'vehicles', form, {
+    getOneVehicle(id): Observable<any> {
+      return this._http.get(this.url + 'vehicles/' + id, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")
@@ -34,8 +34,8 @@ export class VehicleService {
       })
     }
 
-    getOneVehicle(id): Observable<any> {
-      return this._http.get(this.url + 'vehicles/' + id, {
+    createNewVehicle(form: VehicleI) {
+      return this._http.post(this.url + 'vehicles', form, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")

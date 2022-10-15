@@ -15,8 +15,11 @@ import { LocalTransportationIndexComponent } from './components/features/local-t
 const routes: Routes = [
   {path: '', redirectTo: 'dashboard',pathMatch: 'full'},
   {path: 'dashboard', component: DashboardComponent},
+  //TODO RUTAS VEHICULOS
   {path: 'vehicles', component: VehiclesIndexComponent},
   {path: 'vehicles/add', component: VehiclesMantComponent},
+  {path: 'vehicles/edit/:id', component: VehiclesMantComponent},
+  //TODO RUTAS DE SOLICITUDES
   {path: 'transportRequest', component: TransportRequestComponent},
   {path: 'requestList', component: RequestListComponent},
   {path: 'reportsVehicles', component: ReportsVehiclesComponent},
@@ -24,6 +27,7 @@ const routes: Routes = [
   {path: 'assignVP', component: AssignVPComponent},
 
   {path: 'users', component: UsersComponent},
+
   {path: 'localtransportRequest/add', component: LocalTransportationRequestComponent},
   {path: 'localtransportRequest/edit/:id', component: LocalTransportationRequestComponent},
  
@@ -32,6 +36,12 @@ const routes: Routes = [
   {path: 'localtransportRequest-index', component: LocalTransportationIndexComponent},
 
   
+  {path: 'localtransportRequest', component: LocalTransportationRequestComponent},
+
+
+
+  {path: 'users', component: UsersComponent},
+
 ];
 
 @NgModule({

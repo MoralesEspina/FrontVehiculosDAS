@@ -38,10 +38,7 @@ import { LocalTransportationIndexComponent } from './components/features/local-t
     ManagerviewComponent,
     RequestListComponent,
     AssignVPComponent,
-
-
     LocalTransportationRequestComponent,
-
     ReportsVehiclesComponent,
       LocalTransportationIndexComponent,
 
