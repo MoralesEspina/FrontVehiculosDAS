@@ -27,50 +27,69 @@
             <!--- INICIO DE FORMULARIO-->
             <!--- Nombre Formulario dentro del Form-->
             <!--- #vehicleForm="ngForm"-->
-            <form #vehicleForm="ngForm">
+            <form #vehicleForm="ngForm"(ngSubmit)="createNewVehicle(vehicleForm)">
               <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-6">
                   <div class="form-group">
-                    <label class = "form-label"><b>Marca</b></label>
+                    <label class = "form-label"><b>VIN</b></label>
                     <!--- En cada input se debe agregar la referencia al NGModel-->
 
-                    <!--- #NOMBRE="ngModel" NOMBRE="NOMBRE" [(ngModel)]="VEHICLE.NOMBRE"-->
-                    <input #brand="ngModel" brand="brand" [(ngModel)]="vehicle.brand"
-                    type="text" class="form-control" placeholder="Ingrese la Marca del Vehiculo"required>
+                    <!--- #NOMBRE="ngModel" name="NOMBRE" [(ngModel)]="VEHICLE.NOMBRE"-->
+                    <input type="text" class="form-control" #vin="ngModel" name="vin" [(ngModel)]="vehicle.vin"
+                     placeholder="Ingrese el número de VIN del Vehiculo"required>
                   </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-6">
                   <div class = "form-group">
-                    <label class = "form-label"><b>Modelo</b></label>
-                    <input #model="ngModel" model="model" [(ngModel)]="vehicle.model"
-                     type="text" class="form-control" placeholder="Ingrese el Modelo del Vehiculo" required>
+                    <label class = "form-label"><b>Placa</b></label>
+                    <input #plate="ngModel" name="plate" [(ngModel)]="vehicle.plate"
+                     type="text" class="form-control" placeholder="Ingrese la Placa del Vehiculo" required>
                   </div>
                 </div>
-                <div class="col-lg-3">
-                  <div class = "form-group">
-                    <label class = "form-label"><b>Año</b></label>
-                    <input type="text" class="form-control" placeholder="Ingrese el Año del Vehiculo"  required>
-                  </div>
-                </div>
-
-                <div class="col-lg-3" >
-                  <div class = "form-group">
-                    <label class = "form-label"><b>Placas</b></label>
-                    <input type="text" class="form-control" placeholder="Ingrese el Número de Placa del Vehiculo" required>
-                  </div>
-                </div>
-                <div class="col-lg-2" >
-                  <div class = "form-group">
-                    <label class = "form-label"><b>Kilometraje</b></label>
-                    <input type="number" class="form-control" placeholder="0" required>
-                  </div>
-                </div>
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                   <div class = "form-group">
                     <label class = "form-label"><b>Tipo de Vehiculo</b></label>
-                    <select class="form-control"required>
+                    <select class="form-control" #type="ngModel" name="type" [(ngModel)]="vehicle.type"required>
                       <option value="" disabled>Seleccionar</option>
+                      <option value="{{item.idvtype}}" *ngFor="let item of types">{{item.type_name}}</option>
+                    </select>
+                  </div>
+                </div>
 
+                <div class="col-lg-6" >
+                  <div class = "form-group">
+                    <label class = "form-label"><b>Marca</b></label>
+                    <input #brand="ngModel" name="brand" [(ngModel)]="vehicle.brand"
+                    type="text" class="form-control" placeholder="Ingrese la Marca del Vehiculo" required>
+                  </div>
+                </div>
+                <div class="col-lg-3" >
+                  <div class = "form-group">
+                    <label class = "form-label"><b>Modelo</b></label>
+                    <input #model="ngModel" name="model" [(ngModel)]="vehicle.model"
+                    type="number" class="form-control" placeholder="0" required>
+                  </div>
+                </div>
+                <div class="col-lg-3" >
+                  <div class = "form-group">
+                    <label class = "form-label"><b>Kilometraje</b></label>
+                    <input #km="ngModel" name="km" [(ngModel)]="vehicle.km"
+                    type="number" class="form-control" placeholder="0" required>
+                  </div>
+                </div>
+                <div class="col-lg-6" >
+                  <div class = "form-group">
+                    <label class = "form-label"><b>Ingrese Tipo de Gasolina</b></label>
+                    <input #gas="ngModel" name="gas" [(ngModel)]="vehicle.gas"
+                    type="text" class="form-control" placeholder="Ingrese Tipo de Gasolina" required>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class = "form-group">
+                    <label class = "form-label"><b>Estatus del Vehiculo</b></label>
+                    <select class="form-control" #status="ngModel" name="status" [(ngModel)]="vehicle.status" required>
+                      <option value="" disabled>Seleccionar</option>
+                      <option value="{{item.idstatus}}" *ngFor="let item of type_status">{{item.status_name}}</option>
                     </select>
                   </div>
                 </div>
