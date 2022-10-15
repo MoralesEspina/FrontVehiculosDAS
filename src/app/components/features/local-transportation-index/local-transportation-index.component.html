@@ -1,0 +1,93 @@
+<div class="wrapper">
+    <div class="main">
+        <nav class="navbar navbar-expand navbar-theme">
+            <a class="sidebar-toggle d-flex mr-2">
+                <i class="hamburger align-self-center"></i>
+            </a>
+        </nav>
+        <main class="content">
+            <div class="container-fluid">
+                <div class="header">
+                    <h1 class="header-title">
+                       Viajes de Transporte Local
+                    </h1>
+                    <!--- Migaja de Pan -->
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Dashboard</a></li>
+                            <li class="breadcrumb-item">Viajes de Transporte Local</li>
+                        </ol>
+                    </nav>
+                    <!--- Migaja de Pan -->
+                </div>
+
+                <!---  -->
+                <div class="row">
+                    <div class="col-12 col-xl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <h5 class="card-title">Opciones de Transporte Local</h5>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn mb-1 btn-primary dropdown-toggle"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Opciones
+                                            </button>
+                                            <div class="dropdown-menu" x-placement="bottom-start"
+                                                style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 31px, 0px);">
+                                                <a class="dropdown-item" [routerLink]="['/localtransportRequest']">Registrar</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!---  -->
+
+                            <!--- TABLA -->
+                            <table class="table table-striped table-hover">
+                                <!--- TITULOS DE LA TABLA -->
+                                <thead>
+                                    <tr>
+                                        <th style="text-align: center;">Nombre del Piloto</th>
+                                        <th style="text-align: center;">Lugar</th>
+                                        <th style="text-align: center;">Fecha</th>
+                                        <th style="text-align: center;">Unidad, Sección o Departamento</th>
+                                        <th style="text-align: center;">Estado</th>
+                                        <th style="text-align: center;">Opciones</th>
+                                    </tr>
+                                </thead>
+                                <!--- TITULOS DE LA TABLA -->
+
+                                <!--- CUERPO DE LA TABLA -->
+                                <tbody *ngFor="let item of requestsLocal | paginate: { itemsPerPage: 8, currentPage: p }">
+                                    <td style="text-align: center;">{{item.pilotName}}</td>
+                                    <td style="text-align: center;">{{item.place}}</td>
+                                    <td style="text-align: center;">{{item.date}}</td>
+                                    <td style="text-align: center;">{{item.section}}</td>
+                                    <td style="text-align: center;">{{item.status}}</td>
+                                    <td style="text-align: center;">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn mb-1 btn-secondary dropdown-toggle"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-cog"></i>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item">Editar Vehiculo</a>
+                                                <a class="dropdown-item">Eliminar Vehiculo</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tbody>
+                                <!--- CUERPO DE LA TABLA -->
+                            </table>
+                            <!--- TABLA -->
+                        </div>
+                    </div>
+                    <pagination-controls (pageChange)="p = $event" nextLabel="Siguiente" previousLabel="Anterior">
+                    </pagination-controls>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>

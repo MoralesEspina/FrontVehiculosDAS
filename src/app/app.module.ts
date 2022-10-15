@@ -23,6 +23,7 @@ import { AssignVPComponent } from './components/features/assign-v-p/assign-v-p.c
 import { LocalTransportationRequestComponent } from './components/features/local-transportation-request/local-transportation-request.component';
 
 import { ReportsVehiclesComponent } from './components/features/reports-vehicles/reports-vehicles.component';
+import { LocalTransportationIndexComponent } from './components/features/local-transportation-index/local-transportation-index.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ReportsVehiclesComponent } from './components/features/reports-vehicles
     LocalTransportationRequestComponent,
 
     ReportsVehiclesComponent,
+      LocalTransportationIndexComponent,
 
   ],
   imports: [

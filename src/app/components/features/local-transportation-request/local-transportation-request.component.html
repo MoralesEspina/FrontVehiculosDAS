@@ -10,14 +10,14 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Dashboard</a></li>
-                            <li class="breadcrumb-item"><a [routerLink]="['/vehicles']"> Vehiculos</a></li>
+                            <li class="breadcrumb-item"><a [routerLink]="['/localtransportRequest-index']"> Solicitud Local</a></li>
                             <li class="breadcrumb-item"><a>Registro de Solicitud de Vehiculos Local</a></li>
                         </ol>
                     </nav>
                     <!--- Migaja de Pan -->
                 </div>
 
-                <div class="col-lg-8" >
+                <div class="col-lg-10" >
                     <div class="card">
                         <div class="card-header">
                             <h5 class="card-title">Completa el Formulario</h5>
@@ -25,120 +25,169 @@
                         </div>
                         <div class="card-body">
                             <!--- INICIO DE FORMULARIO-->
-                            <form>
-                                <p> </p>
+
+                            <form #local_trasportationForm="ngForm" (ngSubmit)="create(local_trasportationForm)">
                                 <div class="row">
-                                    <div class="col-lg-7">
+                                    <div class="col-lg-10">
                                         <div class="form-group">
-                                            <label class="form-label"><b>Lugar</b></label>
-                                            <input type="text" list="items" class="form-control"
-                                                placeholder="Ingrese el lugar" required>
+                                            <label class="form-label"><b>Nombre del Piloto:</b></label>
+                                            <input #pilotName="ngModel" name="pilotName" [(ngModel)]="transportation.pilotName"
+                                             type="text" list="items" placeholder="Ingrese el nombre del Piloto" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-10">
+                                        <div class="form-group">
+                                            <label class="form-label"><b>Placa del Vehiculo:</b></label>
+                                            <input #plate="ngModel" name="plate" [(ngModel)]="transportation.plate"
+                                             type="text" list="items" placeholder="Ingrese el lugar" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-10"><p></p></div>
+                                    <div class="col-lg-10"><p></p></div>
+                                    <div class="col-lg-10"><p></p></div>
+
+                                    <div class="col-lg-10">
+                                        <div class="form-group">
+                                            <label class="form-label"><b>Lugar:</b></label>
+                                            <input #place="ngModel" name="place" [(ngModel)]="transportation.place"
+                                             type="text" list="items" placeholder="Ingrese el lugar" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-10">
+                                        <div class="form-group">
+                                            <label class="form-label"><b>Fecha:</b></label>
+                                            <input #dates="ngModel" name="dates" [(ngModel)]="transportation.dates"
+                                            type="date" id="start" name="trip-start" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-10">
+                                        <div class="form-group">
+                                            <label class="form-label"><b>Unidad, Sección o Departamento:</b></label>
+                                            <input #section="ngModel" name="section" [(ngModel)]="transportation.section"
+                                            type="text" list="items" placeholder="Ingrese la unidad, sección o departamento" required>
                                             <!-- Lista de opciones -->
-                                            <datalist id="items">
-                                            <option *ngFor="let places of places">{{places.name}}</option>
-                                            </datalist>
-                                      
                                         </div>
                                     </div>
-                                    <p> </p>
-                                    <div class="col-lg-7">
+                                    <div class="col-lg-10">
                                         <div class="form-group">
-                                            <label class="form-label"><b>Fecha</b></label>
-                                            <input type="date" id="start" name="trip-start" class="form-control"
-                                                placeholder="Seleccione la fecha" required>
+                                            <label class="form-label"><b>Nombre del Solicitante:</b></label>
+                                            <input #applicantsName="ngModel" name="applicantsName" [(ngModel)]="transportation.applicantsName"
+                                            type="text" placeholder="Ingrese el nombre del solicitante" required>
                                         </div>
                                     </div>
-                                    <p> </p>
-                                    <div class="col-lg-7">
+                                    <div class="col-lg-10">
                                         <div class="form-group">
-                                            <label class="form-label"><b>Unidad, Sección o Departamento</b></label>
-                                            <input type="text" list="items" class="form-control"
-                                                placeholder="Ingrese la unidad, sección o departamento" required>
-                                            <!-- Lista de opciones -->
-                                            <datalist id="items">
-                                                <option *ngFor="let places of places">{{places.name}}</option>
-                                            </datalist>
+                                            <label class="form-label"><b>Cargo del Solicitante:</b></label>
+                                            <input #position="ngModel" name="position" [(ngModel)]="transportation.position"
+                                            type="text" placeholder="Ingrese el cargo del solicitante" required>
                                         </div>
                                     </div>
-                                    
-                                    <div class="col-lg-7">
+                                    <div class="col-lg-10">
                                         <div class="form-group">
-                                            <label class="form-label"><b>Nombre del Solicitante</b></label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Ingrese el nombre del solicitante" required>
+                                            <label class="form-label"><b>Tel. oficina o móvil:</b></label>
+                                            <input #phoneNumber="ngModel" name="phoneNumber" [(ngModel)]="transportation.phoneNumber"
+                                            type="number" placeholder="Ingrese el Tel. oficina o móvil" required>
                                         </div>
                                     </div>
-                                    <div class="col-lg-7">
-                                        <div class="form-group">
-                                            <label class="form-label"><b>Cargo del Solicitante</b></label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Ingrese el cargo del solicitante" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-7">
-                                        <div class="form-group">
-                                            <label class="form-label"><b>Tel. oficina o móvil</b></label>
-                                            <input type="number" class="form-control"
-                                                placeholder="Ingrese el Tel. oficina o móvil" required>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-lg-7">
-                                        <div class="form-group">
-                                            <label class="form-label"><b>Fecha de Salida</b></label>
-                                            <input type="date" id="start" name="trip-start" class="form-control"
-                                                placeholder="Seleccione la fecha" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-7">
-                                        <div class="form-group">
-                                            <label class="form-label"><b>Fecha de Entrada</b></label>
-                                            <input type="date" id="start" name="trip-start" class="form-control"
-                                                placeholder="Seleccione la fecha" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-7">
-                                        <div class="form-group">
-                                            <label class="form-label"><b>Hora de Salida</b></label>
-                                            <input type="time" class="form-control" placeholder="Seleccione la hora"
-                                                required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-7">
-                                        <div class="form-group">
-                                            <label class="form-label"><b>Destino Especifico a Visitar</b></label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Ingrese el destino especifico a visitar" required>
-                                        </div>
-                                    </div>
+                                    <div class="col-lg-10"><p></p></div>
+                                    <div class="col-lg-10"><p></p></div>
+                                    <div class="col-lg-10"><p></p></div>
+                                    <div class="col-lg-10"><p></p></div>
+                                    <div class="col-lg-10"><p></p></div>
 
 
 
-                                    <div class="col-lg-7">
-                                        <div class="form-group">
-                                            <label class="form-label"><b>No. Personas</b></label>
-                                            <input type="number" class="form-control"
-                                                placeholder="Ingrese el No. de personas" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-7">
-                                        <div class="form-group">
-                                            <label class="form-label"><b>Objeto de la Comisión</b></label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Ingrese el objeto de la comisión" required>
-                                        </div>
-                                    </div>
+ <!-- inican los datos para la tabla -->
+ <form class="col-lg-12"  #trasportationForm="ngForm" (ngSubmit)=" createdetail(trasportationForm)">
+    <div class="row">
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label class="form-label"><b>Fecha Del:</b></label>
+            <input name="dateDel" [(ngModel)]="detail.dateDel" type="date" required>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label class="form-label"><b>Fecha Al:</b></label>
+            <input name="dateAl" [(ngModel)]="detail.dateAl" type="date" required>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label class="form-label"><b>Hora de salida:</b></label>
+            <input name="schedule" [(ngModel)]="detail.schedule" type="time" required>
+        </div>
+    </div>
+    <div class="col-lg-7">
+        <div class="form-group">
+            <label class="form-label"><b>Destino Especifico a visitar:</b></label>
+            <select  name="destiny" [(ngModel)]="detail.destiny" required>
+                <option value="" disabled>Seleccionar</option>
+                <option *ngFor="let visitar of placess">{{visitar.name}}</option>
+              </select>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label class="form-label"><b>No Persona:</b></label>
+            <input name="numpeople" [(ngModel)]="detail.numpeople"
+            type="number" placeholder="Ingrese No. de personas" required>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label class="form-label"><b>Objeto de la Comision:</b></label>
+            <input name="commission" [(ngModel)]="detail.commission"
+            type="text" placeholder="Ingrese el Objeto de la Comision" required>
+        </div>
+        <button class="btn btn-primary pull-left" type="submit">Agregar a la tabla</button>
+    </div>
+    <div class="col-lg-10"><p></p></div> 
+</div>
+ </form>
+
+    <!-- finalizan los datos para la tabla -->
+
+    
+            <!---  TABLA -->
+              <table class="table table-striped table-hover">
+             <!---     TITULOS DE LA TABLA -->
+                <thead >
+                  <tr>
+                    <th style="text-align: center;">Fecha Del:</th>
+                    <th style="text-align: center;">Fecha Al:</th>
+                    <th style="text-align: center;">Hora de Salida</th>
+                    <th style="text-align: center;">Destino Especifico a visitar</th>
+                    <th style="text-align: center;">No. Personas</th>
+                    <th style="text-align: center;">Objeto de la Comision</th>
+                  </tr>
+                </thead>
+            <!---    TITULOS DE LA TABLA -->
+                <tbody *ngFor="let detail of details" >
+                    <td style="text-align: center;">{{detail.dateDel}}</td>
+                    <td style="text-align: center;">{{detail.dateAl}}</td>
+                    <td style="text-align: center;">{{detail.schedule}}</td>
+                    <td style="text-align: center;">{{detail.destiny}}</td>
+                    <td style="text-align: center;">{{detail.numpeople}}</td>
+                    <td style="text-align: center;">{{detail.commission}}</td>
+                </tbody>
+              </table>
+             <!---   TABLA -->
 
 
-                                    <div class="col-lg-8">
+
+                                    <div class="col-lg-10"><p></p></div>
+                                    <div class="col-lg-10"><p></p></div>
+                                    <div class="col-lg-10"><p></p></div>
+                                    <div class="col-lg-10"><p></p></div>
+                                    <div class="col-lg-10"><p></p></div>
+                                    <div class="col-lg-10">
                                         <div class="form-group">
-                                            <label class="form-label"><b>Observaciones</b></label>
-                                            <input type="text" class="form-control" placeholder="Ingrese observaciones"
-                                                required>
+                                            <label class="form-label"><b>Observaciones:</b></label>
+                                            <input #observations="ngModel" name="observations" [(ngModel)]="transportation.observations"  
+                                            type="text"  placeholder="Ingrese observaciones" required>
                                         </div>
                                     </div>
-
 
 
                                 </div>
