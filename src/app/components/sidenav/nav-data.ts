@@ -30,9 +30,9 @@ export const navabarData = [
     label: 'Solicitud de Transporte'
   },
   {
-    routeLink:'managerView',
+    routeLink:'localtransportRequest',
     icon: 'fal fa-user-tie',
-    label: 'Encargado de Transporte'
+    label: 'Solicitud Local'
   },
   {
     routeLink:'requestList',
