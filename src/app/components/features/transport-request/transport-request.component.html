@@ -85,13 +85,13 @@ body { margin-left: 0.984252in; margin-right: 0.984252in; margin-top: 1.1811in; 
             <td class="column1 style103 s style105" colspan="11">SOLICITUD DE VEHICULO</td>
             <td class="column12">&nbsp;</td>
           </tr>
-          <tr class="row5">
+          <tr class="row5" *ngFor="let item of request2">
             <td class="column0">&nbsp;</td>
             <td class="column1 style41 s" colspan="2" >UNIDAD SOLICITANTE:</td>
-            <td class="column3 style109 " colspan="3"></td>
+            <td class="column3 style109 " colspan="3">{{item.place}}</td>
             <td class="column5 style43 null" colspan="1"></td>
-            <td class="column7 style44 s"colspan="2" >RESPONSABLE DE COMISIÓN:</td>
-            <td class="column9 style107 null style108" colspan="3"></td>
+            <td class="column7 style44 s"colspan="2" >RESPONSABLE DE COMISIÓN: </td>
+            <td class="column9 style107 null style108" colspan="3">{{item.applicantsName}}</td>
             <td class="column12">&nbsp;</td>
           </tr>
           <tr class="row6">
@@ -135,15 +135,15 @@ body { margin-left: 0.984252in; margin-right: 0.984252in; margin-top: 1.1811in; 
             <td class="column11 style50 s">HORA DE SALIDA</td>
             <td class="column12">&nbsp;</td>
           </tr>
-          <tr class="row11" *ngFor="let item of vehicles">
+          <tr class="row11" *ngFor="let item of request">
             <td class="column0">&nbsp;</td>
-            <td class="column1 style51 null">1</td>
-            <td class="column2 style52 null">3</td>
-            <td class="column3 style119 null style120" colspan="2">{{item.brand}}</td>
+            <td class="column1 style51 null"></td>
+            <td class="column2 style52 null">{{item.peopleNumber}}</td>
+            <td class="column3 style119 null style120" colspan="2">{{item.destiny}}</td>
             <td class="column5 style119 null style120" colspan="2"></td>
-            <td class="column7 style119 null style121" colspan="2">Milpas Altas Pata Galana del Este</td>
-            <td class="column9 style53 null"></td>
-            <td class="column10 style53 null"></td>
+            <td class="column7 style119 null style121" colspan="2"></td>
+            <td class="column9 style53 null">{{item.dateOf}}</td>
+            <td class="column10 style53 null">{{item.dateTo}}</td>
             <td class="column11 style54 null"></td>
             <td class="column12">&nbsp;</td>
           </tr>
