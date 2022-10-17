@@ -14,7 +14,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BodyComponent } from './components/body/body.component';
 import { VehiclesMantComponent } from './components/vehicles/vehicles-mant/vehicles-mant.component';
 import { VehiclesIndexComponent } from './components/vehicles/vehicles-index/vehicles-index.component';
-import { UsersComponent } from './components/features/users/users.component';
+import { UsersComponent } from './components/features/users/users-mant/users.component';
 import { TransportRequestComponent } from './components/features/transport-request/transport-request.component';
 import { ManagerviewComponent } from './components/features/managerview/managerview.component';
 import { RequestListComponent } from './components/features/request-list/request-list.component';
@@ -24,6 +24,8 @@ import { LocalTransportationRequestComponent } from './components/features/local
 
 import { ReportsVehiclesComponent } from './components/features/reports-vehicles/reports-vehicles.component';
 import { LocalTransportationIndexComponent } from './components/features/local-transportation-index/local-transportation-index.component';
+import { FuelVoucherComponent } from './components/pdf´s/fuel-voucher/fuel-voucher.component';
+import { UsersIndexComponent } from './components/features/users/users-index/users-index.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,9 @@ import { LocalTransportationIndexComponent } from './components/features/local-t
     LocalTransportationRequestComponent,
     ReportsVehiclesComponent,
       LocalTransportationIndexComponent,
+      FuelVoucherComponent,
+      UsersIndexComponent,
+
 
   ],
   imports: [

@@ -1,4 +1,4 @@
-import { UsersComponent } from './components/features/users/users.component';
+import { UsersComponent } from './components/features/users/users-mant/users.component';
 import { AssignVPComponent } from './components/features/assign-v-p/assign-v-p.component';
 import { ManagerviewComponent } from './components/features/managerview/managerview.component';
 import { RequestListComponent } from './components/features/request-list/request-list.component';
@@ -11,6 +11,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ReportsVehiclesComponent } from './components/features/reports-vehicles/reports-vehicles.component';
 import { LocalTransportationRequestComponent } from './components/features/local-transportation-request/local-transportation-request.component';
 import { LocalTransportationIndexComponent } from './components/features/local-transportation-index/local-transportation-index.component';
+import { FuelVoucherComponent } from './components/pdf´s/fuel-voucher/fuel-voucher.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'dashboard',pathMatch: 'full'},
@@ -33,6 +34,9 @@ const routes: Routes = [
   {path: 'localtransportRequest/add', component: LocalTransportationRequestComponent},
   {path: 'localtransportRequest/edit/:id', component: LocalTransportationRequestComponent},
   {path: 'localtransportRequest', component: LocalTransportationRequestComponent},
+
+
+  {path: 'FuelVoucher', component: FuelVoucherComponent},
 
 ];
 

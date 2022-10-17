@@ -1,0 +1,74 @@
+<div class="wrapper">
+  <div class="main">
+    <main class="content">
+    <div class="container-fluid">
+        <div class="header">
+          <div class="col-8">
+            <h1 class="header-title">
+                Registro de Usuarios
+            </h1>
+            <!--- Migaja de Pan -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Dashboard</a></li>
+                  <li class="breadcrumb-item"><a [routerLink]="['/vehicles']"> Usuarios</a></li>
+                  <li class="breadcrumb-item"><a> Registro de Usuarios</a></li>
+                </ol>
+            </nav>
+            <!--- Migaja de Pan -->
+        </div>
+      </div>
+        <div class="col-8">
+        <div class="card">
+          <div class = "card-header">
+            <h5 class = "card-title">Completa el Formulario</h5>
+            <h6 class = "card-subtitle text-muted">Usuarios</h6>
+          </div>
+          <div class="card-body">
+            <!--- INICIO DE FORMULARIO-->
+            <!--- Nombre Formulario dentro del Form-->
+            <!--- #vehicleForm="ngForm"-->
+            <form #userForm="ngForm"(ngSubmit)="createNewUser(userForm)">
+              <div class="row">
+
+                <div class="col-lg-6" >
+                  <div class = "form-group">
+                    <label class = "form-label"><b>Persona</b></label>
+                    <input #uuidPerson="ngModel" name="uuidPerson" [(ngModel)]="user.uuidPerson"
+                    type="text" class="form-control" placeholder="Ingrese la Persona" required>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class = "form-label"><b>Nombre de Usuario</b></label>
+                    <input type="text" class="form-control" #username="ngModel" name="username" [(ngModel)]="user.username"
+                     placeholder="Ingrese el Nombre de Usuario"required>
+                  </div>
+                </div>
+
+                <div class="col-lg-6">
+                  <div class = "form-group">
+                    <label class = "form-label"><b>Contraseña</b></label>
+                    <input #password="ngModel" name="password" [(ngModel)]="user.password"
+                     type="text" class="form-control" placeholder="Ingrese la Contraseña del Usuario" required>
+                  </div>
+                </div>
+
+                <div class="col-lg-3" >
+                  <div class = "form-group">
+                    <label class = "form-label"><b>Rol</b></label>
+                    <input #model="ngModel" name="rol_id" [(ngModel)]="user.rol_id"
+                    type="text" class="form-control" placeholder="Ingrese el Rol del Usuario" required>
+                  </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" >Crear</button>
+            </form>
+            <!--- FIN DE FORMULARIO-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</div>

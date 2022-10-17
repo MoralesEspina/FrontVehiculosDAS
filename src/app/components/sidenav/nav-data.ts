@@ -15,12 +15,12 @@ export const navabarData = [
     label: 'Reporte de Vehiculos'
   },
   {
-    routeLink:'',
+    routeLink:'users',
     icon: 'fal fa-user',
     label: 'Usuarios'
   },
   {
-    routeLink:'users',
+    routeLink:'',
     icon: 'fal fa-users',
     label: 'Personas'
   },
