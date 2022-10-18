@@ -60,7 +60,6 @@ import { ExteriorRequestPdfComponent } from './components/pdf´s/exterior-reques
     ExteriorRequestIndexComponent,
     ExteriorRequestMantComponent,
     PersonFormComponent,
-    ExteriorRequestComponent
     ExteriorRequestPdfComponent
 
   ],
