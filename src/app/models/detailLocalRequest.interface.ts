@@ -1,4 +1,4 @@
-export class dateillocaltrasportationI{
+export class DetailLocalRequestI{
     constructor(
       public dateOf:string,
       public dateTo:string,
@@ -6,10 +6,9 @@ export class dateillocaltrasportationI{
       public destiny:string,
       public peopleNumber:number,
       public comission:string,
-    
+
     )
     {
-  
+
     }
   }
-  

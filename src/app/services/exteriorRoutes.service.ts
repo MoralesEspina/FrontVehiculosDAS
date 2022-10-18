@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http"
 import { Global } from './global.service';
-import { outsidevehiclemanT } from '../models/outsidevehicleman.interface';
+import { ExteriorRequestI } from '../models/exteriorRequest.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class outsidevehicleService{
+export class ExteriorRoutesService{
     public url;
 
   constructor(private _http: HttpClient,
@@ -16,7 +16,7 @@ export class outsidevehicleService{
       this.url = Global.url;
     }
 
-    getoutsidevehiclemant(): Observable<any> {
+    getRequestExterior(): Observable<any> {
       return this._http.get(this.url + 'vehicles', {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
@@ -25,7 +25,7 @@ export class outsidevehicleService{
       })
     }
 
-    getOneoutsidevehiclemant(id): Observable<any> {
+    getOneRequestExterior(id): Observable<any> {
       return this._http.get(this.url + 'vehicles/' + id, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
@@ -34,7 +34,7 @@ export class outsidevehicleService{
       })
     }
 
-    createNewoutsidevehiclemant(form: outsidevehiclemanT) {
+    createNewRequestExterior(form: ExteriorRequestI) {
       return this._http.post(this.url + 'vehicles', form, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
@@ -43,17 +43,8 @@ export class outsidevehicleService{
       })
     }
 
-    updateOneoutsidevehiclemant(form: outsidevehiclemanT, id) {
+    updateOneRequestExterior(form: ExteriorRequestI, id) {
       return this._http.put(this.url + 'vehicles/' + id, form, {
-        headers: new HttpHeaders({
-          'Content-Type':'application/json',
-          //'x-access-token': '' + localStorage.getItem("Token")
-        })
-      })
-    }
-
-    deleteOneoutsidevehiclemant(id){
-      return this._http.delete(this.url + 'vehicles/' + id, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")

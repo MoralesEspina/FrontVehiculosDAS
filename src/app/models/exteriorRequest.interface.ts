@@ -1,4 +1,4 @@
-export class outsidevehiclemanT{
+export class ExteriorRequestI{
     constructor(
       public unit:string,
       public responsible:string,
@@ -15,7 +15,6 @@ export class outsidevehiclemanT{
       public Cell:number,
     )
     {
-  
+
     }
   }
-  

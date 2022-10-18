@@ -16,7 +16,7 @@
               </nav>
               <!--- Migaja de Pan -->
           </div>
-  
+
           <div class="col-12">
           <div class="card">
             <div class = "card-header">
@@ -24,7 +24,7 @@
               <h6 class = "card-subtitle text-muted">Transporte Exterior</h6>
             </div>
             <div class="card-body">
-              
+
               <!--- INICIO DE FORMULARIO-->
               <form>
 
@@ -33,7 +33,7 @@
                     <div class="col-lg-6">
                         <div class = "form-group">
                           <label class = "form-label"><b>Unidad Solicitante</b></label>
-                          <select class="form-control" #type="ngModel" name="type" [(ngModel)]="outsidevehiclemant.unit"required>
+                          <select class="form-control" #type="ngModel" name="type" [(ngModel)]="exteriorRequest.unit"required>
                             <option value="" disabled>Seleccionar</option>
                             <option value="{{item.idvtype}}" *ngFor="let item of types">{{item.type_name}}</option>
                           </select>
@@ -43,17 +43,17 @@
                       <div class="col-lg-6">
                         <div class = "form-group">
                           <label class = "form-label"><b>Responsable de comision</b></label>
-                          <select class="form-control" #type="ngModel" name="type" [(ngModel)]="outsidevehiclemant.responsible"required>
+                          <select class="form-control" #type="ngModel" name="type" [(ngModel)]="exteriorRequest.responsible"required>
                             <option value="" disabled>Seleccionar</option>
                             <option value="{{item.idvtype}}" *ngFor="let item of types">{{item.type_name}}</option>
                           </select>
                         </div>
                       </div>
-                      
+
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label class = "form-label"><b>Fecha</b></label>
-                      <input #date="ngModel" name="date" [(ngModel)]="outsidevehiclemant.date" required
+                      <input #date="ngModel" name="date" [(ngModel)]="exteriorRequest.date" required
                           type="text" class="form-control" placeholder="ingrese fecha" >
                     </div>
                   </div>
@@ -61,7 +61,7 @@
                   <div class="col-lg-6">
                     <div class = "form-group">
                       <label class = "form-label"><b>Duracion en Dias</b></label>
-                      <input #day="ngModel" name="day" [(ngModel)]="outsidevehiclemant.day" required
+                      <input #day="ngModel" name="day" [(ngModel)]="exteriorRequest.day" required
                       type="text" class="form-control" placeholder="ingrese duracion de los dias" >
                     </div>
                   </div>
@@ -69,7 +69,7 @@
                   <div class="col-lg-6">
                     <div class = "form-group">
                       <label class = "form-label"><b>Departamento</b></label>
-                      <select class="form-control" #type="ngModel" name="type" [(ngModel)]="outsidevehiclemant.departament" required>
+                      <select class="form-control" #type="ngModel" name="type" [(ngModel)]="exteriorRequest.departament" required>
                         <option value="" disabled>Seleccionar</option>
                         <option value="{{item.idvtype}}" *ngFor="let item of types">{{item.type_name}}</option>
                       </select>
@@ -79,7 +79,7 @@
                   <div class="col-lg-6">
                     <div class = "form-group">
                       <label class = "form-label"><b>Municipio </b></label>
-                      <select class="form-control" #type="ngModel" name="type" [(ngModel)]="outsidevehiclemant.municipality" required>
+                      <select class="form-control" #type="ngModel" name="type" [(ngModel)]="exteriorRequest.municipality" required>
                         <option value="" disabled>Seleccionar</option>
                         <option value="{{item.idvtype}}" *ngFor="let item of types">{{item.type_name}}</option>
                       </select>
@@ -89,7 +89,7 @@
                   <div class="col-lg-6">
                     <div class = "form-group">
                       <label class = "form-label"><b>Aldea </b></label>
-                      <select class="form-control" #type="ngModel" name="type" [(ngModel)]="outsidevehiclemant.village" required>
+                      <select class="form-control" #type="ngModel" name="type" [(ngModel)]="exteriorRequest.village" required>
                         <option value="" disabled>Seleccionar</option>
                         <option value="{{item.idvtype}}" *ngFor="let item of types">{{item.type_name}}</option>
                       </select>
@@ -99,7 +99,7 @@
                   <div class="col-lg-6" >
                     <div class = "form-group">
                       <label class = "form-label"><b>Numero de Personas</b></label>
-                      <input #person="ngModel" name="person" [(ngModel)]="outsidevehiclemant.person" required
+                      <input #person="ngModel" name="person" [(ngModel)]="exteriorRequest.person" required
                       type="text" class="form-control" placeholder="ingrese numero de personas" >
                     </div>
                   </div>
@@ -107,15 +107,15 @@
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label class = "form-label"><b>Viaje Programado del</b></label>
-                      <input #trip="ngModel" name="trip" [(ngModel)]="outsidevehiclemant.trip" required
+                      <input #trip="ngModel" name="trip" [(ngModel)]="exteriorRequest.trip" required
                       type="text" class="form-control" placeholder="ingrese Viaje" >
                     </div>
                   </div>
-                  
+
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label class = "form-label"><b>Hora de Salida</b></label>
-                      <input #hour="ngModel" name="hour" [(ngModel)]="outsidevehiclemant.hour" required
+                      <input #hour="ngModel" name="hour" [(ngModel)]="exteriorRequest.hour" required
                       type="text" class="form-control" placeholder="ingrese hora" >
                     </div>
                   </div>
@@ -123,7 +123,7 @@
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label class = "form-label"><b>Retorno del viaje</b></label>
-                      <input #returnn="ngModel" name="returnn" [(ngModel)]="outsidevehiclemant.returnn " required
+                      <input #returnn="ngModel" name="returnn" [(ngModel)]="exteriorRequest.returnn " required
                       type="text" class="form-control" placeholder="ingrese retorno" >
                     </div>
                   </div>
@@ -131,7 +131,7 @@
                   <div class="col-lg-6">
                     <div class = "form-group">
                       <label class = "form-label"><b>Proporcion de Combustible </b></label>
-                      <select class="form-control" #type="ngModel" name="type" [(ngModel)]="outsidevehiclemant.gas" required>
+                      <select class="form-control" #type="ngModel" name="type" [(ngModel)]="exteriorRequest.gas" required>
                         <option value="" disabled>Seleccionar</option>
                         <option value="{{item.idvtype}}" *ngFor="let item of types">{{item.type_name}}</option>
                       </select>
@@ -141,7 +141,7 @@
                      <div class="col-lg-6">
                   <div class = "form-group">
                     <label class = "form-label"><b>Proporcion de Viatico </b></label>
-                    <select class="form-control" #type="ngModel" name="type" [(ngModel)]="outsidevehiclemant.Viatic"required>
+                    <select class="form-control" #type="ngModel" name="type" [(ngModel)]="exteriorRequest.Viatic"required>
                       <option value="" disabled>Seleccionar</option>
                       <option value="{{item.idvtype}}" *ngFor="let item of types">{{item.type_name}}</option>
                     </select>
@@ -151,14 +151,14 @@
                   <div class="col-lg-6">
                     <div class = "form-group">
                       <label class = "form-label"><b>Celular de Contacto</b></label>
-                      <input #Cell="ngModel" name="Cell" [(ngModel)]="outsidevehiclemant.Cell" required
+                      <input #Cell="ngModel" name="Cell" [(ngModel)]="exteriorRequest.Cell" required
                       type="text" class="form-control" placeholder="ingrese Celular" >
                     </div>
                   </div>
-  
+
               </div>
               <button type="submit" class="btn btn-primary" >Solicitar</button>
-            
+
               </form>
               <!--- FIN DE FORMULARIO-->
             </div>
@@ -168,4 +168,3 @@
     </main>
   </div>
   </div>
-  

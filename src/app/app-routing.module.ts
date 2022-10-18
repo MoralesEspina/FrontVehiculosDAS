@@ -1,57 +1,65 @@
+import { Component, NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
-import { UsersComponent } from './components/features/users/users-mant/users.component';
-import { PersonTableComponent } from './components/person/person-table/person-table.component';
-import { PersonFormComponent } from './components/person/person-form/person-form.component';
+//TODO IMPORTS VISTAS
 import { AssignVPComponent } from './components/features/assign-v-p/assign-v-p.component';
 import { ManagerviewComponent } from './components/features/managerview/managerview.component';
 import { RequestListComponent } from './components/features/request-list/request-list.component';
 import { TransportRequestComponent } from './components/features/transport-request/transport-request.component';
-import { VehiclesIndexComponent } from './components/vehicles/vehicles-index/vehicles-index.component';
-import { VehiclesMantComponent } from './components/vehicles/vehicles-mant/vehicles-mant.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { Component, NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+//TODO --------------------
+//TODO VEHICULOS
+import { VehiclesIndexComponent } from './components/features/vehicles/vehicles-index/vehicles-index.component';
+import { VehiclesMantComponent } from './components/features/vehicles/vehicles-mant/vehicles-mant.component';
+//TODO REPORTE DE VEHICULOS
 import { ReportsVehiclesComponent } from './components/features/reports-vehicles/reports-vehicles.component';
-import { LocalTransportationRequestComponent } from './components/features/local-transportation-request/local-transportation-request.component';
-import { OutsidevehicleIndexComponent } from './components/oustidevehicle/outsidevehicle-index/outsidevehicle-index.component';
-import { OutsidevehicleMantComponent } from './components/oustidevehicle/outsidevehicle-mant/outsidevehicle-mant.component';
-import { LocalTransportationIndexComponent } from './components/features/local-transportation-index/local-transportation-index.component';
+//TODO PERSONAS
+import { PersonFormComponent } from './components/features/person/person-form/person-form.component';
+import { PersonTableComponent } from './components/features/person/person-table/person-table.component';
+//TODO SOLICITUDES
+import { ExteriorRequestIndexComponent } from './components/features/exterior-request/exterior-request-index/exterior-request-index.component';
+import { ExteriorRequestMantComponent } from './components/features/exterior-request/exterior-request-mant/exterior-request-mant.component';
+import { LocalRequestIndexComponent } from './components/features/local-request/local-request-index/local-request-index.component';
+import { LocalRequestMantComponent } from './components/features/local-request/local-request-mant/local-request.component';
+//TODO USUARIOS
+import { UsersComponent } from './components/features/users/users-mant/users.component';
+//TODO PDF'S
 import { FuelVoucherComponent } from './components/pdf´s/fuel-voucher/fuel-voucher.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'dashboard',pathMatch: 'full'},
-  {path: 'dashboard', component: DashboardComponent},
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: 'dashboard', component: DashboardComponent },
   //TODO RUTAS VEHICULOS
-  {path: 'vehicles', component: VehiclesIndexComponent},
-  {path: 'vehicles/add', component: VehiclesMantComponent},
-  {path: 'vehicles/edit/:id', component: VehiclesMantComponent},
+  { path: 'vehicles', component: VehiclesIndexComponent },
+  { path: 'vehicles/add', component: VehiclesMantComponent },
+  { path: 'vehicles/edit/:id', component: VehiclesMantComponent },
   //TODO RUTAS DE SOLICITUDES
-  {path: 'transportRequest', component: TransportRequestComponent},
-  {path: 'requestList', component: RequestListComponent},
-  {path: 'reportsVehicles', component: ReportsVehiclesComponent},
-  {path: 'managerView', component: ManagerviewComponent},
-  {path: 'assignVP', component: AssignVPComponent},
-
-
-
-{path: 'users', component: UsersComponent},
-{path: 'OutsidevehicleIndex', component: OutsidevehicleIndexComponent},
-{path: 'OutsidevehicleMant', component: OutsidevehicleMantComponent},
-
-
   //TODO RUTAS DE SOLICITUD LOCAL
-  {path: 'localtransportRequest-index', component: LocalTransportationIndexComponent},
-  {path: 'localtransportRequest/add', component: LocalTransportationRequestComponent},
-  {path: 'localtransportRequest/edit/:id', component: LocalTransportationRequestComponent},
-  {path: 'localtransportRequest', component: LocalTransportationRequestComponent},
-  // RUTAS PERSONA
-  {path: 'personform', component: PersonFormComponent},
-  {path: 'persontable', component: PersonTableComponent},
+  { path: 'localRequest-index', component: LocalRequestIndexComponent },
+  { path: 'localRequest/add', component: LocalRequestMantComponent },
+  { path: 'localRequest/edit/:id', component: LocalRequestMantComponent },
+  { path: 'localRequest', component: LocalRequestMantComponent },
+
+  //TODO RUTAS DE SOLICITUD EXTERIOR
+  { path: 'exteriorRequest', component: ExteriorRequestIndexComponent },
+  { path: 'exteriorRequest', component: ExteriorRequestMantComponent },
+
+  //TODO RUTAS PERSONA
+  { path: 'personform', component: PersonFormComponent },
+  { path: 'persontable', component: PersonTableComponent },
+
+  //TODO RUTAS USUARIOS
+  { path: 'users', component: UsersComponent },
+
+  //TODO RUTAS PDF'S
+  { path: 'FuelVoucher', component: FuelVoucherComponent },
 
 
-
-  {path: 'FuelVoucher', component: FuelVoucherComponent},
-
+  { path: 'transportRequest', component: TransportRequestComponent },
+  { path: 'requestList', component: RequestListComponent },
+  { path: 'reportsVehicles', component: ReportsVehiclesComponent },
+  { path: 'managerView', component: ManagerviewComponent },
+  { path: 'assignVP', component: AssignVPComponent },
 ];
 
 @NgModule({

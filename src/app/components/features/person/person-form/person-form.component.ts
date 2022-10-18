@@ -1,8 +1,8 @@
-import { PersonI } from './../../../models/person.interface';
 import { ActivatedRoute } from '@angular/router';
-import { InfoService } from './../../../services/info.service';
 import { Component, OnInit } from '@angular/core';
 import { PersonService } from 'src/app/services/person.service';
+import { InfoService } from 'src/app/services/info.service';
+import { PersonI } from 'src/app/models/person.interface';
 
 @Component({
   selector: 'app-person-form',

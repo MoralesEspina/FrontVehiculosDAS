@@ -1,29 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { outsidevehiclemanT } from 'src/app/models/outsidevehicleman.interface';
-import { inforoutsidevehicle } from 'src/app/services/inforoutsidevehicle.service';
-import { outsidevehicleService } from 'src/app/services/outsidevehicle.service';
-
-
+import { ExteriorRequestI } from 'src/app/models/exteriorRequest.interface';
+import { InfoService } from 'src/app/services/info.service';
+import { ExteriorRoutesService } from 'src/app/services/exteriorRoutes.service';
 
 @Component({
-  selector: 'app-outsidevehicle-mant',
-  templateUrl: './outsidevehicle-mant.component.html',
-  styleUrls: ['./outsidevehicle-mant.component.css']
+  selector: 'app-exterior-request-mant',
+  templateUrl: './exterior-request-mant.component.html',
+  styleUrls: ['./exterior-request-mant.component.css']
 })
-export class OutsidevehicleMantComponent implements OnInit {
+export class ExteriorRequestMantComponent implements OnInit {
 
-public outsidevehiclemant;
+public exteriorRequest;
 public types;
 public status;
 public gas;
 public editing: boolean = false;
 
-  constructor(private _inforoutsidevehicle:inforoutsidevehicle,
-              private _outsidevehicleService:outsidevehicleService) {
-
-    this.outsidevehiclemant = new outsidevehiclemanT('','','',0,0,0,'','',0,'','','',0,); 
+  constructor(private _infoService:InfoService,
+              private _exteriorRoutesService:ExteriorRoutesService) {
+    this.exteriorRequest = new ExteriorRequestI('','','',0,0,0,'','',0,'','','',0,);
   }
-   
 
   ngOnInit(): void {
     this.getTypes();
@@ -31,7 +27,7 @@ public editing: boolean = false;
   }
 
   getTypes() {
-    this._inforoutsidevehicle.getTypes().subscribe(
+    this._infoService.getTypes().subscribe(
       response => {
         this.types = response.data;
       }, error => {
@@ -40,7 +36,7 @@ public editing: boolean = false;
   }
 
   getStatus() {
-    this._inforoutsidevehicle.getTypes().subscribe(
+    this._infoService.getTypes().subscribe(
       response => {
         this.types = response.data;
       }, error => {
@@ -50,8 +46,8 @@ public editing: boolean = false;
 
   createNewoutsidevehicle(ExteriorForm){
     if (this.editing) {
-      const outsidevehicle: outsidevehiclemanT = {
-       
+      const outsidevehicle: ExteriorRequestI = {
+
         unit: ExteriorForm.value.unit,
         responsible: ExteriorForm.value.responsible,
         date: ExteriorForm.value.date,
@@ -67,7 +63,7 @@ public editing: boolean = false;
         Cell: ExteriorForm.value.Cell,
       }
       if (ExteriorForm.valid) {
-        this._outsidevehicleService.updateOneoutsidevehiclemant(outsidevehicle, this._outsidevehicleService).subscribe(
+        this._exteriorRoutesService.updateOneRequestExterior(outsidevehicle, this._exteriorRoutesService).subscribe(
           data => {
            console.log("Vehiculo actualizado correctamente") ;
           },
@@ -79,7 +75,7 @@ public editing: boolean = false;
       }
     } else {
       this.editing = false;
-      const outsidevehiclemant: outsidevehiclemanT = {
+      const exteriorRequest: ExteriorRequestI = {
         unit: ExteriorForm.value.unit,
         responsible: ExteriorForm.value.responsible,
         date: ExteriorForm.value.date,
@@ -96,10 +92,10 @@ public editing: boolean = false;
     }
     console.log("Se registro el vehiculo correctamente");
     if (ExteriorForm.valid) {
-      this._outsidevehicleService.createNewoutsidevehiclemant(outsidevehiclemant).subscribe(
+      this._exteriorRoutesService.createNewRequestExterior(exteriorRequest).subscribe(
         response => {
           console.log("Se registro el vehiculo correctamente");
-          this.outsidevehiclemant = new outsidevehiclemanT('','','',0,0,0,'','',0,'','','',0,);
+          this.exteriorRequest = new ExteriorRequestI('','','',0,0,0,'','',0,'','','',0,);
         }, error => {
           console.log(error.error.data)
         }
@@ -109,5 +105,4 @@ public editing: boolean = false;
     }
   }
 }
-
 }

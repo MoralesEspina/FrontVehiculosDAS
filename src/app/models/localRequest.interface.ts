@@ -1,4 +1,4 @@
-export class localtrasportationI{
+export class LocalRequestI{
     constructor(
       public pilotName:string,
       public plate:string,
@@ -12,7 +12,6 @@ export class localtrasportationI{
       public detail: Array<any> = []
     )
     {
-  
+
     }
   }
-  

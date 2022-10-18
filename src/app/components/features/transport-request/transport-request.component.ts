@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RequestlocalService } from 'src/app/services/requestlocal.service';
+import { RequestlocalService } from 'src/app/services/requestLocal.service';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
@@ -31,7 +31,7 @@ export class TransportRequestComponent implements OnInit {
   }
 
   getrequestLocal(){
-    this._requesteService.getOnerequestLocal(1).subscribe(
+    this._requesteService.getOneRequestLocal(1).subscribe(
       response =>{
         console.log(response)
         this.request = response.data.detailRequest;

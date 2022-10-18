@@ -26,7 +26,7 @@
             <div class="card-body">
               <!--- INICIO DE FORMULARIO-->
 
-              <form #local_trasportationForm="ngForm" (ngSubmit)="create(local_trasportationForm)">
+              <form #local_trasportationForm="ngForm" (ngSubmit)="createLocalRequest(local_trasportationForm)">
                 <div class="row">
                   <div class="col-lg-10">
                     <div class="form-group">
@@ -101,7 +101,7 @@
                   </div>
 
                   <!-- inican los datos para la tabla -->
-                  <form class="col-lg-10" #trasportationForm="ngForm" (ngSubmit)=" createdetail(trasportationForm)">
+                  <form class="col-lg-10" #trasportationForm="ngForm" (ngSubmit)=" createDetailLocalRequest(trasportationForm)">
                     <div class="row">
                       <div class="col-lg-6">
                         <div class="form-group">
