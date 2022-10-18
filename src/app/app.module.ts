@@ -23,7 +23,12 @@ import { AssignVPComponent } from './components/features/assign-v-p/assign-v-p.c
 import { LocalTransportationRequestComponent } from './components/features/local-transportation-request/local-transportation-request.component';
 
 import { ReportsVehiclesComponent } from './components/features/reports-vehicles/reports-vehicles.component';
+
+import { OutsidevehicleIndexComponent } from './components/oustidevehicle/outsidevehicle-index/outsidevehicle-index.component';
+import { OutsidevehicleMantComponent } from './components/oustidevehicle/outsidevehicle-mant/outsidevehicle-mant.component';
+
 import { LocalTransportationIndexComponent } from './components/features/local-transportation-index/local-transportation-index.component';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +45,9 @@ import { LocalTransportationIndexComponent } from './components/features/local-t
     AssignVPComponent,
     LocalTransportationRequestComponent,
     ReportsVehiclesComponent,
-      LocalTransportationIndexComponent,
+    OutsidevehicleMantComponent,
+    LocalTransportationIndexComponent,
+
 
   ],
   imports: [
@@ -53,7 +60,6 @@ import { LocalTransportationIndexComponent } from './components/features/local-t
     NgxPaginationModule,
 
   ],
-
 
   providers: [],
   bootstrap: [AppComponent]
