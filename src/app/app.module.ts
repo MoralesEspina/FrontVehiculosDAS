@@ -23,6 +23,8 @@ import { AssignVPComponent } from './components/features/assign-v-p/assign-v-p.c
 import { LocalTransportationRequestComponent } from './components/features/local-transportation-request/local-transportation-request.component';
 
 import { ReportsVehiclesComponent } from './components/features/reports-vehicles/reports-vehicles.component';
+import { PersonFormComponent } from './components/person/person-form/person-form.component';
+import { PersonTableComponent } from './components/person/person-table/person-table.component';
 
 import { OutsidevehicleIndexComponent } from './components/oustidevehicle/outsidevehicle-index/outsidevehicle-index.component';
 import { OutsidevehicleMantComponent } from './components/oustidevehicle/outsidevehicle-mant/outsidevehicle-mant.component';
@@ -45,6 +47,8 @@ import { LocalTransportationIndexComponent } from './components/features/local-t
     AssignVPComponent,
     LocalTransportationRequestComponent,
     ReportsVehiclesComponent,
+    PersonTableComponent,
+
     OutsidevehicleMantComponent,
     LocalTransportationIndexComponent,
 

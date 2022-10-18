@@ -1,3 +1,5 @@
+import { PersonTableComponent } from './components/person/person-table/person-table.component';
+import { PersonFormComponent } from './components/person/person-form/person-form.component';
 import { UsersComponent } from './components/features/users/users.component';
 import { AssignVPComponent } from './components/features/assign-v-p/assign-v-p.component';
 import { ManagerviewComponent } from './components/features/managerview/managerview.component';
@@ -41,6 +43,9 @@ const routes: Routes = [
   {path: 'localtransportRequest/add', component: LocalTransportationRequestComponent},
   {path: 'localtransportRequest/edit/:id', component: LocalTransportationRequestComponent},
   {path: 'localtransportRequest', component: LocalTransportationRequestComponent},
+  // RUTAS PERSONA
+  {path: 'personform', component: PersonFormComponent},
+  {path: 'persontable', component: PersonTableComponent},
 
 
 ];

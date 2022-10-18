@@ -16,7 +16,7 @@ export class InfoService {
     }
 
     getTypes(): Observable<any> {
-      return this._http.get(this.url + 'types', {
+      return this._http.get(this.url + 'info/types', {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")
