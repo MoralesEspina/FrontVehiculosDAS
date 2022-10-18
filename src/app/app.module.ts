@@ -26,6 +26,12 @@ import { ReportsVehiclesComponent } from './components/features/reports-vehicles
 import { PersonFormComponent } from './components/person/person-form/person-form.component';
 import { PersonTableComponent } from './components/person/person-table/person-table.component';
 
+import { OutsidevehicleIndexComponent } from './components/oustidevehicle/outsidevehicle-index/outsidevehicle-index.component';
+import { OutsidevehicleMantComponent } from './components/oustidevehicle/outsidevehicle-mant/outsidevehicle-mant.component';
+
+import { LocalTransportationIndexComponent } from './components/features/local-transportation-index/local-transportation-index.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,8 +47,11 @@ import { PersonTableComponent } from './components/person/person-table/person-ta
     AssignVPComponent,
     LocalTransportationRequestComponent,
     ReportsVehiclesComponent,
-    PersonFormComponent,
     PersonTableComponent,
+
+    OutsidevehicleMantComponent,
+    LocalTransportationIndexComponent,
+
 
   ],
   imports: [
@@ -55,7 +64,6 @@ import { PersonTableComponent } from './components/person/person-table/person-ta
     NgxPaginationModule,
 
   ],
-
 
   providers: [],
   bootstrap: [AppComponent]

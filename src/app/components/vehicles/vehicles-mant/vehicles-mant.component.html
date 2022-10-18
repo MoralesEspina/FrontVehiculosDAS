@@ -3,6 +3,7 @@
     <main class="content">
     <div class="container-fluid">
         <div class="header">
+          <div class="col-8">
             <h1 class="header-title">
                 Registro de Vehiculos
             </h1>
@@ -16,8 +17,8 @@
             </nav>
             <!--- Migaja de Pan -->
         </div>
-
-        <div class="col-12">
+      </div>
+        <div class="col-8">
         <div class="card">
           <div class = "card-header">
             <h5 class = "card-title">Completa el Formulario</h5>
@@ -33,12 +34,12 @@
                   <div class="form-group">
                     <label class = "form-label"><b>VIN</b></label>
                     <!--- En cada input se debe agregar la referencia al NGModel-->
-
                     <!--- #NOMBRE="ngModel" name="NOMBRE" [(ngModel)]="VEHICLE.NOMBRE"-->
                     <input type="text" class="form-control" #vin="ngModel" name="vin" [(ngModel)]="vehicle.vin"
                      placeholder="Ingrese el número de VIN del Vehiculo"required>
                   </div>
                 </div>
+
                 <div class="col-lg-6">
                   <div class = "form-group">
                     <label class = "form-label"><b>Placa</b></label>
@@ -68,7 +69,7 @@
                   <div class = "form-group">
                     <label class = "form-label"><b>Modelo</b></label>
                     <input #model="ngModel" name="model" [(ngModel)]="vehicle.model"
-                    type="number" class="form-control" placeholder="0" required>
+                    type="number" class="form-control" placeholder="" required>
                   </div>
                 </div>
                 <div class="col-lg-3" >

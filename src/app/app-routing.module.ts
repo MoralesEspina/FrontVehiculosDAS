@@ -8,10 +8,14 @@ import { TransportRequestComponent } from './components/features/transport-reque
 import { VehiclesIndexComponent } from './components/vehicles/vehicles-index/vehicles-index.component';
 import { VehiclesMantComponent } from './components/vehicles/vehicles-mant/vehicles-mant.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ReportsVehiclesComponent } from './components/features/reports-vehicles/reports-vehicles.component';
 import { LocalTransportationRequestComponent } from './components/features/local-transportation-request/local-transportation-request.component';
+import { OutsidevehicleIndexComponent } from './components/oustidevehicle/outsidevehicle-index/outsidevehicle-index.component';
+import { OutsidevehicleMantComponent } from './components/oustidevehicle/outsidevehicle-mant/outsidevehicle-mant.component';
+import { LocalTransportationIndexComponent } from './components/features/local-transportation-index/local-transportation-index.component';
+
 
 const routes: Routes = [
   {path: '', redirectTo: 'dashboard',pathMatch: 'full'},
@@ -27,15 +31,22 @@ const routes: Routes = [
   {path: 'managerView', component: ManagerviewComponent},
   {path: 'assignVP', component: AssignVPComponent},
 
-  {path: 'users', component: UsersComponent},
+
+
+{path: 'users', component: UsersComponent},
+{path: 'OutsidevehicleIndex', component: OutsidevehicleIndexComponent},
+{path: 'OutsidevehicleMant', component: OutsidevehicleMantComponent},
+
+
+  //TODO RUTAS DE SOLICITUD LOCAL
+  {path: 'localtransportRequest-index', component: LocalTransportationIndexComponent},
+  {path: 'localtransportRequest/add', component: LocalTransportationRequestComponent},
+  {path: 'localtransportRequest/edit/:id', component: LocalTransportationRequestComponent},
   {path: 'localtransportRequest', component: LocalTransportationRequestComponent},
   // RUTAS PERSONA
   {path: 'personform', component: PersonFormComponent},
   {path: 'persontable', component: PersonTableComponent},
 
-
-
-  {path: 'users', component: UsersComponent},
 
 ];
 
