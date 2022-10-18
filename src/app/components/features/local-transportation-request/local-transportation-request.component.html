@@ -1,154 +1,215 @@
 <div class="wrapper">
-    <div class="main">
-        <main class="content">
-            <div class="container-fluid">
-                <div class="header">
-                    <h1 class="header-title">
-                     Registro de Solicitud de Vehiculos Local
-                    </h1>
-                    <!--- Migaja de Pan -->
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Dashboard</a></li>
-                            <li class="breadcrumb-item"><a [routerLink]="['/vehicles']"> Vehiculos</a></li>
-                            <li class="breadcrumb-item"><a>Registro de Solicitud de Vehiculos Local</a></li>
-                        </ol>
-                    </nav>
-                    <!--- Migaja de Pan -->
-                </div>
+  <div class="main">
+    <main class="content">
+      <div class="container-fluid">
+        <div class="header">
+          <div class="col-lg-10">
+            <h1 class="header-title">
+              Registro de Solicitud de Vehiculos Local
+            </h1>
+            <!--- Migaja de Pan -->
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Dashboard</a></li>
+                <li class="breadcrumb-item"><a [routerLink]="['/localtransportRequest-index']"> Solicitud Local</a></li>
+                <li class="breadcrumb-item"><a>Registro de Solicitud de Vehiculos Local</a></li>
+              </ol>
+            </nav>
+            <!--- Migaja de Pan -->
+          </div>
+        </div>
+        <div class="col-lg-10">
+          <div class="card">
+            <div class="card-header">
 
-                <div class="col-lg-8" >
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title">Completa el Formulario</h5>
-
-                        </div>
-                        <div class="card-body">
-                            <!--- INICIO DE FORMULARIO-->
-                            <form>
-                                <p> </p>
-                                <div class="row">
-                                    <div class="col-lg-7">
-                                        <div class="form-group">
-                                            <label class="form-label"><b>Lugar</b></label>
-                                            <input type="text" list="items" class="form-control"
-                                                placeholder="Ingrese el lugar" required>
-                                            <!-- Lista de opciones -->
-                                            <datalist id="items">
-                                            <option *ngFor="let places of places">{{places.name}}</option>
-                                            </datalist>
-                                      
-                                        </div>
-                                    </div>
-                                    <p> </p>
-                                    <div class="col-lg-7">
-                                        <div class="form-group">
-                                            <label class="form-label"><b>Fecha</b></label>
-                                            <input type="date" id="start" name="trip-start" class="form-control"
-                                                placeholder="Seleccione la fecha" required>
-                                        </div>
-                                    </div>
-                                    <p> </p>
-                                    <div class="col-lg-7">
-                                        <div class="form-group">
-                                            <label class="form-label"><b>Unidad, Sección o Departamento</b></label>
-                                            <input type="text" list="items" class="form-control"
-                                                placeholder="Ingrese la unidad, sección o departamento" required>
-                                            <!-- Lista de opciones -->
-                                            <datalist id="items">
-                                                <option *ngFor="let places of places">{{places.name}}</option>
-                                            </datalist>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-lg-7">
-                                        <div class="form-group">
-                                            <label class="form-label"><b>Nombre del Solicitante</b></label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Ingrese el nombre del solicitante" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-7">
-                                        <div class="form-group">
-                                            <label class="form-label"><b>Cargo del Solicitante</b></label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Ingrese el cargo del solicitante" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-7">
-                                        <div class="form-group">
-                                            <label class="form-label"><b>Tel. oficina o móvil</b></label>
-                                            <input type="number" class="form-control"
-                                                placeholder="Ingrese el Tel. oficina o móvil" required>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-lg-7">
-                                        <div class="form-group">
-                                            <label class="form-label"><b>Fecha de Salida</b></label>
-                                            <input type="date" id="start" name="trip-start" class="form-control"
-                                                placeholder="Seleccione la fecha" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-7">
-                                        <div class="form-group">
-                                            <label class="form-label"><b>Fecha de Entrada</b></label>
-                                            <input type="date" id="start" name="trip-start" class="form-control"
-                                                placeholder="Seleccione la fecha" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-7">
-                                        <div class="form-group">
-                                            <label class="form-label"><b>Hora de Salida</b></label>
-                                            <input type="time" class="form-control" placeholder="Seleccione la hora"
-                                                required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-7">
-                                        <div class="form-group">
-                                            <label class="form-label"><b>Destino Especifico a Visitar</b></label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Ingrese el destino especifico a visitar" required>
-                                        </div>
-                                    </div>
-
-
-
-                                    <div class="col-lg-7">
-                                        <div class="form-group">
-                                            <label class="form-label"><b>No. Personas</b></label>
-                                            <input type="number" class="form-control"
-                                                placeholder="Ingrese el No. de personas" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-7">
-                                        <div class="form-group">
-                                            <label class="form-label"><b>Objeto de la Comisión</b></label>
-                                            <input type="text" class="form-control"
-                                                placeholder="Ingrese el objeto de la comisión" required>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-lg-8">
-                                        <div class="form-group">
-                                            <label class="form-label"><b>Observaciones</b></label>
-                                            <input type="text" class="form-control" placeholder="Ingrese observaciones"
-                                                required>
-                                        </div>
-                                    </div>
-
-
-
-                                </div>
-                                <button type="submit" class="btn btn-primary">Registrar</button>
-                            </form>
-                            <!--- FIN DE FORMULARIO-->
-                        </div>
-                    </div>
-                </div>
             </div>
-        </main>
-    </div>
+            <div class="card-body">
+              <!--- INICIO DE FORMULARIO-->
+
+              <form #local_trasportationForm="ngForm" (ngSubmit)="create(local_trasportationForm)">
+                <div class="row">
+                  <div class="col-lg-10">
+                    <div class="form-group">
+                      <label class="form-label"><b>Nombre del Piloto:</b></label>
+                      <input #pilotName="ngModel" name="pilotName" [(ngModel)]="transportation.pilotName" type="text"
+                        list="items" placeholder="Ingrese el nombre del Piloto" required>
+                    </div>
+                  </div>
+                  <div class="col-lg-10">
+                    <div class="form-group">
+                      <label class="form-label"><b>Placa del Vehiculo:</b></label>
+                      <input #plate="ngModel" name="plate" [(ngModel)]="transportation.plate" type="text" list="items"
+                        placeholder="Ingrese el lugar" required>
+                    </div>
+                  </div>
+                  <div class="col-lg-10">
+                    <p></p>
+                  </div>
+                  <div class="col-lg-10">
+                    <p></p>
+                  </div>
+
+                  <div class="col-lg-10">
+                    <div class="form-group">
+                      <label class="form-label"><b>Lugar:</b></label>
+                      <input #place="ngModel" name="place" [(ngModel)]="transportation.place" type="text" list="items"
+                        placeholder="Ingrese el lugar" required>
+                    </div>
+                  </div>
+                  <div class="col-lg-10">
+                    <div class="form-group">
+                      <label class="form-label"><b>Fecha:</b></label>
+                      <input #date="ngModel" name="date" [(ngModel)]="transportation.date" type="text"
+                        placeholder="YYYY/MM/DD" required>
+                    </div>
+                  </div>
+                  <div class="col-lg-10">
+                    <div class="form-group">
+                      <label class="form-label"><b>Unidad, Sección o Dep.:</b></label>
+                      <input #section="ngModel" name="section" [(ngModel)]="transportation.section" type="text"
+                        list="items" placeholder="Ingrese la unidad, sección o departamento" required>
+                      <!-- Lista de opciones -->
+                    </div>
+                  </div>
+                  <div class="col-lg-10">
+                    <div class="form-group">
+                      <label class="form-label"><b>Nombre del Solicitante:</b></label>
+                      <input #applicantsName="ngModel" name="applicantsName" [(ngModel)]="transportation.applicantsName"
+                        type="text" placeholder="Ingrese el nombre del solicitante" required>
+                    </div>
+                  </div>
+                  <div class="col-lg-10">
+                    <div class="form-group">
+                      <label class="form-label"><b>Cargo del Solicitante:</b></label>
+                      <input #position="ngModel" name="position" [(ngModel)]="transportation.position" type="text"
+                        placeholder="Ingrese el cargo del solicitante" required>
+                    </div>
+                  </div>
+                  <div class="col-lg-10">
+                    <div class="form-group">
+                      <label class="form-label"><b>Tel. oficina o móvil:</b></label>
+                      <input #phoneNumber="ngModel" name="phoneNumber" [(ngModel)]="transportation.phoneNumber"
+                        type="number" placeholder="Ingrese el Tel. oficina o móvil" required>
+                    </div>
+                  </div>
+                  <div class="col-lg-10">
+                    <p></p>
+                  </div>
+                  <div id="destino" class="col-lg-10"><label><b>-- DESTINOS --</b></label></div>
+                  <div class="col-lg-10">
+                    <p></p>
+                  </div>
+
+                  <!-- inican los datos para la tabla -->
+                  <form class="col-lg-10" #trasportationForm="ngForm" (ngSubmit)=" createdetail(trasportationForm)">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-label"><b>Fecha Del:</b></label>
+                          <input id="inputTable" name="dateOf" [(ngModel)]="detailrequest.dateOf" type="date" required>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-label"><b>Fecha Al:</b></label>
+                          <input id="inputTable" name="dateTo" [(ngModel)]="detailrequest.dateTo" type="date" required>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-label"><b>Hora de salida:</b></label>
+                          <input id="inputTable" name="schedule" [(ngModel)]="detailrequest.schedule" type="time"
+                            required>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-label"><b>Destino a visitar:</b></label>
+                          <select id="inputTable" name="destiny" [(ngModel)]="detailrequest.destiny" required>
+                            <option value="" disabled>Seleccionar</option>
+                            <option *ngFor="let visitar of placess">{{visitar.name}}</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-label"><b>No de Personas:</b></label>
+                          <input id="inputTable" name="peopleNumber" [(ngModel)]="detailrequest.peopleNumber"
+                            type="number" placeholder="Ingrese No. de personas" required>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-label"><b>Objetivo:</b></label>
+                          <input id="inputTable" name="comission" [(ngModel)]="detailrequest.comission" type="text"
+                            placeholder="Ingrese el Objeto de la Comision" required>
+                        </div>
+                      </div>
+
+
+
+
+                      <div class="col-lg-10">
+                        <p></p>
+                      </div>
+                    </div>
+                    <div class="text-center"><button id="btndestino" class="btn btn-primary" type="submit">Agregar
+                        destino</button></div>
+                    <div class="col-lg-10">
+                      <p></p>
+                    </div>
+                  </form>
+
+                  <!-- finalizan los datos para la tabla -->
+                  <div class="col-lg-10">
+                    <!---  TABLA -->
+                    <table class="table table-bordered">
+                      <!---     TITULOS DE LA TABLA -->
+                      <thead class="thead-dark">
+                        <tr>
+                          <th style="text-align: center;">Fecha Del:</th>
+                          <th style="text-align: center;">Fecha Al:</th>
+                          <th style="text-align: center;">Hora de Salida</th>
+                          <th style="text-align: center;">Destino Especifico a visitar</th>
+                          <th style="text-align: center;">No. Personas</th>
+                          <th style="text-align: center;">Objeto de la Comision</th>
+                        </tr>
+                      </thead>
+                      <!---    TITULOS DE LA TABLA -->
+                      <tbody *ngFor="let detailrequest of details">
+                        <td style="text-align: center;">{{detailrequest.dateOf}}</td>
+                        <td style="text-align: center;">{{detailrequest.dateTo}}</td>
+                        <td style="text-align: center;">{{detailrequest.schedule}}</td>
+                        <td style="text-align: center;">{{detailrequest.destiny}}</td>
+                        <td style="text-align: center;">{{detailrequest.peopleNumber}}</td>
+                        <td style="text-align: center;">{{detailrequest.comission}}</td>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!---   TABLA -->
+
+                  <div class="col-lg-10">
+                    <p></p>
+                  </div>
+                  <div class="col-lg-10">
+                    <div class="form-group">
+                      <label class="form-label"><b>Observaciones:</b></label>
+                      <input #observations="ngModel" name="observations" [(ngModel)]="transportation.observations"
+                        type="text" placeholder="Ingrese observaciones" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center"><button type="submit" class="btn btn-primary">Solicitar</button></div>
+                <div class="col-lg-10">
+                  <p></p>
+                </div>
+
+              </form>
+              <!--- FIN DE FORMULARIO-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
 </div>

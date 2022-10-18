@@ -12,6 +12,8 @@ import { ReportsVehiclesComponent } from './components/features/reports-vehicles
 import { LocalTransportationRequestComponent } from './components/features/local-transportation-request/local-transportation-request.component';
 import { OutsidevehicleIndexComponent } from './components/oustidevehicle/outsidevehicle-index/outsidevehicle-index.component';
 import { OutsidevehicleMantComponent } from './components/oustidevehicle/outsidevehicle-mant/outsidevehicle-mant.component';
+import { LocalTransportationIndexComponent } from './components/features/local-transportation-index/local-transportation-index.component';
+
 
 const routes: Routes = [
   {path: '', redirectTo: 'dashboard',pathMatch: 'full'},
@@ -27,14 +29,18 @@ const routes: Routes = [
   {path: 'managerView', component: ManagerviewComponent},
   {path: 'assignVP', component: AssignVPComponent},
 
-  {path: 'users', component: UsersComponent},
-  {path: 'localtransportRequest', component: LocalTransportationRequestComponent},
 
 
-
-  {path: 'users', component: UsersComponent},
+{path: 'users', component: UsersComponent},
 {path: 'OutsidevehicleIndex', component: OutsidevehicleIndexComponent},
 {path: 'OutsidevehicleMant', component: OutsidevehicleMantComponent},
+
+
+  //TODO RUTAS DE SOLICITUD LOCAL
+  {path: 'localtransportRequest-index', component: LocalTransportationIndexComponent},
+  {path: 'localtransportRequest/add', component: LocalTransportationRequestComponent},
+  {path: 'localtransportRequest/edit/:id', component: LocalTransportationRequestComponent},
+  {path: 'localtransportRequest', component: LocalTransportationRequestComponent},
 
 
 ];
