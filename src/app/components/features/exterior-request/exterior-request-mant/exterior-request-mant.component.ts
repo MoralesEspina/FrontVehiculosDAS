@@ -18,7 +18,7 @@ public editing: boolean = false;
 
   constructor(private _infoService:InfoService,
               private _exteriorRoutesService:ExteriorRequestService) {
-    this.exteriorRequest = new ExteriorRequestI('','','',0,0,0,'','',0,'','','',0,);
+    this.exteriorRequest = new ExteriorRequestI('','','','','','','',0,0,'','','');
   }
 
   ngOnInit(): void {
@@ -44,26 +44,25 @@ public editing: boolean = false;
     )
   }
 
-  createNewoutsidevehicle(ExteriorForm){
+  createNewExteriorRequest(ExteriorForm){
     if (this.editing) {
-      const outsidevehicle: ExteriorRequestI = {
+      const exteriorRequest: ExteriorRequestI = {
 
-        unit: ExteriorForm.value.unit,
-        responsible: ExteriorForm.value.responsible,
-        date: ExteriorForm.value.date,
-        day: ExteriorForm.value.day,
-        departament: ExteriorForm.value.departament,
-        municipality: ExteriorForm.value.municipality,
-        village: ExteriorForm.value.village,
-        trip: ExteriorForm.value.trip,
-        hour: ExteriorForm.value.hour,
-        returnn: ExteriorForm.value.returnn,
-        Gas: ExteriorForm.value.Gas,
-        Viatic: ExteriorForm.value.Viatic,
-        Cell: ExteriorForm.value.Cell,
+        requesting_unit: ExteriorForm.value.requesting_unit,
+        commission_manager: ExteriorForm.value.commission_manager,
+        date_request: ExteriorForm.value.date_request,
+        objective_request: ExteriorForm.value.objective_request,
+        duration_days: ExteriorForm.value.duration_days,
+        phoneNumber: ExteriorForm.value.phoneNumber,
+        observations: ExteriorForm.value.observations,
+        provide_fuel: ExteriorForm.value.provide_fuel,
+        provide_travel_expenses: ExteriorForm.value.provide_travel_expenses,
+        plate_vehicle: ExteriorForm.value.plate_vehicle,
+        pilot_name: ExteriorForm.value.pilot_name,
+        reason_rejected: ExteriorForm.value.reason_rejected,
       }
       if (ExteriorForm.valid) {
-        this._exteriorRoutesService.updateOneRequestExterior(outsidevehicle, this._exteriorRoutesService).subscribe(
+        this._exteriorRoutesService.updateOneRequestExterior(exteriorRequest, this._exteriorRoutesService).subscribe(
           data => {
            console.log("Vehiculo actualizado correctamente") ;
           },
@@ -76,26 +75,25 @@ public editing: boolean = false;
     } else {
       this.editing = false;
       const exteriorRequest: ExteriorRequestI = {
-        unit: ExteriorForm.value.unit,
-        responsible: ExteriorForm.value.responsible,
-        date: ExteriorForm.value.date,
-        day: ExteriorForm.value.day,
-        departament: ExteriorForm.value.departament,
-        municipality: ExteriorForm.value.municipality,
-        village: ExteriorForm.value.village,
-        trip: ExteriorForm.value.trip,
-        hour: ExteriorForm.value.hour,
-        returnn: ExteriorForm.value.returnn,
-        Gas: ExteriorForm.value.Gas,
-        Viatic: ExteriorForm.value.Viatic,
-        Cell: ExteriorForm.value.Cell,
+        requesting_unit: ExteriorForm.value.requesting_unit,
+        commission_manager: ExteriorForm.value.commission_manager,
+        date_request: ExteriorForm.value.date_request,
+        objective_request: ExteriorForm.value.objective_request,
+        duration_days: ExteriorForm.value.duration_days,
+        phoneNumber: ExteriorForm.value.phoneNumber,
+        observations: ExteriorForm.value.observations,
+        provide_fuel: ExteriorForm.value.provide_fuel,
+        provide_travel_expenses: ExteriorForm.value.provide_travel_expenses,
+        plate_vehicle: ExteriorForm.value.plate_vehicle,
+        pilot_name: ExteriorForm.value.pilot_name,
+        reason_rejected: ExteriorForm.value.reason_rejected,
     }
     console.log("Se registro el vehiculo correctamente");
     if (ExteriorForm.valid) {
       this._exteriorRoutesService.createNewRequestExterior(exteriorRequest).subscribe(
         response => {
           console.log("Se registro el vehiculo correctamente");
-          this.exteriorRequest = new ExteriorRequestI('','','',0,0,0,'','',0,'','','',0,);
+          this.exteriorRequest = new ExteriorRequestI('','','','','','','',0,0,'','','');
         }, error => {
           console.log(error.error.data)
         }

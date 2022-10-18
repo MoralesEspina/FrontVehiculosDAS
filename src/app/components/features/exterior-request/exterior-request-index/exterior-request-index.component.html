@@ -54,14 +54,6 @@
                       <th style="text-align: center;">Fecha</th>
                       <th style="text-align: center;">Duracion en Dias</th>
                       <th style="text-align: center;">Departamento</th>
-                      <th style="text-align: center;">Municipio</th>
-                      <th style="text-align: center;">Aldea</th>
-                      <th style="text-align: center;">Numero de Personas</th>
-                      <th style="text-align: center;">Viaje Programado del</th>
-                      <th style="text-align: center;">Hora de Salida</th>
-                      <th style="text-align: center;">Retorno del viaje</th>
-                      <th style="text-align: center;">Proporcion de Combustible</th>
-                      <th style="text-align: center;">Proporcion de Viatico</th>
                       <th style="text-align: center;">Celular de Contacto</th>
                       <th style="text-align: center;">Opciones</th>
                     </tr>
@@ -69,7 +61,7 @@
                   <!--- TITULOS DE LA TABLA -->
 
                   <!--- CUERPO DE LA TABLA -->
-                  <tbody *ngFor="let item of foreigntransport | paginate: { itemsPerPage: 8, currentPage: p }">
+                  <tbody *ngFor="let item of exteriorRequest | paginate: { itemsPerPage: 8, currentPage: p }">
                       <td style="text-align: center;">{{item}}</td>
                       <td style="text-align: center;">{{item}}</td>
                       <td style="text-align: center;">{{item}}</td>

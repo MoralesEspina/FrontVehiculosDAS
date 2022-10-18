@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ExteriorRequestService } from 'src/app/services/exteriorRequest.service';
 
 @Component({
   selector: 'app-exterior-request-index',
@@ -6,11 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./exterior-request-index.component.css']
 })
 export class ExteriorRequestIndexComponent implements OnInit {
-  public foreigntransport;
+  public exteriorRequest;
   public p:number = 1;
-  constructor() { }
+  constructor(private _exteriorRequestService:ExteriorRequestService,) { }
 
   ngOnInit(): void {
   }
 
+  getExteriorRequest(){
+    this._exteriorRequestService.getRequestExterior().subscribe(
+      response =>{
+        console.log(response)
+        this.exteriorRequest = response.data;
+      }, error =>{
+
+      }
+    )
+  }
 }
