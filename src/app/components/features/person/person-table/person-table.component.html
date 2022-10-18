@@ -15,7 +15,8 @@
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Pilotos</a></li>
-              <li class="breadcrumb-item">Vehiculos</li>
+              <li class="breadcrumb-item"><a [routerLink]="['/personform']"> Vehiculos</a></li>
+
             </ol>
           </nav>
           <!--- Migaja de Pan -->
@@ -36,7 +37,7 @@
                       </button>
                       <div class="dropdown-menu" x-placement="bottom-start"
                         style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 31px, 0px);">
-                        <a class="dropdown-item" [routerLink]="['/vehicles/add']">Registrar Persona</a>
+                        <a class="dropdown-item" [routerLink]="['/personform']">Registrar Persona</a>
                       </div>
                     </div>
                   </div>

@@ -20,22 +20,22 @@ export const navabarData = [
     label: 'Usuarios'
   },
   {
-    routeLink:'',
+    routeLink:'persontable',
     icon: 'fal fa-users',
     label: 'Personas'
   },
   {
-    routeLink:'transportRequest',
+    routeLink:'exteriorRequest',
     icon: 'fal fa-print',
-    label: 'Impresion de Solicitud de Transporte Exterior'
+    label: 'Solicitud de Transporte Exterior'
   },
   {
-    routeLink:'localtransportRequest-index',
+    routeLink:'localRequest-index',
     icon: 'fal fa-list',
     label: 'Solicitudes de Transporte Local'
   },
   {
-    routeLink:'localtransportRequest',
+    routeLink:'localRequest/add',
     icon: 'fal fa-paper-plane',
     label: 'Solicitud de Transporte Local'
   },
