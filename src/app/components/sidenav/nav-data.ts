@@ -11,28 +11,33 @@ export const navabarData = [
   },
   {
     routeLink:'reportsVehicles',
-    icon: 'fal fa-car',
+    icon: 'fal fa-file-alt',
     label: 'Reporte de Vehiculos'
   },
   {
-    routeLink:'',
+    routeLink:'users',
     icon: 'fal fa-user',
     label: 'Usuarios'
   },
   {
-    routeLink:'users',
+    routeLink:'',
     icon: 'fal fa-users',
     label: 'Personas'
   },
   {
     routeLink:'transportRequest',
-    icon: 'fal fa-users',
-    label: 'Solicitud de Transporte'
+    icon: 'fal fa-print',
+    label: 'Impresion de Solicitud de Transporte Exterior'
+  },
+  {
+    routeLink:'localtransportRequest-index',
+    icon: 'fal fa-list',
+    label: 'Solicitudes de Transporte Local'
   },
   {
     routeLink:'localtransportRequest',
-    icon: 'fal fa-user-tie',
-    label: 'Solicitud Local'
+    icon: 'fal fa-paper-plane',
+    label: 'Solicitud de Transporte Local'
   },
   {
     routeLink:'requestList',

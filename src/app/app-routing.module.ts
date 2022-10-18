@@ -1,6 +1,7 @@
+
+import { UsersComponent } from './components/features/users/users-mant/users.component';
 import { PersonTableComponent } from './components/person/person-table/person-table.component';
 import { PersonFormComponent } from './components/person/person-form/person-form.component';
-import { UsersComponent } from './components/features/users/users.component';
 import { AssignVPComponent } from './components/features/assign-v-p/assign-v-p.component';
 import { ManagerviewComponent } from './components/features/managerview/managerview.component';
 import { RequestListComponent } from './components/features/request-list/request-list.component';
@@ -15,7 +16,7 @@ import { LocalTransportationRequestComponent } from './components/features/local
 import { OutsidevehicleIndexComponent } from './components/oustidevehicle/outsidevehicle-index/outsidevehicle-index.component';
 import { OutsidevehicleMantComponent } from './components/oustidevehicle/outsidevehicle-mant/outsidevehicle-mant.component';
 import { LocalTransportationIndexComponent } from './components/features/local-transportation-index/local-transportation-index.component';
-
+import { FuelVoucherComponent } from './components/pdf´s/fuel-voucher/fuel-voucher.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'dashboard',pathMatch: 'full'},
@@ -47,6 +48,9 @@ const routes: Routes = [
   {path: 'personform', component: PersonFormComponent},
   {path: 'persontable', component: PersonTableComponent},
 
+
+
+  {path: 'FuelVoucher', component: FuelVoucherComponent},
 
 ];
 

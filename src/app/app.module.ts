@@ -14,7 +14,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BodyComponent } from './components/body/body.component';
 import { VehiclesMantComponent } from './components/vehicles/vehicles-mant/vehicles-mant.component';
 import { VehiclesIndexComponent } from './components/vehicles/vehicles-index/vehicles-index.component';
-import { UsersComponent } from './components/features/users/users.component';
+import { UsersComponent } from './components/features/users/users-mant/users.component';
 import { TransportRequestComponent } from './components/features/transport-request/transport-request.component';
 import { ManagerviewComponent } from './components/features/managerview/managerview.component';
 import { RequestListComponent } from './components/features/request-list/request-list.component';
@@ -30,6 +30,8 @@ import { OutsidevehicleIndexComponent } from './components/oustidevehicle/outsid
 import { OutsidevehicleMantComponent } from './components/oustidevehicle/outsidevehicle-mant/outsidevehicle-mant.component';
 
 import { LocalTransportationIndexComponent } from './components/features/local-transportation-index/local-transportation-index.component';
+import { FuelVoucherComponent } from './components/pdf´s/fuel-voucher/fuel-voucher.component';
+import { UsersIndexComponent } from './components/features/users/users-index/users-index.component';
 
 
 @NgModule({
@@ -47,8 +49,10 @@ import { LocalTransportationIndexComponent } from './components/features/local-t
     AssignVPComponent,
     LocalTransportationRequestComponent,
     ReportsVehiclesComponent,
+      LocalTransportationIndexComponent,
+      FuelVoucherComponent,
+      UsersIndexComponent,
     PersonTableComponent,
-
     OutsidevehicleMantComponent,
     LocalTransportationIndexComponent,
 

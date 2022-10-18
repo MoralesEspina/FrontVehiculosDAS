@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { VehicleService } from 'src/app/services/vehicle.service';
+import { RequestlocalService } from 'src/app/services/requestlocal.service';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
@@ -10,7 +10,8 @@ import html2canvas from 'html2canvas';
 })
 export class TransportRequestComponent implements OnInit {
 
-  public vehicles;
+  public request;
+  public request2;
   public cant = 5;
   places = [
     {name: 'Jalapa'},
@@ -23,17 +24,18 @@ export class TransportRequestComponent implements OnInit {
 
   ];
 
-  constructor(private _vehicleService: VehicleService) { }
+  constructor(private _requesteService: RequestlocalService) { }
 
   ngOnInit(): void {
-    this.getVehicles();
+    this. getrequestLocal();
   }
 
-  getVehicles(){
-    this._vehicleService.getVehicles().subscribe(
+  getrequestLocal(){
+    this._requesteService.getOnerequestLocal(1).subscribe(
       response =>{
         console.log(response)
-        this.vehicles = response.data;
+        this.request = response.data.detailRequest;
+        this.request2 = response.data.request;
       }, error =>{
 
       }
