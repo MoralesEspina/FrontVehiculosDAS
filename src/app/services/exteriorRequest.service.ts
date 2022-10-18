@@ -8,7 +8,7 @@ import { ExteriorRequestI } from '../models/exteriorRequest.interface';
   providedIn: 'root'
 })
 
-export class ExteriorRoutesService{
+export class ExteriorRequestService{
     public url;
 
   constructor(private _http: HttpClient,

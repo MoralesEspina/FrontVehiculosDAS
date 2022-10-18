@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ExteriorRequestI } from 'src/app/models/exteriorRequest.interface';
 import { InfoService } from 'src/app/services/info.service';
-import { ExteriorRoutesService } from 'src/app/services/exteriorRoutes.service';
+import { ExteriorRequestService } from 'src/app/services/exteriorRequest.service';
 
 @Component({
   selector: 'app-exterior-request-mant',
@@ -17,7 +17,7 @@ public gas;
 public editing: boolean = false;
 
   constructor(private _infoService:InfoService,
-              private _exteriorRoutesService:ExteriorRoutesService) {
+              private _exteriorRoutesService:ExteriorRequestService) {
     this.exteriorRequest = new ExteriorRequestI('','','',0,0,0,'','',0,'','','',0,);
   }
 

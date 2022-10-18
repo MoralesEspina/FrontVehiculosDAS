@@ -34,10 +34,7 @@ import { UsersIndexComponent } from './components/features/users/users-index/use
 //TODO PDF'S
 import { FuelVoucherComponent } from './components/pdf´s/fuel-voucher/fuel-voucher.component';
 import { PersonFormComponent } from './components/features/person/person-form/person-form.component';
-import { ExteriorRequestComponent } from './components/pdf´s/exterior-request/exterior-request.component';
-
-
-
+import { ExteriorRequestPdfComponent } from './components/pdf´s/exterior-request-pdf/exterior-request-pdf.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +61,8 @@ import { ExteriorRequestComponent } from './components/pdf´s/exterior-request/e
     ExteriorRequestMantComponent,
     PersonFormComponent,
     ExteriorRequestComponent
+    ExteriorRequestPdfComponent
+
   ],
   imports: [
     BrowserModule,

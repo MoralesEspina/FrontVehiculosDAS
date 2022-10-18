@@ -49,5 +49,10 @@ export const navabarData = [
     icon: 'fal fa-plus',
     label: 'Asignacion de Vehiculos y Pilotos'
   },
+  {
+    routeLink:'ExteriorRequestPDF',
+    icon: 'fal fa-regular fa-print',
+    label: 'Impresion de Solicitud Exterior'
+  },
 
 ]
