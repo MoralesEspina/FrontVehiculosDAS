@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+
 import { Global } from './global.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class InfoService {
+export class inforoutsidevehicle {
 
   public url;
 
@@ -16,20 +17,20 @@ export class InfoService {
     }
 
     getTypes(): Observable<any> {
-      return this._http.get(this.url + 'info/types', {
+      return this._http.get(this.url + 'types', {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")
         })
       })
     }
-    getStatus(): Observable<any> {
-      return this._http.get(this.url + 'status', {
-        headers: new HttpHeaders({
-          'Content-Type':'application/json',
-          //'x-access-token': '' + localStorage.getItem("Token")
-        })
-      })
-    }
-  }
 
+    getStatus(): Observable<any> {
+        return this._http.get(this.url + 'status', {
+          headers: new HttpHeaders({
+            'Content-Type':'application/json',
+            //'x-access-token': '' + localStorage.getItem("Token")
+          })
+        })
+      }
+}
