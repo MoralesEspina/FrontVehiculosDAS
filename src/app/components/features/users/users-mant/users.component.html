@@ -19,7 +19,9 @@
             <!--- Migaja de Pan -->
         </div>
       </div>
-        <div class="col-8">
+      <div class="col-3"></div>
+      <div class="col-6">
+        <div class="row">
         <div class="card">
           <div class = "card-header">
             <h5 class = "card-title">Completa el Formulario</h5>
@@ -55,11 +57,14 @@
                   </div>
                 </div>
 
-                <div class="col-lg-3" >
+
+                <div class="col-lg-6">
                   <div class = "form-group">
                     <label class = "form-label"><b>Rol</b></label>
-                    <input #model="ngModel" name="rol_id" [(ngModel)]="user.rol_id"
-                    type="text" class="form-control" placeholder="Ingrese el Rol del Usuario" required>
+                    <select class="form-control" #rol="ngModel" name="rol" [(ngModel)]="user.rol_id"required>
+                      <option value="" disabled>Seleccionar</option>
+                      <option value="{{item.idrol}}" *ngFor="let item of types">{{item.rol}}</option>
+                    </select>
                   </div>
                 </div>
             </div>
@@ -70,6 +75,7 @@
         </div>
       </div>
     </div>
+  </div>
   </main>
 </div>
 </div>

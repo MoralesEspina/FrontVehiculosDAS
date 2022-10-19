@@ -25,7 +25,7 @@ import { LocalRequestMantComponent } from './components/features/local-request/l
 import { UsersComponent } from './components/features/users/users-mant/users.component';
 //TODO PDF'S
 import { FuelVoucherComponent } from './components/pdf´s/fuel-voucher/fuel-voucher.component';
-import { ExteriorRequestPdfComponent } from './components/pdf´s/exterior-request-pdf/exterior-request-pdf.component';
+import { UsersIndexComponent } from './components/features/users/users-index/users-index.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -39,10 +39,10 @@ const routes: Routes = [
   { path: 'localRequest-index', component: LocalRequestIndexComponent },
   { path: 'localRequest/add', component: LocalRequestMantComponent },
   { path: 'localRequest/edit/:id', component: LocalRequestMantComponent },
-  { path: 'localRequest', component: LocalRequestMantComponent },
+
 
   //TODO RUTAS DE SOLICITUD EXTERIOR
-  { path: 'exteriorRequest', component: ExteriorRequestIndexComponent },
+  { path: 'exteriorRequest-index', component: ExteriorRequestIndexComponent },
   { path: 'exteriorRequest', component: ExteriorRequestMantComponent },
 
   //TODO RUTAS PERSONA
@@ -51,10 +51,11 @@ const routes: Routes = [
 
   //TODO RUTAS USUARIOS
   { path: 'users', component: UsersComponent },
+  { path: 'users-index', component: UsersIndexComponent },
 
   //TODO RUTAS PDF'S
   { path: 'FuelVoucher', component: FuelVoucherComponent },
-  { path: 'ExteriorRequestPDF', component: ExteriorRequestPdfComponent },
+
 
   { path: 'transportRequest', component: TransportRequestComponent },
   { path: 'requestList', component: RequestListComponent },

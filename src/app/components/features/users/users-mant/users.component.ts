@@ -21,21 +21,29 @@ export class UsersComponent implements OnInit {
   public editing: boolean = false;
   public id_entrada;
 
-  constructor(private _infoService:InfoService,
-              private _UserService:UsersService,
-              private _route: ActivatedRoute
-  ){
+  constructor(private _infoService: InfoService,
+    private _UserService: UsersService,
+    private _route: ActivatedRoute
+  ) {
 
-    this.user = new UserI('','','','');
+    this.user = new UserI('', '', '', '');
   }
 
   ngOnInit(): void {
-
+    this.getRols();
 
   }
 
+  getRols() {
+    this._infoService.getRols().subscribe(
+      response => {
+        this.types = response.data;
+      }, error => {
+      }
+    )
+  }
 
-  createNewUser(userForm){
+  createNewUser(userForm) {
     if (this.editing) {
       const user: UserI = {
         username: userForm.value.username,
@@ -55,19 +63,19 @@ export class UsersComponent implements OnInit {
 
       }
 
-    console.log("Se registro el vehiculo correctamente");
-    if (userForm.valid) {
-      this._UserService.createNewUser(user).subscribe(
-        response => {
-          console.log("Se registro el vehiculo correctamente");
-          this.user = new UserI('','','','');
-        }, error => {
-          console.log(error.error.data)
-        }
-      );
-    } else {
+      console.log("Se registro el vehiculo correctamente");
+      if (userForm.valid) {
+        this._UserService.createNewUser(user).subscribe(
+          response => {
+            console.log("Se registro el vehiculo correctamente");
+            this.user = new UserI('', '', '', '');
+          }, error => {
+            console.log(error.error.data)
+          }
+        );
+      } else {
         console.log("Complete Correctamente el Formulario");
+      }
     }
   }
-}
 }

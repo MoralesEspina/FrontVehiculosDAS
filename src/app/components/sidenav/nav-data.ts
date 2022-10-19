@@ -15,7 +15,7 @@ export const navabarData = [
     label: 'Reporte de Vehiculos'
   },
   {
-    routeLink:'users',
+    routeLink:'users-index',
     icon: 'fal fa-user',
     label: 'Usuarios'
   },

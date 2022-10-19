@@ -1,6 +1,7 @@
 import { PersonService } from 'src/app/services/person.service';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import { InfoService } from 'src/app/services/info.service';
 
 @Component({
   selector: 'app-person-table',
@@ -9,13 +10,17 @@ import Swal from 'sweetalert2';
 })
 export class PersonTableComponent implements OnInit {
 
+  public jobs
   public p:number = 1;
   public person;
 
-  constructor(private _personServicetab: PersonService,) { }
+  constructor(private _infoService: InfoService,
+              private _personServicetab: PersonService,) { }
 
   ngOnInit(): void {
     this.getPerson();
+
+
   }
   getPerson(){
     this._personServicetab.getPerson().subscribe(
@@ -27,6 +32,16 @@ export class PersonTableComponent implements OnInit {
       }
     )
   }
+
+  getJobs() {
+    this._infoService.getJobs().subscribe(
+      response => {
+        this.jobs = response.data;
+      }, error => {
+      }
+    )
+  }
+
 
   delePerson(id){
     Swal.fire({

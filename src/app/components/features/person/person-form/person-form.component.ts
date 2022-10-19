@@ -12,17 +12,14 @@ import { PersonI } from 'src/app/models/person.interface';
 export class PersonFormComponent implements OnInit {
 
   public personform;
-  public types;
-  public type_status;
   public editing: boolean = false;
   public id_entrada;
-
 
   constructor(private _infoService: InfoService,
               private _personService: PersonService,
               private _route: ActivatedRoute)
               {
-                this.personform = new PersonI('','','','','','',);
+                this.personform = new PersonI('',0,'','','');
               }
 
               ngOnInit(): void {
@@ -30,9 +27,6 @@ export class PersonFormComponent implements OnInit {
                 this.loadPerson();
                 if (this.id_entrada) {
 
-                }else{
-                    this.getTypes();
-                    this.getStatus();
                 }
 
               }
@@ -43,8 +37,7 @@ export class PersonFormComponent implements OnInit {
                   this._personService.getOnePerson(this.id_entrada).subscribe(
                     response => {
                       this.personform = response.data[0]
-                      this.getTypes();
-                      this.getStatus();
+
                     },
                     error => {
                     }
@@ -54,38 +47,23 @@ export class PersonFormComponent implements OnInit {
                 }
               }
 
-              getTypes() {
-                this._infoService.getTypes().subscribe(
-                  response => {
-                    this.types = response.data;
-                  }, error => {
-                  }
-                )
-              }
 
-              getStatus() {
-                this._infoService.getStatus().subscribe(
-                  response => {
-                    this.type_status = response.data;
-                  }, error => {
-                  }
-                )
-              }
+
 
               createNewPerson(personForm){
                 if (this.editing) {
-                  const vehicle: PersonI = {
-                    vin: this.id_entrada,
+                  const person: PersonI = {
+
                     fullname: personForm.value.fullname,
                     job: personForm.value.job,
-                    pone: personForm.value.pone,
+                    phone: personForm.value.phone,
                     dpi: personForm.value.dpi,
                     nit: personForm.value.nit,
                   }
                   if (personForm.valid) {
-                    this._personService.updateOnePerson(vehicle, this.id_entrada).subscribe(
+                    this._personService.updateOnePerson(person, this.id_entrada).subscribe(
                       data => {
-                       console.log("Persona actualizado correctamente") ;
+                       console.log("Persona actualizada correctamente") ;
                       },
                       error => {
                         console.log(error.error.data)
@@ -96,19 +74,19 @@ export class PersonFormComponent implements OnInit {
                 } else {
                   this.editing = false;
                   const personform: PersonI = {
-                  vin: personForm.value.vin,
+
                   fullname: personForm.value.fullname,
                   job: personForm.value.job,
-                  pone: personForm.value.pone,
+                  phone: personForm.value.phone,
                   dpi: personForm.value.dpi,
                   nit: personForm.value.nit,
                 }
-                console.log("Se registro persona correctamente");
+                console.log("Se creo la persona correctamente");
                 if (personForm.valid) {
                   this._personService.createNewPerson(personform).subscribe(
                     response => {
-                      console.log("Se registro el vehiculo correctamente");
-                      this.personform = new PersonI('','','','','','');
+                      console.log("Se creo la persona correctamente");
+                      this.personform = new PersonI('',0,'','','');
                     }, error => {
                       console.log(error.error.data)
                     }
