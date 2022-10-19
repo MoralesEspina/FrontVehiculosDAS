@@ -53,7 +53,6 @@
                       <th style="text-align: center;">Responsable de Comision</th>
                       <th style="text-align: center;">Fecha</th>
                       <th style="text-align: center;">Duracion en Dias</th>
-                      <th style="text-align: center;">Departamento</th>
                       <th style="text-align: center;">Celular de Contacto</th>
                       <th style="text-align: center;">Opciones</th>
                     </tr>
@@ -62,20 +61,11 @@
 
                   <!--- CUERPO DE LA TABLA -->
                   <tbody *ngFor="let item of exteriorRequest | paginate: { itemsPerPage: 8, currentPage: p }">
-                      <td style="text-align: center;">{{item}}</td>
-                      <td style="text-align: center;">{{item}}</td>
-                      <td style="text-align: center;">{{item}}</td>
-                      <td style="text-align: center;">{{item}}</td>
-                      <td style="text-align: center;">{{item}}</td>
-                      <td style="text-align: center;">{{item}}</td>
-                      <td style="text-align: center;">{{item}}</td>
-                      <td style="text-align: center;">{{item}}</td>
-                      <td style="text-align: center;">{{item}}</td>
-                      <td style="text-align: center;">{{item}}</td>
-                      <td style="text-align: center;">{{item}}</td>
-                      <td style="text-align: center;">{{item}}</td>
-                      <td style="text-align: center;">{{item}}</td>
-                      <td style="text-align: center;">{{item}}</td>
+                      <td style="text-align: center;">{{item.requesting_unit}}</td>
+                      <td style="text-align: center;">{{item.commission_manager}}</td>
+                      <td style="text-align: center;">{{item.date_request}}</td>
+                      <td style="text-align: center;">{{item.duration_days}}</td>
+                      <td style="text-align: center;">{{item.phoneNumber}}</td>
 
                       <td style="text-align: center;">
                         <div class="btn-group">

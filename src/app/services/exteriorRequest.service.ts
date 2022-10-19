@@ -17,7 +17,7 @@ export class ExteriorRequestService{
     }
 
     getRequestExterior(): Observable<any> {
-      return this._http.get(this.url + 'vehicles', {
+      return this._http.get(this.url + 'requestExterior', {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")
@@ -26,7 +26,7 @@ export class ExteriorRequestService{
     }
 
     getOneRequestExterior(id): Observable<any> {
-      return this._http.get(this.url + 'vehicles/' + id, {
+      return this._http.get(this.url + 'requestExterior/' + id, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")
@@ -35,7 +35,7 @@ export class ExteriorRequestService{
     }
 
     createNewRequestExterior(form: ExteriorRequestI) {
-      return this._http.post(this.url + 'vehicles', form, {
+      return this._http.post(this.url + 'requestExterior', form, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")
@@ -44,7 +44,7 @@ export class ExteriorRequestService{
     }
 
     updateOneRequestExterior(form: ExteriorRequestI, id) {
-      return this._http.put(this.url + 'vehicles/' + id, form, {
+      return this._http.put(this.url + 'requestExterior/' + id, form, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")

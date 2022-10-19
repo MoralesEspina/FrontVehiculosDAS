@@ -4,9 +4,6 @@
       <div class="container-fluid">
         <div class="col-lg-12">
           <div class="card">
-            <div class="card-header">
-
-            </div>
             <div class="card-body">
               <!--- INICIO DE FORMULARIO-->
               <form #local_trasportationForm="ngForm" id="Data">
@@ -25,19 +22,19 @@
                         <td> UNIDAD SOLICITANTE: </td>
                       </div>
                       <div class="line">
-                        <td> Comision de Verduras </td>
+                        <td>{{request.requesting_unit}}</td>
                       </div>
                       <div class="info-left-item">
                         <td> FECHA DE SOLICITUD: </td>
                       </div>
                         <div class="line">
-                          <td> 13/06/2022 </td>
+                          <td>{{request.date_request | date: 'MMM d, y'}}</td>
                         </div>
                       <div class="info-left-item">
                         <td> OBJETIVO DE COMISIÓN: </td>
                       </div>
                         <div class="line-bottom">
-                          <td> Ver el estado de las verduras </td>
+                          <td>{{request.objective_request}}</td>
                         </div>
                     </div>
                       <div class="header-info-right">
@@ -45,19 +42,19 @@
                           <td> RESPONSABLE DE COMISIÓN: </td>
                         </div>
                           <div class="line">
-                            <td> Ing. Esdras Morales </td>
+                            <td>{{request.commission_manager}}</td>
                           </div>
                         <div class="info-right-item">
                           <td> DURACIÓN EN DIAS: </td>
                         </div>
                           <div class="line">
-                            <td> 12 </td>
+                            <td>{{request.duration_days}}</td>
                           </div>
                         <div class="info-right-item">
                           <td> NO. DE CELULAR DE CONTACTO: </td>
                         </div>
                           <div class="line-bottom">
-                            <td> 41806704 </td>
+                            <td>{{request.phoneNumber}}</td>
                           </div>
                       </div>
                   </div>
@@ -80,19 +77,19 @@
                     <div class="rowTitle">
                       <div class="table-sub-1"><strong>DEL</strong> </div>
                       <div class="table-sub-2"><strong>AL</strong></div>
-                      <div class="table-sub-3"><strong>HORA DE SALIDA</strong></div>
+                      <div class="table-sub-3"><strong class="hour">HORA DE SALIDA</strong></div>
                     </div>
                   </div>
                 </div>
-                <div class="table-i" *ngFor="let item of request">
-                  <div class="no-t"></div>
-                  <div class="noPeople-t"></div>
-                  <div class="table-i-1">{{item.brand}}</div>
-                  <div class="table-i-2"></div>
-                  <div class="table-i-3"></div>
-                  <div class="table-i-1"></div>
-                  <div class="table-i-2"></div>
-                  <div class="table-i-4"></div>
+                <div class="table-i" *ngFor="let item of detailRequest">
+                  <div class="no-t"><div></div><strong>{{item.no}}</strong></div>
+                  <div class="noPeople-t"><div></div><strong>{{item.number_people}}</strong></div>
+                  <div class="table-i-1"><div></div><strong>{{item.department}}</strong></div>
+                  <div class="table-i-2"><div></div><strong>{{item.municipality}}</strong></div>
+                  <div class="table-i-3"><div></div><strong>{{item.village}}</strong></div>
+                  <div class="table-i-1"><div></div><strong>{{item.dateOf | date: 'MMM d, y'}}</strong></div>
+                  <div class="table-i-2"><div></div><strong>{{item.dateTo | date: 'MMM d, y'}}</strong></div>
+                  <div class="table-i-4"><div></div><strong>{{item.hour}}</strong></div>
                 </div>
                 <div class="observations">
                   <div class="text-observations">
@@ -100,7 +97,7 @@
                     <strong>OBSERVACIONES</strong>
                     <div></div>
                   </div>
-                  <div class="table-observations"></div>
+                  <div class="table-observations"><td>{{request.observations}}</td></div>
                 </div>
                 <div class="applicants-header">
                   <div class="border-bot"></div>
@@ -120,7 +117,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="applicants-header2">
+                <div class="applicants-header">
                   <div class="applicants-sign">
                     <div><strong>Nombre, firma y sello</strong></div>
                     <div><strong>Responsable de la Comisión</strong></div>
@@ -168,13 +165,13 @@
                   <div class="status-vehicles">
                     <div></div>
                     <div class="status-plate-pilot"><strong>Placa del vehículo autorizado:</strong></div>
-                    <div class="border-bot"><strong></strong></div>
+                    <div class="border-bot"><strong>{{request.plate_vehicle}}</strong></div>
                     <div></div>
                     <div></div>
                     <div></div>
                     <div></div>
                     <div class="status-plate-pilot"><strong>Nombre del Piloto asignado:</strong></div>
-                    <div class="border-bot"><strong></strong></div>
+                    <div class="border-bot"><strong>{{request.pilot_name}}</strong></div>
                   </div>
                 </div>
                 <div class="rejected">
@@ -185,10 +182,25 @@
                   </div>
                   <div class="table-rejected"></div>
                 </div>
+                <div class="sign-form">
+                <div></div>
+                <div class="border-bot"><strong></strong></div>
+                <div></div>
+                </div>
+                <div class="sign-text">
+                  <div></div>
+                  <div><strong>SECCIÓN DE TRANSPORTES</strong></div>
+                  <div></div>
+                  </div>
+                  <div class="sign-text2">
+                    <div></div>
+                    <div><strong>Nombre firma y sello</strong></div>
+                    <div></div>
+                    </div>
                 </div>
               </form>
               <!--- FIN DE FORMULARIO-->
-              <button (click)="downloadPDF()" class="btn btn-primary" >Registrar</button>
+              <div class="text-center"><button (click)="downloadPDF()" class="btn btn-primary" >Imprimir</button></div>
             </div>
           </div>
         </div>

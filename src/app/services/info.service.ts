@@ -12,7 +12,7 @@ export class InfoService {
 
   constructor(private _http: HttpClient,
     ) {
-      this.url = Global.url+"info/";
+      this.url = Global.url;
     }
 
     getTypes(): Observable<any> {
@@ -23,8 +23,27 @@ export class InfoService {
         })
       })
     }
+
     getStatus(): Observable<any> {
-      return this._http.get(this.url + 'status', {
+      return this._http.get(this.url + 'info/status', {
+        headers: new HttpHeaders({
+          'Content-Type':'application/json',
+          //'x-access-token': '' + localStorage.getItem("Token")
+        })
+      })
+    }
+
+    getDepartments(): Observable<any> {
+      return this._http.get(this.url + 'departments', {
+        headers: new HttpHeaders({
+          'Content-Type':'application/json',
+          //'x-access-token': '' + localStorage.getItem("Token")
+        })
+      })
+    }
+
+    getOneDepartment(id): Observable<any> {
+      return this._http.get(this.url + 'departments/'+id, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")
