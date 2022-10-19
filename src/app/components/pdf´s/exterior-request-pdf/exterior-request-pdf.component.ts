@@ -15,6 +15,9 @@ export class ExteriorRequestPdfComponent implements OnInit {
 
   public request;
   public detailRequest;
+  public fuel:boolean = false;
+  public viatic:boolean = false;
+  public status:boolean = false;
   constructor(private _exteriorRequestService:ExteriorRequestService,) {
     this.request = new ExteriorRequestI('','','','','','','',0,0,'','','')
     this.detailRequest = new DetailExteriorRequestI('','','','','','','')
@@ -25,7 +28,7 @@ export class ExteriorRequestPdfComponent implements OnInit {
   }
 
   getOneExteriorRequest(){
-    this._exteriorRequestService.getOneRequestExterior(3).subscribe(
+    this._exteriorRequestService.getOneRequestExterior(1).subscribe(
       response =>{
         this.request = response.data.request[0];
         this.detailRequest = response.data.detailRequest;
@@ -39,7 +42,7 @@ export class ExteriorRequestPdfComponent implements OnInit {
     const doc = new jsPDF('landscape', 'pt', 'letter');
     const options = {
       background: 'white',
-      scale: 1
+      scale: 3
     };
     html2canvas(DATA, options).then((canvas) => {
       const img = canvas.toDataURL('image/PNG');
@@ -51,7 +54,7 @@ export class ExteriorRequestPdfComponent implements OnInit {
       const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
 
       console.log(pdfHeight)
-      doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'SLOW');
+      doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
       return doc;
     }).then((docResult) => {
       docResult.save(`${new Date().toISOString()}_tutorial.pdf`);

@@ -22,19 +22,19 @@
                         <td> UNIDAD SOLICITANTE: </td>
                       </div>
                       <div class="line">
-                        <td>{{request.requesting_unit}}</td>
+                        <td>{{request.requesting_unit | uppercase}}</td>
                       </div>
                       <div class="info-left-item">
                         <td> FECHA DE SOLICITUD: </td>
                       </div>
                         <div class="line">
-                          <td>{{request.date_request | date: 'MMM d, y'}}</td>
+                          <td>{{request.date_request | date: 'd MMM y' | uppercase}}</td>
                         </div>
                       <div class="info-left-item">
                         <td> OBJETIVO DE COMISIÓN: </td>
                       </div>
                         <div class="line-bottom">
-                          <td>{{request.objective_request}}</td>
+                          <td>{{request.objective_request | uppercase}}</td>
                         </div>
                     </div>
                       <div class="header-info-right">
@@ -42,7 +42,7 @@
                           <td> RESPONSABLE DE COMISIÓN: </td>
                         </div>
                           <div class="line">
-                            <td>{{request.commission_manager}}</td>
+                            <td>{{request.commission_manager | uppercase}}</td>
                           </div>
                         <div class="info-right-item">
                           <td> DURACIÓN EN DIAS: </td>
@@ -84,18 +84,16 @@
                 <div class="table-i" *ngFor="let item of detailRequest">
                   <div class="no-t"><div></div><strong>{{item.no}}</strong></div>
                   <div class="noPeople-t"><div></div><strong>{{item.number_people}}</strong></div>
-                  <div class="table-i-1"><div></div><strong>{{item.department}}</strong></div>
-                  <div class="table-i-2"><div></div><strong>{{item.municipality}}</strong></div>
-                  <div class="table-i-3"><div></div><strong>{{item.village}}</strong></div>
-                  <div class="table-i-1"><div></div><strong>{{item.dateOf | date: 'MMM d, y'}}</strong></div>
-                  <div class="table-i-2"><div></div><strong>{{item.dateTo | date: 'MMM d, y'}}</strong></div>
+                  <div class="table-i-1"><div></div><strong>{{item.department | uppercase}} </strong></div>
+                  <div class="table-i-2"><div></div><strong>{{item.municipality | uppercase}}</strong></div>
+                  <div class="table-i-3"><div></div><strong>{{item.village | uppercase}}</strong></div>
+                  <div class="table-i-1"><div></div><strong>{{item.dateOf | date: 'd MMM y' | uppercase}}</strong></div>
+                  <div class="table-i-2"><div></div><strong>{{item.dateTo | date: 'd MMM y' | uppercase}}</strong></div>
                   <div class="table-i-4"><div></div><strong>{{item.hour}}</strong></div>
                 </div>
                 <div class="observations">
                   <div class="text-observations">
-                    <div></div>
                     <strong>OBSERVACIONES</strong>
-                    <div></div>
                   </div>
                   <div class="table-observations"><td>{{request.observations}}</td></div>
                 </div>
@@ -106,14 +104,12 @@
                   <div class="applicants-gas">
                     <div class="applicants-text"><strong>La Unidad solicitante proporcionara Combustible</strong></div>
                     <div class="applicants-selection">
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
                       <div class="applicants-si"><strong>SI</strong></div>
-                      <div class="circle"><strong></strong></div>
+                      <div class="circle-color" *ngIf="fuel==true"><strong></strong></div>
+                      <div class="circle"*ngIf="fuel==false"><strong></strong></div>
                       <div class="applicants-no"><strong>NO</strong></div>
-                      <div class="circle"><strong></strong></div>
+                      <div class="circle-color" *ngIf="fuel==false"><strong></strong></div>
+                      <div class="circle" *ngIf="fuel==true"><strong></strong></div>
                     </div>
                   </div>
                 </div>
@@ -128,16 +124,14 @@
                     <div><strong>Jefe Dependencia solicitante</strong></div>
                   </div>
                   <div class="applicants-gas2">
-                    <div class="applicants-text"><strong>La Unidad solicitante proporcionara Viatico</strong></div>
+                    <div class="applicants-text2"><strong>La Unidad solicitante proporcionara Viatico</strong></div>
                     <div class="applicants-selection">
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
                       <div class="applicants-si"><strong>SI</strong></div>
-                      <div class="circle"><strong></strong></div>
+                      <div class="circle-color" *ngIf="viatic==true"><strong></strong></div>
+                      <div class="circle"*ngIf="viatic==false"><strong></strong></div>
                       <div class="applicants-no"><strong>NO</strong></div>
-                      <div class="circle"><strong></strong></div>
+                      <div class="circle-color" *ngIf="viatic==false"><strong></strong></div>
+                      <div class="circle"*ngIf="viatic==true"><strong></strong></div>
                     </div>
                   </div>
                 </div>
@@ -146,41 +140,35 @@
                     </strong>
                 </div>
                 <div class="status-request">
-                  <div class="status-text">
-                    <div></div>
-                    <div><strong>Estatus de Solicitud: </strong></div>
-                    <div></div>
-                  </div>
                   <div class="status-options">
-                    <div></div>
-                    <div class="applicants-si"><strong>Aceptada</strong></div>
-                    <div class="oval"><strong></strong></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div class="applicants-no"><strong>Rechazada</strong></div>
-                    <div class="oval"><strong></strong></div>
+                    <div class="applicants-option"><strong>Aceptada</strong></div>
+                    <div class="oval"*ngIf="status==false"><strong></strong></div>
+                    <div class="oval-color" *ngIf="status==true"><strong></strong></div>
                   </div>
                   <div class="status-vehicles">
-                    <div></div>
                     <div class="status-plate-pilot"><strong>Placa del vehículo autorizado:</strong></div>
                     <div class="border-bot"><strong>{{request.plate_vehicle}}</strong></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                  </div>
+                  <div class="status-text">
+                    <div><strong>Estatus de Solicitud: </strong></div>
+                  </div>
+                  <div class="status-options1">
+                    <div class="applicants-option"><strong>Rechazada</strong></div>
+                    <div class="oval"*ngIf="status==true"><strong></strong></div>
+                    <div class="oval-color" *ngIf="status==false"><strong></strong></div>
+                  </div>
+                  <div class="status-vehicles1">
                     <div class="status-plate-pilot"><strong>Nombre del Piloto asignado:</strong></div>
                     <div class="border-bot"><strong>{{request.pilot_name}}</strong></div>
                   </div>
                 </div>
                 <div class="rejected">
                   <div class="text-rejected">
-                    <div></div>
                     <strong>Si es rechazada la solicitud, indique el motivo:</strong>
-                    <div></div>
                   </div>
-                  <div class="table-rejected"></div>
+                  <div class="table-rejected">
+                    <td></td>
+                  </div>
                 </div>
                 <div class="sign-form">
                 <div></div>
