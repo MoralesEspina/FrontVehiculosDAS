@@ -17,7 +17,7 @@ export class PersonService{
     }
 
     getPerson(): Observable<any> {
-      return this._http.get(this.url + 'person', {
+      return this._http.get(this.url + 'persons', {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")

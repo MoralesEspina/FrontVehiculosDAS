@@ -12,6 +12,7 @@ export class ExteriorRequestI{
       public plate_vehicle:string,
       public pilot_name:string,
       public reason_rejected:string,
+      public detail: Array<any> = []
     )
     {
 

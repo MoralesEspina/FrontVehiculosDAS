@@ -43,7 +43,8 @@ const routes: Routes = [
 
   //TODO RUTAS DE SOLICITUD EXTERIOR
   { path: 'exteriorRequest', component: ExteriorRequestIndexComponent },
-  { path: 'exteriorRequest', component: ExteriorRequestMantComponent },
+  { path: 'exteriorRequest/add', component: ExteriorRequestMantComponent },
+  { path: 'exteriorRequest/edit/:id', component: ExteriorRequestMantComponent },
 
   //TODO RUTAS PERSONA
   { path: 'personform', component: PersonFormComponent },
