@@ -11,7 +11,11 @@
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Dashboard</a></li>
+
                 <li class="breadcrumb-item"><a [routerLink]="['/localRequest/add']"> Solicitud Local</a></li>
+
+                <li class="breadcrumb-item"><a [routerLink]="['/localRequest-index']"> Solicitud Local</a></li>
+
                 <li class="breadcrumb-item"><a>Registro de Solicitud de Vehiculos Local</a></li>
               </ol>
             </nav>
@@ -27,18 +31,24 @@
 
               <form #local_trasportationForm="ngForm" (ngSubmit)="createLocalRequest(local_trasportationForm)">
                 <div class="row">
-                  <div class="col-lg-10">
+                  <div class="col-lg-10" *ngIf="editing == true">
                     <div class="form-group">
-                      <label class="form-label"><b>Nombre del Piloto:</b></label>
-                      <input #pilotName="ngModel" name="pilotName" [(ngModel)]="transportation.pilotName" type="text"
-                        list="items" placeholder="Ingrese el nombre del Piloto" required>
+                      <label class="form-label"><b>Nombre del piloto asignado:</b></label>
+                      <select class="form-control" #pilotName="ngModel" name="pilotName"
+                        [(ngModel)]="transportation.pilotName" required>
+                        <option value="" disabled>Seleccionar</option>
+                        <option value="{{person.fullname}}" *ngFor="let person of person">{{person.fullname}}</option>
+                      </select>
                     </div>
                   </div>
-                  <div class="col-lg-10">
+                  <div class="col-lg-10" *ngIf="editing == true">
                     <div class="form-group">
-                      <label class="form-label"><b>Placa del Vehiculo:</b></label>
-                      <input #plate="ngModel" name="plate" [(ngModel)]="transportation.plate" type="text" list="items"
-                        placeholder="Ingrese el lugar" required>
+                      <label class="form-label"><b>Placa del vehiculo autorizado:</b></label>
+                      <select class="form-control" #plate="ngModel" name="plate" [(ngModel)]="transportation.plate"
+                        required>
+                        <option value="" disabled>Seleccionar</option>
+                        <option value="{{vehicle.plate}}" *ngFor="let vehicle of vehicles">{{vehicle.plate}}</option>
+                      </select>
                     </div>
                   </div>
                   <div class="col-lg-10">
@@ -51,81 +61,90 @@
                   <div class="col-lg-10">
                     <div class="form-group">
                       <label class="form-label"><b>Lugar:</b></label>
-                      <input #place="ngModel" name="place" [(ngModel)]="transportation.place" type="text" list="items"
-                        placeholder="Ingrese el lugar" required>
+                      <input class="form-control" #place="ngModel" name="place" [(ngModel)]="transportation.place"
+                        type="text" list="items" placeholder="Ingrese el lugar" required [disabled]="editing==true">
                     </div>
                   </div>
-                  <div class="col-lg-10">
+                  <div class="col-lg-10" *ngIf="editing == true">
                     <div class="form-group">
                       <label class="form-label"><b>Fecha:</b></label>
-                      <input #date="ngModel" name="date" [(ngModel)]="transportation.date" type="text"
-                        placeholder="YYYY/MM/DD" required>
+                      <input name="date" [value]="transportation.date | date: 'd MMM y' | uppercase" required
+                        type="text" class="form-control" disabled>
                     </div>
                   </div>
                   <div class="col-lg-10">
                     <div class="form-group">
                       <label class="form-label"><b>Unidad, Sección o Dep.:</b></label>
-                      <input #section="ngModel" name="section" [(ngModel)]="transportation.section" type="text"
-                        list="items" placeholder="Ingrese la unidad, sección o departamento" required>
-                      <!-- Lista de opciones -->
+                      <input class="form-control" #section="ngModel" name="section" [(ngModel)]="transportation.section"
+                        type="text" list="items" placeholder="Ingrese la unidad, sección o departamento" required
+                        [disabled]="editing==true">
                     </div>
                   </div>
                   <div class="col-lg-10">
                     <div class="form-group">
                       <label class="form-label"><b>Nombre del Solicitante:</b></label>
-                      <input #applicantsName="ngModel" name="applicantsName" [(ngModel)]="transportation.applicantsName"
-                        type="text" placeholder="Ingrese el nombre del solicitante" required>
+                      <input class="form-control" #applicantsName="ngModel" name="applicantsName"
+                        [(ngModel)]="transportation.applicantsName" type="text"
+                        placeholder="Ingrese el nombre del solicitante" required [disabled]="editing==true">
                     </div>
                   </div>
                   <div class="col-lg-10">
                     <div class="form-group">
                       <label class="form-label"><b>Cargo del Solicitante:</b></label>
-                      <input #position="ngModel" name="position" [(ngModel)]="transportation.position" type="text"
-                        placeholder="Ingrese el cargo del solicitante" required>
+                      <input class="form-control" #position="ngModel" name="position"
+                        [(ngModel)]="transportation.position" type="text" placeholder="Ingrese el cargo del solicitante"
+                        required [disabled]="editing==true">
                     </div>
                   </div>
                   <div class="col-lg-10">
                     <div class="form-group">
                       <label class="form-label"><b>Tel. oficina o móvil:</b></label>
-                      <input #phoneNumber="ngModel" name="phoneNumber" [(ngModel)]="transportation.phoneNumber"
-                        type="number" placeholder="Ingrese el Tel. oficina o móvil" required>
+                      <input class="form-control" #phoneNumber="ngModel" name="phoneNumber"
+                        [(ngModel)]="transportation.phoneNumber" type="number"
+                        placeholder="Ingrese el Tel. oficina o móvil" required [disabled]="editing==true">
                     </div>
                   </div>
                   <div class="col-lg-10">
                     <p></p>
                   </div>
-                  <div id="destino" class="col-lg-10"><label><b>-- DESTINOS --</b></label></div>
+                  <div id="destino" class="col-lg-10" *ngIf="editing == false"><label><b>-- DESTINOS --</b></label>
+                  </div>
                   <div class="col-lg-10">
                     <p></p>
                   </div>
 
                   <!-- inican los datos para la tabla -->
                   <form class="col-lg-10" #trasportationForm="ngForm"
-                    (ngSubmit)=" createDetailLocalRequest(trasportationForm)">
+
+                    (ngSubmit)=" createDetailLocalRequest(trasportationForm)" *ngIf="editing == false">
+
                     <div class="row">
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-label"><b>Fecha Del:</b></label>
-                          <input id="inputTable" name="dateOf" [(ngModel)]="detailrequest.dateOf" type="date" required>
+                          <input class="form-control" id="inputTable" name="dateOf" [(ngModel)]="detailrequest.dateOf"
+                            type="date" required>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-label"><b>Fecha Al:</b></label>
-                          <input id="inputTable" name="dateTo" [(ngModel)]="detailrequest.dateTo" type="date" required>
+                          <input class="form-control" id="inputTable" name="dateTo" [(ngModel)]="detailrequest.dateTo"
+                            type="date" required>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-label"><b>Hora de salida:</b></label>
-                          <input id="inputTable" name="schedule" [(ngModel)]="detailrequest.schedule" type="time"
-                            required>
+                          <input class="form-control" id="inputTable" name="schedule"
+                            [(ngModel)]="detailrequest.schedule" type="time" required>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-label"><b>Destino a visitar:</b></label>
-                          <select id="inputTable" name="destiny" [(ngModel)]="detailrequest.destiny" required>
+                          <select class="form-control" id="inputTable" name="destiny"
+                            [(ngModel)]="detailrequest.destiny" required>
                             <option value="" disabled>Seleccionar</option>
                             <option *ngFor="let visitar of placess">{{visitar.name}}</option>
                           </select>
@@ -134,14 +153,16 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-label"><b>No de Personas:</b></label>
-                          <input id="inputTable" name="peopleNumber" [(ngModel)]="detailrequest.peopleNumber"
-                            type="number" placeholder="Ingrese No. de personas" required>
+                          <input class="form-control" id="inputTable" name="peopleNumber"
+                            [(ngModel)]="detailrequest.peopleNumber" type="number" placeholder="Ingrese No. de personas"
+                            required>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-label"><b>Objetivo:</b></label>
-                          <input id="inputTable" name="comission" [(ngModel)]="detailrequest.comission" type="text"
+                          <input class="form-control" id="inputTable" name="comission"
+                            [(ngModel)]="detailrequest.comission" type="text"
                             placeholder="Ingrese el Objeto de la Comision" required>
                         </div>
                       </div>
@@ -177,10 +198,10 @@
                       </thead>
                       <!---    TITULOS DE LA TABLA -->
                       <tbody *ngFor="let detailrequest of details">
-                        <td style="text-align: center;">{{detailrequest.dateOf}}</td>
-                        <td style="text-align: center;">{{detailrequest.dateTo}}</td>
+                        <td style="text-align: center;">{{detailrequest.dateOf | date: 'd MMM y' | uppercase}}</td>
+                        <td style="text-align: center;">{{detailrequest.dateTo | date: 'd MMM y' | uppercase}}</td>
                         <td style="text-align: center;">{{detailrequest.schedule}}</td>
-                        <td style="text-align: center;">{{detailrequest.destiny}}</td>
+                        <td style="text-align: center;">{{detailrequest.destiny | uppercase}}</td>
                         <td style="text-align: center;">{{detailrequest.peopleNumber}}</td>
                         <td style="text-align: center;">{{detailrequest.comission}}</td>
                       </tbody>
@@ -194,14 +215,24 @@
                   <div class="col-lg-10">
                     <div class="form-group">
                       <label class="form-label"><b>Observaciones:</b></label>
-                      <input #observations="ngModel" name="observations" [(ngModel)]="transportation.observations"
-                        type="text" placeholder="Ingrese observaciones" required>
+                      <input class="form-control" #observations="ngModel" name="observations"
+                        [(ngModel)]="transportation.observations" type="text" placeholder="Ingrese observaciones"
+                        required [disabled]="editing==true">
                     </div>
                   </div>
                 </div>
-                <div class="text-center"><button type="submit" class="btn btn-primary">Solicitar</button></div>
+                <div class="text-center" *ngIf="editing == false"><button type="submit"
+                    class="btn btn-primary">Solicitar</button></div>
                 <div class="col-lg-10">
                   <p></p>
+                </div>
+                <div class="row">
+                  <div class="text-center" *ngIf="editing == true" class="col-lg-2">
+                    <button type="submit" class="btn btn-primary">Acepar</button>
+                  </div>
+                  <div class="text-center" *ngIf="editing == true" class="col-lg-3">
+                    <button type="submit" class="btn btn-danger">Denegar</button>
+                  </div>
                 </div>
 
               </form>
