@@ -24,16 +24,34 @@ export class InfoService {
       })
     }
     getStatus(): Observable<any> {
-      return this._http.get(this.url + 'status', {
+      return this._http.get(this.url + 'info/status', {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")
         })
       })
     }
+    getRols(): Observable<any> {
+      return this._http.get(this.url + 'info/roles', {
+      headers: new HttpHeaders({
+          'Content-Type':'application/json',
+          //'x-access-token': '' + localStorage.getItem("Token")
+        })
+      })
+    }
+
     getDepartments(): Observable<any> {
       return this._http.get(this.url + 'departments', {
         headers: new HttpHeaders({
+          'Content-Type':'application/json',
+          //'x-access-token': '' + localStorage.getItem("Token")
+        })
+      })
+    }
+
+    getJobs(): Observable<any> {
+      return this._http.get(this.url + 'info/jobs', {
+ headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")
         })
@@ -48,5 +66,6 @@ export class InfoService {
         })
       })
     }
+
   }
 
