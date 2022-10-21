@@ -33,8 +33,8 @@ export class InfoService {
       })
     }
 
-    getDepartments(): Observable<any> {
-      return this._http.get(this.url + 'departments', {
+    getJobs(): Observable<any> {
+      return this._http.get(this.url + 'info/jobs', {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")
@@ -42,14 +42,6 @@ export class InfoService {
       })
     }
 
-    getOneDepartment(id): Observable<any> {
-      return this._http.get(this.url + 'departments/'+id, {
-        headers: new HttpHeaders({
-          'Content-Type':'application/json',
-          //'x-access-token': '' + localStorage.getItem("Token")
-        })
-      })
-    }
     getRols(): Observable<any> {
       return this._http.get(this.url + 'info/roles', {
       headers: new HttpHeaders({
@@ -68,16 +60,7 @@ export class InfoService {
       })
     }
 
-    getJobs(): Observable<any> {
-      return this._http.get(this.url + 'info/jobs', {
- headers: new HttpHeaders({
-          'Content-Type':'application/json',
-          //'x-access-token': '' + localStorage.getItem("Token")
-        })
-      })
-    }
-
-    getOneMun(id): Observable<any> {
+    getOneDepartment(id): Observable<any> {
       return this._http.get(this.url + 'departments/'+id, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',

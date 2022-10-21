@@ -57,9 +57,9 @@
                                 <!--- TITULOS DE LA TABLA -->
 
                                 <!--- CUERPO DE LA TABLA -->
-                                <tbody *ngFor="let item of requestsLocal | paginate: { itemsPerPage: 8, currentPage: p }">
+                                <tbody *ngFor="let item of requestsLocal | paginate: { itemsPerPage: 15, currentPage: p }">
                                     <td style="text-align: center;">{{item.id}}</td>
-                                    <td style="text-align: center;">{{item.date}}</td>
+                                    <td style="text-align: center;">{{item.date | date: 'd MMM y' | uppercase}}</td>
                                     <td style="text-align: center;">{{item.applicantsName}}</td>
                                     <td style="text-align: center;">{{item.status}}</td>
                                     <td style="text-align: center;">

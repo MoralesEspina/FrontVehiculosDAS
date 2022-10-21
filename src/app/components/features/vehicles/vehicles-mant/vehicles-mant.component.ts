@@ -13,7 +13,7 @@ export class VehiclesMantComponent implements OnInit {
 
   //TODO ARRIBA DEL CONSTRUCTOR SE DECLARAN VARIABLES
   //TODO DECLARAMOS LA DEL NG MODEL LE COLOCAMOS COMO SE LLAMA NUESTRO COMPONENTE
-  
+
   public vehicle;
   public types;
   public type_status;
@@ -23,7 +23,7 @@ export class VehiclesMantComponent implements OnInit {
   constructor(private _infoService:InfoService,
               private _vehicleService:VehicleService,
               private _route: ActivatedRoute
-  ){ 
+  ){
 
     this.vehicle = new VehicleI('','','','',0,0,'',0);
   }

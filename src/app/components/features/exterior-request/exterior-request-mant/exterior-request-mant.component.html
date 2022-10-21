@@ -11,7 +11,7 @@
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Dashboard</a></li>
-                <li class="breadcrumb-item"><a [routerLink]="['/exterirRequest']">Solicitud Exterior</a></li>
+                <li class="breadcrumb-item"><a [routerLink]="['/exteriorRequest-index']"> Lista de Solicitudes Exteriores</a></li>
                 <li class="breadcrumb-item"><a> Solicitud de Transporte Exterior</a></li>
               </ol>
             </nav>
@@ -102,7 +102,7 @@
                         <div class="form-group">
                           <label class="form-label"><b>Departamento</b></label>
                           <select id="inputTable" class="form-control" #department="ngModel" name="department"
-                            [(ngModel)]="detailrequest.department" (click)="getOneMun(detailrequest.department)"
+                            [(ngModel)]="detailrequest.department" (click)="getOneDepartment(detailrequest.department)"
                             required>
                             <option value="" disabled>Seleccionar</option>
                             <option value="{{item.title}}" *ngFor="let item of departments">{{item.title}}</option>

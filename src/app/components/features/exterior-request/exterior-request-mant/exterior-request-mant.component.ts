@@ -44,7 +44,7 @@ todayWithPipe;
   }
 
   ngOnInit(): void {
-  
+
    this.getDepartments();
    this.getPerson();
    this.getVehicles();
@@ -63,8 +63,8 @@ todayWithPipe;
     )
   }
 
-  getOneMun(id) {
-    this._infoService.getOneMun(id).subscribe(
+  getOneDepartment(id) {
+    this._infoService.getOneDepartment(id).subscribe(
       response => {
         this.Onemunicipality = response.data.mun;
         console.log(this.Onemunicipality)
@@ -161,6 +161,6 @@ createDetailRequest(detailExterioForm) {
 
 }
 
-     
+
 
 }

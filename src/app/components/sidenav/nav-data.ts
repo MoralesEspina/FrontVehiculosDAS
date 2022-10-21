@@ -25,34 +25,18 @@ export const navabarData = [
     label: 'Personas'
   },
   {
-    routeLink:'exteriorRequest',
+    routeLink:'exteriorRequest-index',
     icon: 'fal fa-print',
-    label: 'Solicitud de Transporte Exterior'
+    label: 'Lista de Solicitudes de Transporte Exterior'
   },
   {
     routeLink:'localRequest-index',
     icon: 'fal fa-list',
-    label: 'Solicitudes de Transporte Local'
-  },
-  {
-    routeLink:'localRequest/add',
-    icon: 'fal fa-paper-plane',
-    label: 'Solicitud de Transporte Local'
-  },
-  {
-    routeLink:'requestList',
-    icon: 'fal fa-table',
-    label: 'Lista de Solicitudes'
+    label: 'Lista de Solicitudes de Transporte Local'
   },
   {
     routeLink:'assignVP',
     icon: 'fal fa-plus',
     label: 'Asignacion de Vehiculos y Pilotos'
-  },
-  {
-    routeLink:'ExteriorRequestPDF',
-    icon: 'fal fa-regular fa-print',
-    label: 'Impresion de Solicitud Exterior'
-  },
-
+  }
 ]

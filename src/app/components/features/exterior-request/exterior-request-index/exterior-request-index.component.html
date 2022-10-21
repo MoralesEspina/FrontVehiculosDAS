@@ -15,7 +15,7 @@
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Dashboard</a></li>
-                <li class="breadcrumb-item">Transporte Exterior</li>
+                <li class="breadcrumb-item"><a [routerLink]="['/exteriorRequest-index']"> Transporte Exterior</a></li>
               </ol>
             </nav>
             <!--- Migaja de Pan -->
@@ -36,7 +36,7 @@
                         </button>
                         <div class="dropdown-menu" x-placement="bottom-start"
                           style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 31px, 0px);">
-                          <a class="dropdown-item" [routerLink]="['/vehicles/add']">Registrar Transporte</a>
+                          <a class="dropdown-item" [routerLink]="['/exteriorRequest/add']">Nueva Solicitud Exterior</a>
                         </div>
                       </div>
                     </div>
@@ -60,10 +60,10 @@
                   <!--- TITULOS DE LA TABLA -->
 
                   <!--- CUERPO DE LA TABLA -->
-                  <tbody *ngFor="let item of exteriorRequest | paginate: { itemsPerPage: 8, currentPage: p }">
+                  <tbody *ngFor="let item of exteriorRequest | paginate: { itemsPerPage: 15, currentPage: p }">
                       <td style="text-align: center;">{{item.requesting_unit}}</td>
                       <td style="text-align: center;">{{item.commission_manager}}</td>
-                      <td style="text-align: center;">{{item.date_request}}</td>
+                      <td style="text-align: center;">{{item.date_request | date: 'd MMM y' | uppercase }}</td>
                       <td style="text-align: center;">{{item.duration_days}}</td>
                       <td style="text-align: center;">{{item.phoneNumber}}</td>
 
