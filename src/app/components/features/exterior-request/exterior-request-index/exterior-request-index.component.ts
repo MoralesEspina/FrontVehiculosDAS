@@ -12,6 +12,7 @@ export class ExteriorRequestIndexComponent implements OnInit {
   constructor(private _exteriorRequestService:ExteriorRequestService,) { }
 
   ngOnInit(): void {
+    this.getExteriorRequest();
   }
 
   getExteriorRequest(){

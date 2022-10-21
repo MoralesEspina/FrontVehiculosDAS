@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -11,6 +11,9 @@ import { AppComponent } from './app.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BodyComponent } from './components/body/body.component';
+import localeEs from '@angular/common/locales/es-GT'
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localeEs, 'ES')
 //TODO --------------------
 import { ManagerviewComponent } from './components/features/managerview/managerview.component';
 import { RequestListComponent } from './components/features/request-list/request-list.component';
@@ -35,6 +38,7 @@ import { UsersIndexComponent } from './components/features/users/users-index/use
 import { FuelVoucherComponent } from './components/pdf´s/fuel-voucher/fuel-voucher.component';
 import { PersonFormComponent } from './components/features/person/person-form/person-form.component';
 import { ExteriorRequestPdfComponent } from './components/pdf´s/exterior-request-pdf/exterior-request-pdf.component';
+import { LocalRequestPdfComponent } from './components/pdf´s/local-request-pdf/local-request-pdf.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +64,8 @@ import { ExteriorRequestPdfComponent } from './components/pdf´s/exterior-reques
     ExteriorRequestIndexComponent,
     ExteriorRequestMantComponent,
     PersonFormComponent,
-    ExteriorRequestPdfComponent
+    ExteriorRequestPdfComponent,
+    LocalRequestPdfComponent
 
   ],
   imports: [
@@ -73,7 +78,7 @@ import { ExteriorRequestPdfComponent } from './components/pdf´s/exterior-reques
     NgxPaginationModule,
   ],
 
-  providers: [],
+  providers: [{provide: LOCALE_ID, useValue: 'ES'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
