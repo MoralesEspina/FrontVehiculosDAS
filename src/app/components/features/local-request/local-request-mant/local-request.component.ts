@@ -3,6 +3,9 @@ import { LocalRequestI } from 'src/app/models/localRequest.interface';
 import { DetailLocalRequestI } from 'src/app/models/detailLocalRequest.interface';
 import { RequestlocalService } from 'src/app/services/requestLocal.service';
 import { ActivatedRoute } from '@angular/router';
+import { PersonService } from 'src/app/services/person.service';
+import { VehicleService } from 'src/app/services/vehicle.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-local-request',
@@ -14,6 +17,8 @@ export class LocalRequestMantComponent implements OnInit {
   public transportation;
   public editing: boolean = false;
   public id_entrada;
+  public person;
+  public vehicles;
   details: any[] = [];
   detailrequest: any = {};
 
@@ -26,14 +31,44 @@ export class LocalRequestMantComponent implements OnInit {
     { id: 5, name: 'San Manuel Chaparrón' },
     { id: 6, name: 'San Carlos Alzatate' },
   ];
+  today: Date = new Date();
+  pipe = new DatePipe('en-US');
+  todayWithPipe;
 
-  constructor(private _localRequestService: RequestlocalService, private router: ActivatedRoute) {
+  constructor(private _localRequestService: RequestlocalService, private router: ActivatedRoute,
+    private _personService: PersonService,
+    private _vehicleService: VehicleService,) {
     this.transportation = new LocalRequestI("", "", "", "", "", "", "", 0, "", [])
   }
 
   ngOnInit(): void {
     this.id_entrada = this.router.snapshot.params['id'];
-    this.loadLocalRequest()
+    this.loadLocalRequest();
+    this.getPerson();
+    this.getVehicles();
+    this.todayWithPipe = this.pipe.transform(Date.now(), 'dd/MM/yyyy')
+  }
+
+  getPerson(){
+    this._personService.getPerson().subscribe(
+      response =>{
+       this.person = response.data;
+        console.log(this.person)
+      }, error =>{
+
+      }
+    )
+  }
+
+  getVehicles(){
+    this._vehicleService.getVehicles().subscribe(
+      response =>{
+        console.log(response)
+        this.vehicles = response.data;
+      }, error =>{
+
+      }
+    )
   }
 
   loadLocalRequest() {
@@ -60,7 +95,7 @@ export class LocalRequestMantComponent implements OnInit {
       plate: localRequestForm.value.plate,
 
       place: localRequestForm.value.place,
-      date: localRequestForm.value.date,
+      date: this.todayWithPipe,
       section: localRequestForm.value.section,
       applicantsName: localRequestForm.value.applicantsName,
       position: localRequestForm.value.position,
@@ -76,7 +111,7 @@ export class LocalRequestMantComponent implements OnInit {
           this.transportation = new LocalRequestI("", "", "", "", "", "", "", 0, "", [])
 
         }, err => {
-
+          console.log(err.error.data)
         }
       )
     } else {

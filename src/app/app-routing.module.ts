@@ -27,6 +27,7 @@ import { UsersComponent } from './components/features/users/users-mant/users.com
 import { FuelVoucherComponent } from './components/pdf´s/fuel-voucher/fuel-voucher.component';
 import { ExteriorRequestPdfComponent } from './components/pdf´s/exterior-request-pdf/exterior-request-pdf.component';
 import { LocalRequestPdfComponent } from './components/pdf´s/local-request-pdf/local-request-pdf.component';
+import { UsersIndexComponent } from './components/features/users/users-index/users-index.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -40,11 +41,14 @@ const routes: Routes = [
   { path: 'localRequest-index', component: LocalRequestIndexComponent },
   { path: 'localRequest/add', component: LocalRequestMantComponent },
   { path: 'localRequest/edit/:id', component: LocalRequestMantComponent },
-  { path: 'localRequest', component: LocalRequestMantComponent },
+
 
   //TODO RUTAS DE SOLICITUD EXTERIOR
-  { path: 'exteriorRequest', component: ExteriorRequestIndexComponent },
-  { path: 'exteriorRequest', component: ExteriorRequestMantComponent },
+
+  { path: 'exteriorRequest-index', component: ExteriorRequestIndexComponent },
+  { path: 'exteriorRequest/add', component: ExteriorRequestMantComponent },
+  { path: 'exteriorRequest/edit/:id', component: ExteriorRequestMantComponent },
+
 
   //TODO RUTAS PERSONA
   { path: 'personform', component: PersonFormComponent },
@@ -52,11 +56,13 @@ const routes: Routes = [
 
   //TODO RUTAS USUARIOS
   { path: 'users', component: UsersComponent },
+  { path: 'users-index', component: UsersIndexComponent },
 
   //TODO RUTAS PDF'S
   { path: 'FuelVoucher', component: FuelVoucherComponent },
   { path: 'ExteriorRequestPDF', component: ExteriorRequestPdfComponent },
   { path: 'LocalRequestPDF', component: LocalRequestPdfComponent },
+
 
   { path: 'transportRequest', component: TransportRequestComponent },
   { path: 'requestList', component: RequestListComponent },

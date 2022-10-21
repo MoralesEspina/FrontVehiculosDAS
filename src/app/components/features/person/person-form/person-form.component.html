@@ -1,96 +1,81 @@
 <div class="wrapper">
   <div class="main">
     <main class="content">
-    <div class="container-fluid">
+      <div class="container-fluid">
         <div class="header">
-            <h1 class="header-title">
-                Registro de Persona
-            </h1>
-            <!--- Migaja de Pan -->
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Dashboard</a></li>
-                  <li class="breadcrumb-item"><a [routerLink]="['/vehicles']"> Vehiculos</a></li>
-                  <li class="breadcrumb-item"><a> Registro de Persona</a></li>
-                </ol>
-            </nav>
-            <!--- Migaja de Pan -->
+          <h1 class="header-title">
+            Registro de Persona
+          </h1>
+          <!--- Migaja de Pan -->
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Dashboard</a></li>
+              <li class="breadcrumb-item"><a [routerLink]="['/vehicles']"> Personas</a></li>
+              <li class="breadcrumb-item"><a> Registro de Persona</a></li>
+            </ol>
+          </nav>
+          <!--- Migaja de Pan -->
         </div>
 
         <div class="col-12">
-        <div class="card">
-          <div class = "card-header">
-            <h5 class = "card-title">Completa el Formulario</h5>
-            <h6 class = "card-subtitle text-muted">Persona</h6>
-          </div>
-          <div class="card-body">
-            <!--- INICIO DE FORMULARIO-->
-            <form #personForm="ngForm"(ngSubmit)="createNewPerson(personForm)">
-
-              <div class="row">
-
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label class = "form-label"><b>VIN</b></label>
-                    <!--- En cada input se debe agregar la referencia al NGModel-->
-
-                    <!--- #NOMBRE="ngModel" name="NOMBRE" [(ngModel)]="VEHICLE.NOMBRE"-->
-                    <input type="text" class="form-control" #vin="ngModel" name="vin" [(ngModel)]="personform.vin"
-                     placeholder="Ingrese el número de id Persona"required>
+          <div class="card">
+            <div class="card-header">
+              <h5 class="card-title">Completa el Formulario</h5>
+              <h6 class="card-subtitle text-muted">Persona</h6>
+            </div>
+            <div class="card-body">
+              <!--- INICIO DE FORMULARIO-->
+              <form #personForm="ngForm" (ngSubmit)="createNewPerson(personForm)">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-label"><b>Nombre completo</b></label>
+                      <input #fullname="ngModel" name="fullname" [(ngModel)]="personform.fullname" type="text"
+                        class="form-control" placeholder="Ingrese el nombre completo" required>
+                    </div>
                   </div>
-                </div>
-
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label class = "form-label"><b>Nombre Completo</b></label>
-                    <input #fullname="ngModel" name="fullname" [(ngModel)]="personform.fullname"
-                    type="text" class="form-control" placeholder="Ingrese nombre completo" required>
-                  </div>
-                </div>
 
                   <div class="col-lg-6">
-                      <div class = "form-group">
-                        <label class = "form-label"><b>Posición</b></label>
-                        <select class="form-control" #type="ngModel" name="type" [(ngModel)]="personform.type"required>
-                          <option value="" disabled>Seleccionar</option>
-                          <option value="{{item.id}}" *ngFor="let item of types">{{item.type_name}}</option>
-                        </select>
-                      </div>
+                    <div class="form-group">
+                      <label class="form-label"><b>Cargo</b></label>
+                      <input #job="ngModel" name="job" [(ngModel)]="personform.job" type="text" class="form-control"
+                        placeholder="Ingrese el cargo" required>
                     </div>
+                  </div>
 
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label class = "form-label"><b>Número de celular</b></label>
-                        <input #pone="ngModel" name="pone" [(ngModel)]="personform.pone"
-                        type="text" class="form-control" placeholder="Ingrese Número de celular" required>
-                      </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-label"><b>Número de telefono</b></label>
+                      <input #phone="ngModel" name="phone" [(ngModel)]="personform.phone" type="text"
+                        class="form-control" placeholder="Ingrese el número de telefono" required>
                     </div>
+                  </div>
 
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label class = "form-label"><b>Númerp de DPI</b></label>
-                        <input #dpi="ngModel" name="dpi" [(ngModel)]="personform.dpi"
-                        type="text" class="form-control" placeholder="Ingrese Número de DPI" required>
-                      </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-label"><b>DPI</b></label>
+                      <input #dpi="ngModel" name="dpi" [(ngModel)]="personform.dpi" type="text" class="form-control"
+                        placeholder="Ingrese número de DPI" required>
                     </div>
+                  </div>
 
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label class = "form-label"><b>Número de NIT</b></label>
-                        <input #nit="ngModel" name="nit" [(ngModel)]="personform.nit"
-                        type="text" class="form-control" placeholder="Ingrese Número de NIT" required>
-                      </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-label"><b>Número de NIT</b></label>
+                      <input #nit="ngModel" name="nit" [(ngModel)]="personform.nit" type="text" class="form-control"
+                        placeholder="Ingrese número de NIT" required>
                     </div>
+                  </div>
 
+                </div>
+                <button type="submit" class="btn btn-primary">Registrar</button>
+
+              </form>
+              <!--- FIN DE FORMULARIO-->
             </div>
-            <button type="submit" class="btn btn-primary" >Registrar</button>
-
-            </form>
-            <!--- FIN DE FORMULARIO-->
           </div>
         </div>
       </div>
-    </div>
-  </main>
-</div>
+    </main>
+  </div>
 </div>

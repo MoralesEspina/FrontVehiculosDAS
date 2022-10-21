@@ -17,7 +17,7 @@ export class PersonService{
     }
 
     getPerson(): Observable<any> {
-      return this._http.get(this.url + 'person', {
+      return this._http.get(this.url + 'persons', {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")
@@ -26,7 +26,7 @@ export class PersonService{
     }
 
     getOnePerson(id): Observable<any> {
-      return this._http.get(this.url + 'person/' + id, {
+      return this._http.get(this.url + 'persons/' + id, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")
@@ -35,7 +35,7 @@ export class PersonService{
     }
 
     createNewPerson(form: PersonI) {
-      return this._http.post(this.url + 'person', form, {
+      return this._http.post(this.url + 'persons', form, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")
@@ -44,7 +44,7 @@ export class PersonService{
     }
 
     updateOnePerson(form: PersonI, id) {
-      return this._http.put(this.url + 'person/' + id, form, {
+      return this._http.put(this.url + 'persons/' + id, form, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")
@@ -53,7 +53,7 @@ export class PersonService{
     }
 
     deleteOnePerson(id){
-      return this._http.delete(this.url + 'person/' + id, {
+      return this._http.delete(this.url + 'persons/' + id, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")

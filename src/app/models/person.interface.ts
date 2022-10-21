@@ -1,9 +1,8 @@
 export class PersonI{
   constructor(
-    public vin:string,
     public fullname:string,
-    public job:string,
-    public pone:string,
+    public job:number,
+    public phone:string,
     public dpi:string,
     public nit:string,
   )

@@ -16,11 +16,31 @@ export class UsersService {
   createNewUser(form: UserI) {
     return this._http.post(this.url + 'auth/register', form, {
       headers: new HttpHeaders({
-        'Content-Type':'application/json',
+        'Content-Type': 'application/json',
         //'x-access-token': '' + localStorage.getItem("Token")
       })
     })
   }
+  getUsers(): Observable<any> {
+    return this._http.get(this.url + 'auth/users', {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        //'x-access-token': '' + localStorage.getItem("Token")
+      })
+    })
+  }
+
+  // deleteOneUser(id){
+  //   return this._http.delete(this.url + 'user/' + id, {
+  //     headers: new HttpHeaders({
+  //       'Content-Type':'application/json',
+  //       //'x-access-token': '' + localStorage.getItem("Token")
+  //     })
+  //   })
+  // }
+
+
+
 
 
 }
