@@ -38,6 +38,7 @@ import { UsersIndexComponent } from './components/features/users/users-index/use
 import { FuelVoucherComponent } from './components/pdf´s/fuel-voucher/fuel-voucher.component';
 import { PersonFormComponent } from './components/features/person/person-form/person-form.component';
 import { ExteriorRequestPdfComponent } from './components/pdf´s/exterior-request-pdf/exterior-request-pdf.component';
+import { LocalRequestPdfComponent } from './components/pdf´s/local-request-pdf/local-request-pdf.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { ExteriorRequestPdfComponent } from './components/pdf´s/exterior-reques
     ExteriorRequestIndexComponent,
     ExteriorRequestMantComponent,
     PersonFormComponent,
-    ExteriorRequestPdfComponent
+    ExteriorRequestPdfComponent,
+    LocalRequestPdfComponent
 
   ],
   imports: [

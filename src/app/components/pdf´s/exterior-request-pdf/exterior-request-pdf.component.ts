@@ -37,6 +37,7 @@ export class ExteriorRequestPdfComponent implements OnInit {
       }
     )
   }
+
   public downloadPDF(): void {
     const DATA:any = document.getElementById('Data');
     const doc = new jsPDF('landscape', 'pt', 'letter');

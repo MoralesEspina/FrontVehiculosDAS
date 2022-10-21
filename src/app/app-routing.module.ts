@@ -26,6 +26,7 @@ import { UsersComponent } from './components/features/users/users-mant/users.com
 //TODO PDF'S
 import { FuelVoucherComponent } from './components/pdf´s/fuel-voucher/fuel-voucher.component';
 import { ExteriorRequestPdfComponent } from './components/pdf´s/exterior-request-pdf/exterior-request-pdf.component';
+import { LocalRequestPdfComponent } from './components/pdf´s/local-request-pdf/local-request-pdf.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -55,6 +56,7 @@ const routes: Routes = [
   //TODO RUTAS PDF'S
   { path: 'FuelVoucher', component: FuelVoucherComponent },
   { path: 'ExteriorRequestPDF', component: ExteriorRequestPdfComponent },
+  { path: 'LocalRequestPDF', component: LocalRequestPdfComponent },
 
   { path: 'transportRequest', component: TransportRequestComponent },
   { path: 'requestList', component: RequestListComponent },
