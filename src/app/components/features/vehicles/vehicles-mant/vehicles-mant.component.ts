@@ -24,14 +24,14 @@ export class VehiclesMantComponent implements OnInit {
   public id_entrada;
   public data_response;
 
-  constructor(private _infoService:InfoService,
-              private _vehicleService:VehicleService,
-              private _route: ActivatedRoute,
-              private _sweetAlertService: SweetAlertService,
-  ){
+  constructor(private _infoService: InfoService,
+    private _vehicleService: VehicleService,
+    private _route: ActivatedRoute,
+    private _sweetAlertService: SweetAlertService,
+  ) {
 
-    this.vehicle = new VehicleI('','','','',0,0,'','');
-    this.data_response = new ResponseI('','')
+    this.vehicle = new VehicleI('', '', '', '', 0, 0, '', '');
+    this.data_response = new ResponseI('', '')
 
   }
 
@@ -97,52 +97,22 @@ export class VehiclesMantComponent implements OnInit {
       if (vehicleForm.valid) {
         this._vehicleService.updateOneVehicle(vehicle, this.id_entrada).subscribe(
           data => {
-
             this._sweetAlertService.createAndUpdate('Editado correctamente');
-
           },
           error => {
             this.data_response = error;
             if (this.data_response.status == 403) {
               this._sweetAlertService.deleteOneError('Parece que ingresaste mal un campo', this.data_response.error.data[0].msg);
-            }else if (this.data_response.status == 500) {
+            } else if (this.data_response.status == 500) {
               this._sweetAlertService.error('Parece que algo salio mal');
             }
           })
       } else {
-            this._sweetAlertService.warning('Complete correctamente el formulario');
+        this._sweetAlertService.warning('Complete correctamente el formulario');
       }
     } else {
       this.editing = false;
       const vehicle: VehicleI = {
-
-      vin: vehicleForm.value.vin,
-      plate: vehicleForm.value.plate,
-      type: vehicleForm.value.type,
-      brand: vehicleForm.value.brand,
-      model: vehicleForm.value.model,
-      km: vehicleForm.value.km,
-      gas: vehicleForm.value.gas,
-      status: vehicleForm.value.status,
-    }
-    if (vehicleForm.valid) {
-      this._vehicleService.createNewVehicle(vehicle).subscribe(
-        response => {
-          this._sweetAlertService.createAndUpdate('Se registro el vehiculo correctamente');
-          this.vehicle = new VehicleI('','','','',0,0,'','');
-        }, error => {
-          this.data_response = error;
-          console.log(this.data_response)
-          if (this.data_response.status == 403) {
-            this._sweetAlertService.deleteOneError('Parece que ingresaste mal un campo', this.data_response.error.data[0].msg);
-          }else if (this.data_response.status == 500) {
-            this._sweetAlertService.error('Parece que algo salio mal');
-          }
-        }
-      );
-    } else {
-      this._sweetAlertService.warning('Complete correctamente el formulario');
-
         vin: vehicleForm.value.vin,
         plate: vehicleForm.value.plate,
         type: vehicleForm.value.type,
@@ -152,20 +122,22 @@ export class VehiclesMantComponent implements OnInit {
         gas: vehicleForm.value.gas,
         status: vehicleForm.value.status,
       }
-
       if (vehicleForm.valid) {
         this._vehicleService.createNewVehicle(vehicle).subscribe(
           response => {
-            console.log("Se registro el vehiculo correctamente");
-            this.vehicle = new VehicleI('', '', '', '', 0, 0, '', 0);
+            this._sweetAlertService.createAndUpdate('Se registro el vehiculo correctamente');
+            this.vehicle = new VehicleI('', '', '', '', 0, 0, '', '');
           }, error => {
-            console.log(error.error.data)
+            this.data_response = error;
+            console.log(this.data_response)
+            if (this.data_response.status == 403) {
+              this._sweetAlertService.deleteOneError('Parece que ingresaste mal un campo', this.data_response.error.data[0].msg);
+            } else if (this.data_response.status == 500) {
+              this._sweetAlertService.error('Parece que algo salio mal');
+            }
           }
         );
-      } else {
-        console.log("Complete Correctamente el Formulario");
       }
-
     }
   }
 }
