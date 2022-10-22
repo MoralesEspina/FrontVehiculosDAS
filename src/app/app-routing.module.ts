@@ -41,12 +41,14 @@ const routes: Routes = [
   { path: 'localRequest-index', component: LocalRequestIndexComponent },
   { path: 'localRequest/add', component: LocalRequestMantComponent },
   { path: 'localRequest/edit/:id', component: LocalRequestMantComponent },
+  { path: 'localRequest/pdf/:id', component: LocalRequestPdfComponent },
 
 
   //TODO RUTAS DE SOLICITUD EXTERIOR
   { path: 'exteriorRequest-index', component: ExteriorRequestIndexComponent },
   { path: 'exteriorRequest/add', component: ExteriorRequestMantComponent },
   { path: 'exteriorRequest/edit/:id', component: ExteriorRequestMantComponent },
+  { path: 'exteriorRequest/pdf/:id', component: ExteriorRequestPdfComponent },
 
 
   //TODO RUTAS PERSONA

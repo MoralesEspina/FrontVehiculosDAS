@@ -185,7 +185,7 @@
                         <td style="text-align: center;">{{detailrequest.village | uppercase}}</td>
                         <td style="text-align: center;">{{detailrequest.dateOf | date: 'd MMM y' | uppercase}}</td>
                         <td style="text-align: center;">{{detailrequest.dateTo | date: 'd MMM y' | uppercase}}</td>
-                        <td style="text-align: center;">{{detailrequest.hour}}</td>
+                        <td style="text-align: center;">{{detailrequest.hour | date: 'h:mm a'}}</td>
                       </tbody>
                     </table>
                   </div>
@@ -271,6 +271,9 @@
                   </div>
                   <div class="text-center" *ngIf="editing == true" class="col-lg-3">
                     <button type="submit" class="btn btn-danger">Denegar</button>
+                  </div>
+                  <div class="text-center" *ngIf="editing == true" class="col-lg-3">
+                    <button type="button" class="btn btn-primary" [routerLink]="['/exteriorRequest/pdf/',id_entrada]">Ver PDF</button>
                   </div>
                 </div>
 

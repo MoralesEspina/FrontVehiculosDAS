@@ -233,8 +233,10 @@
                   <div class="text-center" *ngIf="editing == true" class="col-lg-3">
                     <button type="submit" class="btn btn-danger">Denegar</button>
                   </div>
+                  <div class="text-center" *ngIf="editing == true" class="col-lg-3">
+                    <button type="button" class="btn btn-primary" [routerLink]="['/localRequest/pdf/',id_entrada]">Ver PDF</button>
+                  </div>
                 </div>
-
               </form>
               <!--- FIN DE FORMULARIO-->
             </div>
