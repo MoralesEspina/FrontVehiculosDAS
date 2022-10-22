@@ -13,6 +13,15 @@ export class UsersService {
     this.url = Global.url;
   }
 
+  login(form: UserI) {
+    return this._http.post(this.url + 'auth/login', form, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        //'x-access-token': '' + localStorage.getItem("Token")
+      })
+    })
+  }
+
   createNewUser(form: UserI) {
     return this._http.post(this.url + 'auth/register', form, {
       headers: new HttpHeaders({
@@ -21,6 +30,7 @@ export class UsersService {
       })
     })
   }
+
   getUsers(): Observable<any> {
     return this._http.get(this.url + 'auth/users', {
       headers: new HttpHeaders({
@@ -29,6 +39,7 @@ export class UsersService {
       })
     })
   }
+
   getOneUser(id): Observable<any> {
     return this._http.get(this.url + 'auth/user/'+id, {
       headers: new HttpHeaders({
