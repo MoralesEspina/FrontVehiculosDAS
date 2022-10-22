@@ -7,7 +7,7 @@ export class VehicleI{
     public model:number,
     public km:number,
     public gas:string,
-    public status:number,
+    public status:string,
   )
   {
 

@@ -25,7 +25,7 @@ export class VehiclesMantComponent implements OnInit {
               private _route: ActivatedRoute
   ){
 
-    this.vehicle = new VehicleI('','','','',0,0,'',0);
+    this.vehicle = new VehicleI('','','','',0,0,'','');
   }
 
   ngOnInit(): void {
@@ -115,7 +115,7 @@ export class VehiclesMantComponent implements OnInit {
       this._vehicleService.createNewVehicle(vehicle).subscribe(
         response => {
           console.log("Se registro el vehiculo correctamente");
-          this.vehicle = new VehicleI('','','','',0,0,'',0);
+          this.vehicle = new VehicleI('','','','',0,0,'','');
         }, error => {
           console.log(error.error.data)
         }

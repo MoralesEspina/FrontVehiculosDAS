@@ -44,7 +44,6 @@ const routes: Routes = [
 
 
   //TODO RUTAS DE SOLICITUD EXTERIOR
-
   { path: 'exteriorRequest-index', component: ExteriorRequestIndexComponent },
   { path: 'exteriorRequest/add', component: ExteriorRequestMantComponent },
   { path: 'exteriorRequest/edit/:id', component: ExteriorRequestMantComponent },
