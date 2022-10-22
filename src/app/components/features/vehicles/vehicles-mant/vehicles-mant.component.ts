@@ -3,6 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { VehicleI } from 'src/app/models/vehicle.interface';
 import { InfoService } from 'src/app/services/info.service';
 import { VehicleService } from 'src/app/services/vehicle.service';
+import { SweetAlertService } from 'src/app/services/sweetAlert.service';
+import { ResponseI } from 'src/app/models/response.interface';
+import { borderRightStyle } from 'html2canvas/dist/types/css/property-descriptors/border-style';
 
 @Component({
   selector: 'app-vehicles',
@@ -19,13 +22,16 @@ export class VehiclesMantComponent implements OnInit {
   public type_status;
   public editing: boolean = false;
   public id_entrada;
+  public data_response;
 
   constructor(private _infoService:InfoService,
               private _vehicleService:VehicleService,
-              private _route: ActivatedRoute
+              private _route: ActivatedRoute,
+              private _sweetAlertService: SweetAlertService,
   ){
 
     this.vehicle = new VehicleI('','','','',0,0,'','');
+    this.data_response = new ResponseI('','')
   }
 
   ngOnInit(): void {
@@ -90,13 +96,18 @@ export class VehiclesMantComponent implements OnInit {
       if (vehicleForm.valid) {
         this._vehicleService.updateOneVehicle(vehicle, this.id_entrada).subscribe(
           data => {
-           console.log("Vehiculo actualizado correctamente") ;
+            this._sweetAlertService.createAndUpdate('Editado correctamente');
           },
           error => {
-            console.log(error.error.data)
+            this.data_response = error;
+            if (this.data_response.status == 403) {
+              this._sweetAlertService.deleteOneError('Parece que ingresaste mal un campo', this.data_response.error.data[0].msg);
+            }else if (this.data_response.status == 500) {
+              this._sweetAlertService.error('Parece que algo salio mal');
+            }
           })
       } else {
-        console.log('Complete Correctamente el Formulario');
+            this._sweetAlertService.warning('Complete correctamente el formulario');
       }
     } else {
       this.editing = false;
@@ -110,18 +121,23 @@ export class VehiclesMantComponent implements OnInit {
       gas: vehicleForm.value.gas,
       status: vehicleForm.value.status,
     }
-    console.log("Se registro el vehiculo correctamente");
     if (vehicleForm.valid) {
       this._vehicleService.createNewVehicle(vehicle).subscribe(
         response => {
-          console.log("Se registro el vehiculo correctamente");
+          this._sweetAlertService.createAndUpdate('Se registro el vehiculo correctamente');
           this.vehicle = new VehicleI('','','','',0,0,'','');
         }, error => {
-          console.log(error.error.data)
+          this.data_response = error;
+          console.log(this.data_response)
+          if (this.data_response.status == 403) {
+            this._sweetAlertService.deleteOneError('Parece que ingresaste mal un campo', this.data_response.error.data[0].msg);
+          }else if (this.data_response.status == 500) {
+            this._sweetAlertService.error('Parece que algo salio mal');
+          }
         }
       );
     } else {
-        console.log("Complete Correctamente el Formulario");
+      this._sweetAlertService.warning('Complete correctamente el formulario');
     }
   }
 }

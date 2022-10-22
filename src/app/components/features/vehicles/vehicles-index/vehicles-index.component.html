@@ -64,13 +64,13 @@
                     <td style="text-align: center;">{{item.model}}</td>
                     <td style="text-align: center;">
                       <div class="btn-group">
-                        <button type="button" class="btn mb-1 btn-secondary dropdown-toggle"
+                        <button type="button" class="btn mb-1 btn-primary dropdown-toggle"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-cog"></i>
                         </button>
                         <div class="dropdown-menu">
-                          <a class= "dropdown-item" [routerLink]="['/vehicles/edit/',item.vin]">Editar Vehiculo</a>
-                          <a class= "dropdown-item"  (click)="deleteVehicle(item.vin)" >Eliminar Vehiculo</a>
+                          <a class= "dropdown-item" [routerLink]="['/vehicles/edit/',item.vin]">Editar vehiculo</a>
+                          <a class= "dropdown-item"  (click)="deleteVehicle(item.vin)" >Eliminar vehiculo</a>
                         </div>
                       </div>
                     </td>
