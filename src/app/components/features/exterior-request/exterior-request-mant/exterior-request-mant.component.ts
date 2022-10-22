@@ -49,7 +49,7 @@ todayWithPipe;
    this.getPerson();
    this.getVehicles();
    this.id_entrada = this.router.snapshot.params['id'];
-   this.loadLocalRequest()
+   this.loadExteriorRequest()
    this.todayWithPipe = this.pipe.transform(Date.now(), 'dd/MM/yyyy')
   }
 
@@ -95,7 +95,7 @@ todayWithPipe;
     )
   }
 
-  loadLocalRequest() {
+  loadExteriorRequest() {
     if (this.id_entrada) {
       this.editing = true
       this._exteriorRoutesService.getOneRequestExterior(this.id_entrada).subscribe(

@@ -200,7 +200,7 @@
                       <tbody *ngFor="let detailrequest of details">
                         <td style="text-align: center;">{{detailrequest.dateOf | date: 'd MMM y' | uppercase}}</td>
                         <td style="text-align: center;">{{detailrequest.dateTo | date: 'd MMM y' | uppercase}}</td>
-                        <td style="text-align: center;">{{detailrequest.schedule}}</td>
+                        <td style="text-align: center;" > {{detailrequest.schedule | date: 'h:mm a'}}</td>
                         <td style="text-align: center;">{{detailrequest.destiny | uppercase}}</td>
                         <td style="text-align: center;">{{detailrequest.peopleNumber}}</td>
                         <td style="text-align: center;">{{detailrequest.comission}}</td>

@@ -1,21 +1,16 @@
 <div class="wrapper">
     <div class="main">
-      <nav class="navbar navbar-expand navbar-theme">
-        <a class="sidebar-toggle d-flex mr-2">
-          <i class="hamburger align-self-center"></i>
-        </a>
-      </nav>
       <main class="content">
         <div class="container-fluid">
           <div class="header">
             <h1 class="header-title">
-                Transporte Exterior
+              Solicitudes de transporte exterior
             </h1>
             <!--- Migaja de Pan -->
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Dashboard</a></li>
-                <li class="breadcrumb-item"><a [routerLink]="['/exteriorRequest-index']"> Transporte Exterior</a></li>
+                <li class="breadcrumb-item"><a>Solicitudes de transporte exterior</a></li>
               </ol>
             </nav>
             <!--- Migaja de Pan -->
@@ -28,11 +23,11 @@
                 <div class="card-header">
                   <div class="row">
                     <div class="col-lg-6">
-                      <h5 class="card-title">Opciones de Transporte</h5>
+                      <h5 class="card-title">Crear una nueva solicitud</h5>
                       <div class="btn-group">
-                        <button type="button" class="btn mb-1 btn-primary dropdown-toggle" data-toggle="dropdown"
-                          aria-haspopup="true" aria-expanded="false">
-                          Opciones
+                        <button type="button" class="btn mb-1 btn-primary " data-toggle="dropdown"
+                          aria-haspopup="true" aria-expanded="false"  [routerLink]="['/exteriorRequest/add']">Nueva Solicitud Exterior
+
                         </button>
                         <div class="dropdown-menu" x-placement="bottom-start"
                           style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 31px, 0px);">
@@ -49,34 +44,33 @@
                   <!--- TITULOS DE LA TABLA -->
                   <thead >
                     <tr>
+                      <th style="text-align: center;">No. solicitud</th>
                       <th style="text-align: center;">Unidad Solicitante</th>
+                      <th style="text-align: center;">Destino</th>
                       <th style="text-align: center;">Responsable de Comision</th>
                       <th style="text-align: center;">Fecha</th>
                       <th style="text-align: center;">Duracion en Dias</th>
                       <th style="text-align: center;">Celular de Contacto</th>
-                      <th style="text-align: center;">Opciones</th>
+                      <th style="text-align: center;">Aceptar/Denegar</th>
                     </tr>
                   </thead>
                   <!--- TITULOS DE LA TABLA -->
 
                   <!--- CUERPO DE LA TABLA -->
                   <tbody *ngFor="let item of exteriorRequest | paginate: { itemsPerPage: 15, currentPage: p }">
+                    <td style="text-align: center;">{{item.id}}</td>
                       <td style="text-align: center;">{{item.requesting_unit}}</td>
+                      <td style="text-align: center;"></td>
                       <td style="text-align: center;">{{item.commission_manager}}</td>
                       <td style="text-align: center;">{{item.date_request | date: 'd MMM y' | uppercase }}</td>
                       <td style="text-align: center;">{{item.duration_days}}</td>
                       <td style="text-align: center;">{{item.phoneNumber}}</td>
-
                       <td style="text-align: center;">
                         <div class="btn-group">
-                          <button type="button" class="btn mb-1 btn-secondary dropdown-toggle"
-                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fas fa-cog"></i>
+                          <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false"
+                            [routerLink]="['/exteriorRequest/edit/',item.id]">
+                            <i class="fas fa-eye"></i>
                           </button>
-                          <div class="dropdown-menu">
-                            <a class= "dropdown-item" >Editar Vehiculo</a>
-                            <a class= "dropdown-item" >Eliminar Vehiculo</a>
-                          </div>
                         </div>
                       </td>
                   </tbody>

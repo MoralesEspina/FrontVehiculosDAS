@@ -43,7 +43,7 @@ export class PersonTableComponent implements OnInit {
   }
 
 
-  delePerson(id){
+  deletePerson(id){
     Swal.fire({
       title: 'Estas seguro?',
       text: "No podras revertir esta acción!",
