@@ -20,7 +20,7 @@ export class VehicleService {
       return this._http.get(this.url + 'vehicles', {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
-          //'x-access-token': '' + localStorage.getItem("Token")
+          //'Authorization:': 'Bearer' + localStorage.getItem("Token")
         })
       })
     }
