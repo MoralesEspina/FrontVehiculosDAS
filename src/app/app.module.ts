@@ -39,6 +39,7 @@ import { FuelVoucherComponent } from './components/pdf´s/fuel-voucher/fuel-vouc
 import { PersonFormComponent } from './components/features/person/person-form/person-form.component';
 import { ExteriorRequestPdfComponent } from './components/pdf´s/exterior-request-pdf/exterior-request-pdf.component';
 import { LocalRequestPdfComponent } from './components/pdf´s/local-request-pdf/local-request-pdf.component';
+import { SublevelMenuComponent } from './components/sidenav/sublevel-menu.component';
 import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
@@ -67,8 +68,8 @@ import { LoginComponent } from './components/login/login.component';
     PersonFormComponent,
     ExteriorRequestPdfComponent,
     LocalRequestPdfComponent,
+    SublevelMenuComponent,
     LoginComponent
-
   ],
   imports: [
     BrowserModule,
