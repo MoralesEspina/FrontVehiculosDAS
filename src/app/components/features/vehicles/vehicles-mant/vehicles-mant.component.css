@@ -3,5 +3,15 @@
 }
 
 .breadcrumb{
+  margin-bottom: -30px;
+}
+
+.btn{
   margin: 0 auto;
+
+ }
+
+
+.wrapper{
+  margin-top: -50px;
 }

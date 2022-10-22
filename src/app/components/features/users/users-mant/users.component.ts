@@ -17,7 +17,7 @@ export class UsersComponent implements OnInit {
   //TODO ARRIBA DEL CONSTRUCTOR SE DECLARAN VARIABLES
   //TODO DECLARAMOS LA DEL NG MODEL LE COLOCAMOS COMO SE LLAMA NUESTRO COMPONENTE
   public user;
-  public types;
+  public rols;
   public type_status;
   public editing: boolean = false;
   public id_entrada;
@@ -48,7 +48,7 @@ export class UsersComponent implements OnInit {
   getRols() {
     this._infoService.getRols().subscribe(
       response => {
-        this.types = response.data;
+        this.rols = response.data;
       }, error => {
       }
     )

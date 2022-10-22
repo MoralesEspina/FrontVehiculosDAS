@@ -6,6 +6,21 @@
   .col-lg-10{
     margin: 0 auto;
   }
+
+
   .wrapper{
-    margin: 0 auto;
+    margin-top: -50px;
   }
+
+  .breadcrumb{
+    margin-bottom: -70px;
+  }
+
+  .col-9{
+    margin:auto;
+  }
+
+   .btn{
+    margin: 0 auto;
+
+   }
