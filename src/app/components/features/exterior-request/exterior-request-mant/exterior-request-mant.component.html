@@ -3,7 +3,7 @@
     <main class="content">
       <div class="container-fluid">
         <div class="header">
-          <div class="col-lg-10">
+          <div class="col-9">
             <h1 class="header-title">
               Registro de Solicitud de Transporte Exterior
             </h1>
@@ -11,7 +11,8 @@
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Dashboard</a></li>
-                <li class="breadcrumb-item"><a [routerLink]="['/exteriorRequest-index']"> Lista de Solicitudes Exteriores</a></li>
+                <li class="breadcrumb-item"><a [routerLink]="['/exteriorRequest-index']"> Lista de Solicitudes
+                    Exteriores</a></li>
                 <li class="breadcrumb-item"><a> Solicitud de Transporte Exterior</a></li>
               </ol>
             </nav>
@@ -19,7 +20,7 @@
           </div>
         </div>
 
-        <div class="col-lg-10">
+        <div class="col-9">
           <div class="card">
             <div class="card-header">
               <h5 class="card-title">Completa el Formulario</h5>
@@ -184,7 +185,7 @@
                         <td style="text-align: center;">{{detailrequest.village | uppercase}}</td>
                         <td style="text-align: center;">{{detailrequest.dateOf | date: 'd MMM y' | uppercase}}</td>
                         <td style="text-align: center;">{{detailrequest.dateTo | date: 'd MMM y' | uppercase}}</td>
-                        <td style="text-align: center;">{{detailrequest.hour}}</td>
+                        <td style="text-align: center;">{{detailrequest.hour | date: 'h:mm a'}}</td>
                       </tbody>
                     </table>
                   </div>
@@ -270,6 +271,9 @@
                   </div>
                   <div class="text-center" *ngIf="editing == true" class="col-lg-3">
                     <button type="submit" class="btn btn-danger">Denegar</button>
+                  </div>
+                  <div class="text-center" *ngIf="editing == true" class="col-lg-3">
+                    <button type="button" class="btn btn-primary" [routerLink]="['/exteriorRequest/pdf/',id_entrada]">Ver PDF</button>
                   </div>
                 </div>
 

@@ -90,7 +90,6 @@ export class PersonFormComponent implements OnInit {
         dpi: personForm.value.dpi,
         nit: personForm.value.nit,
       }
-      console.log("Se creo la persona correctamente");
       if (personForm.valid) {
         this._personService.createNewPerson(personform).subscribe(
           response => {

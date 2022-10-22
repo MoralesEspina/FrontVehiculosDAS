@@ -4,6 +4,7 @@ import html2canvas from 'html2canvas';
 import { RequestlocalService } from 'src/app/services/requestLocal.service';
 import { LocalRequestI } from 'src/app/models/localRequest.interface';
 import { DetailLocalRequestI } from 'src/app/models/detailLocalRequest.interface';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-local-request-pdf',
@@ -15,10 +16,12 @@ export class LocalRequestPdfComponent implements OnInit {
   public request;
   public detailRequest;
   public status:boolean = false;
-
-  constructor(private _localRequestService:RequestlocalService) {
+  public id_entrada;
+  constructor(  private _localRequestService:RequestlocalService,
+                private router: ActivatedRoute) {
     this.request = new LocalRequestI('','','','','','','',0,'',[])
     this.detailRequest = new DetailLocalRequestI('','','','',0,'')
+    this.id_entrada = this.router.snapshot.params['id'];
   }
 
   ngOnInit(): void {
@@ -26,7 +29,7 @@ export class LocalRequestPdfComponent implements OnInit {
   }
 
   getOneLocalRequest(){
-    this._localRequestService.getOneRequestLocal(1).subscribe(
+    this._localRequestService.getOneRequestLocal(this.id_entrada).subscribe(
       response =>{
         this.request = response.data.request[0];
         this.detailRequest = response.data.detailRequest;
@@ -59,7 +62,7 @@ export class LocalRequestPdfComponent implements OnInit {
       doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
       return doc;
     }).then((docResult) => {
-      docResult.save(`${new Date().toISOString()}_tutorial.pdf`);
+      docResult.save('Solicitud_Local_'+this.id_entrada);
     });
   }
 

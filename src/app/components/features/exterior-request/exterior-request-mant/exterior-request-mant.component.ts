@@ -15,42 +15,42 @@ import { DatePipe } from '@angular/common';
 })
 export class ExteriorRequestMantComponent implements OnInit {
 
-public exteriorRequest;
-public departments;
-public Onemunicipality;
-public person;
-public vehicles;
-public editing: boolean = false;
-public id_entrada;
-detailrequest: any = {};
-details: any[] = [];
-provide_fue = [
-  { id: 0, name: 'Si' },
-  { id: 1, name: 'No' },
-];
+  public exteriorRequest;
+  public departments;
+  public Onemunicipality;
+  public person;
+  public vehicles;
+  public editing: boolean = false;
+  public id_entrada;
+  detailrequest: any = {};
+  details: any[] = [];
+  provide_fue = [
+    { id: 0, name: 'Si' },
+    { id: 1, name: 'No' },
+  ];
 
-today: Date = new Date();
-pipe = new DatePipe('en-US');
-todayWithPipe;
+  today: Date = new Date();
+  pipe = new DatePipe('en-US');
+  todayWithPipe;
 
 
 
-  constructor(private _infoService:InfoService,
-              private _exteriorRoutesService:ExteriorRequestService,
-              private _personService: PersonService,
-              private _vehicleService: VehicleService,
-              private router: ActivatedRoute) {
-    this.exteriorRequest = new ExteriorRequestI('','','','','','','',0,0,'','','',[]);
+  constructor(private _infoService: InfoService,
+    private _exteriorRoutesService: ExteriorRequestService,
+    private _personService: PersonService,
+    private _vehicleService: VehicleService,
+    private router: ActivatedRoute) {
+    this.exteriorRequest = new ExteriorRequestI('', '', '', '', '', '', '', 0, 0, '', '', '', []);
   }
 
   ngOnInit(): void {
 
-   this.getDepartments();
-   this.getPerson();
-   this.getVehicles();
-   this.id_entrada = this.router.snapshot.params['id'];
-   this.loadExteriorRequest()
-   this.todayWithPipe = this.pipe.transform(Date.now(), 'dd/MM/yyyy')
+    this.getDepartments();
+    this.getPerson();
+    this.getVehicles();
+    this.id_entrada = this.router.snapshot.params['id'];
+    this.loadExteriorRequest()
+    this.todayWithPipe = this.pipe.transform(Date.now(), 'dd/MM/yyyy')
   }
 
   getDepartments() {
@@ -73,23 +73,23 @@ todayWithPipe;
     )
   }
 
-  getPerson(){
+  getPerson() {
     this._personService.getPerson().subscribe(
-      response =>{
-       this.person = response.data;
+      response => {
+        this.person = response.data;
         console.log(this.person)
-      }, error =>{
+      }, error => {
 
       }
     )
   }
 
-  getVehicles(){
+  getVehicles() {
     this._vehicleService.getVehicles().subscribe(
-      response =>{
+      response => {
         console.log(response)
         this.vehicles = response.data;
-      }, error =>{
+      }, error => {
 
       }
     )
@@ -101,7 +101,7 @@ todayWithPipe;
       this._exteriorRoutesService.getOneRequestExterior(this.id_entrada).subscribe(
         response => {
           console.log(response)
-          this.exteriorRequest= response.data.request[0]
+          this.exteriorRequest = response.data.request[0]
           this.details = response.data.detailRequest
         }, err => {
 
@@ -114,11 +114,11 @@ todayWithPipe;
   }
 
 
-  createNewExteriorRequest(ExteriorForm){
+  createNewExteriorRequest(ExteriorForm) {
     const exteriorRequest: ExteriorRequestI = {
       requesting_unit: ExteriorForm.value.requesting_unit,
       commission_manager: ExteriorForm.value.commission_manager,
-      date_request:this.todayWithPipe,
+      date_request: this.todayWithPipe,
       objective_request: ExteriorForm.value.objective_request,
       duration_days: ExteriorForm.value.duration_days,
       phoneNumber: ExteriorForm.value.phoneNumber,
@@ -129,38 +129,35 @@ todayWithPipe;
       pilot_name: ExteriorForm.value.pilot_name,
       reason_rejected: ExteriorForm.value.reason_rejected,
       detail: this.details
-  }
-  if (ExteriorForm.valid) {
-    this._exteriorRoutesService.createNewRequestExterior(exteriorRequest).subscribe(
-      response => {
-        console.log("Se registro la solicitud del vehiculo correctamente");
-        this.exteriorRequest = new ExteriorRequestI('','','','','','','',0,0,'','','',[]);
-      }, error => {
-        console.log(error.error.data)
-      }
-    );
-  } else {
+    }
+    if (ExteriorForm.valid) {
+      this._exteriorRoutesService.createNewRequestExterior(exteriorRequest).subscribe(
+        response => {
+          console.log("Se registro la solicitud del vehiculo correctamente");
+          this.exteriorRequest = new ExteriorRequestI('', '', '', '', '', '', '', 0, 0, '', '', '', []);
+        }, error => {
+          console.log(error.error.data)
+        }
+      );
+    } else {
       console.log("Hubo un error al registro la solicitud del vehiculo");
-  }
-}
-
-createDetailRequest(detailExterioForm) {
-  const datos: DetailExteriorRequestI = {
-    dateOf: detailExterioForm.value.dateOf,
-    dateTo: detailExterioForm.value.dateTo,
-    hour: detailExterioForm.value.hour,
-    department: detailExterioForm.value.department,
-    number_people:detailExterioForm.value.number_people,
-    municipality: detailExterioForm.value.municipality,
-    village:detailExterioForm.value.village,
+    }
   }
 
-  console.log(datos)
-  this.details.push(this.detailrequest);
-  this.detailrequest = {};
+  createDetailRequest(detailExterioForm) {
+    const datos: DetailExteriorRequestI = {
+      dateOf: detailExterioForm.value.dateOf,
+      dateTo: detailExterioForm.value.dateTo,
+      hour: detailExterioForm.value.hour,
+      department: detailExterioForm.value.department,
+      number_people: detailExterioForm.value.number_people,
+      municipality: detailExterioForm.value.municipality,
+      village: detailExterioForm.value.village,
+    }
 
-}
+    console.log(datos)
+    this.details.push(this.detailrequest);
+    this.detailrequest = {};
 
-
-
+  }
 }

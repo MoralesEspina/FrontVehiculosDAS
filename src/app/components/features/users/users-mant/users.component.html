@@ -6,26 +6,23 @@
 
           <div class="col-8">
             <h1 class="header-title">
-              Registro de Usuarios
+              Registro de usuarios
             </h1>
             <!--- Migaja de Pan -->
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Dashboard</a></li>
                 <li class="breadcrumb-item"><a [routerLink]="['/users-index']"> Usuarios</a></li>
-                <li class="breadcrumb-item"><a> Registro de Usuarios</a></li>
+                <li class="breadcrumb-item"><a> Registro de usuarios</a></li>
               </ol>
             </nav>
             <!--- Migaja de Pan -->
           </div>
         </div>
-        <div class="row">
-        <div class="col-3"></div>
-        <div class="col-6">
-          <div class="row">
+        <div class="col-8">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title">Completa el Formulario</h5>
+                <h5 class="card-title">Completa el formulario</h5>
                 <h6 class="card-subtitle text-muted">Usuarios</h6>
               </div>
               <div class="card-body">
@@ -38,7 +35,7 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-label"><b>Persona</b></label>
-                        <select class="form-control" #person="ngModel" name="person" [(ngModel)]="user.uuidPerson" required [disabled]="editing==true">
+                        <select class="form-control" #person="ngModel" name="uuidPerson" [(ngModel)]="user.uuidPerson" required [disabled]="editing==true">
                           <option value="" disabled>Seleccionar</option>
                           <option value="{{item.uuid}}" *ngFor="let item of persons">{{item.fullname}}</option>
                         </select>
@@ -47,7 +44,7 @@
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-label"><b>Nombre de Usuario</b></label>
+                        <label class="form-label"><b>Nombre de usuario</b></label>
                         <input type="text" class="form-control" #username="ngModel" name="username"
                           [(ngModel)]="user.username" placeholder="Ingrese el Nombre de Usuario" required>
                       </div>
@@ -65,9 +62,9 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-label"><b>Rol</b></label>
-                        <select class="form-control" #rol="ngModel" name="rol" [(ngModel)]="user.rol_id" required>
+                        <select class="form-control" #rol="ngModel" name="rol_id" [(ngModel)]="user.rol_id" required>
                           <option value="" disabled>Seleccionar</option>
-                          <option value="{{item.idrol}}" *ngFor="let item of types">{{item.rol}}</option>
+                          <option value="{{item.idrol}}" *ngFor="let item of rols">{{item.rol}}</option>
                         </select>
                       </div>
                     </div>
@@ -79,8 +76,7 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
+
     </main>
   </div>
 </div>

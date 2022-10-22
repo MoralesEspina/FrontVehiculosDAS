@@ -4,6 +4,7 @@ import html2canvas from 'html2canvas';
 import { ExteriorRequestService } from 'src/app/services/exteriorRequest.service';
 import { ExteriorRequestI } from 'src/app/models/exteriorRequest.interface';
 import { DetailExteriorRequestI } from 'src/app/models/detailExteriorRequest.interface';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -18,9 +19,12 @@ export class ExteriorRequestPdfComponent implements OnInit {
   public fuel:boolean = false;
   public viatic:boolean = false;
   public status:boolean = false;
-  constructor(private _exteriorRequestService:ExteriorRequestService,) {
+  public id_entrada;
+  constructor(  private _exteriorRequestService:ExteriorRequestService,
+                private router: ActivatedRoute) {
     this.request = new ExteriorRequestI('','','','','','','',0,0,'','','')
     this.detailRequest = new DetailExteriorRequestI('','','','','','','')
+    this.id_entrada = this.router.snapshot.params['id'];
   }
 
   ngOnInit(): void {
@@ -28,7 +32,7 @@ export class ExteriorRequestPdfComponent implements OnInit {
   }
 
   getOneExteriorRequest(){
-    this._exteriorRequestService.getOneRequestExterior(1).subscribe(
+    this._exteriorRequestService.getOneRequestExterior(this.id_entrada).subscribe(
       response =>{
         this.request = response.data.request[0];
         this.detailRequest = response.data.detailRequest;
@@ -58,23 +62,7 @@ export class ExteriorRequestPdfComponent implements OnInit {
       doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
       return doc;
     }).then((docResult) => {
-      docResult.save(`${new Date().toISOString()}_tutorial.pdf`);
+      docResult.save('Solicitud_Exterior_'+this.id_entrada);
     });
   }
-  /*public downloadPDF(){
-    var doc = new jsPDF('l','pt','letter');
-    var margin = 10;
-    var scale = (doc.internal.pageSize.width - margin * 2)/
-    document.body.scrollWidth;
-    doc.html(document.body),{
-      x: margin,
-      y: margin,
-      html2canvas: {
-        scale: scale,
-      },
-      callback: function(doc){
-        doc.output('dataurlnewwindows',{filename: `${new Date().toISOString()}_tutorial.pdf`});
-      }
-    }
-  }*/
 }
