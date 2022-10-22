@@ -21,8 +21,27 @@ export const navabarData: INavbarData[] = [
     icon: 'fal fa-users',
     label: 'Personas'
   },
+  {
+    routeLink: 'exteriorRequest-index',
+    icon: 'fal fa-list',
+    label: 'Lista de solicitudes de transporte exterior'
+  },
+  {
+    routeLink: 'exteriorRequest/add',
+    icon: 'fal fa-list',
+    label: 'Crear solicitud de transporte exterior'
+  },
 
-
+  {
+    routeLink: 'localRequest-index',
+            icon: 'fal fa-list',
+            label: 'Lista de solicitudes de transporte local',
+  },
+  {
+    routeLink: 'localRequest/add',
+    icon: 'fal fa-list',
+    label: 'Crear solicitud de transporte local'
+  },
   {
     routeLink: '',
     icon: 'fal fa-print',
