@@ -1,7 +1,7 @@
 export class PersonI{
   constructor(
     public fullname:string,
-    public job:number,
+    public job:string,
     public phone:string,
     public dpi:string,
     public nit:string,

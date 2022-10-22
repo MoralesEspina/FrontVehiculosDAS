@@ -52,10 +52,13 @@ const routes: Routes = [
   //TODO RUTAS PERSONA
   { path: 'personform', component: PersonFormComponent },
   { path: 'persontable', component: PersonTableComponent },
+  { path: 'personform/edit/:id', component: PersonFormComponent },
 
   //TODO RUTAS USUARIOS
   { path: 'users', component: UsersComponent },
   { path: 'users-index', component: UsersIndexComponent },
+  { path: 'users/edit/:id', component: UsersComponent },
+
 
   //TODO RUTAS PDF'S
   { path: 'FuelVoucher', component: FuelVoucherComponent },

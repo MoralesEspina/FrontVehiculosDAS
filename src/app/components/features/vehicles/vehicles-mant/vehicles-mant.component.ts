@@ -32,6 +32,7 @@ export class VehiclesMantComponent implements OnInit {
 
     this.vehicle = new VehicleI('','','','',0,0,'','');
     this.data_response = new ResponseI('','')
+
   }
 
   ngOnInit(): void {
@@ -39,14 +40,14 @@ export class VehiclesMantComponent implements OnInit {
     this.loadVehicle();
     if (this.id_entrada) {
 
-    }else{
-        this.getTypes();
-        this.getStatus();
+    } else {
+      this.getTypes();
+      this.getStatus();
     }
 
   }
 
-  loadVehicle(){
+  loadVehicle() {
     if (this.id_entrada) {
       this.editing = true;
       this._vehicleService.getOneVehicle(this.id_entrada).subscribe(
@@ -81,7 +82,7 @@ export class VehiclesMantComponent implements OnInit {
     )
   }
 
-  createNewVehicle(vehicleForm){
+  createNewVehicle(vehicleForm) {
     if (this.editing) {
       const vehicle: VehicleI = {
         vin: this.id_entrada,
@@ -96,7 +97,9 @@ export class VehiclesMantComponent implements OnInit {
       if (vehicleForm.valid) {
         this._vehicleService.updateOneVehicle(vehicle, this.id_entrada).subscribe(
           data => {
+
             this._sweetAlertService.createAndUpdate('Editado correctamente');
+
           },
           error => {
             this.data_response = error;
@@ -112,6 +115,7 @@ export class VehiclesMantComponent implements OnInit {
     } else {
       this.editing = false;
       const vehicle: VehicleI = {
+
       vin: vehicleForm.value.vin,
       plate: vehicleForm.value.plate,
       type: vehicleForm.value.type,
@@ -138,7 +142,30 @@ export class VehiclesMantComponent implements OnInit {
       );
     } else {
       this._sweetAlertService.warning('Complete correctamente el formulario');
+
+        vin: vehicleForm.value.vin,
+        plate: vehicleForm.value.plate,
+        type: vehicleForm.value.type,
+        brand: vehicleForm.value.brand,
+        model: vehicleForm.value.model,
+        km: vehicleForm.value.km,
+        gas: vehicleForm.value.gas,
+        status: vehicleForm.value.status,
+      }
+
+      if (vehicleForm.valid) {
+        this._vehicleService.createNewVehicle(vehicle).subscribe(
+          response => {
+            console.log("Se registro el vehiculo correctamente");
+            this.vehicle = new VehicleI('', '', '', '', 0, 0, '', 0);
+          }, error => {
+            console.log(error.error.data)
+          }
+        );
+      } else {
+        console.log("Complete Correctamente el Formulario");
+      }
+
     }
   }
-}
 }
