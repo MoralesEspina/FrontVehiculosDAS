@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SweetAlertService } from 'src/app/services/sweetAlert.service';
 import { VehicleService } from 'src/app/services/vehicle.service';
 import Swal from 'sweetalert2';
 
@@ -11,7 +12,10 @@ export class VehiclesIndexComponent implements OnInit {
 
   public p:number = 1;
   public vehicles;
-  constructor(private _vehicleService: VehicleService,) { }
+  public result;
+  public data_response;
+  constructor(private _vehicleService: VehicleService,
+              private _sweetAlertService: SweetAlertService) { }
 
   ngOnInit(): void {
     this.getVehicles();
@@ -20,10 +24,9 @@ export class VehiclesIndexComponent implements OnInit {
   getVehicles(){
     this._vehicleService.getVehicles().subscribe(
       response =>{
-        console.log(response)
         this.vehicles = response.data;
       }, error =>{
-
+        this._sweetAlertService.error('Parece que algo salio mal :(');
       }
     )
   }
@@ -41,18 +44,11 @@ export class VehiclesIndexComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this._vehicleService.deleteOneVehicle(id).subscribe(data => {
-          Swal.fire(
-            'Eliminado!',
-            'Vehiculo Eliminado con Exito',
-            'success'
-          )
+          this._sweetAlertService.deleteOneConfirmation('Eliminado correctamente');
           this.getVehicles();
         }, error => {
-          Swal.fire({
-            icon: 'error',
-            title: 'No se ha podido eliminar el producto',
-            text: error.error.data,
-          })
+          this._sweetAlertService.deleteOneError('No se pudo eliminar el vehiculo',error.error.data.message);
+          this.getVehicles();
         });
       }
     })

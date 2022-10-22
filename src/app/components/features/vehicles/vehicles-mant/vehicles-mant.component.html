@@ -36,7 +36,7 @@
                     <!--- En cada input se debe agregar la referencia al NGModel-->
                     <!--- #NOMBRE="ngModel" name="NOMBRE" [(ngModel)]="VEHICLE.NOMBRE"-->
                     <input type="text" class="form-control" #vin="ngModel" name="vin" [(ngModel)]="vehicle.vin"
-                     placeholder="Ingrese el número de VIN del Vehiculo"required>
+                     placeholder="Ingrese el número de VIN del vehiculo"required>
                   </div>
                 </div>
 
@@ -44,13 +44,13 @@
                   <div class = "form-group">
                     <label class = "form-label"><b>Placa</b></label>
                     <input #plate="ngModel" name="plate" [(ngModel)]="vehicle.plate"
-                     type="text" class="form-control" placeholder="Ingrese la Placa del Vehiculo" required>
+                     type="text" class="form-control" placeholder="Ingrese la placa del vehiculo" required>
                   </div>
                 </div>
 
                 <div class="col-lg-6">
                   <div class = "form-group">
-                    <label class = "form-label"><b>Tipo de Vehiculo</b></label>
+                    <label class = "form-label"><b>Tipo de vehiculo</b></label>
                     <select class="form-control" #type="ngModel" name="type" [(ngModel)]="vehicle.type"required>
                       <option value="" disabled>Seleccionar</option>
                       <option value="{{item.idvtype}}" *ngFor="let item of types">{{item.type_name}}</option>
@@ -62,7 +62,7 @@
                   <div class = "form-group">
                     <label class = "form-label"><b>Marca</b></label>
                     <input #brand="ngModel" name="brand" [(ngModel)]="vehicle.brand"
-                    type="text" class="form-control" placeholder="Ingrese la Marca del Vehiculo" required>
+                    type="text" class="form-control" placeholder="Ingrese la marca del vehiculo" required>
                   </div>
                 </div>
                 <div class="col-lg-3" >
@@ -81,14 +81,14 @@
                 </div>
                 <div class="col-lg-6" >
                   <div class = "form-group">
-                    <label class = "form-label"><b>Ingrese Tipo de Gasolina</b></label>
+                    <label class = "form-label"><b>Ingrese tipo de gasolina</b></label>
                     <input #gas="ngModel" name="gas" [(ngModel)]="vehicle.gas"
-                    type="text" class="form-control" placeholder="Ingrese Tipo de Gasolina" required>
+                    type="text" class="form-control" placeholder="Ingrese el tipo de gasolina" required>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class = "form-group">
-                    <label class = "form-label"><b>Estatus del Vehiculo</b></label>
+                    <label class = "form-label"><b>Estatus del vehiculo</b></label>
                     <select class="form-control" #status="ngModel" name="status" [(ngModel)]="vehicle.status" required>
                       <option value="" disabled>Seleccionar</option>
                       <option value="{{item.idstatus}}" *ngFor="let item of type_status">{{item.status_name}}</option>
