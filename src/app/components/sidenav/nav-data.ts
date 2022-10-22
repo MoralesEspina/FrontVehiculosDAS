@@ -10,11 +10,6 @@ export const navabarData = [
     label: 'Vehiculos'
   },
   {
-    routeLink:'reportsVehicles',
-    icon: 'fal fa-file-alt',
-    label: 'Reporte de Vehiculos'
-  },
-  {
     routeLink:'users-index',
     icon: 'fal fa-user',
     label: 'Usuarios'
@@ -34,9 +29,5 @@ export const navabarData = [
     icon: 'fal fa-list',
     label: 'Lista de Solicitudes de Transporte Local'
   },
-  {
-    routeLink:'assignVP',
-    icon: 'fal fa-plus',
-    label: 'Asignacion de Vehiculos y Pilotos'
-  }
+
 ]

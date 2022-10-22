@@ -3,6 +3,8 @@
       <main class="content">
         <div class="container-fluid">
           <div class="header">
+
+        <div class="col-11">
             <h1 class="header-title">
               Solicitudes de transporte exterior
             </h1>
@@ -15,24 +17,19 @@
             </nav>
             <!--- Migaja de Pan -->
           </div>
-
+        </div>
           <!---  -->
-          <div class="row">
-            <div class="col-12 col-xl-12">
+         + <div class="col-11">
               <div class="card">
                 <div class="card-header">
                   <div class="row">
                     <div class="col-lg-6">
-                      <h5 class="card-title">Crear una nueva solicitud</h5>
                       <div class="btn-group">
                         <button type="button" class="btn mb-1 btn-primary " data-toggle="dropdown"
-                          aria-haspopup="true" aria-expanded="false"  [routerLink]="['/exteriorRequest/add']">Nueva Solicitud Exterior
+                          aria-haspopup="true" aria-expanded="false"  [routerLink]="['/exteriorRequest/add']">Nueva solicitud exterior
 
                         </button>
-                        <div class="dropdown-menu" x-placement="bottom-start"
-                          style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 31px, 0px);">
-                          <a class="dropdown-item" [routerLink]="['/exteriorRequest/add']">Nueva Solicitud Exterior</a>
-                        </div>
+
                       </div>
                     </div>
                   </div>
@@ -45,12 +42,12 @@
                   <thead >
                     <tr>
                       <th style="text-align: center;">No. solicitud</th>
-                      <th style="text-align: center;">Unidad Solicitante</th>
+                      <th style="text-align: center;">Unidad solicitante</th>
                       <th style="text-align: center;">Destino</th>
-                      <th style="text-align: center;">Responsable de Comision</th>
+                      <th style="text-align: center;">Responsable de comision</th>
                       <th style="text-align: center;">Fecha</th>
-                      <th style="text-align: center;">Duracion en Dias</th>
-                      <th style="text-align: center;">Celular de Contacto</th>
+                      <th style="text-align: center;">Duracion en dias</th>
+                      <th style="text-align: center;">Celular de contacto</th>
                       <th style="text-align: center;">Aceptar/Denegar</th>
                     </tr>
                   </thead>
@@ -78,12 +75,13 @@
                 </table>
                 <!--- TABLA -->
               </div>
+              <pagination-controls (pageChange)="p = $event"
+              nextLabel="Siguiente"
+              previousLabel="Anterior"></pagination-controls>
             </div>
-            <pagination-controls (pageChange)="p = $event"
-            nextLabel="Siguiente"
-            previousLabel="Anterior"></pagination-controls>
+
           </div>
-        </div>
+
       </main>
     </div>
   </div>
