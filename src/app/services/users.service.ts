@@ -29,6 +29,14 @@ export class UsersService {
       })
     })
   }
+  getOneUser(id): Observable<any> {
+    return this._http.get(this.url + 'auth/user/'+id, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        //'x-access-token': '' + localStorage.getItem("Token")
+      })
+    })
+  }
 
   // deleteOneUser(id){
   //   return this._http.delete(this.url + 'user/' + id, {
