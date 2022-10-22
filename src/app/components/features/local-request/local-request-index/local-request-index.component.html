@@ -3,36 +3,34 @@
     <main class="content">
       <div class="container-fluid">
         <div class="header">
+
+          <div class="col-11">
           <h1 class="header-title">
-            Solicitudes de Transporte Local
+            Solicitudes de transporte local
           </h1>
           <!--- Migaja de Pan -->
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Dashboard</a></li>
-              <li class="breadcrumb-item">Viajes de Transporte Local</li>
+              <li class="breadcrumb-item">Solicitudes de transporte local</li>
             </ol>
           </nav>
           <!--- Migaja de Pan -->
         </div>
+      </div>
 
         <!---  -->
-        <div class="row">
-          <div class="col-12 col-xl-12">
+        <div class="col-11">
             <div class="card">
               <div class="card-header">
                 <div class="row">
                   <div class="col-lg-6">
-                    <h5 class="card-title">Opciones de Transporte Local</h5>
                     <div class="btn-group">
-                      <button type="button" class="btn mb-1 btn-primary dropdown-toggle" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        Opciones
+                      <button type="button" class="btn mb-1 btn-primary"
+                        aria-haspopup="true" aria-expanded="false"[routerLink]="['/localRequest/add']">Nueva solicitud local
+
                       </button>
-                      <div class="dropdown-menu" x-placement="bottom-start"
-                        style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 31px, 0px);">
-                        <a class="dropdown-item" [routerLink]="['/localRequest/add']">Registrar</a>
-                      </div>
+
                     </div>
                   </div>
                 </div>
@@ -44,12 +42,12 @@
                 <!--- TITULOS DE LA TABLA -->
                 <thead>
                   <tr>
-                    <th style="text-align: center;">No. Solicitud</th>
-                    <th style="text-align: center;">Unidad Solicitante</th>
+                    <th style="text-align: center;">No. solicitud</th>
+                    <th style="text-align: center;">Unidad solicitante</th>
                     <th style="text-align: center;">Destino</th>
                     <th style="text-align: center;">Solicitante</th>
                     <th style="text-align: center;">Fecha de viaje</th>
-                    <th style="text-align: center;">Celular de Contacto</th>
+                    <th style="text-align: center;">Celular de contacto</th>
                     <th style="text-align: center;">Estado</th>
                     <th style="text-align: center;">Aceptar/Denegar</th>
                   </tr>
@@ -83,7 +81,7 @@
           <pagination-controls (pageChange)="p = $event" nextLabel="Siguiente" previousLabel="Anterior">
           </pagination-controls>
         </div>
-      </div>
+
     </main>
   </div>
 </div>

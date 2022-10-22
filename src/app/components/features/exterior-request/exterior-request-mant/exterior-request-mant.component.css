@@ -13,13 +13,17 @@
   }
 
   .breadcrumb{
-    margin-bottom: -70px;
+    margin-bottom: -30px;
   }
 
   .col-9{
     margin:auto;
   }
 
+  .row{
+    margin:auto;
+    margin-left: auto;
+  }
    .btn{
     margin: 0 auto;
 
