@@ -83,46 +83,38 @@ export class VehiclesMantComponent implements OnInit {
   }
 
   createNewVehicle(vehicleForm) {
+    const vehicle: VehicleI = {
+      vin: this.editing ? this.id_entrada : vehicleForm.value.vin,
+      plate: vehicleForm.value.plate,
+      type: vehicleForm.value.type,
+      brand: vehicleForm.value.brand,
+      model: vehicleForm.value.model,
+      km: vehicleForm.value.km,
+      gas: vehicleForm.value.gas,
+      status: vehicleForm.value.status,
+    }
+
+    if (!vehicleForm.valid) {
+      this._sweetAlertService.warning('Complete correctamente el formulario');
+      return
+    }
+
     if (this.editing) {
-      const vehicle: VehicleI = {
-        vin: this.id_entrada,
-        plate: vehicleForm.value.plate,
-        type: vehicleForm.value.type,
-        brand: vehicleForm.value.brand,
-        model: vehicleForm.value.model,
-        km: vehicleForm.value.km,
-        gas: vehicleForm.value.gas,
-        status: vehicleForm.value.status,
-      }
-      if (vehicleForm.valid) {
-        this._vehicleService.updateOneVehicle(vehicle, this.id_entrada).subscribe(
-          data => {
-            this._sweetAlertService.createAndUpdate('Editado correctamente');
-          },
-          error => {
-            this.data_response = error;
-            if (this.data_response.status == 403) {
-              this._sweetAlertService.deleteOneError('Parece que ingresaste mal un campo', this.data_response.error.data[0].msg);
-            } else if (this.data_response.status == 500) {
-              this._sweetAlertService.error('Parece que algo salio mal');
-            }
-          })
-      } else {
-        this._sweetAlertService.warning('Complete correctamente el formulario');
-      }
+      this._vehicleService.updateOneVehicle(vehicle, this.id_entrada).subscribe(
+        data => {
+          this._sweetAlertService.createAndUpdate('Editado correctamente');
+        },
+        error => {
+          this.data_response = error;
+
+          if (this.data_response.status == 403) {
+            this._sweetAlertService.deleteOneError('Parece que ingresaste mal un campo', this.data_response.error.data[0].msg);
+          } else if (this.data_response.status == 500) {
+            this._sweetAlertService.error('Parece que algo salio mal');
+          }
+        })
     } else {
       this.editing = false;
-      const vehicle: VehicleI = {
-        vin: vehicleForm.value.vin,
-        plate: vehicleForm.value.plate,
-        type: vehicleForm.value.type,
-        brand: vehicleForm.value.brand,
-        model: vehicleForm.value.model,
-        km: vehicleForm.value.km,
-        gas: vehicleForm.value.gas,
-        status: vehicleForm.value.status,
-      }
-      if (vehicleForm.valid) {
         this._vehicleService.createNewVehicle(vehicle).subscribe(
           response => {
             this._sweetAlertService.createAndUpdate('Se registro el vehiculo correctamente');
@@ -131,7 +123,12 @@ export class VehiclesMantComponent implements OnInit {
             this.data_response = error;
             console.log(this.data_response)
             if (this.data_response.status == 403) {
-              this._sweetAlertService.deleteOneError('Parece que ingresaste mal un campo', this.data_response.error.data[0].msg);
+              let message = '';
+              this.data_response.error.data.forEach(element => {
+                message += element.msg + '<br/>'
+                console.log(message)
+              });
+              this._sweetAlertService.deleteOneError('Parece que ingresaste mal un campo', message);
             } else if (this.data_response.status == 500) {
               this._sweetAlertService.error('Parece que algo salio mal');
             }
@@ -139,5 +136,4 @@ export class VehiclesMantComponent implements OnInit {
         );
       }
     }
-  }
 }

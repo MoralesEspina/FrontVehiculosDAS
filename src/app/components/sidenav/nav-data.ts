@@ -44,8 +44,8 @@ export const navabarData: INavbarData[] = [
   },
   {
     routeLink: '',
-    icon: 'fal fa-print',
-    label: 'Solicitudes de Transporte',
+    icon: 'fal fa-user',
+    label: 'Login',
     items: [
 
       {

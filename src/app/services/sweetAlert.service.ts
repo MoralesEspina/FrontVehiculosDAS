@@ -33,7 +33,7 @@ export class SweetAlertService {
     Swal.fire({
       icon: 'error',
       title: titulo,
-      text: error,
+      html: error,
     })
   }
 
