@@ -24,8 +24,35 @@ export class InfoService {
       })
     }
 
-    getStatus(): Observable<any> {
-      return this._http.get(this.url + 'info/status', {
+    getStatusForVehicles(): Observable<any> {
+      return this._http.get(this.url + 'info/vehicles', {
+        headers: new HttpHeaders({
+          'Content-Type':'application/json',
+          //'x-access-token': '' + localStorage.getItem("Token")
+        })
+      })
+    }
+
+    getStatusForPersons(): Observable<any> {
+      return this._http.get(this.url + 'info/persons', {
+        headers: new HttpHeaders({
+          'Content-Type':'application/json',
+          //'x-access-token': '' + localStorage.getItem("Token")
+        })
+      })
+    }
+
+    getStatusForRequest(): Observable<any> {
+      return this._http.get(this.url + 'info/request', {
+        headers: new HttpHeaders({
+          'Content-Type':'application/json',
+          //'x-access-token': '' + localStorage.getItem("Token")
+        })
+      })
+    }
+
+    getStatusForTrips(): Observable<any> {
+      return this._http.get(this.url + 'info/trips', {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")

@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { PersonService } from 'src/app/services/person.service';
 import { InfoService } from 'src/app/services/info.service';
 import { PersonI } from 'src/app/models/person.interface';
+import { SweetAlertService } from 'src/app/services/sweetAlert.service';
+import { ErrorsService } from 'src/app/services/errors.service';
 
 @Component({
   selector: 'app-person-form',
@@ -15,10 +17,14 @@ export class PersonFormComponent implements OnInit {
   public editing: boolean = false;
   public id_entrada;
   public jobs;
+  public data_response;
 
   constructor(private _infoService: InfoService,
-    private _personService: PersonService,
-    private _route: ActivatedRoute) {
+              private _personService: PersonService,
+              private _route: ActivatedRoute,
+              private _sweetAlertService: SweetAlertService,
+              private _errorService:ErrorsService
+              ) {
     this.personform = new PersonI('', '', '', '', '');
   }
 
@@ -60,48 +66,38 @@ export class PersonFormComponent implements OnInit {
 
 
   createNewPerson(personForm) {
-    if (this.editing) {
-      const person: PersonI = {
+    const person: PersonI = {
+      fullname: personForm.value.fullname,
+      job: personForm.value.job,
+      phone: personForm.value.phone,
+      dpi: personForm.value.dpi,
+      nit: personForm.value.nit,
+    }
 
-        fullname: personForm.value.fullname,
-        job: personForm.value.job,
-        phone: personForm.value.phone,
-        dpi: personForm.value.dpi,
-        nit: personForm.value.nit,
-      }
-      if (personForm.valid) {
+    if (!personForm.valid) {
+      this._sweetAlertService.warning('Complete correctamente el formulario');
+      return
+    }
+    if (this.editing) {
         this._personService.updateOnePerson(person, this.id_entrada).subscribe(
           data => {
-            console.log("Persona actualizada correctamente");
+            this._sweetAlertService.createAndUpdate('Editado correctamente');
           },
           error => {
-            console.log(error.error.data)
+            this.data_response = error;
+            this._errorService.error(this.data_response)
           })
-      } else {
-        console.log('Complete Correctamente el Formulario');
-      }
     } else {
       this.editing = false;
-      const personform: PersonI = {
-
-        fullname: personForm.value.fullname,
-        job: personForm.value.job,
-        phone: personForm.value.phone,
-        dpi: personForm.value.dpi,
-        nit: personForm.value.nit,
-      }
-      if (personForm.valid) {
-        this._personService.createNewPerson(personform).subscribe(
+        this._personService.createNewPerson(person).subscribe(
           response => {
-            console.log("Se creo la persona correctamente");
+            this._sweetAlertService.createAndUpdate('Se registro correctamente');
             this.personform = new PersonI('', '', '', '', '');
           }, error => {
-            console.log(error.error.data)
+            this.data_response = error;
+            this._errorService.error(this.data_response);
           }
         );
-      } else {
-        console.log("Complete Correctamente el Formulario");
-      }
     }
   }
 

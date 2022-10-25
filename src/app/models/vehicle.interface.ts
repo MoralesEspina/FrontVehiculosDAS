@@ -4,8 +4,8 @@ export class VehicleI{
     public plate:string,
     public type: string,
     public brand:string,
-    public model:number,
-    public km:number,
+    public model:string,
+    public km:string,
     public gas:string,
     public status:string,
   )

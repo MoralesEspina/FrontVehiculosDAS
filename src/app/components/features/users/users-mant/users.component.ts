@@ -5,6 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { InfoService } from 'src/app/services/info.service';
 import { VehicleService } from 'src/app/services/vehicle.service';
 import { UserI } from 'src/app/models/user.interface';
+import { SweetAlertService } from 'src/app/services/sweetAlert.service';
+import { ErrorsService } from 'src/app/services/errors.service';
 
 @Component({
   selector: 'app-users',
@@ -13,22 +15,22 @@ import { UserI } from 'src/app/models/user.interface';
 })
 export class UsersComponent implements OnInit {
 
-
-  //TODO ARRIBA DEL CONSTRUCTOR SE DECLARAN VARIABLES
-  //TODO DECLARAMOS LA DEL NG MODEL LE COLOCAMOS COMO SE LLAMA NUESTRO COMPONENTE
   public user;
   public rols;
   public type_status;
   public editing: boolean = false;
   public id_entrada;
   public persons;
+  public data_response;
 
-  constructor(private _infoService: InfoService,
+  constructor(
+    private _infoService: InfoService,
     private _UserService: UsersService,
     private _route: ActivatedRoute,
     private _persons: PersonService,
+    private _sweetAlertService: SweetAlertService,
+    private _errorService: ErrorsService
   ) {
-
     this.user = new UserI('', '', '', '');
   }
 
@@ -36,13 +38,10 @@ export class UsersComponent implements OnInit {
     this.id_entrada = this._route.snapshot.params['id'];
     this.loadOneUser();
     if (this.id_entrada) {
-
     } else {
       this.getRols();
       this.getPersons();
-
     }
-
   }
 
   getRols() {
@@ -53,6 +52,7 @@ export class UsersComponent implements OnInit {
       }
     )
   }
+
   getPersons() {
     this._persons.getPerson().subscribe(
       response => {
@@ -61,6 +61,7 @@ export class UsersComponent implements OnInit {
       }
     )
   }
+
   loadOneUser() {
     if (this.id_entrada) {
       this.editing = true;
@@ -78,50 +79,40 @@ export class UsersComponent implements OnInit {
     }
   }
 
-
   createNewUser(userForm) {
+    const user: UserI = {
+      username: userForm.value.username,
+      password: userForm.value.password,
+      rol_id: userForm.value.rol_id,
+      uuidPerson: userForm.value.uuidPerson,
+    }
+
+    if (!userForm) {
+      this._sweetAlertService.warning('Complete correctamente el formulario');
+      return
+    }
+
     if (this.editing) {
-      const user: UserI = {
-        username: userForm.value.username,
-        password: userForm.value.password,
-        rol_id: userForm.value.rol_id,
-        uuidPerson: userForm.value.uuidPerson,
-
-      }
-      // if (userForm.valid) {
-      //   this._UserService.updateOneUser(user, this.id_entrada).subscribe(
-      //     data => {
-      //       console.log("Usuario actualizado correctamente");
-      //     },
-      //     error => {
-      //       console.log(error.error.data)
-      //     })
-      // } else {
-      //   console.log('Complete Correctamente el Formulario');
-      // }
-
-    } else {
-      this.editing = false;
-      const user: UserI = {
-        username: userForm.value.username,
-        password: userForm.value.password,
-        rol_id: userForm.value.rol_id,
-        uuidPerson: userForm.value.uuidPerson,
-
-      }
-      if (userForm.valid) {
-        this._UserService.createNewUser(user).subscribe(
-          response => {
-            console.log("Se registro el Usuario correctamente");
-            this.user = new UserI('', '', '', '');
+        this._UserService.updateOneUser(user, this.id_entrada).subscribe(
+          data => {
+            this._sweetAlertService.createAndUpdate('Editado correctamente');
           },
           error => {
-            console.log(error.error.data)
-          }
-        );
-      } else {
-        console.log("Complete Correctamente el Formulario");
-      }
+          this.data_response = error;
+          this._errorService.error(this.data_response);
+          })
+    } else {
+      this.editing = false;
+      this._UserService.createNewUser(user).subscribe(
+        response => {
+          this._sweetAlertService.createAndUpdate('Se registro correctamente');
+          this.user = new UserI('', '', '', '');
+        },
+        error => {
+          this.data_response = error;
+          this._errorService.error(this.data_response);
+        }
+      );
     }
   }
 }
