@@ -49,6 +49,14 @@ export class UsersService {
     })
   }
 
+  updateOneUser(form: UserI, id) {
+    return this._http.put(this.url + 'auth/user/' + id, form, {
+      headers: new HttpHeaders({
+        'Content-Type':'application/json',
+        //'x-access-token': '' + localStorage.getItem("Token")
+      })
+    })
+  }
   // deleteOneUser(id){
   //   return this._http.delete(this.url + 'user/' + id, {
   //     headers: new HttpHeaders({

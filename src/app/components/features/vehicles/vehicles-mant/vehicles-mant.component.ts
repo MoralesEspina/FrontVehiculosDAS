@@ -5,7 +5,7 @@ import { InfoService } from 'src/app/services/info.service';
 import { VehicleService } from 'src/app/services/vehicle.service';
 import { SweetAlertService } from 'src/app/services/sweetAlert.service';
 import { ResponseI } from 'src/app/models/response.interface';
-import { borderRightStyle } from 'html2canvas/dist/types/css/property-descriptors/border-style';
+import { ErrorsService } from 'src/app/services/errors.service';
 
 @Component({
   selector: 'app-vehicles',
@@ -24,27 +24,25 @@ export class VehiclesMantComponent implements OnInit {
   public id_entrada;
   public data_response;
 
-  constructor(private _infoService: InfoService,
+  constructor(
+    private _infoService: InfoService,
     private _vehicleService: VehicleService,
     private _route: ActivatedRoute,
     private _sweetAlertService: SweetAlertService,
+    private _errorService: ErrorsService
   ) {
-
-    this.vehicle = new VehicleI('', '', '', '', 0, 0, '', '');
+    this.vehicle = new VehicleI('', '', '', '', '', '', '', '');
     this.data_response = new ResponseI('', '')
-
   }
 
   ngOnInit(): void {
     this.id_entrada = this._route.snapshot.params['id'];
     this.loadVehicle();
     if (this.id_entrada) {
-
     } else {
       this.getTypes();
       this.getStatus();
     }
-
   }
 
   loadVehicle() {
@@ -57,6 +55,7 @@ export class VehiclesMantComponent implements OnInit {
           this.getStatus();
         },
         error => {
+          this._sweetAlertService.warning('No se pudieron cargar los datos correctamente');
         }
       )
     } else {
@@ -69,15 +68,17 @@ export class VehiclesMantComponent implements OnInit {
       response => {
         this.types = response.data;
       }, error => {
+        this._sweetAlertService.warning('No se pudieron cargar los tipos correctamente');
       }
     )
   }
 
   getStatus() {
-    this._infoService.getStatus().subscribe(
+    this._infoService.getStatusForVehicles().subscribe(
       response => {
         this.type_status = response.data;
       }, error => {
+        this._sweetAlertService.warning('No se pudieron cargar los status correctamente');
       }
     )
   }
@@ -106,34 +107,19 @@ export class VehiclesMantComponent implements OnInit {
         },
         error => {
           this.data_response = error;
-
-          if (this.data_response.status == 403) {
-            this._sweetAlertService.deleteOneError('Parece que ingresaste mal un campo', this.data_response.error.data[0].msg);
-          } else if (this.data_response.status == 500) {
-            this._sweetAlertService.error('Parece que algo salio mal');
-          }
+          this._errorService.error(this.data_response);
         })
     } else {
       this.editing = false;
-        this._vehicleService.createNewVehicle(vehicle).subscribe(
-          response => {
-            this._sweetAlertService.createAndUpdate('Se registro el vehiculo correctamente');
-            this.vehicle = new VehicleI('', '', '', '', 0, 0, '', '');
-          }, error => {
-            this.data_response = error;
-            console.log(this.data_response)
-            if (this.data_response.status == 403) {
-              let message = '';
-              this.data_response.error.data.forEach(element => {
-                message += element.msg + '<br/>'
-                console.log(message)
-              });
-              this._sweetAlertService.deleteOneError('Parece que ingresaste mal un campo', message);
-            } else if (this.data_response.status == 500) {
-              this._sweetAlertService.error('Parece que algo salio mal');
-            }
-          }
-        );
-      }
+      this._vehicleService.createNewVehicle(vehicle).subscribe(
+        response => {
+          this._sweetAlertService.createAndUpdate('Se registro el vehiculo correctamente');
+          this.vehicle = new VehicleI('', '', '', '', '', '', '', '');
+        }, error => {
+          this.data_response = error;
+          this._errorService.error(this.data_response);
+        }
+      );
     }
+  }
 }
