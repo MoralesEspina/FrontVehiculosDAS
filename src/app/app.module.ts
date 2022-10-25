@@ -36,6 +36,8 @@ import { ExteriorRequestPdfComponent } from './components/pdf´s/exterior-reques
 import { LocalRequestPdfComponent } from './components/pdf´s/local-request-pdf/local-request-pdf.component';
 import { SublevelMenuComponent } from './components/sidenav/sublevel-menu.component';
 import { LoginComponent } from './components/login/login.component';
+//TODO VIAJES
+import { TripsComponent } from './components/features/trips/trips.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,8 @@ import { LoginComponent } from './components/login/login.component';
     ExteriorRequestPdfComponent,
     LocalRequestPdfComponent,
     SublevelMenuComponent,
-    LoginComponent
+    LoginComponent,
+    TripsComponent
   ],
   imports: [
     BrowserModule,

@@ -24,6 +24,8 @@ import { ExteriorRequestPdfComponent } from './components/pdf´s/exterior-reques
 import { LocalRequestPdfComponent } from './components/pdf´s/local-request-pdf/local-request-pdf.component';
 import { UsersIndexComponent } from './components/features/users/users-index/users-index.component';
 import { LoginComponent } from './components/login/login.component';
+//TODO VIAJES
+import { TripsComponent } from './components/features/trips/trips.component';
 
 const routes: Routes = [
   //{ path: '', redirectTo: '', pathMatch: 'full' },
@@ -66,6 +68,10 @@ const routes: Routes = [
 
 
   { path: 'managerView', component: ManagerviewComponent },
+
+  //TODO VIAJES
+  { path: 'viajes', component: TripsComponent },
+
 ];
 
 @NgModule({
