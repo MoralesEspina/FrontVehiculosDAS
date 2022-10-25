@@ -188,13 +188,11 @@
                 </div>
               </form>
               <!--- FIN DE FORMULARIO-->
-              <div class="row">
-                <div class="text-center" class="col-lg-3">
-                  <button (click)="downloadPDF()" class="btn btn-primary" >Imprimir</button>
-                </div>
-                <div class="text-center" class="col-lg-3">
+              <div class="row"  style="margin-top:50px; ">
+                  <button (click)="downloadPDF()" class="btn btn-primary"  style="margin-left:430px; margin-right:20px">Imprimir</button>
+
                   <button type="button" class="btn btn-primary" [routerLink]="['/exteriorRequest/edit/',id_entrada]">Regresar</button>
-                </div>
+
               </div>
             </div>
           </div>
