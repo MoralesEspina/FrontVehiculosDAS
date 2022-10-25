@@ -16,13 +16,9 @@ import { registerLocaleData } from '@angular/common';
 registerLocaleData(localeEs, 'ES')
 //TODO --------------------
 import { ManagerviewComponent } from './components/features/managerview/managerview.component';
-import { RequestListComponent } from './components/features/request-list/request-list.component';
-import { AssignVPComponent } from './components/features/assign-v-p/assign-v-p.component';
 //TODO VEHICULOS
 import { VehiclesMantComponent } from './components/features/vehicles/vehicles-mant/vehicles-mant.component';
 import { VehiclesIndexComponent } from './components/features/vehicles/vehicles-index/vehicles-index.component';
-//TODO REPORTE DE VEHICULOS
-import { ReportsVehiclesComponent } from './components/features/reports-vehicles/reports-vehicles.component';
 //TODO PERSONAS
 import { PersonTableComponent } from './components/features/person/person-table/person-table.component';
 //TODO SOLICITUDES
@@ -30,7 +26,6 @@ import { LocalRequestIndexComponent } from './components/features/local-request/
 import { LocalRequestMantComponent } from './components/features/local-request/local-request-mant/local-request.component';
 import { ExteriorRequestIndexComponent } from './components/features/exterior-request/exterior-request-index/exterior-request-index.component';
 import { ExteriorRequestMantComponent } from './components/features/exterior-request/exterior-request-mant/exterior-request-mant.component';
-import { TransportRequestComponent } from './components/features/transport-request/transport-request.component';
 //TODO USUARIOS
 import { UsersComponent } from './components/features/users/users-mant/users.component';
 import { UsersIndexComponent } from './components/features/users/users-index/users-index.component';
@@ -50,13 +45,9 @@ import { LoginComponent } from './components/login/login.component';
     BodyComponent,
     VehiclesMantComponent,
     VehiclesIndexComponent,
-    ReportsVehiclesComponent,
     PersonTableComponent,
     UsersComponent,
-    TransportRequestComponent,
     ManagerviewComponent,
-    RequestListComponent,
-    AssignVPComponent,
     FuelVoucherComponent,
     UsersIndexComponent,
     ExteriorRequestIndexComponent,

@@ -215,15 +215,20 @@
                 <div class="row">
                   <div class="col-9">
                     <div class="text-center" *ngIf="editing == true">
-                      <button type="submit" class="btn btn-primary">Aceptar</button>
-                      <h1></h1>
+
+                      <button type="submit" class="btn btn-primary" style="margin-right: 30px;">Aceptar</button>
+
                       <button type="submit" class="btn btn-danger">Denegar</button>
+                      <h1></h1>
+                      <div class="row">
+
+                        <button type="button" class="btn btn-primary"
+                          [routerLink]="['/localRequest/pdf/',id_entrada]">Ver PDF</button>
+                      </div>
                     </div>
 
                   </div>
-                  <div class="text-center" *ngIf="editing == true" class="col-lg-3">
-                    <button type="button" class="btn btn-primary" [routerLink]="['/localRequest/pdf/',id_entrada]">Ver PDF</button>
-                  </div>
+
                 </div>
               </form>
               <!--- FIN DE FORMULARIO-->

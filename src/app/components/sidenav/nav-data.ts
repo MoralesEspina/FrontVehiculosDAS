@@ -21,74 +21,50 @@ export const navabarData: INavbarData[] = [
     icon: 'fal fa-users',
     label: 'Personas'
   },
-  {
-    routeLink: 'exteriorRequest-index',
-    icon: 'fal fa-list',
-    label: 'Lista de solicitudes de transporte exterior'
-  },
-  {
-    routeLink: 'exteriorRequest/add',
-    icon: 'fal fa-list',
-    label: 'Crear solicitud de transporte exterior'
-  },
+
+
 
   {
-    routeLink: 'localRequest-index',
-            icon: 'fal fa-list',
-            label: 'Lista de solicitudes de transporte local',
-  },
-  {
-    routeLink: 'localRequest/add',
-    icon: 'fal fa-list',
-    label: 'Crear solicitud de transporte local'
-  },
-  {
-    routeLink: '',
-    icon: 'fal fa-user',
-    label: 'Login',
+    routeLink: 'solicitud local',
+    icon: 'fal fa-route',
+    label: 'Solicitudes de transporte local',
     items: [
-
       {
-        routeLink: '',
+        routeLink: 'localRequest-index',
         icon: 'fal fa-list',
-        label: 'Solicitudes de transporte local',
-        items:[
-          {
-            routeLink: 'localRequest-index',
-            icon: 'fal fa-list',
-            label: 'Lista de solicitudes de transporte local',
+        label: 'Lista de solicitudes de transporte local',
 
-          },
-          {
-            routeLink: 'localRequest',
-            icon: 'fal fa-list',
-            label: 'Crear solicitud de transporte local'
-          },
-        ]
       },
-
       {
-        routeLink: '',
+        routeLink: 'localRequest/add',
         icon: 'fal fa-list',
-        label: 'Solicitudes de transporte exterior',
-        items:[
-          {
-            routeLink: 'exteriorRequest-index',
-            icon: 'fal fa-list',
-            label: 'Lista de solicitudes de transporte exterior'
-          },
-          {
-            routeLink: 'exteriorRequest',
-            icon: 'fal fa-list',
-            label: 'Crear solicitud de transporte exterior'
-          },
-        ]
+        label: 'Crear solicitud de transporte local'
       },
     ]
-
   },
 
+  {
+    routeLink: 'solicitud exterior',
+    icon: 'fal fa-city',
+    label: 'Solicitudes de transporte exterior',
+    items: [
+      {
+        routeLink: 'exteriorRequest-index',
+        icon: 'fal fa-list',
+        label: 'Lista de solicitudes de transporte exterior'
+      },
+      {
+        routeLink: 'exteriorRequest/add',
+        icon: 'fal fa-list',
+        label: 'Crear solicitud de transporte exterior'
+      },
+    ]
+  },
 
-
+  {
+    routeLink: 'viajes',
+    icon: 'fal fa-car',
+    label: 'Viajes'
+  },
 
 ]
