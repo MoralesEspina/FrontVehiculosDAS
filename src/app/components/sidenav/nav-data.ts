@@ -13,57 +13,46 @@ export const navabarData: INavbarData[] = [
   },
   {
     routeLink: 'users-index',
-    icon: 'fal fa-user',
+    icon: 'fal fa-users',
     label: 'Usuarios'
   },
   {
     routeLink: 'persontable',
-    icon: 'fal fa-users',
+    icon: 'fas  fa-user-tie',
     label: 'Personas'
   },
 
 
 
-  {
-    routeLink: 'solicitud local',
-    icon: 'fal fa-route',
-    label: 'Solicitudes de transporte local',
-    items: [
-      {
-        routeLink: 'localRequest-index',
-        icon: 'fal fa-list',
-        label: 'Lista de solicitudes de transporte local',
 
-      },
-      {
-        routeLink: 'localRequest/add',
-        icon: 'fal fa-list',
-        label: 'Crear solicitud de transporte local'
-      },
-    ]
+  {
+    routeLink: 'localRequest-index',
+    icon: 'fal fa-clipboard-list-check',
+    label: 'Lista de solicitudes de transporte local',
+
+  },
+  {
+    routeLink: 'localRequest/add',
+    icon: 'fal fa-car-side',
+    label: 'Crear solicitud de transporte local'
   },
 
+
+
   {
-    routeLink: 'solicitud exterior',
-    icon: 'fal fa-city',
-    label: 'Solicitudes de transporte exterior',
-    items: [
-      {
-        routeLink: 'exteriorRequest-index',
-        icon: 'fal fa-list',
-        label: 'Lista de solicitudes de transporte exterior'
-      },
-      {
-        routeLink: 'exteriorRequest/add',
-        icon: 'fal fa-list',
-        label: 'Crear solicitud de transporte exterior'
-      },
-    ]
+    routeLink: 'exteriorRequest-index',
+    icon: 'fal fa-clipboard-list-check',
+    label: 'Lista de solicitudes de transporte exterior'
+  },
+  {
+    routeLink: 'exteriorRequest/add',
+    icon: 'fal fa-car-building',
+    label: 'Crear solicitud de transporte exterior'
   },
 
   {
     routeLink: 'viajes',
-    icon: 'fal fa-car',
+    icon: 'fal fa-road',
     label: 'Viajes'
   },
 
