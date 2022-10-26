@@ -19,9 +19,9 @@ import { LocalRequestMantComponent } from './components/features/local-request/l
 //TODO USUARIOS
 import { UsersComponent } from './components/features/users/users-mant/users.component';
 //TODO PDF'S
-import { FuelVoucherComponent } from './components/pdf´s/fuel-voucher/fuel-voucher.component';
-import { ExteriorRequestPdfComponent } from './components/pdf´s/exterior-request-pdf/exterior-request-pdf.component';
-import { LocalRequestPdfComponent } from './components/pdf´s/local-request-pdf/local-request-pdf.component';
+import { FuelVoucherComponent } from './components/pdfs/fuel-voucher/fuel-voucher.component';
+import { ExteriorRequestPdfComponent } from './components/pdfs/exterior-request-pdf/exterior-request-pdf.component';
+import { LocalRequestPdfComponent } from './components/pdfs/local-request-pdf/local-request-pdf.component';
 import { UsersIndexComponent } from './components/features/users/users-index/users-index.component';
 import { LoginComponent } from './components/login/login.component';
 //TODO VIAJES

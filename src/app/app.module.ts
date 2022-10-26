@@ -30,10 +30,10 @@ import { ExteriorRequestMantComponent } from './components/features/exterior-req
 import { UsersComponent } from './components/features/users/users-mant/users.component';
 import { UsersIndexComponent } from './components/features/users/users-index/users-index.component';
 //TODO PDF'S
-import { FuelVoucherComponent } from './components/pdf´s/fuel-voucher/fuel-voucher.component';
+import { FuelVoucherComponent } from './components/pdfs/fuel-voucher/fuel-voucher.component';
 import { PersonFormComponent } from './components/features/person/person-form/person-form.component';
-import { ExteriorRequestPdfComponent } from './components/pdf´s/exterior-request-pdf/exterior-request-pdf.component';
-import { LocalRequestPdfComponent } from './components/pdf´s/local-request-pdf/local-request-pdf.component';
+import { ExteriorRequestPdfComponent } from './components/pdfs/exterior-request-pdf/exterior-request-pdf.component';
+import { LocalRequestPdfComponent } from './components/pdfs/local-request-pdf/local-request-pdf.component';
 import { SublevelMenuComponent } from './components/sidenav/sublevel-menu.component';
 import { LoginComponent } from './components/login/login.component';
 //TODO VIAJES
