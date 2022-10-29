@@ -13,6 +13,7 @@ import { UsersService } from 'src/app/services/users.service';
 export class LoginComponent implements OnInit {
   public user;
   public token:any;
+  public rol:any;
   public data_response;
   constructor(private _loginService:UsersService,
               private _sweetAlert:SweetAlertService,
@@ -21,6 +22,8 @@ export class LoginComponent implements OnInit {
     this.data_response = new ResponseI('', '')
    }
   ngOnInit(): void {
+    localStorage.removeItem('rol')
+    localStorage.removeItem('Token');
   }
 
   login(loginForm) {
@@ -29,8 +32,9 @@ export class LoginComponent implements OnInit {
       this._loginService.login(this.user).subscribe(
         response => {
           this.data_response = response;
-          console.log(this.data_response)
           this.token = this.data_response.token;
+          this.rol = this.data_response.data.data.rol;
+          localStorage.setItem('rol', this.rol)
           localStorage.setItem('Token', this.token);
           this._sweetAlert.createAndUpdate('Inicio de Sesión Exitoso');
               this._router.navigate(['dashboard']);

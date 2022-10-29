@@ -29,7 +29,7 @@ import { TripsComponent } from './components/features/trips/trips.component';
 
 const routes: Routes = [
   //{ path: '', redirectTo: '', pathMatch: 'full' },
-  { path:'',component: LoginComponent},
+  { path: 'login',component: LoginComponent},
   { path: 'dashboard', component: DashboardComponent },
   //TODO RUTAS VEHICULOS
   { path: 'vehicles', component: VehiclesIndexComponent },

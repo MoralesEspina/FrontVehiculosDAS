@@ -1,14 +1,14 @@
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { INavbarData } from './helper';
-import { navabarData } from './nav-data';
+import { navbarData, navbarDataSecre } from './nav-data';
 import { Router } from '@angular/router';
+
 
 interface SideNavToggle {
   screenWidth: number;
   collapsed: boolean;
 }
-
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
@@ -16,14 +16,13 @@ interface SideNavToggle {
 
 })
 export class SidenavComponent implements OnInit {
-
+  public rol:any = localStorage.getItem('rol');
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
   collapsed = false;
   screenWidth = 0;
-  navData = navabarData;
+  navData = navbarData;
   multiple: boolean = false;
   router: any;
-
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
     this.screenWidth = window.innerWidth;
@@ -35,6 +34,9 @@ export class SidenavComponent implements OnInit {
 
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
+    if (this.rol == 'Secretaria/o') {
+      this.navData = navbarDataSecre
+    }
   }
 
   toggleCollapse(): void {
@@ -51,8 +53,6 @@ export class SidenavComponent implements OnInit {
     this.shrinkItems(item);
     item.expanded = !item.expanded
   }
-
-
 
   shrinkItems(item: INavbarData): void {
     if (!this.multiple) {

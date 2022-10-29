@@ -87,7 +87,7 @@ export class UsersComponent implements OnInit {
       uuidPerson: userForm.value.uuidPerson,
     }
 
-    if (!userForm) {
+    if (!userForm.valid) {
       this._sweetAlertService.warning('Complete correctamente el formulario');
       return
     }

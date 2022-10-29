@@ -1,59 +1,99 @@
 import { INavbarData } from "./helper";
 
-export const navabarData: INavbarData[] = [
+export const navbarData: INavbarData[] = [
+{
+  routeLink: 'dashboard',
+    icon: 'fal fa-home',
+      label: 'Dashboard'
+},
+{
+  routeLink: 'vehicles',
+    icon: 'fal fa-cars',
+      label: 'Vehiculos'
+},
+{
+  routeLink: 'users-index',
+    icon: 'fal fa-users',
+      label: 'Usuarios'
+},
+{
+  routeLink: 'persontable',
+    icon: 'fas  fa-user-tie',
+      label: 'Personas'
+},
+{
+  routeLink: 'localRequest-index',
+    icon: 'fal fa-clipboard-list-check',
+      label: 'Lista de solicitudes de transporte local',
+
+  },
+{
+  routeLink: 'localRequest/add',
+    icon: 'fal fa-car-side',
+      label: 'Crear solicitud de transporte local'
+},
+{
+  routeLink: 'exteriorRequest-index',
+    icon: 'fal fa-clipboard-list-check',
+      label: 'Lista de solicitudes de transporte exterior'
+},
+{
+  routeLink: 'exteriorRequest/add',
+    icon: 'fal fa-car-building',
+      label: 'Crear solicitud de transporte exterior'
+},
+{
+  routeLink: 'viajes',
+    icon: 'fal fa-road',
+      label: 'Viajes'
+},
+{
+  routeLink: 'login',
+    icon: 'fal fa-power-off',
+      label: 'Cerrar Sesión'
+},
+]
+
+export const navbarDataSecre: INavbarData[] = [
   {
     routeLink: 'dashboard',
-    icon: 'fal fa-home',
-    label: 'Dashboard'
+      icon: 'fal fa-home',
+        label: 'Dashboard'
   },
   {
     routeLink: 'vehicles',
-    icon: 'fal fa-cars',
-    label: 'Vehiculos'
-  },
-  {
-    routeLink: 'users-index',
-    icon: 'fal fa-users',
-    label: 'Usuarios'
+      icon: 'fal fa-cars',
+        label: 'Vehiculos'
   },
   {
     routeLink: 'persontable',
-    icon: 'fas  fa-user-tie',
-    label: 'Personas'
+      icon: 'fas  fa-user-tie',
+        label: 'Personas'
   },
-
-
-
-
   {
     routeLink: 'localRequest-index',
-    icon: 'fal fa-clipboard-list-check',
-    label: 'Lista de solicitudes de transporte local',
+      icon: 'fal fa-clipboard-list-check',
+        label: 'Lista de solicitudes de transporte local',
 
-  },
+    },
   {
     routeLink: 'localRequest/add',
-    icon: 'fal fa-car-side',
-    label: 'Crear solicitud de transporte local'
+      icon: 'fal fa-car-side',
+        label: 'Crear solicitud de transporte local'
   },
-
-
-
   {
     routeLink: 'exteriorRequest-index',
-    icon: 'fal fa-clipboard-list-check',
-    label: 'Lista de solicitudes de transporte exterior'
+      icon: 'fal fa-clipboard-list-check',
+        label: 'Lista de solicitudes de transporte exterior'
   },
   {
     routeLink: 'exteriorRequest/add',
-    icon: 'fal fa-car-building',
-    label: 'Crear solicitud de transporte exterior'
+      icon: 'fal fa-car-building',
+        label: 'Crear solicitud de transporte exterior'
   },
-
   {
-    routeLink: 'viajes',
-    icon: 'fal fa-road',
-    label: 'Viajes'
+    routeLink: 'login',
+      icon: 'fal fa-power-off',
+        label: 'Cerrar Sesión'
   },
-
-]
+  ]
