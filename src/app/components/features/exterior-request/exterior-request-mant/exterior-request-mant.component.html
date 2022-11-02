@@ -240,8 +240,8 @@
                   <div class="col-9" *ngIf="editing == true">
                     <div class="form-group">
                       <label class="form-label"><b>Placa del vehiculo autorizado:</b></label>
-                      <select class="form-control" #plate_vehicle="ngModel" name="plate_vehicle"
-                        [(ngModel)]="exteriorRequest.plate_vehicle" required>
+                      <select class="form-control" #plate="ngModel" name="plate"
+                        [(ngModel)]="exteriorRequest.plate" required>
                         <option value="" disabled>Seleccionar</option>
                         <option value="{{vehicle.plate}}" *ngFor="let vehicle of vehicles">{{vehicle.plate}}</option>
                       </select>
@@ -251,8 +251,8 @@
 
                     <div class="form-group">
                       <label class="form-label"><b>Nombre del piloto asignado:</b></label>
-                      <select class="form-control" #pilot_name="ngModel" name="pilot_name"
-                        [(ngModel)]="exteriorRequest.pilot_name" required>
+                      <select class="form-control" #fullname="ngModel" name="fullname"
+                        [(ngModel)]="exteriorRequest.fullname" required>
                         <option value="" disabled>Seleccionar</option>
                         <option value="{{person.fullname}}" *ngFor="let person of person">{{person.fullname}}</option>
                       </select>
