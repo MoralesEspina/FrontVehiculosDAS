@@ -3,7 +3,6 @@
     <main class="content">
       <div class="container-fluid">
         <div class="header">
-
           <div class="col-11">
             <h1 class="header-title">
               Solicitudes de transporte exterior
@@ -66,7 +65,7 @@
                 <td style="text-align: center;">{{item.status_name}}</td>
                 <td style="text-align: center;">
                   <div class="btn-group">
-                    <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false"
+                    <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false" style="margin-right: 20px;"
                       [routerLink]="['/exteriorRequest/edit/',item.id]">
                       <i class="fas fa-eye"></i>
                     </button>
@@ -80,9 +79,7 @@
           <pagination-controls (pageChange)="p = $event" nextLabel="Siguiente" previousLabel="Anterior">
           </pagination-controls>
         </div>
-
       </div>
-
     </main>
   </div>
 </div>
