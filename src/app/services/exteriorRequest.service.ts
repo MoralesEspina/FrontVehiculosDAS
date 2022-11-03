@@ -34,6 +34,15 @@ export class ExteriorRequestService{
       })
     }
 
+    getOneRequestExteriorComplete(id): Observable<any> {
+      return this._http.get(this.url + 'requestExterior/complete/' + id, {
+        headers: new HttpHeaders({
+          'Content-Type':'application/json',
+          //'x-access-token': '' + localStorage.getItem("Token")
+        })
+      })
+    }
+
     createNewRequestExterior(form: ExteriorRequestI) {
       return this._http.post(this.url + 'requestExterior', form, {
         headers: new HttpHeaders({
@@ -44,7 +53,7 @@ export class ExteriorRequestService{
     }
 
     updateOneRequestExterior(form: ExteriorRequestI, id) {
-      return this._http.put(this.url + 'requestExterior/' + id, form, {
+      return this._http.put(this.url + 'requestExterior/edit/' + id, form, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")

@@ -21,6 +21,8 @@ export class ErrorsService {
       this._sweetAlertService.deleteOneError('Parece que ingresaste mal un campo',message)
     } else if (data_response.status == 500){
       this._sweetAlertService.error('Parece que algo salio mal');
+    } else if (data_response.status == 404){
+      this._sweetAlertService.error(data_response.error.message);
     }
   }
 }

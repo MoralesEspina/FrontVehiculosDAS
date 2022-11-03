@@ -3,7 +3,7 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { ExteriorRequestService } from 'src/app/services/exteriorRequest.service';
 import { ExteriorRequestI } from 'src/app/models/exteriorRequest.interface';
-import { DetailExteriorRequestI } from 'src/app/models/detailExteriorRequest.interface';
+import { DetailExteriorRequestI } from 'src/app/models/exteriorRequest.interface';
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -22,7 +22,7 @@ export class ExteriorRequestPdfComponent implements OnInit {
   public id_entrada;
   constructor(  private _exteriorRequestService:ExteriorRequestService,
                 private router: ActivatedRoute) {
-    this.request = new ExteriorRequestI('','','','','','','',0,0,'','','')
+    this.request = new ExteriorRequestI('','','','','','','',0,0,'','','','')
     this.detailRequest = new DetailExteriorRequestI('','','','','','','')
     this.id_entrada = this.router.snapshot.params['id'];
   }

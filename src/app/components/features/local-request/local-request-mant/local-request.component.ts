@@ -6,6 +6,9 @@ import { ActivatedRoute } from '@angular/router';
 import { PersonService } from 'src/app/services/person.service';
 import { VehicleService } from 'src/app/services/vehicle.service';
 import { DatePipe } from '@angular/common';
+import { SweetAlertService } from 'src/app/services/sweetAlert.service';
+import { ResponseI } from 'src/app/models/response.interface';
+import { ErrorsService } from 'src/app/services/errors.service';
 
 @Component({
   selector: 'app-local-request',
@@ -19,6 +22,7 @@ export class LocalRequestMantComponent implements OnInit {
   public id_entrada;
   public person;
   public vehicles;
+  public data_response;
   details: any[] = [];
   detailrequest: any = {};
 
@@ -37,7 +41,9 @@ export class LocalRequestMantComponent implements OnInit {
 
   constructor(private _localRequestService: RequestlocalService, private router: ActivatedRoute,
     private _personService: PersonService,
-    private _vehicleService: VehicleService,) {
+    private _vehicleService: VehicleService,
+    private _sweetAlertService: SweetAlertService,
+    private _errorService: ErrorsService) {
     this.transportation = new LocalRequestI("", "", "", "", "", "", "", 0, "", [])
   }
 
@@ -104,20 +110,22 @@ export class LocalRequestMantComponent implements OnInit {
       detail: this.details
     }
 
-    if (localRequestForm.valid) {
+    if (!localRequestForm.valid) {
+      this._sweetAlertService.warning('Complete correctamente el formulario');
+      return
+    }
+
       this._localRequestService.createOneRequestLocal(transportation_local).subscribe(
         response => {
-          console.log("Se registro la solicitud del vehiculo correctamente");
+          this._sweetAlertService.createAndUpdate('Se registro la solicitud correctamente');
           this.transportation = new LocalRequestI("", "", "", "", "", "", "", 0, "", [])
-
-        }, err => {
-          console.log(err.error.data)
+        }, error => {
+          this.data_response = error;
+          this._errorService.error(this.data_response);
         }
       )
-    } else {
-      console.log("Hubo un error al registro la solicitud del vehiculo");
     }
-  }
+
 
   createDetailLocalRequest(detailLocalForm) {
 

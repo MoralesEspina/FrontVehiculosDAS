@@ -39,6 +39,7 @@ import { LoginComponent } from './components/login/login.component';
 //TODO VIAJES
 import { TripsComponent } from './components/features/trips/trips.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
