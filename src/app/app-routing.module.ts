@@ -24,8 +24,11 @@ import { ExteriorRequestPdfComponent } from './components/pdfs/exterior-request-
 import { LocalRequestPdfComponent } from './components/pdfs/local-request-pdf/local-request-pdf.component';
 import { UsersIndexComponent } from './components/features/users/users-index/users-index.component';
 import { LoginComponent } from './components/login/login.component';
+import { VoucherPdfComponent } from './components/pdfs/voucher-diesel-pdf/voucher-pdf.component';
+import { VoucherRegularPdfComponent } from './components/pdfs/voucher-regular-pdf/voucher-regular-pdf.component';
 //TODO VIAJES
 import { TripsComponent } from './components/features/trips/trips.component';
+
 
 const routes: Routes = [
   //{ path: '', redirectTo: '', pathMatch: 'full' },
@@ -65,7 +68,8 @@ const routes: Routes = [
   { path: 'FuelVoucher', component: FuelVoucherComponent },
   { path: 'ExteriorRequestPDF', component: ExteriorRequestPdfComponent },
   { path: 'LocalRequestPDF', component: LocalRequestPdfComponent },
-
+  { path: 'voucherDieselPDF', component: VoucherPdfComponent },
+  { path: 'voucherRegularPDF', component: VoucherRegularPdfComponent },
 
   { path: 'managerView', component: ManagerviewComponent },
 
