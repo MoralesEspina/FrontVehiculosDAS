@@ -52,7 +52,7 @@
               <!--- TITULOS DE LA TABLA -->
 
               <!--- CUERPO DE LA TABLA -->
-              <tbody *ngFor="let item of trip | paginate: { itemsPerPage: 8, currentPage: p }">
+              <tbody *ngFor="let item of trip_exterior | paginate: { itemsPerPage: 8, currentPage: p }">
                 <td style="text-align: center;">{{item.transp_request_exterior}}</td>
                 <td style="text-align: center;">{{item.requesting_unit}}</td>
                 <td style="text-align: center;">{{item.commission_manager}}</td>
@@ -60,7 +60,7 @@
                 <td style="text-align: center;"></td>
                 <td style="text-align: center;">{{item.fullname}}</td>
                 <td style="text-align: center;">{{item.plate}}</td>
-                <td style="text-align: center;">{{status}}</td>
+                <td style="text-align: center;">{{item.status_name}}</td>
                 <td style="text-align: center;">
                   <div class="btn-group">
                     <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false">
@@ -71,6 +71,68 @@
 
             </table>
             <!--- TABLA -->
+
+          </div>
+          <pagination-controls (pageChange)="p = $event" nextLabel="Siguiente" previousLabel="Anterior">
+          </pagination-controls>
+        </div>
+
+        <div class="col-lg-10"><p></p></div>
+        <div id="viajes_locales" class="col-lg-10"><label><b>-- VIAJES LOCALES --</b></label>
+        </div>
+        <div class="col-lg-10"><p></p></div>
+        <div class="col-lg-10"><p></p></div>
+
+        <!---inicia otra tabla  -->
+        <div class="col-11" style="margin: 0 auto;">
+          <div class="card">
+            <div class="card-header">
+              <div class="row">
+
+                <div class="btn-group">
+                  <button type="button" class="btn mb-1 btn-primary " data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false" [routerLink]="['/localRequest-index']">Ver las solicitudes locales
+                  </button>
+
+                </div>
+              </div>
+            </div>
+            <!---  -->
+            <!--- TABLA -->
+            <table class="table table-striped table-hover">
+              <!--- TITULOS DE LA TABLA -->
+              <thead class="thead-dark">
+                <tr>
+                  <th style="text-align: center;">No de solicitud</th>
+                  <th style="text-align: center;">Nombre del solicitante</th>
+                  <th style="text-align: center;">Fecha de viaje</th>
+                  <th style="text-align: center;">Piloto</th>
+                  <th style="text-align: center;">Vehiculo</th>
+                  <th style="text-align: center;">Estado</th>
+                  <th style="text-align: center;">Finalizar viaje</th>
+                </tr>
+              </thead>
+              <!--- TITULOS DE LA TABLA -->
+
+              <!--- CUERPO DE LA TABLA -->
+              <tbody *ngFor="let item of trip_local | paginate: { itemsPerPage: 8, currentPage: p }">
+                <td style="text-align: center;">{{item.transp_request_local}}</td>
+                <td style="text-align: center;">{{item.applicantsName}}</td>
+                <td style="text-align: center;">{{item.date | date: 'd MMM y' | uppercase}}</td>
+                <td style="text-align: center;">{{item.fullname}}</td>
+                <td style="text-align: center;">{{item.plate}}</td>
+                <td style="text-align: center;">{{item.status_name}}</td>
+                <td style="text-align: center;">
+                  <div class="btn-group">
+                    <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-check"></i>
+                    </button>
+                  </div>
+                </td>
+
+            </table>
+            <!--- TABLA -->
+
           </div>
           <pagination-controls (pageChange)="p = $event" nextLabel="Siguiente" previousLabel="Anterior">
           </pagination-controls>

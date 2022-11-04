@@ -8,6 +8,8 @@ export class VehicleI{
     public km:string,
     public gas:string,
     public status:string,
+    public color:string,
+    public cylinders:string,
   )
   {
 
