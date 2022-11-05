@@ -40,6 +40,7 @@ import { LoginComponent } from './components/login/login.component';
 import { TripsComponent } from './components/features/trips/trips.component';
 import { VoucherPdfComponent } from './components/pdfs/voucher-diesel-pdf/voucher-pdf.component';
 import { VoucherRegularPdfComponent } from './components/pdfs/voucher-regular-pdf/voucher-regular-pdf.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { VoucherRegularPdfComponent } from './components/pdfs/voucher-regular-pd
     LoginComponent,
     TripsComponent,
     VoucherPdfComponent,
-    VoucherRegularPdfComponent
+    VoucherRegularPdfComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

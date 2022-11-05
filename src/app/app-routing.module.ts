@@ -28,53 +28,57 @@ import { VoucherPdfComponent } from './components/pdfs/voucher-diesel-pdf/vouche
 import { VoucherRegularPdfComponent } from './components/pdfs/voucher-regular-pdf/voucher-regular-pdf.component';
 //TODO VIAJES
 import { TripsComponent } from './components/features/trips/trips.component';
+import { LoginGuard } from './login.guard';
+import { LogoutComponent } from './components/logout/logout.component';
+import { BodyComponent } from './components/body/body.component';
 
 
 const routes: Routes = [
-  //{ path: '', redirectTo: '', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login',component: LoginComponent},
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'logout',component: LogoutComponent},
+  { path: 'dashboard', component: DashboardComponent, canActivate: [LoginGuard] },
   //TODO RUTAS VEHICULOS
-  { path: 'vehicles', component: VehiclesIndexComponent },
-  { path: 'vehicles/add', component: VehiclesMantComponent },
-  { path: 'vehicles/edit/:id', component: VehiclesMantComponent },
+  { path: 'vehicles', component: VehiclesIndexComponent, canActivate: [LoginGuard] },
+  { path: 'vehicles/add', component: VehiclesMantComponent, canActivate: [LoginGuard] },
+  { path: 'vehicles/edit/:id', component: VehiclesMantComponent, canActivate: [LoginGuard] },
   //TODO RUTAS DE SOLICITUDES
   //TODO RUTAS DE SOLICITUD LOCAL
-  { path: 'localRequest-index', component: LocalRequestIndexComponent },
-  { path: 'localRequest/add', component: LocalRequestMantComponent },
-  { path: 'localRequest/edit/:id', component: LocalRequestMantComponent },
-  { path: 'localRequest/pdf/:id', component: LocalRequestPdfComponent },
+  { path: 'localRequest-index', component: LocalRequestIndexComponent, canActivate: [LoginGuard] },
+  { path: 'localRequest/add', component: LocalRequestMantComponent, canActivate: [LoginGuard] },
+  { path: 'localRequest/edit/:id', component: LocalRequestMantComponent, canActivate: [LoginGuard] },
+  { path: 'localRequest/pdf/:id', component: LocalRequestPdfComponent, canActivate: [LoginGuard] },
 
 
   //TODO RUTAS DE SOLICITUD EXTERIOR
-  { path: 'exteriorRequest-index', component: ExteriorRequestIndexComponent },
-  { path: 'exteriorRequest/add', component: ExteriorRequestMantComponent },
-  { path: 'exteriorRequest/edit/:id', component: ExteriorRequestMantComponent },
-  { path: 'exteriorRequest/pdf/:id', component: ExteriorRequestPdfComponent },
+  { path: 'exteriorRequest-index', component: ExteriorRequestIndexComponent, canActivate: [LoginGuard] },
+  { path: 'exteriorRequest/add', component: ExteriorRequestMantComponent, canActivate: [LoginGuard] },
+  { path: 'exteriorRequest/edit/:id', component: ExteriorRequestMantComponent, canActivate: [LoginGuard] },
+  { path: 'exteriorRequest/pdf/:id', component: ExteriorRequestPdfComponent, canActivate: [LoginGuard] },
 
 
   //TODO RUTAS PERSONA
-  { path: 'personform', component: PersonFormComponent },
-  { path: 'persontable', component: PersonTableComponent },
-  { path: 'personform/edit/:id', component: PersonFormComponent },
+  { path: 'personform', component: PersonFormComponent, canActivate: [LoginGuard] },
+  { path: 'persontable', component: PersonTableComponent, canActivate: [LoginGuard] },
+  { path: 'personform/edit/:id', component: PersonFormComponent, canActivate: [LoginGuard] },
 
   //TODO RUTAS USUARIOS
-  { path: 'users', component: UsersComponent },
-  { path: 'users-index', component: UsersIndexComponent },
-  { path: 'users/edit/:id', component: UsersComponent },
+  { path: 'users', component: UsersComponent, canActivate: [LoginGuard] },
+  { path: 'users-index', component: UsersIndexComponent, canActivate: [LoginGuard] },
+  { path: 'users/edit/:id', component: UsersComponent, canActivate: [LoginGuard] },
 
 
   //TODO RUTAS PDF'S
-  { path: 'FuelVoucher', component: FuelVoucherComponent },
-  { path: 'ExteriorRequestPDF', component: ExteriorRequestPdfComponent },
-  { path: 'LocalRequestPDF', component: LocalRequestPdfComponent },
-  { path: 'voucherDieselPDF', component: VoucherPdfComponent },
-  { path: 'voucherRegularPDF', component: VoucherRegularPdfComponent },
+  { path: 'FuelVoucher', component: FuelVoucherComponent, canActivate: [LoginGuard] },
+  { path: 'ExteriorRequestPDF', component: ExteriorRequestPdfComponent, canActivate: [LoginGuard] },
+  { path: 'LocalRequestPDF', component: LocalRequestPdfComponent, canActivate: [LoginGuard] },
+  { path: 'voucherDieselPDF', component: VoucherPdfComponent, canActivate: [LoginGuard] },
+  { path: 'voucherRegularPDF', component: VoucherRegularPdfComponent, canActivate: [LoginGuard] },
 
-  { path: 'managerView', component: ManagerviewComponent },
+  { path: 'managerView', component: ManagerviewComponent, canActivate: [LoginGuard] },
 
   //TODO VIAJES
-  { path: 'viajes', component: TripsComponent },
+  { path: 'viajes', component: TripsComponent, canActivate: [LoginGuard] },
 
 ];
 

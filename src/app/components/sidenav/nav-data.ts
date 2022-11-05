@@ -48,7 +48,7 @@ export const navbarData: INavbarData[] = [
       label: 'Viajes'
 },
 {
-  routeLink: 'login',
+  routeLink: 'logout',
     icon: 'fal fa-power-off',
       label: 'Cerrar Sesión'
 },
@@ -92,8 +92,8 @@ export const navbarDataSecre: INavbarData[] = [
         label: 'Crear solicitud de transporte exterior'
   },
   {
-    routeLink: 'login',
+    routeLink: 'logout',
       icon: 'fal fa-power-off',
-        label: 'Cerrar Sesión'
+       label: 'Cerrar Sesión'
   },
   ]

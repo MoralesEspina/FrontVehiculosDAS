@@ -11,8 +11,7 @@
           <li class="sidenav-nav-item" *ngFor="let data of navData">
               <a class="sidenav-nav-link" (click)="handleClick(data)"
                   *ngIf="data.items && data.items.length > 0"
-
-              >
+                  >
                   <i class="sidenav-link-icon" [class]="data.icon"></i>
                   <span class="sidenav-link-text" *ngIf="collapsed" >
                       {{data.label}}
