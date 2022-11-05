@@ -26,7 +26,9 @@ import { UsersIndexComponent } from './components/features/users/users-index/use
 import { LoginComponent } from './components/login/login.component';
 //TODO VIAJES
 import { TripsComponent } from './components/features/trips/trips.component';
-import { VoucherComponent } from './components/features/voucher/voucher.component';
+import { VoucherComponent } from './components/features/voucher/voucherGas/voucher.component';
+import { VoucherDieselComponent } from './components/features/voucher/voucher-diesel/voucher-diesel.component';
+import { VoucherIndexComponent } from './components/features/voucher/voucher-index/voucher-index.component';
 
 const routes: Routes = [
   //{ path: '', redirectTo: '', pathMatch: 'full' },
@@ -71,10 +73,13 @@ const routes: Routes = [
   { path: 'managerView', component: ManagerviewComponent },
 
   //TODO VIAJES
-  { path: 'viajes', component: TripsComponent },
+  { path: 'Trips', component: TripsComponent },
 
   //TODO vales
-  { path: 'vales', component: VoucherComponent },
+  { path: 'VoucherGasoline', component: VoucherComponent },
+  { path: 'VoucherDiesel', component:VoucherDieselComponent},
+  { path: 'Vouchertable', component: VoucherIndexComponent},
+  
 
 ];
 
