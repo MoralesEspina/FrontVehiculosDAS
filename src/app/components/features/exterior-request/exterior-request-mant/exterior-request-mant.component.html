@@ -275,7 +275,7 @@
                 <button (click)="denyRequest()" class="btn btn-danger" [disabled]="status==true || deny==true" >Denegar</button>
               </div>
               <div class="text-center" style="margin-top: 10px;" >
-                <button type="button" class="btn btn-primary "[routerLink]="['/exteriorRequest/pdf/',id_entrada]" *ngIf="status==true">Ver PDF</button>
+                <button type="button" class="btn btn-primary "[routerLink]="['/exteriorRequest/pdf/',id_entrada]" *ngIf="status==true || deny==true">Ver PDF</button>
               </div>
               <!--- FIN DE FORMULARIO-->
             </div>

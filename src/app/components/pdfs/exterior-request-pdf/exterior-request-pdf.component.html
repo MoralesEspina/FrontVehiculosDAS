@@ -115,12 +115,12 @@
                 </div>
                 <div class="applicants-header">
                   <div class="applicants-sign">
-                    <div><strong>Nombre, firma y sello</strong></div>
+                    <div><strong>{{request.commission_manager}}, Firma y Sello</strong></div>
                     <div><strong>Responsable de la Comisión</strong></div>
                   </div>
                   <div></div>
                   <div class="applicants-sign">
-                    <div><strong>Nombre, firma y sello</strong></div>
+                    <div><strong>{{request.boss}} firma y sello</strong></div>
                     <div><strong>Jefe Dependencia solicitante</strong></div>
                   </div>
                   <div class="applicants-gas2">
@@ -147,7 +147,7 @@
                   </div>
                   <div class="status-vehicles">
                     <div class="status-plate-pilot"><strong>Placa del vehículo autorizado:</strong></div>
-                    <div class="border-bot"><strong>{{request.plate_vehicle}}</strong></div>
+                    <div class="border-bot"><strong>{{request.plate}}</strong></div>
                   </div>
                   <div class="status-text">
                     <div><strong>Estatus de Solicitud: </strong></div>
@@ -159,7 +159,7 @@
                   </div>
                   <div class="status-vehicles1">
                     <div class="status-plate-pilot"><strong>Nombre del Piloto asignado:</strong></div>
-                    <div class="border-bot"><strong>{{request.pilot_name}}</strong></div>
+                    <div class="border-bot"><strong>{{request.fullname}}</strong></div>
                   </div>
                 </div>
                 <div class="rejected">
@@ -167,7 +167,7 @@
                     <strong>Si es rechazada la solicitud, indique el motivo:</strong>
                   </div>
                   <div class="table-rejected">
-                    <td></td>
+                    <td>{{request.reason_rejected}}</td>
                   </div>
                 </div>
                 <div class="sign-form">
@@ -182,7 +182,7 @@
                   </div>
                   <div class="sign-text2">
                     <div></div>
-                    <div><strong>Nombre firma y sello</strong></div>
+                    <div><strong>Devora Oliva, Firma y Sello</strong></div>
                     <div></div>
                     </div>
                 </div>
