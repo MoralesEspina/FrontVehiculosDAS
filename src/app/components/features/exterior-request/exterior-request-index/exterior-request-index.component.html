@@ -42,7 +42,7 @@
                 <tr>
                   <th style="text-align: center;">No. solicitud</th>
                   <th style="text-align: center;">Unidad solicitante</th>
-                  <th style="text-align: center;">Destino</th>
+                  <!-- <th style="text-align: center;">Destino</th> -->
                   <th style="text-align: center;">Responsable de comision</th>
                   <th style="text-align: center;">Fecha</th>
                   <th style="text-align: center;">Duracion en dias</th>
@@ -57,7 +57,7 @@
               <tbody *ngFor="let item of exteriorRequest | paginate: { itemsPerPage: 15, currentPage: p }">
                 <td style="text-align: center;">{{item.id}}</td>
                 <td style="text-align: center;">{{item.requesting_unit}}</td>
-                <td style="text-align: center;"></td>
+                <!-- <td style="text-align: center;"></td> -->
                 <td style="text-align: center;">{{item.commission_manager}}</td>
                 <td style="text-align: center;">{{item.date_request | date: 'd MMM y' | uppercase }}</td>
                 <td style="text-align: center;">{{item.duration_days}}</td>
