@@ -34,8 +34,6 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { BodyComponent } from './components/body/body.component';
 
 
-import { VoucherComponent } from './components/features/voucher/voucher.component';
-import { ExitPassPdfComponent } from './components/pdfs/exit-pass-pdf/exit-pass-pdf.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
