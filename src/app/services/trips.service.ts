@@ -14,8 +14,16 @@ export class TripsService {
       this.url = Global.url;
     }
 
-    getTrip(): Observable<any> {
+    getTripExterior(): Observable<any> {
       return this._http.get(this.url + 'trips/exteriorRequest', {
+        headers: new HttpHeaders({
+          'Content-Type':'application/json',
+          //'x-access-token': '' + localStorage.getItem("Token")
+        })
+      })
+    }
+    getTripLocal(): Observable<any> {
+      return this._http.get(this.url + 'trips/localRequest', {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")

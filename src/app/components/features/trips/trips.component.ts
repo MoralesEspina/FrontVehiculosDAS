@@ -8,21 +8,29 @@ import { TripsService } from 'src/app/services/trips.service';
 })
 export class TripsComponent implements OnInit {
   public p:number = 1;
-  public trip;
-  public status;
+  public trip_exterior;
+  public trip_local;
 
   constructor(private _tripServicetab: TripsService,) { }
 
   ngOnInit(): void {
-      this.getTrip();
+      this.getTripExterior();
+      this.getTripLocal();
   }
-  getTrip(){
-    this._tripServicetab.getTrip().subscribe(
+  getTripExterior(){
+    this._tripServicetab.getTripExterior().subscribe(
       response =>{
-        console.log(response)
-        this.status=response.status
-        this.trip = response.data;
-       console.log(this.status)
+        this.trip_exterior = response.data;
+      }, error =>{
+
+      }
+    )
+  }
+
+  getTripLocal(){
+    this._tripServicetab.getTripLocal().subscribe(
+      response =>{
+        this.trip_local = response.data;
       }, error =>{
 
       }

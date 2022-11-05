@@ -26,6 +26,7 @@ import { UsersIndexComponent } from './components/features/users/users-index/use
 import { LoginComponent } from './components/login/login.component';
 //TODO VIAJES
 import { TripsComponent } from './components/features/trips/trips.component';
+import { VoucherComponent } from './components/features/voucher/voucher.component';
 
 const routes: Routes = [
   //{ path: '', redirectTo: '', pathMatch: 'full' },
@@ -71,6 +72,9 @@ const routes: Routes = [
 
   //TODO VIAJES
   { path: 'viajes', component: TripsComponent },
+
+  //TODO vales
+  { path: 'vales', component: VoucherComponent },
 
 ];
 

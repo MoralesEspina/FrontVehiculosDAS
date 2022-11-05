@@ -60,4 +60,14 @@ export class VehicleService {
         })
       })
     }
+
+    getOneVehicleForVoucher(id): Observable<any> {
+      return this._http.get(this.url + 'vehicles/voucher/' + id, {
+        headers: new HttpHeaders({
+          'Content-Type':'application/json',
+          //'x-access-token': '' + localStorage.getItem("Token")
+        })
+      })
+    }
+
 }
