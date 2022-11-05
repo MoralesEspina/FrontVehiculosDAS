@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { VoucherI } from 'src/app/models/voucher.interface';
+import { VoucherDieselI } from 'src/app/models/voucher.interface';
 import { PersonService } from 'src/app/services/person.service';
 import { VehicleService } from 'src/app/services/vehicle.service';
 
@@ -18,7 +18,7 @@ export class VoucherComponent implements OnInit {
   public id_entrada;
   public vehicles;
   public Onevehicle;
- 
+
   public color;
   public model;
   public brand;
@@ -32,7 +32,7 @@ export class VoucherComponent implements OnInit {
     private _vehicleService: VehicleService,
     private _personService: PersonService,
     ) {
-      this.voucher=new VoucherI("",0,"","","","","","","","")
+      this.voucher=new VoucherDieselI('',0,'','','','','','','','','','','','','','','')
      }
 
   ngOnInit(): void {
@@ -84,20 +84,26 @@ export class VoucherComponent implements OnInit {
 
 
 
- 
+
   createLocalRequest(voucherForm) {
-    const voucher: VoucherI = {
+    const voucher: VoucherDieselI = {
       date: this.todayWithPipe,
       cost:voucherForm.value.cost,
       id_vehicle: voucherForm.value.plate,
-      comission: voucherForm.value.comission,
+      comission_to: voucherForm.value.comission_to,
       objective: voucherForm.value.objective,
       id_pilot: voucherForm.value.pilot,
-      galon: voucherForm.value.galon,
-      service:voucherForm.value.service,
-      comission_date: this.todayWithPipe,//agregarle fecha 
-      km:voucherForm.value.km,
-      
+      km_gallon: voucherForm.value.km_gallon,
+      service_of:voucherForm.value.service_of,
+      comission_date: this.todayWithPipe,//agregarle fecha
+      km_to_travel:voucherForm.value.km_to_travel,
+      type:'',
+      brand:'',
+      model:'',
+      color:'',
+      plate:'',
+      fullname:'',
+      dpi:'',
     }
   }
 
