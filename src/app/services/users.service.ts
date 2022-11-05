@@ -50,7 +50,7 @@ export class UsersService {
   }
 
   updateOneUser(form: UserI, id) {
-    return this._http.put(this.url + 'auth/user/' + id, form, {
+    return this._http.put(this.url + 'auth/edit/' + id, form, {
       headers: new HttpHeaders({
         'Content-Type':'application/json',
         //'x-access-token': '' + localStorage.getItem("Token")

@@ -12,22 +12,22 @@ export const navbarData: INavbarData[] = [
     label: 'Vehiculos'
   },
   {
-    routeLink: 'users-index',
-    icon: 'fal fa-users',
-    label: 'Usuarios'
-  },
-  {
     routeLink: 'persontable',
     icon: 'fas  fa-user-tie',
     label: 'Personas'
   },
+  {
+    routeLink: 'users-index',
+    icon: 'fal fa-users',
+    label: 'Usuarios'
+  },
+
   {
     routeLink: 'localRequest-index',
     icon: 'fal fa-clipboard-list-check',
     label: 'Lista de solicitudes de transporte local',
 
   },
-
   {
     routeLink: 'exteriorRequest-index',
     icon: 'fal fa-clipboard-list-check',
@@ -50,7 +50,38 @@ export const navbarData: INavbarData[] = [
     icon: 'fal fa-power-off',
     label: 'Cerrar Sesión'
   },
-
-
-
 ]
+
+export const navbarDataSecre: INavbarData[] = [
+  {
+    routeLink: 'dashboard',
+      icon: 'fal fa-home',
+        label: 'Dashboard'
+  },
+  {
+    routeLink: 'vehicles',
+      icon: 'fal fa-cars',
+        label: 'Vehiculos'
+  },
+  {
+    routeLink: 'persontable',
+      icon: 'fas  fa-user-tie',
+        label: 'Personas'
+  },
+  {
+    routeLink: 'localRequest-index',
+    icon: 'fal fa-clipboard-list-check',
+    label: 'Lista de solicitudes de transporte local',
+
+  },
+  {
+    routeLink: 'exteriorRequest-index',
+    icon: 'fal fa-clipboard-list-check',
+    label: 'Lista de solicitudes de transporte exterior'
+  },
+  {
+    routeLink: 'logout',
+      icon: 'fal fa-power-off',
+        label: 'Cerrar Sesión'
+  },
+  ]

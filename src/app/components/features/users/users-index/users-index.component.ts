@@ -27,7 +27,6 @@ export class UsersIndexComponent implements OnInit {
 
     this._userService.getUsers().subscribe(
       response => {
-        console.log(response)
         this.users = response.data;
       }, error => {
 
@@ -37,7 +36,6 @@ export class UsersIndexComponent implements OnInit {
   getPerson() {
     this._personService.getPerson().subscribe(
       response => {
-        console.log(response)
         this.persons = response.data;
       }, error => {
       }
@@ -47,7 +45,6 @@ export class UsersIndexComponent implements OnInit {
   getRols() {
     this._infoService.getRols().subscribe(
       response => {
-        console.log(response)
         this.rols = response.data;
       }, error => {
       }

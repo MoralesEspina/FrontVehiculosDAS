@@ -311,7 +311,6 @@ td{
   padding-right: 30px;
   padding-bottom: 30px;
   display: grid;
-  grid-template-rows: 50% 50%;
   grid-template-columns: 35% 30% 35%;
   border-color: #0b0b0b;
   border-style: solid;
