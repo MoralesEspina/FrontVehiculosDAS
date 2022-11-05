@@ -29,12 +29,14 @@ import { VoucherRegularPdfComponent } from './components/pdfs/voucher-regular-pd
 //TODO VIAJES
 import { TripsComponent } from './components/features/trips/trips.component';
 
+import { VoucherComponent } from './components/features/voucher/voucherGas/voucher.component';
+import { VoucherDieselComponent } from './components/features/voucher/voucher-diesel/voucher-diesel.component';
+import { VoucherIndexComponent } from './components/features/voucher/voucher-index/voucher-index.component';
+
+
 import { LoginGuard } from './login.guard';
 import { LogoutComponent } from './components/logout/logout.component';
 import { BodyComponent } from './components/body/body.component';
-
-
-import { VoucherComponent } from './components/features/voucher/voucher.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -81,10 +83,17 @@ const routes: Routes = [
   { path: 'managerView', component: ManagerviewComponent, canActivate: [LoginGuard] },
 
   //TODO VIAJES
+
+  { path: 'Trips', component: TripsComponent },
+
   { path: 'viajes', component: TripsComponent, canActivate: [LoginGuard] },
 
+
   //TODO vales
-  { path: 'vales', component: VoucherComponent },
+  { path: 'VoucherGasoline', component: VoucherComponent },
+  { path: 'VoucherDiesel', component:VoucherDieselComponent},
+  { path: 'Vouchertable', component: VoucherIndexComponent},
+
 
 ];
 

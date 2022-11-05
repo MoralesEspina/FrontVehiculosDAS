@@ -129,6 +129,7 @@ export class LocalRequestMantComponent implements OnInit {
           this._errorService.error(this.data_response);
         }
       )
+      this._router.navigate(['/localRequest-index'])
     }
 
 

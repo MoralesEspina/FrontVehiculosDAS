@@ -44,7 +44,7 @@
                   <tr>
                     <th style="text-align: center;">No. solicitud</th>
                     <th style="text-align: center;">Unidad solicitante</th>
-                    <th style="text-align: center;">Destino</th>
+                    <!-- <th style="text-align: center;">Destino</th> -->
                     <th style="text-align: center;">Solicitante</th>
                     <th style="text-align: center;">Fecha de viaje</th>
                     <th style="text-align: center;">Celular de contacto</th>
@@ -58,7 +58,7 @@
                 <tbody *ngFor="let item of requestsLocal | paginate: { itemsPerPage: 15, currentPage: p }">
                   <td style="text-align: center;">{{item.id}}</td>
                   <td style="text-align: center;">{{item.section}}</td>
-                  <td style="text-align: center;"></td>
+                  <!-- <td style="text-align: center;"></td> -->
                   <td style="text-align: center;">{{item.applicantsName}}</td>
                   <td style="text-align: center;">{{item.date | date: 'd MMM y' | uppercase}}</td>
                   <td style="text-align: center;">{{item.phoneNumber}}</td>
