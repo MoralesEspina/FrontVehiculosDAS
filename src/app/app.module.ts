@@ -75,11 +75,9 @@ import { ExitPassPdfComponent } from './components/pdfs/exit-pass-pdf/exit-pass-
     SublevelMenuComponent,
     LoginComponent,
     TripsComponent,
-
     VoucherComponent,
     VoucherDieselComponent,
     VoucherIndexComponent,
-
     VoucherPdfComponent,
     VoucherRegularPdfComponent,
     LogoutComponent,

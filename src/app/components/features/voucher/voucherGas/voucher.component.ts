@@ -1,10 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD:src/app/components/features/voucher/voucher.component.ts
-import { VoucherDieselI } from 'src/app/models/voucher.interface';
-=======
 import { VoucherDieselI, VoucherGasolineI } from 'src/app/models/voucher.interface';
->>>>>>> 283e7f1ccbe69083de3ea5db80003e9c8f545f5e:src/app/components/features/voucher/voucherGas/voucher.component.ts
 import { PersonService } from 'src/app/services/person.service';
 import { VehicleService } from 'src/app/services/vehicle.service';
 import { VoucherService } from 'src/app/services/voucher.service';
@@ -39,12 +35,9 @@ export class VoucherComponent implements OnInit {
     private _personService: PersonService,
     private _voucherService:VoucherService
     ) {
-<<<<<<< HEAD:src/app/components/features/voucher/voucher.component.ts
-      this.voucher=new VoucherDieselI('',0,'','','','','','','','','','','','','','','')
-=======
 
-      this.voucher=new VoucherDieselI("","","","","","",0,"","",0)
->>>>>>> 283e7f1ccbe69083de3ea5db80003e9c8f545f5e:src/app/components/features/voucher/voucherGas/voucher.component.ts
+      this.voucher=new VoucherDieselI('','','','','','','','','','','','','','','','','')
+
      }
 
   ngOnInit(): void {
@@ -94,55 +87,14 @@ export class VoucherComponent implements OnInit {
     )
   }
 
-
-<<<<<<< HEAD:src/app/components/features/voucher/voucher.component.ts
-
-
-=======
   createVoucher(voucherForm) {
-    const voucher: VoucherDieselI = {
-      date: '',
-      cost: '',
-      id_vehicle: '',
-      comission_to: '',
-      objective: '',
-      id_pilot: '',
-      km_gallon: 0,
-      service_of: '',
-      comission_date: '',
-      km_to_travel: 0
-    } }
->>>>>>> 283e7f1ccbe69083de3ea5db80003e9c8f545f5e:src/app/components/features/voucher/voucherGas/voucher.component.ts
-  createLocalRequest(voucherForm) {
-    const voucher: VoucherDieselI = {
+    const voucher: VoucherGasolineI = {
       date: this.todayWithPipe,
       cost:voucherForm.value.cost,
-<<<<<<< HEAD:src/app/components/features/voucher/voucher.component.ts
-      id_vehicle: voucherForm.value.plate,
-=======
       id_vehicle: voucherForm.value.vin,
->>>>>>> 283e7f1ccbe69083de3ea5db80003e9c8f545f5e:src/app/components/features/voucher/voucherGas/voucher.component.ts
       comission_to: voucherForm.value.comission_to,
       objective: voucherForm.value.objective,
-
       id_pilot: voucherForm.value.pilot,
-<<<<<<< HEAD:src/app/components/features/voucher/voucher.component.ts
-      km_gallon: voucherForm.value.km_gallon,
-      service_of:voucherForm.value.service_of,
-      comission_date: this.todayWithPipe,//agregarle fecha
-      km_to_travel:voucherForm.value.km_to_travel,
-      type:'',
-      brand:'',
-      model:'',
-      color:'',
-      plate:'',
-      fullname:'',
-      dpi:'',
-=======
-      galon: voucherForm.value.galon,
-      service:voucherForm.value.service,
-      comission_date: this.todayWithPipe,//agregarle fecha
-      km:voucherForm.value.km,
     }
     if (voucherForm.valid) {
       this._voucherService.createNewVoucherRegular(voucher).subscribe(
@@ -156,7 +108,6 @@ export class VoucherComponent implements OnInit {
       )
     } else {
       console.log("Hubo un error al registro la solicitud del vehiculo");
->>>>>>> 283e7f1ccbe69083de3ea5db80003e9c8f545f5e:src/app/components/features/voucher/voucherGas/voucher.component.ts
     }
   }
 
