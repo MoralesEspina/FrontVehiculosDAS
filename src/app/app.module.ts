@@ -47,6 +47,7 @@ import { VoucherIndexComponent } from './components/features/voucher/voucher-ind
 import { VoucherComponent } from './components/features/voucher/voucherGas/voucher.component';
 
 
+import { ExitPassPdfComponent } from './components/pdfs/exit-pass-pdf/exit-pass-pdf.component';
 
 
 @NgModule({
@@ -82,6 +83,8 @@ import { VoucherComponent } from './components/features/voucher/voucherGas/vouch
     VoucherPdfComponent,
     VoucherRegularPdfComponent,
     LogoutComponent,
+    VoucherComponent,
+    ExitPassPdfComponent
 
   ],
   imports: [

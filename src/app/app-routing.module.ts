@@ -38,6 +38,7 @@ import { LoginGuard } from './login.guard';
 import { LogoutComponent } from './components/logout/logout.component';
 import { BodyComponent } from './components/body/body.component';
 
+
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login',component: LoginComponent},
