@@ -87,6 +87,20 @@
                   </div>
                   <div class="col-lg-6">
                     <div class="form-group">
+                      <label class="form-label"><b>Color</b></label>
+                      <input #color="ngModel" name="color" [(ngModel)]="vehicle.color" type="text" class="form-control"
+                        placeholder="Ingrese el color del vehiculo" required>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-label"><b>Cilindros</b></label>
+                      <input #cylinders="ngModel" name="cylinders" [(ngModel)]="vehicle.cylinders" type="text" class="form-control"
+                        placeholder="Ingrese el cilindraje del vehiculo" required>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
                       <label class="form-label"><b>Estatus del vehiculo</b></label>
                       <select class="form-control" #status="ngModel" name="status" [(ngModel)]="vehicle.status"
                         required>

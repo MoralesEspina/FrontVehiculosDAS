@@ -28,10 +28,13 @@ import { VoucherPdfComponent } from './components/pdfs/voucher-diesel-pdf/vouche
 import { VoucherRegularPdfComponent } from './components/pdfs/voucher-regular-pdf/voucher-regular-pdf.component';
 //TODO VIAJES
 import { TripsComponent } from './components/features/trips/trips.component';
+
 import { LoginGuard } from './login.guard';
 import { LogoutComponent } from './components/logout/logout.component';
 import { BodyComponent } from './components/body/body.component';
 
+
+import { VoucherComponent } from './components/features/voucher/voucher.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -79,6 +82,9 @@ const routes: Routes = [
 
   //TODO VIAJES
   { path: 'viajes', component: TripsComponent, canActivate: [LoginGuard] },
+
+  //TODO vales
+  { path: 'vales', component: VoucherComponent },
 
 ];
 

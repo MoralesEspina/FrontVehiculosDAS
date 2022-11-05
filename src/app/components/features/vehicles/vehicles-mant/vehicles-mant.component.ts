@@ -6,6 +6,7 @@ import { VehicleService } from 'src/app/services/vehicle.service';
 import { SweetAlertService } from 'src/app/services/sweetAlert.service';
 import { ResponseI } from 'src/app/models/response.interface';
 import { ErrorsService } from 'src/app/services/errors.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-vehicles',
@@ -29,9 +30,10 @@ export class VehiclesMantComponent implements OnInit {
     private _vehicleService: VehicleService,
     private _route: ActivatedRoute,
     private _sweetAlertService: SweetAlertService,
-    private _errorService: ErrorsService
+    private _errorService: ErrorsService,
+    private router:Router
   ) {
-    this.vehicle = new VehicleI('', '', '', '', '', '', '', '');
+    this.vehicle = new VehicleI('', '', '', '', '', '', '', '','','');
     this.data_response = new ResponseI('', '')
   }
 
@@ -93,6 +95,8 @@ export class VehiclesMantComponent implements OnInit {
       km: vehicleForm.value.km,
       gas: vehicleForm.value.gas,
       status: vehicleForm.value.status,
+      cylinders: vehicleForm.value.cylinders,
+      color: vehicleForm.value.color,
     }
 
     if (!vehicleForm.valid) {
@@ -104,6 +108,7 @@ export class VehiclesMantComponent implements OnInit {
       this._vehicleService.updateOneVehicle(vehicle, this.id_entrada).subscribe(
         data => {
           this._sweetAlertService.createAndUpdate('Editado correctamente');
+          this.router.navigate(['vehicles']);
         },
         error => {
           this.data_response = error;
@@ -114,7 +119,8 @@ export class VehiclesMantComponent implements OnInit {
       this._vehicleService.createNewVehicle(vehicle).subscribe(
         response => {
           this._sweetAlertService.createAndUpdate('Se registro el vehiculo correctamente');
-          this.vehicle = new VehicleI('', '', '', '', '', '', '', '');
+          this.vehicle = new VehicleI('', '', '', '', '', '', '', '','','');
+          this.router.navigate(['vehicles']);
         }, error => {
           this.data_response = error;
           this._errorService.error(this.data_response);
