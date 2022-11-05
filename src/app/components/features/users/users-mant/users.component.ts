@@ -1,7 +1,7 @@
 import { PersonService } from './../../../../services/person.service';
 import { UsersService } from './../../../../services/users.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { InfoService } from 'src/app/services/info.service';
 import { VehicleService } from 'src/app/services/vehicle.service';
 import { UserI } from 'src/app/models/user.interface';
@@ -29,7 +29,8 @@ export class UsersComponent implements OnInit {
     private _route: ActivatedRoute,
     private _persons: PersonService,
     private _sweetAlertService: SweetAlertService,
-    private _errorService: ErrorsService
+    private _errorService: ErrorsService,
+    private _router: Router
   ) {
     this.user = new UserI('', '', '', '');
   }
@@ -96,6 +97,7 @@ export class UsersComponent implements OnInit {
         this._UserService.updateOneUser(user, this.id_entrada).subscribe(
           data => {
             this._sweetAlertService.createAndUpdate('Editado correctamente');
+            this._router.navigate(['users-index'])
           },
           error => {
           this.data_response = error;
@@ -107,6 +109,7 @@ export class UsersComponent implements OnInit {
         response => {
           this._sweetAlertService.createAndUpdate('Se registro correctamente');
           this.user = new UserI('', '', '', '');
+          this._router.navigate(['users-index'])
         },
         error => {
           this.data_response = error;

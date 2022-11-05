@@ -4,6 +4,9 @@ import { VoucherDieselI, VoucherGasolineI } from 'src/app/models/voucher.interfa
 import { PersonService } from 'src/app/services/person.service';
 import { VehicleService } from 'src/app/services/vehicle.service';
 import { VoucherService } from 'src/app/services/voucher.service';
+import { SweetAlertService } from 'src/app/services/sweetAlert.service';
+import { ErrorsService } from 'src/app/services/errors.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,7 +15,7 @@ import { VoucherService } from 'src/app/services/voucher.service';
   styleUrls: ['./voucher.component.css']
 })
 export class VoucherComponent implements OnInit {
-  public person;
+  public pilots;
   public Oneperson;
   public dpi;
   public voucher;
@@ -20,7 +23,7 @@ export class VoucherComponent implements OnInit {
   public id_entrada;
   public vehicles;
   public Onevehicle;
-
+  public data_response;
   public color;
   public model;
   public brand;
@@ -33,7 +36,10 @@ export class VoucherComponent implements OnInit {
   constructor(
     private _vehicleService: VehicleService,
     private _personService: PersonService,
-    private _voucherService:VoucherService
+    private _voucherService:VoucherService,
+    private _sweetAlertService: SweetAlertService,
+    private _errorService: ErrorsService,
+    private _router: Router
     ) {
 
       this.voucher=new VoucherDieselI('','','','','','','','','','')
@@ -41,7 +47,7 @@ export class VoucherComponent implements OnInit {
      }
 
   ngOnInit(): void {
-    this.getPerson();
+    this.getPilots();
     this.getVehicles();
     this.todayWithPipe = this.pipe.transform(Date.now(), 'yyyy/MM/dd')
   }
@@ -55,6 +61,7 @@ export class VoucherComponent implements OnInit {
       }
     )
   }
+
   getOneVehicle(id) {
     this._vehicleService.getOneVehicleForVoucher(id).subscribe(
       response => {
@@ -68,10 +75,10 @@ export class VoucherComponent implements OnInit {
     )
   }
 
-  getPerson(){
-    this._personService.getPerson().subscribe(
+  getPilots(){
+    this._personService.getPilots().subscribe(
       response =>{
-       this.person = response.data;
+       this.pilots = response.data;
       }, error =>{
       }
     )
@@ -81,7 +88,7 @@ export class VoucherComponent implements OnInit {
     this._personService.getOnePerson(id).subscribe(
       response =>{
        this.Oneperson = response.data[0];
-      this.dpi=this.Oneperson.dpi
+        this.dpi=this.Oneperson.dpi
       }, error =>{
       }
     )
@@ -94,21 +101,22 @@ export class VoucherComponent implements OnInit {
       id_vehicle: voucherForm.value.vin,
       comission_to: voucherForm.value.comission_to,
       objective: voucherForm.value.objective,
-      id_pilot: voucherForm.value.pilot,
+      id_pilot: voucherForm.value.uuid,
     }
-    if (voucherForm.valid) {
+
+    if (!voucherForm.valid) {
+      this._sweetAlertService.warning('Complete correctamente el formulario');
+      return
+    }
       this._voucherService.createNewVoucherRegular(voucher).subscribe(
         response => {
-          console.log("Se registro la solicitud del vehiculo correctamente");
-          this.voucher =new VoucherGasolineI("",0,"","","","")
-
-        }, err => {
-          console.log(err.error.data)
+          this._sweetAlertService.createAndUpdate('Se registro el vale correctamente');
+          this.voucher = new VoucherGasolineI("",0,"","","","")
+          this._router.navigate(['Vouchertable'])
+        }, error => {
+          this.data_response = error;
+          this._errorService.error(this.data_response);
         }
       )
-    } else {
-      console.log("Hubo un error al registro la solicitud del vehiculo");
     }
-  }
-
 }

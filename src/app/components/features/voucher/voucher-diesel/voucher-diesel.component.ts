@@ -4,6 +4,9 @@ import { VoucherDieselI} from 'src/app/models/voucher.interface';
 import { PersonService } from 'src/app/services/person.service';
 import { VehicleService } from 'src/app/services/vehicle.service';
 import { VoucherService } from 'src/app/services/voucher.service';
+import { SweetAlertService } from 'src/app/services/sweetAlert.service';
+import { ErrorsService } from 'src/app/services/errors.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-voucher-diesel',
@@ -18,7 +21,7 @@ export class VoucherDieselComponent implements OnInit { public person;
   public id_entrada;
   public vehicles;
   public Onevehicle;
-
+  public data_response;
   public color;
   public model;
   public brand;
@@ -31,7 +34,10 @@ export class VoucherDieselComponent implements OnInit { public person;
   constructor(
     private _vehicleService: VehicleService,
     private _personService: PersonService,
-    private _voucherService:VoucherService
+    private _voucherService:VoucherService,
+    private _sweetAlertService: SweetAlertService,
+    private _errorService: ErrorsService,
+    private _router: Router
     ) {
       this.voucher=new VoucherDieselI('', '', '', '', '', '', '', '', '', '')
      }
@@ -94,21 +100,23 @@ export class VoucherDieselComponent implements OnInit { public person;
       km_gallon: voucherForm.value.km_gallon,
       service_of:voucherForm.value.service_of,
       comission_date: this.todayWithPipe,//agregarle fecha
-      km_to_travel:voucherForm.value.km,
+      km_to_travel:voucherForm.value.km_to_travel,
     }
-    if (voucherForm.valid) {
+    console.log(voucher)
+    if (!voucherForm.valid) {
+      this._sweetAlertService.warning('Complete correctamente el formulario');
+      return
+    }
+
       this._voucherService.createNewVoucherDisel(voucher).subscribe(
         response => {
-          console.log("Se registro la solicitud del vehiculo correctamente");
+          this._sweetAlertService.createAndUpdate('Se registro el vale correctamente');
           this.voucher =new VoucherDieselI('', '', '', '', '', '', '', '', '', '')
-
-        }, err => {
-          console.log(err.error.data)
+          this._router.navigate(['Vouchertable'])
+        }, error => {
+          this.data_response = error;
+          this._errorService.error(this.data_response);
         }
       )
-    } else {
-      console.log("Hubo un error al registro la solicitud del vehiculo");
     }
-  }
-
 }
