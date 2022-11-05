@@ -1,8 +1,10 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { VoucherI } from 'src/app/models/voucher.interface';
+import { VoucherDieselI, VoucherGasolineI } from 'src/app/models/voucher.interface';
 import { PersonService } from 'src/app/services/person.service';
 import { VehicleService } from 'src/app/services/vehicle.service';
+import { VoucherService } from 'src/app/services/voucher.service';
+
 
 @Component({
   selector: 'app-voucher',
@@ -31,14 +33,16 @@ export class VoucherComponent implements OnInit {
   constructor(
     private _vehicleService: VehicleService,
     private _personService: PersonService,
+    private _voucherService:VoucherService
     ) {
-      this.voucher=new VoucherI("","","","","","","","","","")
+
+      this.voucher=new VoucherDieselI("","","","","","",0,"","",0)
      }
 
   ngOnInit(): void {
     this.getPerson();
     this.getVehicles();
-    this.todayWithPipe = this.pipe.transform(Date.now(), 'dd/MM/yyyy')
+    this.todayWithPipe = this.pipe.transform(Date.now(), 'yyyy/MM/dd')
   }
 
   getVehicles(){
@@ -83,26 +87,46 @@ export class VoucherComponent implements OnInit {
   }
 
 
-
-
+  createVoucher(voucherForm) {
+    const voucher: VoucherDieselI = {
+      date: '',
+      cost: '',
+      id_vehicle: '',
+      comission_to: '',
+      objective: '',
+      id_pilot: '',
+      km_gallon: 0,
+      service_of: '',
+      comission_date: '',
+      km_to_travel: 0
+    } }
   createLocalRequest(voucherForm) {
-    const voucher: VoucherI = {
+    const voucher: VoucherDieselI = {
       date: this.todayWithPipe,
       cost:voucherForm.value.cost,
-      id_vehicle: voucherForm.value.plate,
-      comission: voucherForm.value.comission,
+      id_vehicle: voucherForm.value.vin,
+      comission_to: voucherForm.value.comission_to,
       objective: voucherForm.value.objective,
+
       id_pilot: voucherForm.value.pilot,
       galon: voucherForm.value.galon,
       service:voucherForm.value.service,
       comission_date: this.todayWithPipe,//agregarle fecha
       km:voucherForm.value.km,
+    }
+    if (voucherForm.valid) {
+      this._voucherService.createNewVoucherRegular(voucher).subscribe(
+        response => {
+          console.log("Se registro la solicitud del vehiculo correctamente");
+          this.voucher =new VoucherGasolineI("",0,"","","","")
 
+        }, err => {
+          console.log(err.error.data)
+        }
+      )
+    } else {
+      console.log("Hubo un error al registro la solicitud del vehiculo");
     }
   }
-
-
-
-
 
 }
