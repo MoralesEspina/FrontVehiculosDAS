@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { VehicleI } from 'src/app/models/vehicle.interface';
 import { InfoService } from 'src/app/services/info.service';
 import { VehicleService } from 'src/app/services/vehicle.service';
 import { SweetAlertService } from 'src/app/services/sweetAlert.service';
 import { ResponseI } from 'src/app/models/response.interface';
 import { ErrorsService } from 'src/app/services/errors.service';
-import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-vehicles',
@@ -30,8 +29,7 @@ export class VehiclesMantComponent implements OnInit {
     private _vehicleService: VehicleService,
     private _route: ActivatedRoute,
     private _sweetAlertService: SweetAlertService,
-    private _errorService: ErrorsService,
-    private _router: Router
+    private _errorService: ErrorsService
     )
   {
     this.vehicle = new VehicleI('', '', '', '', '', '', '', '', '', '');
@@ -109,7 +107,6 @@ export class VehiclesMantComponent implements OnInit {
       this._vehicleService.updateOneVehicle(vehicle, this.id_entrada).subscribe(
         data => {
           this._sweetAlertService.createAndUpdate('Editado correctamente');
-          this._router.navigate(['vehicles'])
         },
         error => {
           this.data_response = error;
@@ -121,7 +118,6 @@ export class VehiclesMantComponent implements OnInit {
         response => {
           this._sweetAlertService.createAndUpdate('Se registro el vehiculo correctamente');
           this.vehicle = new VehicleI('', '', '', '', '', '', '', '', '', '');
-          this._router.navigate(['vehicles'])
         }, error => {
           this.data_response = error;
           this._errorService.error(this.data_response);

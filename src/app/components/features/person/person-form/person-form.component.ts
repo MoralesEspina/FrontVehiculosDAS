@@ -1,4 +1,4 @@
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { PersonService } from 'src/app/services/person.service';
 import { InfoService } from 'src/app/services/info.service';
@@ -23,8 +23,7 @@ export class PersonFormComponent implements OnInit {
               private _personService: PersonService,
               private _route: ActivatedRoute,
               private _sweetAlertService: SweetAlertService,
-              private _errorService:ErrorsService,
-              private _router:Router
+              private _errorService:ErrorsService
               ) {
     this.personform = new PersonI('', '', '', '', '');
   }
@@ -83,7 +82,6 @@ export class PersonFormComponent implements OnInit {
         this._personService.updateOnePerson(person, this.id_entrada).subscribe(
           data => {
             this._sweetAlertService.createAndUpdate('Editado correctamente');
-            this._router.navigate(['persontable'])
           },
           error => {
             this.data_response = error;
@@ -95,7 +93,6 @@ export class PersonFormComponent implements OnInit {
           response => {
             this._sweetAlertService.createAndUpdate('Se registro correctamente');
             this.personform = new PersonI('', '', '', '', '');
-            this._router.navigate(['persontable'])
           }, error => {
             this.data_response = error;
             this._errorService.error(this.data_response);

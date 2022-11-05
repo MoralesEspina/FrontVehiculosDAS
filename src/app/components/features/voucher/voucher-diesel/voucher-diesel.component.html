@@ -27,7 +27,7 @@
               <!--- INICIO DE FORMULARIO-->
               <!--- Nombre Formulario dentro del Form-->
               <!--- #vehicleForm="ngForm"-->
-              <form #voucherForm="ngForm" (ngSubmit)="createVoucher(voucherForm)">
+              <form #voucherForm="ngForm">
                 <div class="row">
                   <div class="col-lg-6">
                     <div class="form-group">
@@ -81,48 +81,50 @@
                   <div class="col-lg-4">
                     <div class="form-group">
                       <label class="form-label"><b>Kilometros por galon</b></label>
-                      <input #km_gallon="ngModel" name="km_gallon" [(ngModel)]="voucher.km_gallon" type="text" class="form-control"
+                      <input #galon="ngModel" name="galon" [(ngModel)]="voucher.galon" type="text" class="form-control"
                         placeholder="Ingrese los km" required>
                     </div>
                   </div>
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label class="form-label"><b>Al servicio de</b></label>
-                      <input #service_of="ngModel" name="service_of" [(ngModel)]="voucher.service_of" type="text"
+                      <input #service="ngModel" name="service" [(ngModel)]="voucher.service" type="text"
                         class="form-control" placeholder="Ingrese el solicitante" required>
                     </div>
                   </div>
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label class="form-label"><b>Comision a</b></label>
-                      <input name="comission_to" type="text" class="form-control" #comission_to="ngModel" [(ngModel)]="voucher.comission_to"
+                      <input name="comision" type="text" class="form-control"
                         placeholder="Ingrese la comision solicitante" required>
                     </div>
                   </div>
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label class="form-label"><b>Proposito</b></label>
-                      <input name="objective" type="text" class="form-control"  #objective="ngModel" [(ngModel)]="voucher.objective"
+                      <input name="proposito" type="text" class="form-control"
                         placeholder="Ingrese el proposito del viaje" required>
                     </div>
                   </div>
+
+
                   <div class="col-lg-3">
                     <div class="form-group">
                       <label class="form-label"><b>Fecha de comision</b></label>
-                      <input name="comission_date" type="date" class="form-control"  #comission_date="ngModel" [(ngModel)]="voucher.comission_date" required>
+                      <input name="color" type="date" class="form-control" required>
                     </div>
                   </div>
                   <div class="col-lg-3">
                     <div class="form-group">
                       <label class="form-label"><b>Kms. a recorrer</b></label>
-                      <input name="km_to_travel" type="text" class="form-control"  #km_to_travel="ngModel" [(ngModel)]="voucher.km_to_travel"
+                      <input name="km" type="text" class="form-control"
                         placeholder="Ingrese los km" required>
                     </div>
                   </div>
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label class="form-label"><b>Nombre del piloto asignado:</b></label>
-                      <select class="form-control" #uuid="ngModel" name="uuid" [(ngModel)]="voucher.uuid" required
+                      <select class="form-control" #pilotName="ngModel" name="uuid" [(ngModel)]="voucher.uuid" required
                         (click)="getOnePerson(voucher.uuid)">
                         <option value="" disabled>Seleccionar</option>
                         <option value="{{person.uuid}}" *ngFor="let person of person">{{person.fullname}}</option>
@@ -135,10 +137,12 @@
                       <input name="Licencia" type="text" class="form-control" placeholder="{{dpi}}" disabled>
                     </div>
                   </div>
+
                 </div>
                 <div class="row">
                   <button type="submit" class="btn btn-primary">Registrar</button>
                 </div>
+
               </form>
               <!--- FIN DE FORMULARIO-->
             </div>

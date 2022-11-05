@@ -22,7 +22,7 @@ export class VoucherDieselI{
     public id_vehicle: string,
     public comission_to:string,
     public objective:string,
-    public id_pilot:string,
+    public id_pilot:string
     )
     {
 

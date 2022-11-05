@@ -68,12 +68,8 @@
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label class="form-label"><b>Ingrese tipo de gasolina</b></label>
-                      <select #gas="ngModel" name="gas" [(ngModel)]="vehicle.gas" type="text" class="form-control"
+                      <input #gas="ngModel" name="gas" [(ngModel)]="vehicle.gas" type="text" class="form-control"
                         placeholder="(Diesel, Regular)" required>
-                        <option value="" disabled>Seleccionar</option>
-                        <option value= 'Regular' >Regular</option>
-                        <option value= 'Diesel' >Diesel</option>
-                      </select>
                     </div>
                   </div>
                   <div class="col-lg-6">
