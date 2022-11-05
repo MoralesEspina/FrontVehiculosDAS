@@ -44,6 +44,7 @@ import { VoucherRegularPdfComponent } from './components/pdfs/voucher-regular-pd
 import { LogoutComponent } from './components/logout/logout.component';
 
 import { VoucherComponent } from './components/features/voucher/voucher.component';
+import { ExitPassPdfComponent } from './components/pdfs/exit-pass-pdf/exit-pass-pdf.component';
 
 
 
@@ -75,7 +76,8 @@ import { VoucherComponent } from './components/features/voucher/voucher.componen
     VoucherPdfComponent,
     VoucherRegularPdfComponent,
     LogoutComponent,
-    VoucherComponent
+    VoucherComponent,
+    ExitPassPdfComponent
 
   ],
   imports: [
