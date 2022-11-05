@@ -68,8 +68,11 @@
                         </select>
                       </div>
                     </div>
-                  </div>
-                  <button type="submit" class="btn btn-primary">Crear</button>
+                  </div >
+                  <div class="text-center">
+                  <button type="submit" class="btn btn-primary"*ngIf="editing == false" >Crear</button>
+                  <button type="submit" class="btn btn-primary" *ngIf="editing == true">Actualizar</button>
+                </div>
                 </form>
                 <!--- FIN DE FORMULARIO-->
               </div>

@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { VoucherGasolineI } from 'src/app/models/voucher.interface';
+import { VoucherDieselI, VoucherGasolineI } from 'src/app/models/voucher.interface';
 import { PersonService } from 'src/app/services/person.service';
 import { VehicleService } from 'src/app/services/vehicle.service';
 import { VoucherService } from 'src/app/services/voucher.service';
@@ -20,7 +20,7 @@ export class VoucherComponent implements OnInit {
   public id_entrada;
   public vehicles;
   public Onevehicle;
- 
+
   public color;
   public model;
   public brand;
@@ -35,7 +35,8 @@ export class VoucherComponent implements OnInit {
     private _personService: PersonService,
     private _voucherService:VoucherService
     ) {
-      this.voucher=new VoucherGasolineI("",0,"","","","")
+
+      this.voucher=new VoucherDieselI("","","","","","",0,"","",0)
      }
 
   ngOnInit(): void {
@@ -87,14 +88,31 @@ export class VoucherComponent implements OnInit {
 
 
   createVoucher(voucherForm) {
-    const voucher: VoucherGasolineI = {
+    const voucher: VoucherDieselI = {
+      date: '',
+      cost: '',
+      id_vehicle: '',
+      comission_to: '',
+      objective: '',
+      id_pilot: '',
+      km_gallon: 0,
+      service_of: '',
+      comission_date: '',
+      km_to_travel: 0
+    } }
+  createLocalRequest(voucherForm) {
+    const voucher: VoucherDieselI = {
       date: this.todayWithPipe,
       cost:voucherForm.value.cost,
       id_vehicle: voucherForm.value.vin,
       comission_to: voucherForm.value.comission_to,
       objective: voucherForm.value.objective,
-      id_pilot: voucherForm.value.uuid,
-      
+
+      id_pilot: voucherForm.value.pilot,
+      galon: voucherForm.value.galon,
+      service:voucherForm.value.service,
+      comission_date: this.todayWithPipe,//agregarle fecha
+      km:voucherForm.value.km,
     }
     if (voucherForm.valid) {
       this._voucherService.createNewVoucherRegular(voucher).subscribe(

@@ -9,6 +9,7 @@ export class LocalRequestI{
       public position:string,
       public phoneNumber:number,
       public observations:string,
+      public status:string,
       public detail: Array<any> = []
     )
     {

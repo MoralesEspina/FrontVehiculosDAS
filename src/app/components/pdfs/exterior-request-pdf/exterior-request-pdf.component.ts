@@ -32,10 +32,20 @@ export class ExteriorRequestPdfComponent implements OnInit {
   }
 
   getOneExteriorRequest(){
-    this._exteriorRequestService.getOneRequestExterior(this.id_entrada).subscribe(
+    this._exteriorRequestService.getOneRequestExteriorComplete(this.id_entrada).subscribe(
       response =>{
         this.request = response.data.request[0];
         this.detailRequest = response.data.detailRequest;
+        console.log(this.request)
+        if (this.request.provide_fuel == 1) {
+          this.fuel = true;
+        }
+        if (this.request.provide_travel_expenses == 1) {
+          this.viatic = true;
+        }
+        if (this.request.status_request == 7) {
+          this.status = true;
+        }
       }, error =>{
 
       }

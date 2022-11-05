@@ -17,6 +17,7 @@ export class TripsComponent implements OnInit {
       this.getTripExterior();
       this.getTripLocal();
   }
+
   getTripExterior(){
     this._tripServicetab.getTripExterior().subscribe(
       response =>{

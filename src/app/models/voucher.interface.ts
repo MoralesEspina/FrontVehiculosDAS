@@ -1,7 +1,7 @@
 export class VoucherDieselI{
     constructor(
     public date:string,
-    public cost:number,
+    public cost:string,
     public id_vehicle: string,
     public comission_to:string,
     public objective:string,
@@ -12,10 +12,11 @@ export class VoucherDieselI{
     public km_to_travel:number,
     )
     {
-  
+
     }
   }
   export class VoucherGasolineI{
+    _voucherService: any;
     constructor(
     public date:string,
     public cost:number,
@@ -25,7 +26,6 @@ export class VoucherDieselI{
     public id_pilot:string,
     )
     {
-  
+
     }
   }
-  

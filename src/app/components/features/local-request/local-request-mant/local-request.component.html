@@ -11,7 +11,7 @@
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Dashboard</a></li>
-                <li class="breadcrumb-item"><a [routerLink]="['/localRequest-index']"> Solicitud local</a></li>
+                <li class="breadcrumb-item"><a [routerLink]="['/localRequest-index']">Lista de solicitudes locales</a></li>
                 <li class="breadcrumb-item"><a>Registro de solicitud de vehiculos local</a></li>
               </ol>
             </nav>
@@ -29,46 +29,24 @@
 
               <form #local_trasportationForm="ngForm" (ngSubmit)="createLocalRequest(local_trasportationForm)">
                 <div class="row">
-                  <div class="col-lg-10" *ngIf="editing == true">
-                    <div class="form-group">
-                      <label class="form-label"><b>Nombre del piloto asignado:</b></label>
-                      <select class="form-control" #pilotName="ngModel" name="pilotName"
-                        [(ngModel)]="transportation.pilotName" required>
-                        <option value="" disabled>Seleccionar</option>
-                        <option value="{{person.fullname}}" *ngFor="let person of person">{{person.fullname}}</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-lg-10" *ngIf="editing == true">
-                    <div class="form-group">
-                      <label class="form-label"><b>Placa del vehiculo autorizado:</b></label>
-                      <select class="form-control" #plate="ngModel" name="plate" [(ngModel)]="transportation.plate"
-                        required>
-                        <option value="" disabled>Seleccionar</option>
-                        <option value="{{vehicle.plate}}" *ngFor="let vehicle of vehicles">{{vehicle.plate}}</option>
-                      </select>
-                    </div>
-                  </div>
-
-
                   <div class="col-lg-10">
                     <div class="form-group">
                       <label class="form-label"><b>Lugar:</b></label>
-                      <input class="form-control" #place="ngModel" name="place" [(ngModel)]="transportation.place"
+                      <input class="form-control" #place="ngModel" name="place" [(ngModel)]="localRequest.place"
                         type="text" list="items" placeholder="Ingrese el lugar" required [disabled]="editing==true">
                     </div>
                   </div>
                   <div class="col-lg-10" *ngIf="editing == true">
                     <div class="form-group">
                       <label class="form-label"><b>Fecha:</b></label>
-                      <input name="date" [value]="transportation.date | date: 'd MMM y' | uppercase" required
-                        type="text" class="form-control" disabled>
+                      <input name="date" [value]="localRequest.date | date: 'd MMM y' | uppercase" required type="text"
+                        class="form-control" disabled>
                     </div>
                   </div>
                   <div class="col-lg-10">
                     <div class="form-group">
                       <label class="form-label"><b>Unidad, sección o dep.:</b></label>
-                      <input class="form-control" #section="ngModel" name="section" [(ngModel)]="transportation.section"
+                      <input class="form-control" #section="ngModel" name="section" [(ngModel)]="localRequest.section"
                         type="text" list="items" placeholder="Ingrese la unidad, sección o departamento" required
                         [disabled]="editing==true">
                     </div>
@@ -77,7 +55,7 @@
                     <div class="form-group">
                       <label class="form-label"><b>Nombre del solicitante:</b></label>
                       <input class="form-control" #applicantsName="ngModel" name="applicantsName"
-                        [(ngModel)]="transportation.applicantsName" type="text"
+                        [(ngModel)]="localRequest.applicantsName" type="text"
                         placeholder="Ingrese el nombre del solicitante" required [disabled]="editing==true">
                     </div>
                   </div>
@@ -85,7 +63,7 @@
                     <div class="form-group">
                       <label class="form-label"><b>Cargo del solicitante:</b></label>
                       <input class="form-control" #position="ngModel" name="position"
-                        [(ngModel)]="transportation.position" type="text" placeholder="Ingrese el cargo del solicitante"
+                        [(ngModel)]="localRequest.position" type="text" placeholder="Ingrese el cargo del solicitante"
                         required [disabled]="editing==true">
                     </div>
                   </div>
@@ -93,7 +71,7 @@
                     <div class="form-group">
                       <label class="form-label"><b>Tel. oficina o móvil:</b></label>
                       <input class="form-control" #phoneNumber="ngModel" name="phoneNumber"
-                        [(ngModel)]="transportation.phoneNumber" type="number"
+                        [(ngModel)]="localRequest.phoneNumber" type="number"
                         placeholder="Ingrese el Tel. oficina o móvil" required [disabled]="editing==true">
                     </div>
                   </div>
@@ -156,11 +134,6 @@
                             placeholder="Ingrese el Objeto de la Comision" required>
                         </div>
                       </div>
-
-
-
-
-
                     </div>
                     <div class="text-center"><button id="btndestino" class="btn btn-primary" type="submit">Agregar
                         destino</button></div>
@@ -188,7 +161,7 @@
                       <tbody *ngFor="let detailrequest of details">
                         <td style="text-align: center;">{{detailrequest.dateOf | date: 'd MMM y' | uppercase}}</td>
                         <td style="text-align: center;">{{detailrequest.dateTo | date: 'd MMM y' | uppercase}}</td>
-                        <td style="text-align: center;"> {{detailrequest.schedule | date: 'h:mm a'}}</td>
+                        <td style="text-align: center;"> {{detailrequest.schedule}}</td>
                         <td style="text-align: center;">{{detailrequest.destiny | uppercase}}</td>
                         <td style="text-align: center;">{{detailrequest.peopleNumber}}</td>
                         <td style="text-align: center;">{{detailrequest.comission}}</td>
@@ -204,33 +177,52 @@
                     <div class="form-group">
                       <label class="form-label"><b>Observaciones:</b></label>
                       <input class="form-control" #observations="ngModel" name="observations"
-                        [(ngModel)]="transportation.observations" type="text" placeholder="Ingrese observaciones"
-                        required [disabled]="editing==true">
+                        [(ngModel)]="localRequest.observations" type="text" placeholder="Ingrese observaciones"
+                        [disabled]="editing==true">
                     </div>
                   </div>
                 </div>
-
-                <div class="text-center" *ngIf="editing == false"><button type="submit"
-                    class="btn btn-primary">Solicitar</button></div>
-                <div class="row">
-                  <div class="col-9">
-                    <div class="text-center" *ngIf="editing == true">
-
-                      <button type="submit" class="btn btn-primary" style="margin-right: 30px;">Aceptar</button>
-
-                      <button type="submit" class="btn btn-danger">Denegar</button>
-                      <h1></h1>
-                      <div class="row">
-
-                        <button type="button" class="btn btn-primary"
-                          [routerLink]="['/localRequest/pdf/',id_entrada]">Ver PDF</button>
+                <form #acceptedForm="ngForm" (ngSubmit)="acceptRequest(acceptedForm)">
+                  <div class="col-lg-10" *ngIf="editing == true">
+                    <div class="form-group">
+                      <label class="form-label"><b>Nombre del piloto asignado:</b></label>
+                      <select class="form-control" #pilotName="ngModel" name="pilotName"
+                        [(ngModel)]="localRequest.pilotName" required>
+                        <option value="" disabled>Seleccionar</option>
+                        <option value="{{person.uuid}}" *ngFor="let person of person">{{person.fullname}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-lg-10" *ngIf="editing == true">
+                    <div class="form-group">
+                      <label class="form-label"><b>Placa del vehiculo autorizado:</b></label>
+                      <select class="form-control" #plate="ngModel" name="plate" [(ngModel)]="localRequest.plate"
+                        required>
+                        <option value="" disabled>Seleccionar</option>
+                        <option value="{{vehicle.vin}}" *ngFor="let vehicle of vehicles">{{vehicle.plate}} - {{vehicle.brand}} - {{vehicle.model}} - {{vehicle.color}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-9">
+                      <div class="text-center" *ngIf="editing == true">
+                          <button type="submit" class="btn btn-primary" [disabled]="status==true || deny==true">Aceptar</button>
+                          <h1></h1>
                       </div>
                     </div>
-
                   </div>
-
-                </div>
+                </form>
+                <div class="text-center" *ngIf="editing == false"><button type="submit"
+                    class="btn btn-primary">Solicitar</button></div>
               </form>
+              <div class="text-center" *ngIf="editing == true">
+                <button (click)="denyRequest()" class="btn btn-danger"
+                  [disabled]="status==true || deny==true">Denegar</button>
+              </div>
+              <div class="text-center" style="margin-top: 10px;">
+                <button type="button" class="btn btn-primary " [routerLink]="['/localRequest/pdf/',id_entrada]"
+                  *ngIf="status==true">Ver PDF</button>
+              </div>
               <!--- FIN DE FORMULARIO-->
             </div>
           </div>
