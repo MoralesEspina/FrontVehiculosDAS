@@ -37,6 +37,7 @@ import { VoucherIndexComponent } from './components/features/voucher/voucher-ind
 import { LoginGuard } from './login.guard';
 import { LogoutComponent } from './components/logout/logout.component';
 import { BodyComponent } from './components/body/body.component';
+import { ExitPassPdfComponent } from './components/pdfs/exit-pass-pdf/exit-pass-pdf.component';
 
 
 const routes: Routes = [
@@ -80,6 +81,7 @@ const routes: Routes = [
   { path: 'LocalRequestPDF', component: LocalRequestPdfComponent, canActivate: [LoginGuard] },
   { path: 'voucherDieselPDF', component: VoucherPdfComponent, canActivate: [LoginGuard] },
   { path: 'voucherRegularPDF', component: VoucherRegularPdfComponent, canActivate: [LoginGuard] },
+  { path: 'exitPassPDF', component: ExitPassPdfComponent, canActivate: [LoginGuard] },
 
   { path: 'managerView', component: ManagerviewComponent, canActivate: [LoginGuard] },
 

@@ -36,7 +36,7 @@ export class VoucherComponent implements OnInit {
     private _voucherService:VoucherService
     ) {
 
-      this.voucher=new VoucherDieselI('','','','','','','','','','','','','','','','','')
+      this.voucher=new VoucherDieselI('','','','','','','','','','')
 
      }
 

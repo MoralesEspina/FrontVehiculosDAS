@@ -33,7 +33,7 @@ export class VoucherDieselComponent implements OnInit { public person;
     private _personService: PersonService,
     private _voucherService:VoucherService
     ) {
-      this.voucher=new VoucherDieselI('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '')
+      this.voucher=new VoucherDieselI('', '', '', '', '', '', '', '', '', '')
      }
 
   ngOnInit(): void {
@@ -95,19 +95,12 @@ export class VoucherDieselComponent implements OnInit { public person;
       service_of:voucherForm.value.service_of,
       comission_date: this.todayWithPipe,//agregarle fecha
       km_to_travel:voucherForm.value.km,
-      type: '',
-      brand: '',
-      model: '',
-      color: '',
-      plate: '',
-      fullname: '',
-      dpi: '',
     }
     if (voucherForm.valid) {
       this._voucherService.createNewVoucherDisel(voucher).subscribe(
         response => {
           console.log("Se registro la solicitud del vehiculo correctamente");
-          this.voucher =new VoucherDieselI('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '')
+          this.voucher =new VoucherDieselI('', '', '', '', '', '', '', '', '', '')
 
         }, err => {
           console.log(err.error.data)
