@@ -252,10 +252,10 @@
                   </div>
                   <div class="col-9">
                     <div class="form-group">
-                      <label class="form-label"><b>Si es rechazada la solicitud indique el motivo:</b></label>
+                      <label class="form-label"><b>Motivo de rechazo:</b></label>
                       <input class="form-control" #reason_rejected="ngModel" name="reason_rejected"
                         [(ngModel)]="exteriorRequest.reason_rejected" type="text"
-                        placeholder="Ingrese el motivo de rechazo" [disabled]="status==true || deny==true">
+                        [disabled]="status==false || deny==true">
                     </div>
                   </div>
                   <div class="row">

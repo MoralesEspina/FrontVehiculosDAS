@@ -25,6 +25,15 @@ export class VehicleService {
       })
     }
 
+    getVehiclesActives(): Observable<any> {
+      return this._http.get(this.url + 'vehicles/active', {
+        headers: new HttpHeaders({
+          'Content-Type':'application/json',
+          //'Authorization:': 'Bearer' + localStorage.getItem("Token")
+        })
+      })
+    }
+
     getOneVehicle(id): Observable<any> {
       return this._http.get(this.url + 'vehicles/' + id, {
         headers: new HttpHeaders({

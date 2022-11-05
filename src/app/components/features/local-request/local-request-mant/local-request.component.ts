@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { LocalRequestI } from 'src/app/models/localRequest.interface';
 import { DetailLocalRequestI } from 'src/app/models/detailLocalRequest.interface';
 import { RequestlocalService } from 'src/app/services/requestLocal.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PersonService } from 'src/app/services/person.service';
 import { VehicleService } from 'src/app/services/vehicle.service';
 import { DatePipe } from '@angular/common';
 import { SweetAlertService } from 'src/app/services/sweetAlert.service';
 import { ResponseI } from 'src/app/models/response.interface';
 import { ErrorsService } from 'src/app/services/errors.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-local-request',
@@ -17,8 +18,10 @@ import { ErrorsService } from 'src/app/services/errors.service';
 })
 export class LocalRequestMantComponent implements OnInit {
 
-  public transportation;
+  public localRequest;
   public editing: boolean = false;
+  public status: boolean = false;
+  public deny: boolean = false;
   public id_entrada;
   public person;
   public vehicles;
@@ -43,33 +46,32 @@ export class LocalRequestMantComponent implements OnInit {
     private _personService: PersonService,
     private _vehicleService: VehicleService,
     private _sweetAlertService: SweetAlertService,
-    private _errorService: ErrorsService) {
-    this.transportation = new LocalRequestI("", "", "", "", "", "", "", 0, "", [])
+    private _errorService: ErrorsService,
+    private _router:Router) {
+    this.localRequest = new LocalRequestI("", "", "", "", "", "", "", 0, "", "", [])
   }
 
   ngOnInit(): void {
     this.id_entrada = this.router.snapshot.params['id'];
     this.loadLocalRequest();
-    this.getPerson();
-    this.getVehicles();
-    this.todayWithPipe = this.pipe.transform(Date.now(), 'dd/MM/yyyy')
+    this.getPilotsActives();
+    this.getVehiclesActives();
+    this.todayWithPipe = this.pipe.transform(Date.now(), 'yyyy/MM/dd')
   }
 
-  getPerson(){
-    this._personService.getPerson().subscribe(
+  getPilotsActives(){
+    this._personService.getPilotsActives().subscribe(
       response =>{
        this.person = response.data;
-        console.log(this.person)
       }, error =>{
 
       }
     )
   }
 
-  getVehicles(){
-    this._vehicleService.getVehicles().subscribe(
+  getVehiclesActives(){
+    this._vehicleService.getVehiclesActives().subscribe(
       response =>{
-        console.log(response)
         this.vehicles = response.data;
       }, error =>{
 
@@ -82,9 +84,13 @@ export class LocalRequestMantComponent implements OnInit {
       this.editing = true
       this._localRequestService.getOneRequestLocal(this.id_entrada).subscribe(
         response => {
-          console.log(response)
-          this.transportation = response.data.request[0]
+          this.localRequest = response.data.request[0]
           this.details = response.data.detailRequest
+          if (this.localRequest.status == 7) {
+            this.status = true;
+          }else if(this.localRequest.status == 9){
+            this.deny = true;
+          }
         }, err => {
 
         }
@@ -97,8 +103,8 @@ export class LocalRequestMantComponent implements OnInit {
 
   createLocalRequest(localRequestForm) {
     const transportation_local: LocalRequestI = {
-      pilotName: localRequestForm.value.pilotName,
-      plate: localRequestForm.value.plate,
+      pilotName: '',
+      plate: '',
       place: localRequestForm.value.place,
       date: this.todayWithPipe,
       section: localRequestForm.value.section,
@@ -106,6 +112,7 @@ export class LocalRequestMantComponent implements OnInit {
       position: localRequestForm.value.position,
       phoneNumber: localRequestForm.value.phoneNumber,
       observations: localRequestForm.value.observations,
+      status: '',
       detail: this.details
     }
 
@@ -116,7 +123,7 @@ export class LocalRequestMantComponent implements OnInit {
       this._localRequestService.createOneRequestLocal(transportation_local).subscribe(
         response => {
           this._sweetAlertService.createAndUpdate('Se registro la solicitud correctamente');
-          this.transportation = new LocalRequestI("", "", "", "", "", "", "", 0, "", [])
+          this.localRequest = new LocalRequestI("", "", "", "", "", "", "", 0, "", "", [])
         }, error => {
           this.data_response = error;
           this._errorService.error(this.data_response);
@@ -144,4 +151,71 @@ export class LocalRequestMantComponent implements OnInit {
 
   }
 
+  acceptRequest(acceptedForm){
+    const accepted:LocalRequestI = {
+      pilotName: acceptedForm.value.pilotName,
+      plate: acceptedForm.value.plate,
+      place: '',
+      date: '',
+      section: '',
+      applicantsName: '',
+      position: '',
+      phoneNumber: 0,
+      status: "7",
+      observations: '',
+      detail: []
+    }
+    if (acceptedForm.valid) {
+      this._localRequestService.updateOneRequestLocal(accepted, this.id_entrada).subscribe(
+        response => {
+          this._sweetAlertService.createAndUpdate('Se acepto correctamente la solicitud');
+          this._router.navigate(['viajes'])
+        }, error => {
+          this.data_response = error;
+          this._errorService.error(this.data_response);
+        }
+      );
+    } else {
+      this._sweetAlertService.warning('Complete correctamente el formulario');
+    }
+  }
+
+  async denyRequest(){
+    Swal.fire({
+      title: 'Esta seguro?',
+      text: "Esta acción no se podra revertir!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, denegar!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const deny:LocalRequestI = {
+          pilotName: '',
+          plate: '',
+          place: '',
+          date: '',
+          section: '',
+          applicantsName: '',
+          position: '',
+          phoneNumber: 0,
+          status: "9",
+          observations: '',
+          detail: []
+        }
+        this._localRequestService.updateOneRequestLocal(deny, this.id_entrada).subscribe(
+          response => {
+            this._sweetAlertService.createAndUpdate('Se denego correctamente la solicitud');
+            this._router.navigate(['localRequest-index'])
+          }, error => {
+            this.data_response = error;
+            this._errorService.error(this.data_response);
+          }
+        );
+      }
+    })
+
+
+  }
 }

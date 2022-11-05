@@ -36,8 +36,7 @@ export class LoginComponent implements OnInit {
           this.rol = this.data_response.data.data.rol;
           localStorage.setItem('rol', this.rol)
           localStorage.setItem('Token', this.token);
-          this._sweetAlert.createAndUpdate('Inicio de Sesión Exitoso');
-              this._router.navigate(['dashboard']);
+          this._sweetAlert.login('Inicio de Sesión Exitoso');
             },
             error => {
               this._sweetAlert.error('Parece que algo salio mal');
