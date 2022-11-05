@@ -25,8 +25,17 @@ export class PersonService{
       })
     }
 
-    getPilotsActives(): Observable<any> {
+    getPilots(): Observable<any> {
       return this._http.get(this.url + 'persons/pilots', {
+        headers: new HttpHeaders({
+          'Content-Type':'application/json',
+          //'x-access-token': '' + localStorage.getItem("Token")
+        })
+      })
+    }
+
+    getPilotsActives(): Observable<any> {
+      return this._http.get(this.url + 'persons/pilotsActives', {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")

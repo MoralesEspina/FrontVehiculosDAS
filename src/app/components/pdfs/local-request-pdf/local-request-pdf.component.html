@@ -26,7 +26,7 @@
                         <td> Nombre del Piloto: </td>
                       </div>
                       <div class="line">
-                        <strong>{{request.pilotName | uppercase}}</strong>
+                        <strong>{{request.fullname | uppercase}}</strong>
                       </div>
                       <div class="info-item">
                         <td> Placa del Vehículo: </td>
@@ -88,7 +88,7 @@
                       <strong>{{item.dateTo | date: 'd MMM y' | uppercase}}</strong>
                     </div>
                     <div class="table-i-schedule">
-                      <strong>{{item.schedule | date: 'h:mm a'}}</strong>
+                      <strong>{{item.schedule}}</strong>
                     </div>
                     <div class="table-i-destiny">
                       <strong>{{item.destiny | uppercase}}</strong>
@@ -105,7 +105,7 @@
                       <strong>OBSERVACIONES:</strong>
                     </div>
                     <div class="line-observations">
-                      <td>Lorem ipsum</td>
+                      <td>{{request.observations}}</td>
                     </div>
                   </div>
                   <div class="sign-form">

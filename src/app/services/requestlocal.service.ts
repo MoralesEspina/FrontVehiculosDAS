@@ -44,6 +44,15 @@ export class RequestlocalService {
       })
     }
 
+    getOneRequestLocalComplete(id): Observable<any> {
+      return this._http.get(this.url + 'requestLocal/complete/' + id, {
+        headers: new HttpHeaders({
+          'Content-Type':'application/json',
+          //'x-access-token': '' + localStorage.getItem("Token")
+        })
+      })
+    }
+
     updateOneRequestLocal(form: LocalRequestI, id) {
       return this._http.put(this.url + 'requestLocal/' + id, form, {
         headers: new HttpHeaders({

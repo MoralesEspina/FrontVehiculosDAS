@@ -73,25 +73,13 @@
                     </div>
                   </div>
                   <div class="col-lg-2"></div>
-                  <div class="col-lg-3">
+                  <div class="col-lg-4">
                     <div class="form-group">
                       <label class="form-label"><b>Color</b></label>
                       <input type="text" class="form-control" placeholder="{{color}}" disabled>
                     </div>
                   </div>
-                  <div class="col-lg-3">
-                    <div class="form-group">
-                      <label class="form-label"><b>Fecha de comision</b></label>
-                      <input name="color" type="date" class="form-control" required>
-                    </div>
-                  </div>
-
-                  <div class="col-lg-3">
-                    <div class="form-group">
-                      <label class="form-label"><b>Kms. a recorrer</b></label>
-                      <input name="km" type="text" class="form-control" placeholder="Ingrese los km" required>
-                    </div>
-                  </div>
+                  <div class="col-lg-3"></div>
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label class="form-label"><b>Comision a</b></label>
@@ -110,11 +98,11 @@
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label class="form-label"><b>Nombre del piloto asignado:</b></label>
-                      <select class="form-control" #pilotName="ngModel" name="uuid" [(ngModel)]="voucher.uuid" required
+                      <select class="form-control" #uuid="ngModel" name="uuid" [(ngModel)]="voucher.uuid" required
                         (click)="getOnePerson(voucher.uuid)">
                         <option value="" disabled>Seleccionar</option>
-                        <option value="{{person.uuid}}" *ngFor="let person of person">
-                          {{person.fullname}}</option>
+                        <option value="{{pilot.uuid}}" *ngFor="let pilot of pilots">
+                          {{pilot.fullname}}</option>
                       </select>
                     </div>
                   </div>

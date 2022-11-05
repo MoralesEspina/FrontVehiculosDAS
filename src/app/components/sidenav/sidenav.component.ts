@@ -1,7 +1,7 @@
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { INavbarData } from './helper';
-import { navbarData } from './nav-data';
+import { navbarData, navbarDataSecre } from './nav-data';
 import { Router } from '@angular/router';
 
 
@@ -35,7 +35,7 @@ export class SidenavComponent implements OnInit {
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
     if (this.rol == 'Secretaria/o') {
-
+      this.navData = navbarDataSecre
     }
   }
 
