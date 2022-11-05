@@ -12,9 +12,21 @@ export class ExteriorRequestI{
       public plate_vehicle:string,
       public pilot_name:string,
       public reason_rejected:string,
+      public status_request:string,
       public detail: Array<any> = []
-    )
-    {
+      )
+    {} }
 
-    }
-  }
+  export class DetailExteriorRequestI{
+    constructor(
+        public number_people:string,
+        public department:string,
+        public municipality: string,
+        public village:string,
+        public dateOf:string,
+        public dateTo:string,
+        public hour:string,
+    )
+    {}}
+
+

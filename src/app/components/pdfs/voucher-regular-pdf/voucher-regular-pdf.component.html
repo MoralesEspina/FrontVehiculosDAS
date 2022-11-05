@@ -1,0 +1,161 @@
+<div class="wrapper">
+  <div class="main">
+    <main class="content">
+      <div class="container-fluid">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <!--- INICIO DE FORMULARIO-->
+              <form #local_trasportationForm="ngForm" id="Data">
+                <div class="form">
+                  <div class="header-form">
+                    <div class="header-text">
+                      <strong class="strong-header" style="color: black;">MINISTERIO DE SALUD PÚBLICA Y ASISTENCIA SOCIAL</strong>
+                    </div>
+                    <div class="header-text">
+                      <strong class="strong-header" style="color: black;">DIRECCIÓN ÁREA DE SALUD JALAPA</strong>
+                    </div>
+                    <div class="header-text">
+                      <strong class="strong-header" style="color: black;">VALE DE REGISTRO DE COMBUSTIBLE DIESEL</strong>
+                    </div>
+                    <div class="header-text">
+                      <strong class="strong-header" style="color: black;">No.</strong>
+                    </div>
+                  </div>
+                  <div class="header-info">
+                    <div class="info-items">
+                      <div class="info-item">
+                        <td> FECHA: </td>
+                      </div>
+                      <div class="line">
+                        <strong></strong>
+                      </div>
+                      <div class="info-item">
+                        <td> Q.: </td>
+                      </div>
+                      <div class="line">
+                        <strong></strong>
+                      </div>
+                    </div>
+                    <div class="info-items2">
+                      <div class="info-item">
+                        <td> CANTIDAD EN LETRAS: </td>
+                      </div>
+                      <div class="line">
+                        <strong></strong>
+                      </div>
+                    </div>
+                    <div class="info-items3">
+                      <div class="info-item">
+                        <td> VEHÍCULO NO.: </td>
+                      </div>
+                      <div class="line">
+                        <strong></strong>
+                      </div>
+                      <div class="info-item">
+                        <td> PLACA: </td>
+                      </div>
+                      <div class="line">
+                        <strong></strong>
+                      </div>
+                    </div>
+                    <div class="info-items4">
+                      <div class="info-item">
+                        <td> TIPO DE VEHICULO: </td>
+                      </div>
+                      <div class="line">
+                        <strong></strong>
+                      </div>
+                      <div class="info-item">
+                        <td> MARCA: </td>
+                      </div>
+                      <div class="line">
+                        <strong></strong>
+                      </div>
+                    </div>
+                    <div class="info-items5">
+                      <div class="info-item">
+                        <td> MODELO: </td>
+                      </div>
+                      <div class="line">
+                        <strong></strong>
+                      </div>
+                      <div class="info-item">
+                        <td> COLOR: </td>
+                      </div>
+                      <div class="line">
+                        <strong></strong>
+                      </div>
+                    </div>
+                      <div class="info-items8">
+                        <div class="info-item">
+                        <td> COMISIÓN A: </td>
+                      </div>
+                      <div class="line">
+                        <strong></strong>
+                      </div>
+                    </div>
+                    <div class="info-items9">
+                      <div class="info-item">
+                        <td> PROPÓSITO: </td>
+                      </div>
+                      <div class="line">
+                        <strong></strong>
+                      </div>
+                    </div>
+                    <div class="info-items11">
+                      <div class="info-item">
+                        <td> NOMBRE DEL PILOTO: </td>
+                      </div>
+                      <div class="line">
+                        <strong></strong>
+                      </div>
+                    </div>
+                    <div class="info-items12">
+                      <div class="info-item">
+                        <td> DPI O LICENCIA: </td>
+                      </div>
+                      <div class="line">
+                        <strong></strong>
+                      </div>
+                    </div>
+                    <div class="info-items13">
+                      <div></div>
+                      <div class="info-item">
+                        <td> FIRMA: </td>
+                      </div>
+                      <div class="line">
+                        <strong></strong>
+                      </div>
+                    </div>
+                    <div class="sign-form">
+                      <div class="sign-text">
+                        <div><strong>Visto Bueno</strong></div>
+                        <div><strong>Gerente Administrativo Financiero</strong></div>
+                      </div>
+                      <div></div>
+                      <div class="sign-text">
+                        <div><strong>FIRMA ENCARGADO DEL</strong></div>
+                        <div><strong>COMBUSTIBLE</strong></div>
+                      </div>
+                  </div>
+                  </div>
+
+              </div>
+              </form>
+              <!--- FIN DE FORMULARIO-->
+              <div class="row" style="margin-top:40px">
+                <div class="col-12">
+                <div class="text-center">
+                  <button (click)="downloadPDF()" class="btn btn-primary" style="margin-right: 15px;" >Imprimir</button>
+                  <button type="button" class="btn btn-primary" [routerLink]="['/localRequest/edit/']">Regresar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </main>
+  </div>
+</div>
