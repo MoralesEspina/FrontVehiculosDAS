@@ -99,7 +99,6 @@ export class LocalRequestMantComponent implements OnInit {
     const transportation_local: LocalRequestI = {
       pilotName: localRequestForm.value.pilotName,
       plate: localRequestForm.value.plate,
-
       place: localRequestForm.value.place,
       date: this.todayWithPipe,
       section: localRequestForm.value.section,
@@ -114,7 +113,6 @@ export class LocalRequestMantComponent implements OnInit {
       this._sweetAlertService.warning('Complete correctamente el formulario');
       return
     }
-
       this._localRequestService.createOneRequestLocal(transportation_local).subscribe(
         response => {
           this._sweetAlertService.createAndUpdate('Se registro la solicitud correctamente');

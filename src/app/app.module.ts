@@ -38,7 +38,13 @@ import { SublevelMenuComponent } from './components/sidenav/sublevel-menu.compon
 import { LoginComponent } from './components/login/login.component';
 //TODO VIAJES
 import { TripsComponent } from './components/features/trips/trips.component';
+
+import { VoucherPdfComponent } from './components/pdfs/voucher-diesel-pdf/voucher-pdf.component';
+import { VoucherRegularPdfComponent } from './components/pdfs/voucher-regular-pdf/voucher-regular-pdf.component';
+import { LogoutComponent } from './components/logout/logout.component';
+
 import { VoucherComponent } from './components/features/voucher/voucher.component';
+
 
 
 @NgModule({
@@ -66,7 +72,11 @@ import { VoucherComponent } from './components/features/voucher/voucher.componen
     SublevelMenuComponent,
     LoginComponent,
     TripsComponent,
+    VoucherPdfComponent,
+    VoucherRegularPdfComponent,
+    LogoutComponent,
     VoucherComponent
+
   ],
   imports: [
     BrowserModule,

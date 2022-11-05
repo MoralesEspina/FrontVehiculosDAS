@@ -11,6 +11,7 @@ import { SweetAlertService } from 'src/app/services/sweetAlert.service';
 import { ResponseI } from 'src/app/models/response.interface';
 import { ErrorsService } from 'src/app/services/errors.service';
 import * as moment from 'moment'
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-exterior-request-mant',
@@ -19,17 +20,18 @@ import * as moment from 'moment'
 })
 export class ExteriorRequestMantComponent implements OnInit {
 
+  public id_entrada;
   public exteriorRequest;
   public departments;
   public Onemunicipality;
   public person;
   public vehicles;
+  public data_response;
   public editing: boolean = false;
-  public id_entrada;
   public status: boolean = false;
+  public deny: boolean = false;
   detailrequest: any = {};
   details: any[] = [];
-  public data_response;
 
   today: Date = new Date();
   pipe = new DatePipe('en-US');
@@ -46,9 +48,9 @@ export class ExteriorRequestMantComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getDepartments();
     this.id_entrada = this.router.snapshot.params['id'];
     this.loadExteriorRequest()
+    this.getDepartments();
     this.todayWithPipe = this.pipe.transform(Date.now(), 'yyyy/MM/dd')
   }
 
@@ -101,7 +103,10 @@ export class ExteriorRequestMantComponent implements OnInit {
           this.getVehicles();
           if (this.exteriorRequest.status_request == 7) {
             this.status = true;
+          }else if(this.exteriorRequest.status_request == 9){
+            this.deny = true;
           }
+
         }, error => {
           this.data_response = error;
           this._errorService.error(this.data_response);
@@ -190,5 +195,51 @@ export class ExteriorRequestMantComponent implements OnInit {
     } else {
       this._sweetAlertService.warning('Complete correctamente el formulario');
     }
+  }
+
+  async denyRequest(){
+    const { value: text } = await Swal.fire({
+      input: 'textarea',
+      inputLabel: 'Indique el motivo del rechazo:',
+      inputPlaceholder: 'Escribe acá el motivo...',
+      inputAttributes: {
+        'aria-label': 'Type your message here'
+      },
+      showCancelButton: true
+    })
+
+    if (!text) {
+      this._sweetAlertService.warning('Debe ingresar un motivo');
+      return
+    }
+    const deny:ExteriorRequestI = {
+      requesting_unit: '',
+      commission_manager: '',
+      date_request: '',
+      objective_request: '',
+      duration_days: '',
+      phoneNumber: '',
+      observations: '',
+      provide_fuel: 0,
+      provide_travel_expenses: 0,
+      plate_vehicle: '',
+      pilot_name: '',
+      status_request: "9",
+      reason_rejected: text,
+      detail: []
+    }
+    this._exteriorRoutesService.updateOneRequestExterior(deny, this.id_entrada).subscribe(
+      response => {
+        this._sweetAlertService.createAndUpdate('Se denego correctamente la solicitud');
+        setTimeout(() => {
+          window.location.reload();
+       }, 1000);
+
+      }, error => {
+        console.log(error)
+        this.data_response = error;
+        this._errorService.error(this.data_response);
+      }
+    );
   }
 }

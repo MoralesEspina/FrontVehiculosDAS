@@ -4,6 +4,7 @@ import { ResponseI } from 'src/app/models/response.interface';
 import { UserI } from 'src/app/models/user.interface';
 import { SweetAlertService } from 'src/app/services/sweetAlert.service';
 import { UsersService } from 'src/app/services/users.service';
+import { environment } from 'src/environments/environment'
 
 @Component({
   selector: 'app-login',
@@ -21,9 +22,8 @@ export class LoginComponent implements OnInit {
     this.user = new UserI ('','','','')
     this.data_response = new ResponseI('', '')
    }
+
   ngOnInit(): void {
-    localStorage.removeItem('rol')
-    localStorage.removeItem('Token');
   }
 
   login(loginForm) {
