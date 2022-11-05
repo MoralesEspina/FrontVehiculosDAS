@@ -3,10 +3,10 @@
       <main class="content">
         <div class="container-fluid">
           <div class="header">
-  
-            <div class="col-11">
+
+            <div class="col-8">
               <h1 class="header-title">
-                Vales de combustibles
+                Vales de combustible diesel
               </h1>
               <!--- Migaja de Pan -->
               <nav aria-label="breadcrumb">
@@ -19,22 +19,21 @@
             </div>
           </div>
           <!---  -->
-          <div id="" class="col-lg-10"><label><b>-- SOLICITUDES DE COMBUSTIBLE DE DISEL--</b></label>
-          </div>
-          <div class="col-11" style="margin: 0 auto;">
+
+          <div class="col-8" style="margin: 0 auto;">
             <div class="card">
               <div class="card-header">
                 <div class="row">
-  
+
                   <div class="btn-group">
                     <button type="button" class="btn mb-1 btn-primary " data-toggle="dropdown" aria-haspopup="true"
-                      aria-expanded="false" [routerLink]="['/VoucherDiesel']">Nueva solicitud de combustible
+                      aria-expanded="false" [routerLink]="['/VoucherDiesel']">Generar vale de diesel
                     </button>
-  
+
                   </div>
                 </div>
               </div>
-             
+
               <!---  -->
                 <!--- TABLA -->
                 <table class="table table-striped table-hover">
@@ -50,7 +49,7 @@
                       </tr>
                     </thead>
                     <!--- TITULOS DE LA TABLA -->
-    
+
                     <!--- CUERPO DE LA TABLA -->
                     <tbody *ngFor="let item of voucherDiesel | paginate: { itemsPerPage: 15, currentPage: p }">
                       <td style="text-align: center;">{{item.iddiesel}}</td>
@@ -59,34 +58,35 @@
                       <td style="text-align: center;">{{item.comission_to}}</td>
                       <td style="text-align: center;">{{item.cost}}</td>
                       <td style="text-align: center;">{{item.fullname}}</td>
-                      
+
                     </tbody>
                     <!--- CUERPO DE LA TABLA -->
                   </table>
                   <!--- TABLA -->
-  
+
             </div>
             <pagination-controls (pageChange)="p = $event" nextLabel="Siguiente" previousLabel="Anterior">
             </pagination-controls>
           </div>
-  
-          <div class="col-lg-10"><p></p></div>
-          <div id="" class="col-lg-10"><label><b>-- SOLICITUDES DE COMBUSTIBLE DE GASOLINA --</b></label>
+
+          <div class="col-8" style="margin-top: 100px;">
+            <h1 class="header-title">
+              Vales de combustible regular
+            </h1>
+
           </div>
-          <div class="col-lg-10"><p></p></div>
-          <div class="col-lg-10"><p></p></div>
-  
+
           <!---inicia otra tabla  -->
-          <div class="col-11" style="margin: 0 auto;">
+          <div class="col-8" style="margin: 0 auto;">
             <div class="card">
               <div class="card-header">
                 <div class="row">
-  
+
                   <div class="btn-group">
                     <button type="button" class="btn mb-1 btn-primary " data-toggle="dropdown" aria-haspopup="true"
-                      aria-expanded="false" [routerLink]="['/VoucherGasoline']">Nueva solicitud de combustible
+                      aria-expanded="false" [routerLink]="['/VoucherGasoline']">Generar vale de regular
                     </button>
-  
+
                   </div>
                 </div>
               </div>
@@ -114,19 +114,19 @@
                   <td style="text-align: center;">{{item.comission_to}}</td>
                   <td style="text-align: center;">{{item.cost}}</td>
                   <td style="text-align: center;">{{item.fullname}}</td>
-                  
+
                 </tbody>
                 <!--- CUERPO DE LA TABLA -->
               </table>
               <!--- TABLA -->
-  
+
             </div>
             <pagination-controls (pageChange)="p = $event" nextLabel="Siguiente" previousLabel="Anterior">
             </pagination-controls>
           </div>
-  
+
         </div>
-  
+
       </main>
     </div>
   </div>
