@@ -46,6 +46,11 @@ import { VoucherDieselComponent } from './components/features/voucher/voucher-di
 import { VoucherIndexComponent } from './components/features/voucher/voucher-index/voucher-index.component';
 import { VoucherComponent } from './components/features/voucher/voucherGas/voucher.component';
 
+<<<<<<< HEAD
+=======
+import { VoucherComponent } from './components/features/voucher/voucher.component';
+import { ExitPassPdfComponent } from './components/pdfs/exit-pass-pdf/exit-pass-pdf.component';
+>>>>>>> c2bb4bee4710eb62058ab3b0e2e6ed61ab7250ae
 
 
 
@@ -82,6 +87,11 @@ import { VoucherComponent } from './components/features/voucher/voucherGas/vouch
     VoucherPdfComponent,
     VoucherRegularPdfComponent,
     LogoutComponent,
+<<<<<<< HEAD
+=======
+    VoucherComponent,
+    ExitPassPdfComponent
+>>>>>>> c2bb4bee4710eb62058ab3b0e2e6ed61ab7250ae
 
   ],
   imports: [

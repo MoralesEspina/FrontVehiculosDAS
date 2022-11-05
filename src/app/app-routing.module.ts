@@ -38,6 +38,11 @@ import { LoginGuard } from './login.guard';
 import { LogoutComponent } from './components/logout/logout.component';
 import { BodyComponent } from './components/body/body.component';
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> c2bb4bee4710eb62058ab3b0e2e6ed61ab7250ae
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login',component: LoginComponent},
@@ -79,6 +84,7 @@ const routes: Routes = [
   { path: 'LocalRequestPDF', component: LocalRequestPdfComponent, canActivate: [LoginGuard] },
   { path: 'voucherDieselPDF', component: VoucherPdfComponent, canActivate: [LoginGuard] },
   { path: 'voucherRegularPDF', component: VoucherRegularPdfComponent, canActivate: [LoginGuard] },
+  { path: 'exitPassPDF', component: ExitPassPdfComponent, canActivate: [LoginGuard] },
 
   { path: 'managerView', component: ManagerviewComponent, canActivate: [LoginGuard] },
 
