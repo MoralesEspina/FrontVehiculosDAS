@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Injectable({
@@ -7,11 +8,39 @@ import Swal from 'sweetalert2';
 
 export class SweetAlertService {
 
-  constructor(
+  constructor(private _router:Router
   ) {
 
   }
   //TODO ESTATUS DE RESPUESTA ESPERADO 200
+  login(titulo) {
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: titulo,
+      showConfirmButton: false,
+      timer: 1000
+    })
+    this._router.navigate(['dashboard']);
+    setTimeout(()=>{                           // <<<---using ()=> syntax
+      window.location.reload()
+  }, 800);
+  }
+
+  logout(titulo) {
+    Swal.fire({
+      position: 'top-end',
+      icon: 'info',
+      title: titulo,
+      showConfirmButton: false,
+      timer: 1000
+    })
+    this._router.navigate(['login']);
+    setTimeout(()=>{                           // <<<---using ()=> syntax
+      window.location.reload()
+  }, 200);
+  }
+
   createAndUpdate(titulo) {
     Swal.fire({
       position: 'top-end',

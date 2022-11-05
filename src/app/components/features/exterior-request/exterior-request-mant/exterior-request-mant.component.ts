@@ -5,7 +5,7 @@ import { ExteriorRequestService } from 'src/app/services/exteriorRequest.service
 import { DetailExteriorRequestI } from 'src/app/models/exteriorRequest.interface';
 import { PersonService } from 'src/app/services/person.service';
 import { VehicleService } from 'src/app/services/vehicle.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { SweetAlertService } from 'src/app/services/sweetAlert.service';
 import { ResponseI } from 'src/app/models/response.interface';
@@ -43,7 +43,8 @@ export class ExteriorRequestMantComponent implements OnInit {
     private _vehicleService: VehicleService,
     private router: ActivatedRoute,
     private _sweetAlertService: SweetAlertService,
-    private _errorService: ErrorsService) {
+    private _errorService: ErrorsService,
+    private _router:Router) {
     this.exteriorRequest = new ExteriorRequestI('', '', '', '', '', '', '', 0, 0, '', '', '','',[]);
   }
 
@@ -72,8 +73,8 @@ export class ExteriorRequestMantComponent implements OnInit {
     )
   }
 
-  getPerson() {
-    this._personService.getPerson().subscribe(
+  getPilotsActives() {
+    this._personService.getPilotsActives().subscribe(
       response => {
         this.person = response.data;
       }, error => {
@@ -82,8 +83,8 @@ export class ExteriorRequestMantComponent implements OnInit {
     )
   }
 
-  getVehicles() {
-    this._vehicleService.getVehicles().subscribe(
+  getVehiclesActives() {
+    this._vehicleService.getVehiclesActives().subscribe(
       response => {
         this.vehicles = response.data;
       }, error => {
@@ -99,8 +100,8 @@ export class ExteriorRequestMantComponent implements OnInit {
         response => {
           this.exteriorRequest = response.data.request[0]
           this.details = response.data.detailRequest
-          this.getPerson();
-          this.getVehicles();
+          this.getPilotsActives();
+          this.getVehiclesActives();
           if (this.exteriorRequest.status_request == 7) {
             this.status = true;
           }else if(this.exteriorRequest.status_request == 9){
@@ -186,6 +187,7 @@ export class ExteriorRequestMantComponent implements OnInit {
       this._exteriorRoutesService.updateOneRequestExterior(accepted, this.id_entrada).subscribe(
         response => {
           this._sweetAlertService.createAndUpdate('Se acepto correctamente la solicitud');
+          this._router.navigate(['viajes'])
         }, error => {
           console.log(error)
           this.data_response = error;
@@ -231,6 +233,7 @@ export class ExteriorRequestMantComponent implements OnInit {
     this._exteriorRoutesService.updateOneRequestExterior(deny, this.id_entrada).subscribe(
       response => {
         this._sweetAlertService.createAndUpdate('Se denego correctamente la solicitud');
+        this._router.navigate(['localRequest-index'])
         setTimeout(() => {
           window.location.reload();
        }, 1000);

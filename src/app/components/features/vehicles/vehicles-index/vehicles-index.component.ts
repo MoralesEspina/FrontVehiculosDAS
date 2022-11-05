@@ -25,6 +25,7 @@ export class VehiclesIndexComponent implements OnInit {
     this._vehicleService.getVehicles().subscribe(
       response =>{
         this.vehicles = response.data;
+        console.log(this.vehicles)
       }, error =>{
         this._sweetAlertService.error('Parece que algo salio mal :(');
       }

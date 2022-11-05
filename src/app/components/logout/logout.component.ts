@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SweetAlertService } from 'src/app/services/sweetAlert.service';
 
 @Component({
   selector: 'app-logout',
@@ -8,12 +9,13 @@ import { Router } from '@angular/router';
 })
 export class LogoutComponent implements OnInit {
 
-  constructor(private _router:Router) { }
+  constructor(private _router:Router,
+              private _sweetAlert:SweetAlertService) { }
 
   ngOnInit(): void {
     localStorage.removeItem('rol')
     localStorage.removeItem('Token');
-    this._router.navigate(['login'])
+    this._sweetAlert.logout('Adios!');
   }
 
 }
