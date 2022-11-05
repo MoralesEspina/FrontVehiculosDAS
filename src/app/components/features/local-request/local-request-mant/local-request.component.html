@@ -11,7 +11,7 @@
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Dashboard</a></li>
-                <li class="breadcrumb-item"><a [routerLink]="['/localRequest-index']"> Solicitud local</a></li>
+                <li class="breadcrumb-item"><a [routerLink]="['/localRequest-index']">Lista de solicitudes locales</a></li>
                 <li class="breadcrumb-item"><a>Registro de solicitud de vehiculos local</a></li>
               </ol>
             </nav>
@@ -177,7 +177,7 @@
                     <div class="form-group">
                       <label class="form-label"><b>Observaciones:</b></label>
                       <input class="form-control" #observations="ngModel" name="observations"
-                        [(ngModel)]="localRequest.observations" type="text" placeholder="Ingrese observaciones" required
+                        [(ngModel)]="localRequest.observations" type="text" placeholder="Ingrese observaciones"
                         [disabled]="editing==true">
                     </div>
                   </div>

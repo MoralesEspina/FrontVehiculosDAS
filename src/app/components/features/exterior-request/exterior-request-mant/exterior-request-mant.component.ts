@@ -150,6 +150,7 @@ export class ExteriorRequestMantComponent implements OnInit {
     } else {
       this._sweetAlertService.warning('Complete correctamente el formulario');
     }
+    this._router.navigate(['/exteriorRequest-index'])
   }
 
   createDetailRequest(detailExterioForm) {

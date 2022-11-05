@@ -18,7 +18,7 @@ export class VoucherComponent implements OnInit {
   public id_entrada;
   public vehicles;
   public Onevehicle;
- 
+
   public color;
   public model;
   public brand;
@@ -32,7 +32,7 @@ export class VoucherComponent implements OnInit {
     private _vehicleService: VehicleService,
     private _personService: PersonService,
     ) {
-      this.voucher=new VoucherI("",0,"","","","","","","","")
+      this.voucher=new VoucherI("","","","","","","","","","")
      }
 
   ngOnInit(): void {
@@ -84,7 +84,7 @@ export class VoucherComponent implements OnInit {
 
 
 
- 
+
   createLocalRequest(voucherForm) {
     const voucher: VoucherI = {
       date: this.todayWithPipe,
@@ -95,9 +95,9 @@ export class VoucherComponent implements OnInit {
       id_pilot: voucherForm.value.pilot,
       galon: voucherForm.value.galon,
       service:voucherForm.value.service,
-      comission_date: this.todayWithPipe,//agregarle fecha 
+      comission_date: this.todayWithPipe,//agregarle fecha
       km:voucherForm.value.km,
-      
+
     }
   }
 

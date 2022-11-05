@@ -1,7 +1,7 @@
 export class VoucherI{
     constructor(
     public date:string,
-    public cost:number,
+    public cost:string,
     public id_vehicle: string,
     public comission:string,
     public objective:string,
@@ -12,7 +12,6 @@ export class VoucherI{
     public km:string,
     )
     {
-  
+
     }
   }
-  
