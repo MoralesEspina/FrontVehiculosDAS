@@ -48,6 +48,7 @@ import { VoucherComponent } from './components/features/voucher/voucherGas/vouch
 
 
 import { ExitPassPdfComponent } from './components/pdfs/exit-pass-pdf/exit-pass-pdf.component';
+import { BinnaclePdfComponent } from './components/pdfs/binnacle-pdf/binnacle-pdf.component';
 
 
 @NgModule({
@@ -82,7 +83,8 @@ import { ExitPassPdfComponent } from './components/pdfs/exit-pass-pdf/exit-pass-
     VoucherRegularPdfComponent,
     LogoutComponent,
     VoucherComponent,
-    ExitPassPdfComponent
+    ExitPassPdfComponent,
+    BinnaclePdfComponent
 
   ],
   imports: [

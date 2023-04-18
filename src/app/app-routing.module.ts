@@ -36,8 +36,8 @@ import { VoucherIndexComponent } from './components/features/voucher/voucher-ind
 
 import { LoginGuard } from './login.guard';
 import { LogoutComponent } from './components/logout/logout.component';
-import { BodyComponent } from './components/body/body.component';
 import { ExitPassPdfComponent } from './components/pdfs/exit-pass-pdf/exit-pass-pdf.component';
+import { BinnaclePdfComponent } from './components/pdfs/binnacle-pdf/binnacle-pdf.component';
 
 
 const routes: Routes = [
@@ -74,7 +74,6 @@ const routes: Routes = [
   { path: 'users-index', component: UsersIndexComponent, canActivate: [LoginGuard] },
   { path: 'users/edit/:id', component: UsersComponent, canActivate: [LoginGuard] },
 
-
   //TODO RUTAS PDF'S
   { path: 'FuelVoucher', component: FuelVoucherComponent, canActivate: [LoginGuard] },
   { path: 'ExteriorRequestPDF', component: ExteriorRequestPdfComponent, canActivate: [LoginGuard] },
@@ -82,22 +81,20 @@ const routes: Routes = [
   { path: 'voucherDieselPDF', component: VoucherPdfComponent, canActivate: [LoginGuard] },
   { path: 'voucherRegularPDF', component: VoucherRegularPdfComponent, canActivate: [LoginGuard] },
   { path: 'exitPassPDF', component: ExitPassPdfComponent, canActivate: [LoginGuard] },
-
   { path: 'managerView', component: ManagerviewComponent, canActivate: [LoginGuard] },
 
   //TODO VIAJES
 
   { path: 'Trips', component: TripsComponent },
-
   { path: 'viajes', component: TripsComponent, canActivate: [LoginGuard] },
-
 
   //TODO vales
   { path: 'VoucherGasoline', component: VoucherComponent },
   { path: 'VoucherDiesel', component:VoucherDieselComponent},
   { path: 'Vouchertable', component: VoucherIndexComponent},
 
-
+  //TODO bitacora
+  { path: 'Bitacora', component: BinnaclePdfComponent },
 ];
 
 @NgModule({
