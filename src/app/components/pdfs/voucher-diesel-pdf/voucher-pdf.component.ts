@@ -3,6 +3,7 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { VoucherDieselI } from 'src/app/models/voucher.interface';
 import { VoucherService } from 'src/app/services/voucher.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -15,15 +16,17 @@ export class VoucherPdfComponent implements OnInit {
   public voucher;
   public id_entrada;
   public letter;
-  constructor(private _vocuherService: VoucherService) {
+  constructor(private _vocuherService: VoucherService,
+    private _route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.id_entrada = this._route.snapshot.params['id'];
     this.getOneVoucherDiesel()
   }
 
   getOneVoucherDiesel() {
-    this._vocuherService.getOneVoucherDiesel(1).subscribe(
+    this._vocuherService.getOneVoucherDiesel(this.id_entrada).subscribe(
       response => {
         this.voucher = response.data[0];
         this.letter = this.numeroALetras(this.voucher.cost, {

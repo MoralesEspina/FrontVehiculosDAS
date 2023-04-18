@@ -79,8 +79,8 @@ const routes: Routes = [
   { path: 'FuelVoucher', component: FuelVoucherComponent, canActivate: [LoginGuard] },
   { path: 'ExteriorRequestPDF', component: ExteriorRequestPdfComponent, canActivate: [LoginGuard] },
   { path: 'LocalRequestPDF', component: LocalRequestPdfComponent, canActivate: [LoginGuard] },
-  { path: 'voucherDieselPDF', component: VoucherPdfComponent, canActivate: [LoginGuard] },
-  { path: 'voucherRegularPDF', component: VoucherRegularPdfComponent, canActivate: [LoginGuard] },
+  { path: 'voucherDieselPDF/:id', component: VoucherPdfComponent, canActivate: [LoginGuard] },
+  { path: 'voucherRegularPDF/:id', component: VoucherRegularPdfComponent, canActivate: [LoginGuard] },
   { path: 'exitPassPDF', component: ExitPassPdfComponent, canActivate: [LoginGuard] },
 
   { path: 'managerView', component: ManagerviewComponent, canActivate: [LoginGuard] },

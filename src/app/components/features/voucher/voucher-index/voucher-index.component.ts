@@ -11,6 +11,7 @@ export class VoucherIndexComponent implements OnInit {
   public p:number = 1;
   public voucherGasoline;
   public voucherDiesel;
+  public oneVoucher;
   constructor(private _voucherService:VoucherService) { }
 
   ngOnInit(): void {
@@ -36,4 +37,5 @@ export class VoucherIndexComponent implements OnInit {
       }
     )
   }
+
 }
