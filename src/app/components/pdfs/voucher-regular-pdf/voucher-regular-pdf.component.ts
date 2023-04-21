@@ -39,7 +39,7 @@ export class VoucherRegularPdfComponent implements OnInit {
   }
   public downloadPDF(): void {
     const DATA:any = document.getElementById('Data');
-    const doc = new jsPDF('p', 'pt', 'letter');
+    const doc = new jsPDF('l', 'pt', 'A5');
     const options = {
       background: 'white',
       scale: 3

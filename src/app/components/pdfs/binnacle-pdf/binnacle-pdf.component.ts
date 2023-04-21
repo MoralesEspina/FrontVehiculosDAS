@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { PdfMakeWrapper, Txt, Table, Cell, Img } from 'pdfmake-wrapper';
 import * as pdfFonts from "pdfmake/build/vfs_fonts";
 
@@ -11,13 +12,20 @@ import * as pdfFonts from "pdfmake/build/vfs_fonts";
 export class BinnaclePdfComponent implements OnInit {
 
   imageVelocimetro: string = 'https://firebasestorage.googleapis.com/v0/b/das-jalapa.appspot.com/o/watermarks%2Fvelocimetro.png?alt=media&token=43c3f814-1bb6-478c-946c-7f4bf12888f3'
-  constructor() { }
-
-  ngOnInit(): void {
-
+  imageSedan: string = 'https://firebasestorage.googleapis.com/v0/b/das-jalapa.appspot.com/o/watermarks%2FVehiculo%202.png?alt=media&token=a2ef4609-969e-4e41-aecf-89e20ac5f65c'
+  imagePickUp: string = 'https://firebasestorage.googleapis.com/v0/b/das-jalapa.appspot.com/o/watermarks%2FVehiculo%201.png?alt=media&token=3c9e9920-0636-4248-928c-fa8bd7a12a9a'
+  public id_entrada:any;
+  constructor( private router: ActivatedRoute) {
+    this.id_entrada = this.router.snapshot.params['id'];
   }
 
-  async GenerateReportTable() {
+  ngOnInit(): void {
+    this.GenerateBinnacle()
+  }
+  getBinnacle(){
+
+  }
+  async GenerateBinnacle() {
 
     PdfMakeWrapper.setFonts(pdfFonts);
 
@@ -78,7 +86,7 @@ export class BinnaclePdfComponent implements OnInit {
       [null, null, new Cell(new Txt('').end).colSpan(5).fontSize(7).alignment('center').end, null, null, null, null],
       [null, null, new Cell(new Txt('').end).colSpan(5).fontSize(7).alignment('center').end, null, null, null, null],
 
-      [new Cell(new Txt('VERIFICACIÓN (SALIDA Y ENTRADA DE COMISIÓN').end).colSpan(7).fontSize(9).alignment('center').end, null, null, null, null, null, null],
+      [new Cell(new Txt('VERIFICACIÓN (SALIDA Y ENTRADA DE COMISIÓN)').end).colSpan(7).fontSize(9).alignment('center').end, null, null, null, null, null, null],
 
       [new Cell(await new Img(this.imageVelocimetro).alignment('right').width(140).height(60).build()).colSpan(3).fontSize(7).rowSpan(5).alignment('center').end, null, null,
       new Cell(new Txt('MARQUE CON X').end).colSpan(1).fontSize(7).alignment('center').end,
@@ -102,7 +110,7 @@ export class BinnaclePdfComponent implements OnInit {
         new Cell(new Txt('Llave de Chuchos:').end).colSpan(1).fontSize(6).end,
         null, null, null,],
 
-      [new Cell(new Txt('Marque el nivel de combustible con S para salida y E para entrada').end).colSpan(3).rowSpan(2).fontSize(7).alignment('center').end, null, null,
+      [new Cell(new Txt('Marque el nivel de combustible con S para salida y E para entrada').end).margin(3).colSpan(3).rowSpan(2).fontSize(7).alignment('center').end, null, null,
       new Cell(new Txt('Llanta de repuesto').end).colSpan(1).fontSize(6).end, null, null, null],
 
       [null, null, null,
@@ -110,6 +118,8 @@ export class BinnaclePdfComponent implements OnInit {
 
       [new Cell(new Txt('Marque golpes visibles').end).colSpan(7).fontSize(9).alignment('center').end, null, null, null, null, null, null],
 
+      [new Cell(await new Img(this.imageSedan).alignment('right').width(220).height(140).build()).colSpan(3).fontSize(7).alignment('center').end, null, null,
+      new Cell(await new Img(this.imagePickUp).alignment('right').width(300).height(140).build()).colSpan(4).fontSize(7).alignment('center').end, null, null,null],
 
       [new Cell(new Txt('CODIGO DE IDENTIFICACIÓN: 0 = golpe, - = rayon, E = emblemas, F = faltante').end).colSpan(7).fontSize(9).alignment('center').end, null, null, null, null, null, null],
       /* [new Cell(new Txt('Dirección: ' ).end).colSpan(4).fontSize(9).end, null, null, null],
@@ -123,6 +133,14 @@ export class BinnaclePdfComponent implements OnInit {
       .heights(8)
       .relativePosition(0, 20)
       .end)
+
+      pdf.add(new Txt ('Sedán').relativePosition(10, 415).end)
+      pdf.add(new Txt ('Pick up').relativePosition(240, 415).end)
+      pdf.add(new Txt ('_____________________________________').relativePosition(20, 615).end)
+      pdf.add(new Txt ('Nombre y Firma del Piloto').relativePosition(40, 630).end)
+      pdf.add(new Txt ('_____________________________________').relativePosition(290, 615).end)
+      pdf.add(new Txt ('Nombre, firma y sello Encargado de Transporte').relativePosition(260, 630).end)
+      pdf.add(new Txt ('SELLO DE LA INSTITUCIÓN DONDE REALIZO LA COMISION').relativePosition(0, 680).end)
     pdf.create().open();
   }
 

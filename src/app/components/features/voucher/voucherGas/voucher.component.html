@@ -42,14 +42,14 @@
                         (click)="getOneVehicle(voucher.vin)" required>
                         <option value="" disabled>Seleccionar</option>
                         <option value="{{vehicle.vin}}" *ngFor="let vehicle of vehicles">
-                          {{vehicle.plate}}</option>
+                          {{vehicle.plate}} - {{vehicle.type_name}} - {{vehicle.brand}} - {{vehicle.model}}</option>
                       </select>
                     </div>
                   </div>
                   <div class="col-lg-3">
                     <div class="form-group">
                       <label class="form-label"><b>Vehiculo No.</b></label>
-                      <input name="No." type="number" class="form-control" placeholder="{{1}}" disabled>
+                      <input name="No." type="number" class="form-control" placeholder="" disabled>
                     </div>
                   </div>
 
@@ -72,7 +72,7 @@
                       <input type="number" class="form-control" placeholder="{{model}}" disabled>
                     </div>
                   </div>
-                  <div class="col-lg-2"></div>
+                  <div class="col-lg-4"></div>
                   <div class="col-lg-4">
                     <div class="form-group">
                       <label class="form-label"><b>Color</b></label>

@@ -95,6 +95,8 @@ const routes: Routes = [
 
   //TODO bitacora
   { path: 'Bitacora', component: BinnaclePdfComponent },
+  { path: 'BitacoraExterior/:id', component: BinnaclePdfComponent },
+  { path: 'BitacoraLocal/:id', component: BinnaclePdfComponent },
 ];
 
 @NgModule({

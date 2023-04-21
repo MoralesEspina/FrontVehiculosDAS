@@ -46,6 +46,7 @@
                   <th style="text-align: center;">Vehiculo</th>
                   <th style="text-align: center;">Estado</th>
                   <th style="text-align: center;">Ver solicitud - Finalizar viaje</th>
+                  <th style="text-align: center;">Bitacora</th>
                 </tr>
               </thead>
               <!--- TITULOS DE LA TABLA -->
@@ -69,6 +70,14 @@
                   <div class="btn-group">
                     <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-check"></i>
+                    </button>
+                  </div>
+                </td>
+                <td style="text-align: center;">
+                  <div class="btn-group">
+                    <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false"
+                    [routerLink]="['/BitacoraExterior/',item.transp_request_exterior]">
+                      <i class="fas fa-eye"></i>
                     </button>
                   </div>
                 </td>
@@ -115,6 +124,7 @@
                   <th style="text-align: center;">Vehiculo</th>
                   <th style="text-align: center;">Estado</th>
                   <th style="text-align: center;">Ver solicitud - Finalizar viaje</th>
+                  <th style="text-align: center;">Bitacora</th>
                 </tr>
               </thead>
               <!--- TITULOS DE LA TABLA -->
@@ -140,7 +150,14 @@
                     </button>
                   </div>
                 </td>
-
+                <td style="text-align: center;">
+                  <div class="btn-group">
+                    <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false"
+                    [routerLink]="['/BitacoraLocal/',item.transp_request_local]">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                  </div>
+                </td>
             </table>
             <!--- TABLA -->
 

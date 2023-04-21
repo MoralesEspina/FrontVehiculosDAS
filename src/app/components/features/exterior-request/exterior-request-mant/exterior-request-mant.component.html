@@ -238,7 +238,7 @@
                       <select class="form-control" #plate_vehicle="ngModel" name="plate_vehicle"
                         [(ngModel)]="exteriorRequest.plate_vehicle" required [disabled]="status==true || deny==true">
                         <option value="" disabled>Seleccionar</option>
-                        <option value="{{vehicle.vin}}" *ngFor="let vehicle of vehicles">{{vehicle.plate}}</option>
+                        <option value="{{vehicle.vin}}" *ngFor="let vehicle of vehicles">{{vehicle.plate}} - {{vehicle.type_name}} - {{vehicle.brand}} - {{vehicle.model}}</option>
                       </select>
                     </div>
                     <div class="form-group">

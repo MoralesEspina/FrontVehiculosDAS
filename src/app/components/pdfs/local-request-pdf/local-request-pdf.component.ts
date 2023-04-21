@@ -20,7 +20,6 @@ export class LocalRequestPdfComponent implements OnInit {
   constructor(  private _localRequestService:RequestlocalService,
                 private router: ActivatedRoute) {
     this.request = new LocalRequestI('','','','','','','',0,'','',[])
-    this.detailRequest = new DetailLocalRequestI('','','','',0,'')
     this.id_entrada = this.router.snapshot.params['id'];
   }
 
@@ -33,8 +32,6 @@ export class LocalRequestPdfComponent implements OnInit {
       response =>{
         this.request = response.data.request[0];
         this.detailRequest = response.data.detailRequest;
-        console.log(this.request)
-        console.log(this.detailRequest)
       }, error =>{
 
       }

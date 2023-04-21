@@ -14,16 +14,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ExteriorRequestPdfComponent implements OnInit {
 
-  public request;
-  public detailRequest;
+  public request:any;
+  public detailRequest:any;
   public fuel:boolean = false;
   public viatic:boolean = false;
   public status:boolean = false;
-  public id_entrada;
+  public id_entrada:any;
   constructor(  private _exteriorRequestService:ExteriorRequestService,
                 private router: ActivatedRoute) {
     this.request = new ExteriorRequestI('','','','','','','',0,0,'','','','')
-    this.detailRequest = new DetailExteriorRequestI('','','','','','','')
     this.id_entrada = this.router.snapshot.params['id'];
   }
 
@@ -68,7 +67,6 @@ export class ExteriorRequestPdfComponent implements OnInit {
       const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
       const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
 
-      console.log(pdfHeight)
       doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
       return doc;
     }).then((docResult) => {
