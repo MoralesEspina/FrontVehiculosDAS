@@ -43,6 +43,7 @@
                 <!--- TITULOS DE LA TABLA -->
                 <thead  class="thead-dark">
                   <tr>
+                    <th style="text-align: center;">No.</th>
                     <th style="text-align: center;">Chasis</th>
                     <th style="text-align: center;">Placa</th>
                     <th style="text-align: center;">Tipo</th>
@@ -56,6 +57,7 @@
 
                 <!--- CUERPO DE LA TABLA -->
                 <tbody *ngFor="let item of vehicles | paginate: { itemsPerPage: 8, currentPage: p }">
+                    <td style="text-align: center;">{{item.idVehicle}}</td>
                     <td style="text-align: center;">{{item.vin}}</td>
                     <td style="text-align: center;">{{item.plate}}</td>
                     <td style="text-align: center;">{{item.type_name}}</td>

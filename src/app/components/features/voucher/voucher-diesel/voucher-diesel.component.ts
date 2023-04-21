@@ -26,6 +26,7 @@ export class VoucherDieselComponent implements OnInit { public person;
   public model;
   public brand;
   public type_name;
+  public vehicleNum;
 
   today: Date = new Date();
   pipe = new DatePipe('en-US');
@@ -39,7 +40,7 @@ export class VoucherDieselComponent implements OnInit { public person;
     private _errorService: ErrorsService,
     private _router: Router
     ) {
-      this.voucher=new VoucherDieselI('', '', '', '', '', '', '', '', '', '')
+      this.voucher=new VoucherDieselI('', '', '', '','', '', '', '', '', '', '')
      }
 
   ngOnInit(): void {
@@ -65,6 +66,7 @@ export class VoucherDieselComponent implements OnInit { public person;
         this.color=this.Onevehicle.color
         this.model=this.Onevehicle.model
         this.type_name=this.Onevehicle.type_name
+        this.vehicleNum=this.Onevehicle.idVehicle
       }, error => {
       }
     )
@@ -93,7 +95,8 @@ export class VoucherDieselComponent implements OnInit { public person;
     const voucher: VoucherDieselI = {
       date: this.todayWithPipe,
       cost:voucherForm.value.cost,
-      id_vehicle: voucherForm.value.vin,
+      idVehicle: voucherForm.value.idVehicle,
+      vin: voucherForm.value.vin,
       comission_to: voucherForm.value.comission_to,
       objective: voucherForm.value.objective,
       id_pilot: voucherForm.value.uuid,
@@ -111,7 +114,7 @@ export class VoucherDieselComponent implements OnInit { public person;
       this._voucherService.createNewVoucherDisel(voucher).subscribe(
         response => {
           this._sweetAlertService.createAndUpdate('Se registro el vale correctamente');
-          this.voucher =new VoucherDieselI('', '', '', '', '', '', '', '', '', '')
+          this.voucher =new VoucherDieselI('', '', '', '', '', '', '', '', '', '', '')
           this._router.navigate(['Vouchertable'])
         }, error => {
           this.data_response = error;

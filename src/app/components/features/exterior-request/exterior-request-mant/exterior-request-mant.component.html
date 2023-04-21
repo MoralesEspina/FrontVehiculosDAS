@@ -94,7 +94,7 @@
                         <div class="form-group">
                           <label class="form-label"><b>Departamento</b></label>
                           <select id="inputTable" class="form-control" #department="ngModel" name="department"
-                            [(ngModel)]="detailrequest.department" (click)="getOneDepartment(detailrequest.department)"
+                            [(ngModel)]="detailrequest.department" (ngModelChange)="getOneDepartment(detailrequest.department)"
                             required>
                             <option value="" disabled>Seleccionar</option>
                             <option value="{{item.title}}" *ngFor="let item of departments">{{item.title}}</option>
@@ -106,7 +106,7 @@
                           <label class="form-label"><b>Municipio</b></label>
                           <select id="inputTable" class="form-control" #municipality="ngModel" name="municipality"
                             [(ngModel)]="detailrequest.municipality" required>
-                            <option value="" disabled>Seleccionar</option>
+                            <option value="">Seleccionar</option>
                             <option value="{{item}}" *ngFor="let item of Onemunicipality">{{item}}</option>
                           </select>
                         </div>
@@ -157,7 +157,10 @@
                     </div>
                     <div class="text-center"><button id="btndestino" class="btn btn-primary" type="submit">Agregar
                         destino</button></div>
+                        <div class="text-center"><button id="btndestino" class="btn btn-primary" (click)="Eliminar()">Eliminar
+                          destino</button></div>
                     <div class="col-lg-10">
+
                       <p></p>
                     </div>
                   </form>

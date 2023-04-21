@@ -154,20 +154,26 @@ export class ExteriorRequestMantComponent implements OnInit {
   }
 
   createDetailRequest(detailExterioForm) {
-    const datos: DetailExteriorRequestI = {
-      dateOf: detailExterioForm.value.dateOf,
-      dateTo: detailExterioForm.value.dateTo,
-      hour: detailExterioForm.value.hour,
-      department: detailExterioForm.value.department,
-      number_people: detailExterioForm.value.number_people,
-      municipality: detailExterioForm.value.municipality,
-      village: detailExterioForm.value.village,
+    if (detailExterioForm.valid) {
+      const datos: DetailExteriorRequestI = {
+        dateOf: detailExterioForm.value.dateOf,
+        dateTo: detailExterioForm.value.dateTo,
+        hour: detailExterioForm.value.hour,
+        department: detailExterioForm.value.department,
+        number_people: detailExterioForm.value.number_people,
+        municipality: detailExterioForm.value.municipality,
+        village: detailExterioForm.value.village,
+      }
+      this.details.push(this.detailrequest);
+      console.log(this.details)
+      this.detailrequest = {};
     }
-    this.details.push(this.detailrequest);
-    this.detailrequest = {};
+      this._sweetAlertService.warning('Complete correctamente el formulario');
   }
-
-  acceptRequest(acceptedForm){
+  Eliminar(){
+    this.details.pop();
+  }
+  acceptRequest(  acceptedForm){
     const accepted:ExteriorRequestI = {
       requesting_unit: '',
       commission_manager: '',

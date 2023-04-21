@@ -2,7 +2,8 @@ export class VoucherDieselI{
     constructor(
     public date:string,
     public cost:string,
-    public id_vehicle: string,
+    public idVehicle: string,
+    public vin: string,
     public comission_to:string,
     public objective:string,
     public id_pilot:string,
@@ -19,7 +20,8 @@ export class VoucherDieselI{
     constructor(
     public date:string,
     public cost:number,
-    public id_vehicle: string,
+    public idVehicle: string,
+    public vin: string,
     public comission_to:string,
     public objective:string,
     public id_pilot:string,
