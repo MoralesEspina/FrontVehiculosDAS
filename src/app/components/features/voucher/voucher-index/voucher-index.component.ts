@@ -32,7 +32,6 @@ export class VoucherIndexComponent implements OnInit {
     this._voucherService.getVoucherDiesel().subscribe(
       response =>{
         this.voucherDiesel = response.data;
-        console.log(this.voucherDiesel)
       }, error =>{
 
       }

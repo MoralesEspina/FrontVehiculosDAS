@@ -1,105 +1,27 @@
-<!-- <div class="sidenav" *ngIf="rol" [ngClass]="collapsed ? 'sidenav-collapsed': ''" >
-  <div class="logo-container">
-      <button class="logo fa fa-briefcase-medical" (click)="toggleCollapse()"></button>
-      <div class="logo-text"  *ngIf="collapsed">Solicitudes y vehiculos</div>
-      <button class="btn-close"  *ngIf="collapsed" (click)="closeSidenav()">
-          <i class="fal fa-times close-icon"></i>
-      </button>
-  </div>
-  <div class="scrollwrap scrollwrap_delayed" >
-    
-      <ul class="sidenav-nav">
-          <li class="sidenav-nav-item" *ngFor="let data of navData">
-              <a class="sidenav-nav-link" (click)="handleClick(data)"
-                  *ngIf="data.items && data.items.length > 0"
-                  >
-                  <i class="sidenav-link-icon" [class]="data.icon"></i>
-                  <span class="sidenav-link-text" *ngIf="collapsed" >
-                      {{data.label}}
-                  </span>
-                  <i *ngIf="data.items && collapsed" class="menu-collapse-icon"
-                      [ngClass]="!data.expanded ? 'fal fa-angle-right' : 'fal fa-angle-down'"
-                  ></i>
-              </a>
-
-              <a class="sidenav-nav-link"
-                  *ngIf="!data.items || (data.items && data.items.length === 0)"
-                  [routerLink]="[data.routeLink]"
-                  routerLinkActive="active"
-                  [routerLinkActiveOptions]="{exact: true}"
-                  (click)="shrinkItems(data)">
-                  <i class="sidenav-link-icon" [class]="data.icon"></i>
-                  <span class="sidenav-link-text"  *ngIf="collapsed"  >
-                      {{data.label}}
-                  </span>
-              </a>
-          </li>
-      </ul>
-  </div>
-</div> -->
 <body>
     <nav>
         <ul>
             <li>
-                <a routerLink="dashboard">
-                <i class="fa fal fa-home"></i>  
-                <span class="nav-item">Solicitudes y vehiculos</span>
+                <a routerLink="dashboard" class="logo">
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbXnB8JPcLes1WdZN4XcOnn_30aIP88JtO7Q&usqp=CAU" alt="">
+                <span class="nav-item">Vehiculos DAS</span>
             </a>
             </li>
-            <li>
-                <a routerLink="dashboard">
-                <i class="fa fal fa-home"></i>  
-                <span class="nav-item">Inicio</span>
-            </a>
-            </li>
-            <li>
-                <a routerLink="vehicles">
-                <i class="fa fa-cars "></i>  
-                <span class="nav-item">Vehiculos</span>
-            </a>
-            </li>
-            <li>
-                <a routerLink="persontable">
-                <i class="fa fa-user-tie "></i>  
-                <span class="nav-item">Personas</span>
-            </a>
-            </li>
-            <li>
-                <a routerLink="users-index">
-                <i class="fa  fa-users "></i>  
-                <span class="nav-item">Usuarios</span>
-            </a>
-            </li>
-            <li>
-                <a routerLink="localRequest-index">
-                <i class="fa fa-clipboard-list-check "></i>  
-                <span class="nav-item">Solicitudes Locales</span>
-            </a>
-            </li>
-            <li>
-                <a routerLink="exteriorRequest-index">
-                <i class="fa fa-clipboard-list-check "></i>  
-                <span class="nav-item">Solicitudes Exteriores</span>
-            </a>
-            </li>
-            <li>
-                <a routerLink="viajes">
-                <i class="fa fa-road "></i>  
-                <span class="nav-item">Viajes</span>
-            </a>
-            </li>
-            <li>
-                <a routerLink="Vouchertable">
-                <i class="fa fa-list "></i>  
-                <span class="nav-item">Vales de Combustible</span>
+            <li *ngFor="let item of list">
+                <a routerLink="{{item.router}}">
+                <i class="{{item.icon}}"></i>
+                <span class="nav-item">{{item.name}}</span>
             </a>
             </li>
             <li>
                 <a routerLink="logout" class="logout">
-                <i class="fa fa-power-off "></i>  
+                <i class="fa fa-power-off "></i>
                 <span class="nav-item">Cerrar Sesion</span>
             </a>
             </li>
         </ul>
     </nav>
+    <section class="main">
+      <router-outlet></router-outlet>
+    </section>
 </body>

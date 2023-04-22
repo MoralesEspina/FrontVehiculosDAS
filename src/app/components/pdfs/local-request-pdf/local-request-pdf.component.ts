@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-import { RequestlocalService } from 'src/app/services/requestLocal.service';
+import { LocalRequestService } from 'src/app/services/localRequest.service';
 import { LocalRequestI } from 'src/app/models/localRequest.interface';
-import { DetailLocalRequestI } from 'src/app/models/detailLocalRequest.interface';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -17,7 +16,7 @@ export class LocalRequestPdfComponent implements OnInit {
   public detailRequest;
   public status:boolean = false;
   public id_entrada;
-  constructor(  private _localRequestService:RequestlocalService,
+  constructor(  private _localRequestService:LocalRequestService,
                 private router: ActivatedRoute) {
     this.request = new LocalRequestI('','','','','','','',0,'','',[])
     this.id_entrada = this.router.snapshot.params['id'];

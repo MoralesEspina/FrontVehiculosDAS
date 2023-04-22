@@ -1,9 +1,7 @@
-<div class="wrapper">
     <div class="main">
       <main class="content">
         <div class="container-fluid">
           <div class="header">
-
             <div class="col-8">
               <h1 class="header-title">
                 Vales de combustible diesel
@@ -26,7 +24,7 @@
                 <div class="row">
 
                   <div class="btn-group">
-                    <button type="button" class="btn mb-1 btn-primary " data-toggle="dropdown" aria-haspopup="true"
+                    <button type="button" class="btn mb-1 btn-primary " aria-haspopup="true"
                       aria-expanded="false" [routerLink]="['/VoucherDiesel']">Generar vale de diesel
                     </button>
 
@@ -91,7 +89,7 @@
                 <div class="row">
 
                   <div class="btn-group">
-                    <button type="button" class="btn mb-1 btn-primary " data-toggle="dropdown" aria-haspopup="true"
+                    <button type="button" class="btn mb-1 btn-primary " aria-haspopup="true"
                       aria-expanded="false" [routerLink]="['/VoucherGasoline']">Generar vale de regular
                     </button>
 
@@ -135,14 +133,10 @@
                 <!--- CUERPO DE LA TABLA -->
               </table>
               <!--- TABLA -->
-
             </div>
             <pagination-controls (pageChange)="p = $event" nextLabel="Siguiente" previousLabel="Anterior">
             </pagination-controls>
           </div>
-
         </div>
-
       </main>
     </div>
-  </div>

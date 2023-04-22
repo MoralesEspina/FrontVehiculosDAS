@@ -1,6 +1,5 @@
-.wrapper{
-  margin-top: -70px;
-  margin-left: 80px;
+.col-lg-12{
+  margin: 0 auto;
 }
 
 img{
@@ -19,8 +18,14 @@ img{
 }
 
 .card{
+  align-items: center;
+  background-color: transparent;
+}
+
+.card-body{
   height: 870px;
   width: 1056px;
+  background-color: white;
 }
 
 .header-form{

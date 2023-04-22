@@ -8,9 +8,7 @@ import { VehicleService } from 'src/app/services/vehicle.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { SweetAlertService } from 'src/app/services/sweetAlert.service';
-import { ResponseI } from 'src/app/models/response.interface';
 import { ErrorsService } from 'src/app/services/errors.service';
-import * as moment from 'moment'
 import Swal from 'sweetalert2';
 
 @Component({

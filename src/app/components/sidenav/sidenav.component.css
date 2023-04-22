@@ -1,7 +1,14 @@
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
 body {
   background: #dfe9f5;
-  margin-bottom: -48%;
-
 }
 
 nav {
@@ -14,7 +21,7 @@ nav {
   background: #2a4365;
   width: 90px;
   overflow: hidden;
-  transition: width 0.2s linear;
+  transition: width 0.1s linear;
   box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
 }
 
@@ -22,13 +29,13 @@ nav {
   text-align: center;
   display: flex;
   transition: all 0.5s ease;
-  margin: 10px 0 0 10px
 }
 
 .logo img {
   width: 45px;
   height: 45px;
   border-radius: 50%;
+  margin: 0 0 0 10px
 }
 
 .logo span {
@@ -43,23 +50,24 @@ a {
   color: rgb(219, 219, 219);
   font-size: 15px;
   display: table;
-  width: 300px;
+  width: 280px;
   padding: 10px;
+  text-decoration: none;
+  border-radius: 10px;
 }
 
 .fa {
   position: relative;
   width: 70px;
-  height: 40px;
-  top: 14px;
+  height: 20px;
   font-size: 20px;
   text-align: center;
 }
 
 .nav-item {
   position: relative;
-  top: 12px;
   margin-left: 10px;
+  padding: 12px;
 }
 
 a:hover {
@@ -68,10 +76,21 @@ a:hover {
 
 nav:hover {
   width: 280px;
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
 }
 
 .logout {
   position: absolute;
   bottom: 0;
+}
+
+.main{
+  position: relative;
+  padding: 40px;
+  width: 100%;
+}
+
+nav:hover + .main {
+  width: calc(100% - 150px);
+  left: 150px;
 }
