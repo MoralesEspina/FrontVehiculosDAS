@@ -42,8 +42,8 @@ export class ExteriorRequestMantComponent implements OnInit {
     private router: ActivatedRoute,
     private _sweetAlertService: SweetAlertService,
     private _errorService: ErrorsService,
-    private _router:Router) {
-    this.exteriorRequest = new ExteriorRequestI('', '', '', '', '', '', '', 0, 0, '', '', '','',[]);
+    private _router: Router) {
+    this.exteriorRequest = new ExteriorRequestI('', '', '', '', '', '', '', 0, 0, '', '', '', '', []);
   }
 
   ngOnInit(): void {
@@ -102,7 +102,7 @@ export class ExteriorRequestMantComponent implements OnInit {
           this.getVehiclesActives();
           if (this.exteriorRequest.status_request == 7) {
             this.status = true;
-          }else if(this.exteriorRequest.status_request == 9){
+          } else if (this.exteriorRequest.status_request == 9) {
             this.deny = true;
           }
 
@@ -137,7 +137,7 @@ export class ExteriorRequestMantComponent implements OnInit {
       this._exteriorRoutesService.createNewRequestExterior(exteriorRequest).subscribe(
         response => {
           this._sweetAlertService.createAndUpdate('Se registro la solicitud de vehiculo correctamente');
-          this.exteriorRequest = new ExteriorRequestI('', '', '', '', '', '', '', 0, 0, '', '', '','', []);
+          this.exteriorRequest = new ExteriorRequestI('', '', '', '', '', '', '', 0, 0, '', '', '', '', []);
           this.details = [];
         }, error => {
           console.log(error)
@@ -151,28 +151,30 @@ export class ExteriorRequestMantComponent implements OnInit {
     this._router.navigate(['/exteriorRequest-index'])
   }
 
-  createDetailRequest(detailExterioForm) {
-    if (detailExterioForm.valid) {
+  createDetailRequest() {
+    this.detailrequest.valid
+    this.details.push(this.detailrequest);
+    this.detailrequest = {};
+    /*console.log(detailExteriorForm)
+    if (detailExteriorForm.valid) {
       const datos: DetailExteriorRequestI = {
-        dateOf: detailExterioForm.value.dateOf,
-        dateTo: detailExterioForm.value.dateTo,
-        hour: detailExterioForm.value.hour,
-        department: detailExterioForm.value.department,
-        number_people: detailExterioForm.value.number_people,
-        municipality: detailExterioForm.value.municipality,
-        village: detailExterioForm.value.village,
-      }
-      this.details.push(this.detailrequest);
-      console.log(this.details)
-      this.detailrequest = {};
-    }
-      this._sweetAlertService.warning('Complete correctamente el formulario');
+        dateOf: detailExteriorForm.value.dateOf,
+        dateTo: detailExteriorForm.value.dateTo,
+        hour: detailExteriorForm.value.hour,
+        department: detailExteriorForm.value.department,
+        number_people: detailExteriorForm.value.number_people,
+        municipality: detailExteriorForm.value.municipality,
+        village: detailExteriorForm.value.village,
+      }*/
+
+    //this._sweetAlertService.warning('Complete correctamente el formulario');
   }
-  Eliminar(){
+
+  Eliminar() {
     this.details.pop();
   }
-  acceptRequest(  acceptedForm){
-    const accepted:ExteriorRequestI = {
+  acceptRequest(acceptedForm) {
+    const accepted: ExteriorRequestI = {
       requesting_unit: '',
       commission_manager: '',
       date_request: '',
@@ -204,7 +206,7 @@ export class ExteriorRequestMantComponent implements OnInit {
     }
   }
 
-  async denyRequest(){
+  async denyRequest() {
     const { value: text } = await Swal.fire({
       input: 'textarea',
       inputLabel: 'Indique el motivo del rechazo:',
@@ -219,7 +221,7 @@ export class ExteriorRequestMantComponent implements OnInit {
       this._sweetAlertService.warning('Debe ingresar un motivo');
       return
     }
-    const deny:ExteriorRequestI = {
+    const deny: ExteriorRequestI = {
       requesting_unit: '',
       commission_manager: '',
       date_request: '',
@@ -241,7 +243,7 @@ export class ExteriorRequestMantComponent implements OnInit {
         this._router.navigate(['localRequest-index'])
         setTimeout(() => {
           window.location.reload();
-       }, 1000);
+        }, 1000);
 
       }, error => {
         console.log(error)

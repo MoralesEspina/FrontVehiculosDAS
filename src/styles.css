@@ -33,3 +33,7 @@
 ::-webkit-scrollbar {
       display: none;
     }
+
+.main{
+  padding-top: 50px;
+}

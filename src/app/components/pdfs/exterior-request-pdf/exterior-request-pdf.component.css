@@ -1,5 +1,6 @@
-.col-lg-12{
-  margin: 0 auto;
+.col-11{
+  margin:auto;
+  width: 1056px;
 }
 
 img{
@@ -18,6 +19,7 @@ img{
 }
 
 .card{
+  margin-top: -30px;
   align-items: center;
   background-color: transparent;
 }

@@ -86,8 +86,9 @@ nav:hover {
 
 .main{
   position: relative;
-  padding: 40px;
+  margin-left: 40px;
   width: 100%;
+  margin-top: -50px;
 }
 
 nav:hover + .main {

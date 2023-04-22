@@ -25,7 +25,6 @@
               <h5 class="card-title">Completa el formulario</h5>
             </div>
             <div class="card-body">
-
               <!--- INICIO DE FORMULARIO-->
               <form #ExteriorForm="ngForm" (ngSubmit)="createNewExteriorRequest(ExteriorForm)">
                 <div class="row">
@@ -54,9 +53,9 @@
                   </div>
                   <div class="col-lg-6">
                     <div class="form-group">
-                      <label class="form-label"><b>Duracion en Dias</b></label>
+                      <label class="form-label"><b>Duracion en dias</b></label>
                       <input #duration_days="ngModel" name="duration_days" [(ngModel)]="exteriorRequest.duration_days"
-                        required type="number" class="form-control" placeholder="Ingrese duracion de los dias"
+                        required type="number" class="form-control" placeholder="Ingrese duracion en dias"
                         [disabled]="editing==true">
                     </div>
                   </div>
@@ -65,29 +64,22 @@
                       <label class="form-label"><b>Objetivo de la comision:</b></label>
                       <input class="form-control" #pilotName="ngModel" name="objective_request"
                         [(ngModel)]="exteriorRequest.objective_request" type="text" list="items"
-                        placeholder="Ingrese el Objetivo de la comision" required [disabled]="editing==true">
+                        placeholder="Ingrese el objetivo de la comision" required [disabled]="editing==true">
                     </div>
                   </div>
                   <div class="col-lg-6">
                     <div class="form-group">
-                      <label class="form-label"><b>No. celular de contacto:</b></label>
+                      <label class="form-label"><b>No. Celular de contacto:</b></label>
                       <input #phoneNumber="ngModel" name="phoneNumber" [(ngModel)]="exteriorRequest.phoneNumber"
-                        required type="number" class="form-control" placeholder="ingrese Celular"
+                        required type="number" class="form-control" placeholder="Ingrese celular"
                         [disabled]="editing==true">
                     </div>
                   </div>
-                  <div class="col-lg-10">
-                    <p></p>
-                  </div>
                   <div id="destino" class="col-lg-10" *ngIf="editing == false"><label><b>-- DESTINOS --</b></label>
-                  </div>
-                  <div class="col-lg-10">
-                    <p></p>
                   </div>
 
                   <!-- Inician datos de la tabla      -->
-                  <form class="col-lg-12" #detailExteriorForm="ngForm"
-                    (ngSubmit)="createDetailRequest(detailExteriorForm)" *ngIf="editing == false">
+                  <form class="col-lg-12" #detailExteriorForm="ngForm" *ngIf="editing == false">
                     <div class="row">
                       <div class="col-lg-4">
                         <div class="form-group">
@@ -110,8 +102,6 @@
                           </select>
                         </div>
                       </div>
-
-
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label class="form-label"><b>Aldea</b></label>
@@ -151,17 +141,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-lg-10">
-                      <p></p>
-                    </div>
-                    <div class="text-center"><button id="btndestino" class="btn btn-primary" type="submit">Agregar
-                        destino</button></div>
-                        <div class="text-center"><button id="btndestino" class="btn btn-primary" (click)="Eliminar()">Eliminar
-                          destino</button></div>
-                    <div class="col-lg-10">
-
-                      <p></p>
-                    </div>
+                    <div class="text-center"><button id="btndestino" class="btn btn-primary" (click)="createDetailRequest()" >Agregar destino</button></div>
                   </form>
 
                   <!-- finalizan los datos para la tabla -->
@@ -193,12 +173,8 @@
                     </table>
                   </div>
                   <!---   TABLA -->
-
                   <div class="col-lg-10">
-                    <p></p>
-                  </div>
-                  <div class="col-lg-10">
-                    <p></p>
+                    <div class="text-center"><button class="btn btn-primary" (click)="Eliminar()">Eliminar destino</button></div>
                   </div>
                   <div class="col-lg-10">
                     <div class="form-group">
@@ -208,7 +184,7 @@
                     </div>
                   </div>
                   <!--    Datos del cuadrito                -->
-                  <form class="col-lg-12" #acceptedForm="ngForm"
+                  <form class="col-lg-10" #acceptedForm="ngForm"
                     (ngSubmit)="acceptRequest(acceptedForm)" *ngIf="editing == true">
                   <div class="row">
                     <div class="col-lg-6">
@@ -234,7 +210,8 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-9">
+                  <div class="row">
+                  <div class="col-lg-6">
                     <div class="form-group">
                       <label class="form-label"><b>Placa del vehiculo autorizado:</b></label>
                       <select class="form-control" #plate_vehicle="ngModel" name="plate_vehicle"
@@ -243,6 +220,8 @@
                         <option value="{{vehicle.vin}}" *ngFor="let vehicle of vehicles">{{vehicle.plate}} - {{vehicle.type_name}} - {{vehicle.brand}} - {{vehicle.model}}</option>
                       </select>
                     </div>
+                  </div>
+                    <div class="col-lg-6">
                     <div class="form-group">
                       <label class="form-label"><b>Nombre del piloto asignado:</b></label>
                       <select class="form-control" #pilot_name="ngModel" name="pilot_name"
@@ -252,6 +231,7 @@
                       </select>
                     </div>
                   </div>
+                </div>
                   <div class="col-9">
                     <div class="form-group">
                       <label class="form-label"><b>Motivo de rechazo:</b></label>
@@ -263,7 +243,9 @@
                   <div class="row">
                     <div class="col-9">
                       <div class="text-center" *ngIf="editing == true">
-                          <button type="submit" class="btn btn-primary" [disabled]="status==true || deny==true">Aceptar</button>
+                          <button type="submit" class="btn btn-primary" style="margin-right:20px" [disabled]="status==true || deny==true">Aceptar</button>
+                          <button (click)="denyRequest()" class="btn btn-danger" style="margin-right:20px" [disabled]="status==true || deny==true" >Denegar</button>
+                          <button type="button" class="btn btn-primary "[routerLink]="['/exteriorRequest/pdf/',id_entrada]" *ngIf="status==true || deny==true">Ver PDF</button>
                           <h1></h1>
                       </div>
                     </div>
@@ -273,12 +255,6 @@
                 <div class="text-center" *ngIf="editing == false"><button type="submit"
                     class="btn btn-primary" >Solicitar</button></div>
               </form>
-              <div class="text-center" *ngIf="editing == true" >
-                <button (click)="denyRequest()" class="btn btn-danger" [disabled]="status==true || deny==true" >Denegar</button>
-              </div>
-              <div class="text-center" style="margin-top: 10px;" >
-                <button type="button" class="btn btn-primary "[routerLink]="['/exteriorRequest/pdf/',id_entrada]" *ngIf="status==true || deny==true">Ver PDF</button>
-              </div>
               <!--- FIN DE FORMULARIO-->
             </div>
           </div>
