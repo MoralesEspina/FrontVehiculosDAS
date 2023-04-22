@@ -34,7 +34,6 @@ import { FuelVoucherComponent } from './components/pdfs/fuel-voucher/fuel-vouche
 import { PersonFormComponent } from './components/features/person/person-form/person-form.component';
 import { ExteriorRequestPdfComponent } from './components/pdfs/exterior-request-pdf/exterior-request-pdf.component';
 import { LocalRequestPdfComponent } from './components/pdfs/local-request-pdf/local-request-pdf.component';
-import { SublevelMenuComponent } from './components/sidenav/sublevel-menu.component';
 import { LoginComponent } from './components/login/login.component';
 //TODO VIAJES
 import { TripsComponent } from './components/features/trips/trips.component';
@@ -73,7 +72,6 @@ import { BinnaclePdfComponent } from './components/pdfs/binnacle-pdf/binnacle-pd
     PersonFormComponent,
     ExteriorRequestPdfComponent,
     LocalRequestPdfComponent,
-    SublevelMenuComponent,
     LoginComponent,
     TripsComponent,
     VoucherComponent,
