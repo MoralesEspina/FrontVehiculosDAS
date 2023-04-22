@@ -84,7 +84,8 @@ import { BinnaclePdfComponent } from './components/pdfs/binnacle-pdf/binnacle-pd
     LogoutComponent,
     VoucherComponent,
     ExitPassPdfComponent,
-    BinnaclePdfComponent
+    BinnaclePdfComponent,
+    
 
   ],
   imports: [
@@ -95,6 +96,7 @@ import { BinnaclePdfComponent } from './components/pdfs/binnacle-pdf/binnacle-pd
     FormsModule,
     HttpClientModule,
     NgxPaginationModule,
+    
   ],
 
   providers: [{provide: LOCALE_ID, useValue: 'ES'}],

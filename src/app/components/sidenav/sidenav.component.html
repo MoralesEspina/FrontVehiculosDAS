@@ -1,4 +1,4 @@
-<div class="sidenav" *ngIf="rol" [ngClass]="collapsed ? 'sidenav-collapsed': ''">
+<!-- <div class="sidenav" *ngIf="rol" [ngClass]="collapsed ? 'sidenav-collapsed': ''" >
   <div class="logo-container">
       <button class="logo fa fa-briefcase-medical" (click)="toggleCollapse()"></button>
       <div class="logo-text"  *ngIf="collapsed">Solicitudes y vehiculos</div>
@@ -6,7 +6,8 @@
           <i class="fal fa-times close-icon"></i>
       </button>
   </div>
-  <div class="scrollwrap scrollwrap_delayed">
+  <div class="scrollwrap scrollwrap_delayed" >
+    
       <ul class="sidenav-nav">
           <li class="sidenav-nav-item" *ngFor="let data of navData">
               <a class="sidenav-nav-link" (click)="handleClick(data)"
@@ -35,4 +36,70 @@
           </li>
       </ul>
   </div>
-</div>
+</div> -->
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a routerLink="dashboard">
+                <i class="fa fal fa-home"></i>  
+                <span class="nav-item">Solicitudes y vehiculos</span>
+            </a>
+            </li>
+            <li>
+                <a routerLink="dashboard">
+                <i class="fa fal fa-home"></i>  
+                <span class="nav-item">Inicio</span>
+            </a>
+            </li>
+            <li>
+                <a routerLink="vehicles">
+                <i class="fa fa-cars "></i>  
+                <span class="nav-item">Vehiculos</span>
+            </a>
+            </li>
+            <li>
+                <a routerLink="persontable">
+                <i class="fa fa-user-tie "></i>  
+                <span class="nav-item">Personas</span>
+            </a>
+            </li>
+            <li>
+                <a routerLink="users-index">
+                <i class="fa  fa-users "></i>  
+                <span class="nav-item">Usuarios</span>
+            </a>
+            </li>
+            <li>
+                <a routerLink="localRequest-index">
+                <i class="fa fa-clipboard-list-check "></i>  
+                <span class="nav-item">Solicitudes Locales</span>
+            </a>
+            </li>
+            <li>
+                <a routerLink="exteriorRequest-index">
+                <i class="fa fa-clipboard-list-check "></i>  
+                <span class="nav-item">Solicitudes Exteriores</span>
+            </a>
+            </li>
+            <li>
+                <a routerLink="viajes">
+                <i class="fa fa-road "></i>  
+                <span class="nav-item">Viajes</span>
+            </a>
+            </li>
+            <li>
+                <a routerLink="Vouchertable">
+                <i class="fa fa-list "></i>  
+                <span class="nav-item">Vales de Combustible</span>
+            </a>
+            </li>
+            <li>
+                <a routerLink="logout" class="logout">
+                <i class="fa fa-power-off "></i>  
+                <span class="nav-item">Cerrar Sesion</span>
+            </a>
+            </li>
+        </ul>
+    </nav>
+</body>
