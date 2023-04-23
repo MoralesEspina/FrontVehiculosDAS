@@ -73,6 +73,7 @@ export class LocalRequestMantComponent implements OnInit {
     this._vehicleService.getVehiclesActives().subscribe(
       response =>{
         this.vehicles = response.data;
+        console.log(this.vehicles)
       }, error =>{
 
       }
@@ -133,23 +134,23 @@ export class LocalRequestMantComponent implements OnInit {
     }
 
 
-  createDetailLocalRequest(detailLocalForm) {
+  createDetailLocalRequest(detailRequestForm) {
 
-    const person: DetailLocalRequestI = {
-      dateOf: detailLocalForm.value.dateOf,
-      dateTo: detailLocalForm.value.dateTo,
-      schedule: detailLocalForm.value.schedule,
-      destiny: detailLocalForm.value.destiny,
-      peopleNumber: detailLocalForm.value.peopleNumber,
-      comission: detailLocalForm.value.comission
+    if (detailRequestForm.valid) {
+      const detailRequest: DetailLocalRequestI = {
+        dateOf: detailRequestForm.value.dateOf,
+        dateTo: detailRequestForm.value.dateTo,
+        schedule: detailRequestForm.value.schedule,
+        destiny: detailRequestForm.value.destiny,
+        peopleNumber: detailRequestForm.value.peopleNumber,
+        comission: detailRequestForm.value.comission
+      }
+
+      this.details.push(detailRequest);
+      this.detailrequest = {};
+    } else{
+      this._sweetAlertService.warning('Complete correctamente la información del destino');
     }
-
-    console.log(person)
-    // se inserta el dato en el arreglo
-    this.details.push(this.detailrequest);
-    // se crea un nuevo objeto para almacenar nuevos datos
-    this.detailrequest = {};
-
   }
 
   acceptRequest(acceptedForm){

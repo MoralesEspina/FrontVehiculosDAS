@@ -38,10 +38,10 @@
                     <div class="form-group">
                       <label class="form-label"><b>Placa</b></label>
                       <select class="form-control" #vin="ngModel" name="vin" [(ngModel)]="voucher.vin"
-                        (click)="getOneVehicle(voucher.vin)" required>
+                        (ngModelChange)="getOneVehicle(voucher.vin)" required>
                         <option value="" disabled>Seleccionar</option>
-                        <option value="{{vehicle.vin}}" *ngFor="let vehicle of vehicles">
-                          {{vehicle.plate}} - {{vehicle.type_name}} - {{vehicle.brand}} - {{vehicle.model}}</option>
+                        <option value="{{vehicle.idVehicle}}" *ngFor="let vehicle of vehicles">
+                          {{vehicle.idVehicle}} - {{vehicle.plate}} - {{vehicle.type_name}} - {{vehicle.brand}} - {{vehicle.model}}</option>
                       </select>
                     </div>
                   </div>
@@ -98,7 +98,7 @@
                     <div class="form-group">
                       <label class="form-label"><b>Nombre del piloto asignado:</b></label>
                       <select class="form-control" #uuid="ngModel" name="uuid" [(ngModel)]="voucher.uuid" required
-                        (click)="getOnePerson(voucher.uuid)">
+                        (ngModelChange)="getOnePerson(voucher.uuid)">
                         <option value="" disabled>Seleccionar</option>
                         <option value="{{pilot.uuid}}" *ngFor="let pilot of pilots">
                           {{pilot.fullname}}</option>
@@ -111,12 +111,6 @@
                       <input name="Licencia" type="text" class="form-control" placeholder="{{dpi}}" disabled>
                     </div>
                   </div>
-
-
-
-
-
-
                 </div>
                 <div class="row">
                   <button type="submit" class="btn btn-primary">Registrar</button>

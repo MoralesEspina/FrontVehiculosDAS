@@ -57,6 +57,7 @@ export class VoucherComponent implements OnInit {
     this._vehicleService.getVehicles().subscribe(
       response =>{
         this.vehicles = response.data;
+        console.log(this.vehicles)
       }, error =>{
 
       }
@@ -100,13 +101,13 @@ export class VoucherComponent implements OnInit {
     const voucher: VoucherGasolineI = {
       date: this.todayWithPipe,
       cost:voucherForm.value.cost,
-      idVehicle: voucherForm.value.idVehicle,
+      idVehicle: voucherForm.value.vin,
       vin: voucherForm.value.vin,
       comission_to: voucherForm.value.comission_to,
       objective: voucherForm.value.objective,
       id_pilot: voucherForm.value.uuid,
     }
-
+    console.log(voucher)
     if (!voucherForm.valid) {
       this._sweetAlertService.warning('Complete correctamente el formulario');
       return

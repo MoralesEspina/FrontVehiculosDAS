@@ -85,6 +85,7 @@ export class ExteriorRequestMantComponent implements OnInit {
     this._vehicleService.getVehiclesActives().subscribe(
       response => {
         this.vehicles = response.data;
+        console.log(this.vehicles)
       }, error => {
         this._sweetAlertService.warning('No se pudieron cargar los vehiculos correctamente');
       }
@@ -151,11 +152,7 @@ export class ExteriorRequestMantComponent implements OnInit {
     this._router.navigate(['/exteriorRequest-index'])
   }
 
-  createDetailRequest() {
-    this.detailrequest.valid
-    this.details.push(this.detailrequest);
-    this.detailrequest = {};
-    /*console.log(detailExteriorForm)
+  createDetailRequest(detailExteriorForm) {
     if (detailExteriorForm.valid) {
       const datos: DetailExteriorRequestI = {
         dateOf: detailExteriorForm.value.dateOf,
@@ -165,13 +162,18 @@ export class ExteriorRequestMantComponent implements OnInit {
         number_people: detailExteriorForm.value.number_people,
         municipality: detailExteriorForm.value.municipality,
         village: detailExteriorForm.value.village,
-      }*/
+      }
+        this.details.push(datos);
+        this.detailrequest = {};
 
-    //this._sweetAlertService.warning('Complete correctamente el formulario');
+    } else {
+      this._sweetAlertService.warning('Complete correctamente la información del destino');
+    }
   }
 
-  Eliminar() {
+  deleteDetailRequest() {
     this.details.pop();
+
   }
   acceptRequest(acceptedForm) {
     const accepted: ExteriorRequestI = {

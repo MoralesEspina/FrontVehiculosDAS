@@ -26,7 +26,7 @@
             <div class="card-body">
               <!--- INICIO DE FORMULARIO-->
 
-              <form #local_trasportationForm="ngForm" (ngSubmit)="createLocalRequest(local_trasportationForm)">
+              <form #localRequestForm="ngForm" (ngSubmit)="createLocalRequest(localRequestForm)">
                 <div class="row">
                   <div class="col-lg-10">
                     <div class="form-group">
@@ -82,9 +82,8 @@
 
 
                   <!-- inican los datos para la tabla -->
-                  <form class="col-lg-10" #trasportationForm="ngForm"
-                    (ngSubmit)=" createDetailLocalRequest(trasportationForm)" *ngIf="editing == false">
-
+                  <form class="col-lg-10" #detailRequestForm="ngForm"
+                    (ngSubmit)=" createDetailLocalRequest(detailRequestForm)" *ngIf="editing == false">
                     <div class="row">
                       <div class="col-lg-6">
                         <div class="form-group">
@@ -136,9 +135,6 @@
                     </div>
                     <div class="text-center"><button id="btndestino" class="btn btn-primary" type="submit">Agregar
                         destino</button></div>
-                    <div class="col-lg-10">
-                      <p></p>
-                    </div>
                   </form>
 
                   <!-- finalizan los datos para la tabla -->
@@ -170,9 +166,6 @@
                   <!---   TABLA -->
 
                   <div class="col-lg-10">
-                    <p></p>
-                  </div>
-                  <div class="col-lg-10">
                     <div class="form-group">
                       <label class="form-label"><b>Observaciones:</b></label>
                       <input class="form-control" #observations="ngModel" name="observations"
@@ -198,7 +191,7 @@
                       <select class="form-control" #plate="ngModel" name="plate" [(ngModel)]="localRequest.plate"
                         required>
                         <option value="" disabled>Seleccionar</option>
-                        <option value="{{vehicle.vin}}" *ngFor="let vehicle of vehicles">{{vehicle.plate}} - {{vehicle.brand}} - {{vehicle.model}} - {{vehicle.color}}</option>
+                        <option value="{{vehicle.idVehicle}}" *ngFor="let vehicle of vehicles">{{vehicle.plate}} - {{vehicle.brand}} - {{vehicle.model}} - {{vehicle.color}}</option>
                       </select>
                     </div>
                   </div>
