@@ -39,7 +39,6 @@ import { TripsComponent } from './components/features/trips/trips.component';
 
 import { VoucherPdfComponent } from './components/pdfs/voucher-diesel-pdf/voucher-pdf.component';
 import { VoucherRegularPdfComponent } from './components/pdfs/voucher-regular-pdf/voucher-regular-pdf.component';
-import { LogoutComponent } from './components/logout/logout.component';
 import { VoucherDieselComponent } from './components/features/voucher/voucher-diesel/voucher-diesel.component';
 import { VoucherIndexComponent } from './components/features/voucher/voucher-index/voucher-index.component';
 import { VoucherComponent } from './components/features/voucher/voucherGas/voucher.component';
@@ -78,7 +77,6 @@ import { HistoryRequestComponent } from './components/features/history-request//
     VoucherIndexComponent,
     VoucherPdfComponent,
     VoucherRegularPdfComponent,
-    LogoutComponent,
     VoucherComponent,
     ExitPassPdfComponent,
     BinnaclePdfComponent,
