@@ -44,8 +44,10 @@
                   <th style="text-align: center;">Piloto</th>
                   <th style="text-align: center;">Vehiculo</th>
                   <th style="text-align: center;">Estado</th>
-                  <th style="text-align: center;">Ver solicitud - Finalizar viaje</th>
-                  <th style="text-align: center;">Bitacora - Pase de Salida</th>
+                  <th style="text-align: center;">Ver solicitud</th>
+                  <th style="text-align: center;">Finalizar viaje</th>
+                  <th style="text-align: center;">Bitacora</th>
+                  <th style="text-align: center;">Pase de Salida</th>
                 </tr>
               </thead>
               <!--- TITULOS DE LA TABLA -->
@@ -60,12 +62,14 @@
                 <td style="text-align: center;">{{item.plate}}</td>
                 <td style="text-align: center;">{{item.status_name}}</td>
                 <td style="text-align: center;">
-                  <div class="btn-group" style="margin-right: 30px;" >
+                  <div class="btn-group" >
                     <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false"
                     [routerLink]="['/exteriorRequest/edit/',item.transp_request_exterior]">
                       <i class="fas fa-eye"></i>
                     </button>
                   </div>
+                </td>
+                <td style="text-align: center;">
                   <div class="btn-group">
                     <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-check"></i>
@@ -73,12 +77,14 @@
                   </div>
                 </td>
                 <td style="text-align: center;">
-                  <div class="btn-group" style="margin-right: 40px; margin-left: -20px;">
+                  <div class="btn-group">
                     <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false"
                     [routerLink]="['/BitacoraExterior/',item.transp_request_exterior]">
                       <i class="fas fa-eye"></i>
                     </button>
                   </div>
+                </td>
+                <td style="text-align: center;">
                   <div class="btn-group">
                     <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false"
                     [routerLink]="['/exitPassPDF/',item.transp_request_exterior]">
@@ -126,8 +132,10 @@
                   <th style="text-align: center;">Piloto</th>
                   <th style="text-align: center;">Vehiculo</th>
                   <th style="text-align: center;">Estado</th>
-                  <th style="text-align: center;">Ver solicitud - Finalizar viaje</th>
-                  <th style="text-align: center;">Bitacora - Pase de Salida</th>
+                  <th style="text-align: center;">Ver solicitud</th>
+                  <th style="text-align: center;">Finalizar viaje</th>
+                  <th style="text-align: center;">Bitacora</th>
+                  <th style="text-align: center;">Pase de Salida</th>
                 </tr>
               </thead>
               <!--- TITULOS DE LA TABLA -->
@@ -141,12 +149,14 @@
                 <td style="text-align: center;">{{item.plate}}</td>
                 <td style="text-align: center;">{{item.status_name}}</td>
                 <td style="text-align: center;">
-                  <div class="btn-group" style="margin-right: 30px;" >
+                  <div class="btn-group" >
                     <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false"
                     [routerLink]="['/localRequest/edit/',item.transp_request_local]">
                       <i class="fas fa-eye"></i>
                     </button>
                   </div>
+                </td>
+                <td style="text-align: center;">
                   <div class="btn-group">
                     <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-check"></i>
@@ -154,12 +164,14 @@
                   </div>
                 </td>
                 <td style="text-align: center;">
-                  <div class="btn-group" style="margin-right: 40px; margin-left: -20px;">
+                  <div class="btn-group">
                     <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false"
                     [routerLink]="['/BitacoraLocal/',item.transp_request_local]">
                       <i class="fas fa-eye"></i>
                     </button>
                   </div>
+                </td>
+                <td style="text-align: center;">
                   <div class="btn-group">
                     <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false"
                     [routerLink]="['/exitPassPDF/',item.transp_request_exterior]">

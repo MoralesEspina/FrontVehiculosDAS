@@ -60,7 +60,7 @@ export class SidenavComponent implements OnInit {
       number: '7',
       name: 'Viajes',
       icon: 'fa fa-road ',
-      router: 'viajes'
+      router: 'Trips'
     },
     {
       number: '8',
