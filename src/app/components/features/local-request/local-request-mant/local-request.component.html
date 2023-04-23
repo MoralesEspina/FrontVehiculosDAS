@@ -9,7 +9,7 @@
             <!--- Migaja de Pan -->
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Dashboard</a></li>
+                <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Inicio</a></li>
                 <li class="breadcrumb-item"><a [routerLink]="['/localRequest-index']">Lista de solicitudes locales</a></li>
                 <li class="breadcrumb-item"><a>Registro de solicitud de vehiculos local</a></li>
               </ol>
@@ -22,7 +22,6 @@
             <div class="card-header">
               <h5 class="card-title">Completa el formulario</h5>
             </div>
-
             <div class="card-body">
               <!--- INICIO DE FORMULARIO-->
 
@@ -175,7 +174,10 @@
                   </div>
                 </div>
                 <form #acceptedForm="ngForm" (ngSubmit)="acceptRequest(acceptedForm)">
-                  <div class="col-lg-10" *ngIf="editing == true">
+                  <div class="row">
+                    <div class="col-lg-1" *ngIf="editing == true">
+                    </div>
+                  <div class="col-lg-5" *ngIf="editing == true">
                     <div class="form-group">
                       <label class="form-label"><b>Nombre del piloto asignado:</b></label>
                       <select class="form-control" #pilotName="ngModel" name="pilotName"
@@ -185,7 +187,7 @@
                       </select>
                     </div>
                   </div>
-                  <div class="col-lg-10" *ngIf="editing == true">
+                  <div class="col-lg-5" *ngIf="editing == true">
                     <div class="form-group">
                       <label class="form-label"><b>Placa del vehiculo autorizado:</b></label>
                       <select class="form-control" #plate="ngModel" name="plate" [(ngModel)]="localRequest.plate"
@@ -195,11 +197,13 @@
                       </select>
                     </div>
                   </div>
+                </div>
                   <div class="row">
                     <div class="col-9">
                       <div class="text-center" *ngIf="editing == true">
-                          <button type="submit" class="btn btn-primary" [disabled]="status==true || deny==true">Aceptar</button>
-                          <h1></h1>
+                          <button type="submit" class="btn btn-primary" style="margin-right:20px" [disabled]="status==true || deny==true">Aceptar</button>
+                          <button (click)="denyRequest()" class="btn btn-danger" style="margin-right:20px" [disabled]="status==true || deny==true">Denegar</button>
+                          <button type="button" class="btn btn-primary " [routerLink]="['/localRequest/pdf/',id_entrada]" *ngIf="status==true">Ver PDF</button>
                       </div>
                     </div>
                   </div>
@@ -207,14 +211,7 @@
                 <div class="text-center" *ngIf="editing == false"><button type="submit"
                     class="btn btn-primary">Solicitar</button></div>
               </form>
-              <div class="text-center" *ngIf="editing == true">
-                <button (click)="denyRequest()" class="btn btn-danger"
-                  [disabled]="status==true || deny==true">Denegar</button>
-              </div>
-              <div class="text-center" style="margin-top: 10px;">
-                <button type="button" class="btn btn-primary " [routerLink]="['/localRequest/pdf/',id_entrada]"
-                  *ngIf="status==true">Ver PDF</button>
-              </div>
+
               <!--- FIN DE FORMULARIO-->
             </div>
           </div>

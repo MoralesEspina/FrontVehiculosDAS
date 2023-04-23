@@ -52,7 +52,7 @@ const routes: Routes = [
   { path: 'vehicles/edit/:id', component: VehiclesMantComponent, canActivate: [LoginGuard] },
   //TODO RUTAS DE SOLICITUDES
   { path: 'History-Request', component: HistoryRequestComponent, canActivate: [LoginGuard] },
-  
+
   //TODO RUTAS DE SOLICITUD LOCAL
   { path: 'localRequest-index', component: LocalRequestIndexComponent, canActivate: [LoginGuard] },
   { path: 'localRequest/add', component: LocalRequestMantComponent, canActivate: [LoginGuard] },
@@ -83,13 +83,12 @@ const routes: Routes = [
   { path: 'LocalRequestPDF', component: LocalRequestPdfComponent, canActivate: [LoginGuard] },
   { path: 'voucherDieselPDF/:id', component: VoucherPdfComponent, canActivate: [LoginGuard] },
   { path: 'voucherRegularPDF/:id', component: VoucherRegularPdfComponent, canActivate: [LoginGuard] },
-  { path: 'exitPassPDF', component: ExitPassPdfComponent, canActivate: [LoginGuard] },
+  { path: 'exitPassPDF/:id', component: ExitPassPdfComponent, canActivate: [LoginGuard] },
   { path: 'managerView', component: ManagerviewComponent, canActivate: [LoginGuard] },
 
   //TODO VIAJES
 
-  { path: 'Trips', component: TripsComponent },
-  { path: 'viajes', component: TripsComponent, canActivate: [LoginGuard] },
+  { path: 'Trips', component: TripsComponent, canActivate: [LoginGuard]  },
 
   //TODO vales
   { path: 'VoucherGasoline', component: VoucherComponent },

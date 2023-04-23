@@ -24,6 +24,10 @@
 
  }
 
+ .card-header{
+  margin-bottom: -30px;
+}
+
  #btndestino{
   margin-top: 10px;
   margin-bottom: 20px;

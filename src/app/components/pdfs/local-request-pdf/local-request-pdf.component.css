@@ -1,6 +1,6 @@
-.wrapper{
-  margin-top: -70px;
-  margin-left: 80px;
+.col-11{
+  margin:auto;
+  width: 840px;
 }
 
 img{
@@ -25,8 +25,16 @@ td{
 }
 
 .card{
+  margin-top: -30px;
+  align-items: center;
+  background-color: transparent;
+}
+
+
+.card-body{
   height:1056px;
   width: 816px;
+  background-color: white;
 }
 
 .header-form{

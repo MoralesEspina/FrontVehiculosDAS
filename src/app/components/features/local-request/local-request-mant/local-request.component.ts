@@ -73,7 +73,6 @@ export class LocalRequestMantComponent implements OnInit {
     this._vehicleService.getVehiclesActives().subscribe(
       response =>{
         this.vehicles = response.data;
-        console.log(this.vehicles)
       }, error =>{
 
       }

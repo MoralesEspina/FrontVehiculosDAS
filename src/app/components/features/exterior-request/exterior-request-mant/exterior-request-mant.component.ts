@@ -85,7 +85,6 @@ export class ExteriorRequestMantComponent implements OnInit {
     this._vehicleService.getVehiclesActives().subscribe(
       response => {
         this.vehicles = response.data;
-        console.log(this.vehicles)
       }, error => {
         this._sweetAlertService.warning('No se pudieron cargar los vehiculos correctamente');
       }
