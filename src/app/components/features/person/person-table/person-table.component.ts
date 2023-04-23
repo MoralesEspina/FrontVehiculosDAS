@@ -19,13 +19,10 @@ export class PersonTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPerson();
-
-
   }
   getPerson(){
     this._personServicetab.getPerson().subscribe(
       response =>{
-        console.log(response)
         this.person = response.data;
       }, error =>{
 
@@ -41,7 +38,6 @@ export class PersonTableComponent implements OnInit {
       }
     )
   }
-
 
   deletePerson(id){
     Swal.fire({
@@ -72,5 +68,4 @@ export class PersonTableComponent implements OnInit {
       }
     })
   }
-
 }

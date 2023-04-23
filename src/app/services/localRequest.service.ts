@@ -7,9 +7,7 @@ import { Global } from './global.service';
 @Injectable({
   providedIn: 'root'
 })
-export class RequestlocalService {
-
-
+export class LocalRequestService {
   public url;
 
   constructor(private _http: HttpClient,

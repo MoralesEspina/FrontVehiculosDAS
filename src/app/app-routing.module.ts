@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 //TODO IMPORTS VISTAS
@@ -38,6 +38,7 @@ import { LoginGuard } from './login.guard';
 import { LogoutComponent } from './components/logout/logout.component';
 import { ExitPassPdfComponent } from './components/pdfs/exit-pass-pdf/exit-pass-pdf.component';
 import { BinnaclePdfComponent } from './components/pdfs/binnacle-pdf/binnacle-pdf.component';
+import { HistoryRequestComponent } from './components/features/history-request/history-request.component';
 
 
 const routes: Routes = [
@@ -50,6 +51,8 @@ const routes: Routes = [
   { path: 'vehicles/add', component: VehiclesMantComponent, canActivate: [LoginGuard] },
   { path: 'vehicles/edit/:id', component: VehiclesMantComponent, canActivate: [LoginGuard] },
   //TODO RUTAS DE SOLICITUDES
+  { path: 'History-Request', component: HistoryRequestComponent, canActivate: [LoginGuard] },
+  
   //TODO RUTAS DE SOLICITUD LOCAL
   { path: 'localRequest-index', component: LocalRequestIndexComponent, canActivate: [LoginGuard] },
   { path: 'localRequest/add', component: LocalRequestMantComponent, canActivate: [LoginGuard] },

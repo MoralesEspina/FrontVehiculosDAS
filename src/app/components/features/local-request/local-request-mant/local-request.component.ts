@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalRequestI } from 'src/app/models/localRequest.interface';
 import { DetailLocalRequestI } from 'src/app/models/detailLocalRequest.interface';
-import { RequestlocalService } from 'src/app/services/requestLocal.service';
+import { LocalRequestService } from 'src/app/services/localRequest.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PersonService } from 'src/app/services/person.service';
 import { VehicleService } from 'src/app/services/vehicle.service';
 import { DatePipe } from '@angular/common';
 import { SweetAlertService } from 'src/app/services/sweetAlert.service';
-import { ResponseI } from 'src/app/models/response.interface';
 import { ErrorsService } from 'src/app/services/errors.service';
 import Swal from 'sweetalert2';
 
@@ -42,7 +41,8 @@ export class LocalRequestMantComponent implements OnInit {
   pipe = new DatePipe('en-US');
   todayWithPipe;
 
-  constructor(private _localRequestService: RequestlocalService, private router: ActivatedRoute,
+  constructor(private _localRequestService: LocalRequestService,
+    private router: ActivatedRoute,
     private _personService: PersonService,
     private _vehicleService: VehicleService,
     private _sweetAlertService: SweetAlertService,

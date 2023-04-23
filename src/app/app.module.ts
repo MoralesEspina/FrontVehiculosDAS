@@ -10,7 +10,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { BodyComponent } from './components/body/body.component';
 import localeEs from '@angular/common/locales/es-GT'
 import { registerLocaleData } from '@angular/common';
 registerLocaleData(localeEs, 'ES')
@@ -48,6 +47,7 @@ import { VoucherComponent } from './components/features/voucher/voucherGas/vouch
 
 import { ExitPassPdfComponent } from './components/pdfs/exit-pass-pdf/exit-pass-pdf.component';
 import { BinnaclePdfComponent } from './components/pdfs/binnacle-pdf/binnacle-pdf.component';
+import { HistoryRequestComponent } from './components/features/history-request//history-request.component';
 
 
 @NgModule({
@@ -55,7 +55,6 @@ import { BinnaclePdfComponent } from './components/pdfs/binnacle-pdf/binnacle-pd
     AppComponent,
     SidenavComponent,
     DashboardComponent,
-    BodyComponent,
     VehiclesMantComponent,
     VehiclesIndexComponent,
     PersonTableComponent,
@@ -82,7 +81,8 @@ import { BinnaclePdfComponent } from './components/pdfs/binnacle-pdf/binnacle-pd
     LogoutComponent,
     VoucherComponent,
     ExitPassPdfComponent,
-    BinnaclePdfComponent
+    BinnaclePdfComponent,
+    HistoryRequestComponent
 
   ],
   imports: [

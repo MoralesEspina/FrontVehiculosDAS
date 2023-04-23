@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RequestlocalService } from 'src/app/services/requestLocal.service';
+import { LocalRequestService } from 'src/app/services/localRequest.service';
 
 @Component({
   selector: 'app-local-request-index',
@@ -7,11 +7,9 @@ import { RequestlocalService } from 'src/app/services/requestLocal.service';
   styleUrls: ['./local-request-index.component.css']
 })
 export class LocalRequestIndexComponent implements OnInit {
-
-
   public p:number = 1;
   public requestsLocal;
-  constructor(private _requestService: RequestlocalService,) { }
+  constructor(private _requestService:LocalRequestService) { }
 
   ngOnInit(): void {
     this.getRequestLocal();
@@ -20,10 +18,8 @@ export class LocalRequestIndexComponent implements OnInit {
   getRequestLocal(){
     this._requestService.getRequestLocal().subscribe(
       response =>{
-        console.log(response)
         this.requestsLocal = response.data;
       }, error =>{
-
       }
     )
   }

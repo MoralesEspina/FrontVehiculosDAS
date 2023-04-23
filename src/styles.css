@@ -9,13 +9,6 @@
     box-sizing: border-box;
 }
 
-body {
-    position: relative;
-    font-family: 'Roboto', sans-serif;
-    background: #f4f7fa;
-}
-
-
 .card {
     display: flex;
     flex-direction: column;
@@ -36,3 +29,11 @@ body {
     .card-body {
         padding: 1rem 1.5rem;
     }
+
+::-webkit-scrollbar {
+      display: none;
+    }
+
+.main{
+  padding-top: 50px;
+}
