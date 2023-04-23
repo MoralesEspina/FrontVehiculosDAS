@@ -47,6 +47,7 @@ import { VoucherComponent } from './components/features/voucher/voucherGas/vouch
 
 import { ExitPassPdfComponent } from './components/pdfs/exit-pass-pdf/exit-pass-pdf.component';
 import { BinnaclePdfComponent } from './components/pdfs/binnacle-pdf/binnacle-pdf.component';
+import { HistoryRequestComponent } from './components/features/history-request//history-request.component';
 
 
 @NgModule({
@@ -80,7 +81,8 @@ import { BinnaclePdfComponent } from './components/pdfs/binnacle-pdf/binnacle-pd
     LogoutComponent,
     VoucherComponent,
     ExitPassPdfComponent,
-    BinnaclePdfComponent
+    BinnaclePdfComponent,
+    HistoryRequestComponent
 
   ],
   imports: [
