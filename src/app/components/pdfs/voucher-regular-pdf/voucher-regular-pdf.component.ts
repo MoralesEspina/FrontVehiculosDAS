@@ -3,6 +3,7 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { VoucherService } from 'src/app/services/voucher.service';
 import { ActivatedRoute } from '@angular/router';
+import { VoucherGasolineI } from 'src/app/models/voucher.interface';
 
 @Component({
   selector: 'app-voucher-regular-pdf',
@@ -15,7 +16,9 @@ export class VoucherRegularPdfComponent implements OnInit {
   public id_entrada;
   public letter;
   constructor(private _vocuherService: VoucherService,
-    private _route: ActivatedRoute) { }
+    private _route: ActivatedRoute) {
+      this.voucher = new VoucherGasolineI("",0,"","","","","")
+     }
 
   ngOnInit(): void {
     this.id_entrada = this._route.snapshot.params['id'];

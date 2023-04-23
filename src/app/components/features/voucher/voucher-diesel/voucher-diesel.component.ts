@@ -96,7 +96,7 @@ export class VoucherDieselComponent implements OnInit { public person;
       date: this.todayWithPipe,
       cost:voucherForm.value.cost,
       idVehicle: voucherForm.value.idVehicle,
-      vin: voucherForm.value.vin,
+      vin: '',
       comission_to: voucherForm.value.comission_to,
       objective: voucherForm.value.objective,
       id_pilot: voucherForm.value.uuid,
