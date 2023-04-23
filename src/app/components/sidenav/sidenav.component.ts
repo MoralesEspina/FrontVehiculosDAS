@@ -41,14 +41,20 @@ export class SidenavComponent implements OnInit {
     {
       number: '5',
       name: 'Solicitudes Locales',
-      icon: 'fa fa-clipboard-list-check ',
+      icon: 'fa fa-file-spreadsheet ',
       router: 'localRequest-index'
     },
     {
       number: '6',
       name: 'Solicitudes Exteriores',
-      icon: 'fa fa-clipboard-list-check ',
+      icon: 'fa fa-file-contract ',
       router: 'exteriorRequest-index'
+    },
+    {
+      number: '6',
+      name: 'Historial de Solicitudes',
+      icon: 'fa fa-list ',
+      router: 'History-Request'
     },
     {
       number: '7',
@@ -59,7 +65,7 @@ export class SidenavComponent implements OnInit {
     {
       number: '8',
       name: 'Vales de Combustible',
-      icon: 'fa fa-list',
+      icon: 'fa fa-gas-pump',
       router: 'Vouchertable'
     },
 
