@@ -35,7 +35,6 @@ import { VoucherIndexComponent } from './components/features/voucher/voucher-ind
 
 
 import { LoginGuard } from './login.guard';
-import { LogoutComponent } from './components/logout/logout.component';
 import { ExitPassPdfComponent } from './components/pdfs/exit-pass-pdf/exit-pass-pdf.component';
 import { BinnaclePdfComponent } from './components/pdfs/binnacle-pdf/binnacle-pdf.component';
 import { HistoryRequestComponent } from './components/features/history-request/history-request.component';
@@ -44,7 +43,6 @@ import { HistoryRequestComponent } from './components/features/history-request/h
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login',component: LoginComponent},
-  { path: 'logout',component: LogoutComponent},
   { path: 'dashboard', component: DashboardComponent, canActivate: [LoginGuard] },
   //TODO RUTAS VEHICULOS
   { path: 'vehicles', component: VehiclesIndexComponent, canActivate: [LoginGuard] },
