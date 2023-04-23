@@ -1,4 +1,6 @@
 import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
+import { SweetAlertService } from 'src/app/services/sweetAlert.service';
+import { UsersService } from 'src/app/services/users.service';
 
 
 interface SideNavToggle {
@@ -70,7 +72,17 @@ export class SidenavComponent implements OnInit {
     },
 
   ]
-  ngOnInit(): void {
+  constructor(private _sweetAlert:SweetAlertService){
+
   }
 
+  ngOnInit(): void {
+    console.log(localStorage.getItem('rol'))
+  }
+
+  logOut(){
+    localStorage.removeItem('rol')
+    localStorage.removeItem('Token');
+    this._sweetAlert.logout('Adios!');
+  }
 }
