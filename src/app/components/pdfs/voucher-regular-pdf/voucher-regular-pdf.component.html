@@ -1,6 +1,22 @@
   <div class="main">
     <main class="content">
       <div class="container-fluid">
+        <div class="header">
+          <div class="col-11">
+            <h1 class="header-title">
+              Vale de combustible regular
+            </h1>
+            <!--- Migaja de Pan -->
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Inicio</a></li>
+                <li class="breadcrumb-item"><a [routerLink]="['/Vouchertable']">Vales de combustible</a></li>
+                <li class="breadcrumb-item"><a>Vale de combustible número {{id_entrada}}</a></li>
+              </ol>
+            </nav>
+            <!--- Migaja de Pan -->
+          </div>
+        </div>
         <div class="col-lg-12">
           <div class="card">
             <div class="card-body">
@@ -153,7 +169,7 @@
               </div>
               </form>
               <!--- FIN DE FORMULARIO-->
-              <div class="row" style="margin-top:40px">
+              <div class="row" style="margin-top:20px">
                 <div class="col-12">
                 <div class="text-center">
                   <button (click)="downloadPDF()" class="btn btn-primary" style="margin-right: 15px;" >Imprimir</button>
