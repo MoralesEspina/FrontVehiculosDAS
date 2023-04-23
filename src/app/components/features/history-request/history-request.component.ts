@@ -15,7 +15,7 @@ export class HistoryRequestComponent implements OnInit {
 
   ngOnInit(): void {
     this.getExteriorRequest();
-
+    this.getRequestLocal();
   }
 
 
