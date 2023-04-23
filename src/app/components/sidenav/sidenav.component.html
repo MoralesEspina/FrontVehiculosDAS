@@ -13,10 +13,10 @@
                 <span class="nav-item">{{item.name}}</span>
             </a>
             </li>
-            <li>
-                <a routerLink="" class="logout">
-                <i class="fa fa-power-off "></i>
-                <span class="nav-item">Cerrar Sesion</span>
+            <li (click)="logOut()">
+                <a routerLink="" class="logout" >
+                <i class="fa fa-power-off " ></i>
+                <span class="nav-item" >Cerrar Sesion</span>
             </a>
             </li>
         </ul>

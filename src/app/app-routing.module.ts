@@ -44,6 +44,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login',component: LoginComponent},
   { path: 'dashboard', component: DashboardComponent, canActivate: [LoginGuard] },
+
   //TODO RUTAS VEHICULOS
   { path: 'vehicles', component: VehiclesIndexComponent, canActivate: [LoginGuard] },
   { path: 'vehicles/add', component: VehiclesMantComponent, canActivate: [LoginGuard] },
@@ -89,14 +90,14 @@ const routes: Routes = [
   { path: 'Trips', component: TripsComponent, canActivate: [LoginGuard]  },
 
   //TODO vales
-  { path: 'VoucherGasoline', component: VoucherComponent },
-  { path: 'VoucherDiesel', component:VoucherDieselComponent},
-  { path: 'Vouchertable', component: VoucherIndexComponent},
+  { path: 'VoucherGasoline', component: VoucherComponent, canActivate: [LoginGuard]  },
+  { path: 'VoucherDiesel', component:VoucherDieselComponent, canActivate: [LoginGuard] },
+  { path: 'Vouchertable', component: VoucherIndexComponent, canActivate: [LoginGuard] },
 
   //TODO bitacora
-  { path: 'Bitacora', component: BinnaclePdfComponent },
-  { path: 'BitacoraExterior/:id', component: BinnaclePdfComponent },
-  { path: 'BitacoraLocal/:id', component: BinnaclePdfComponent },
+  { path: 'Bitacora', component: BinnaclePdfComponent, canActivate: [LoginGuard]  },
+  { path: 'BitacoraExterior/:id', component: BinnaclePdfComponent, canActivate: [LoginGuard]  },
+  { path: 'BitacoraLocal/:id', component: BinnaclePdfComponent, canActivate: [LoginGuard] },
 ];
 
 @NgModule({

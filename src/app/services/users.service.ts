@@ -57,6 +57,7 @@ export class UsersService {
       })
     })
   }
+
   // deleteOneUser(id){
   //   return this._http.delete(this.url + 'user/' + id, {
   //     headers: new HttpHeaders({
