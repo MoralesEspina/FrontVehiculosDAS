@@ -170,7 +170,7 @@ export class LocalRequestMantComponent implements OnInit {
       this._localRequestService.updateOneLocalRequest(accepted, this.id_entrada).subscribe(
         response => {
           this._sweetAlertService.createAndUpdate('Se acepto correctamente la solicitud');
-          this._router.navigate(['viajes'])
+          this._router.navigate(['Trips'])
         }, error => {
           this.data_response = error;
           this._errorService.error(this.data_response);
