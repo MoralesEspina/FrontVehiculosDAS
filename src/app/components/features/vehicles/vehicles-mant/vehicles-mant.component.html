@@ -11,7 +11,8 @@
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Inicio</a></li>
                 <li class="breadcrumb-item"><a [routerLink]="['/vehicles']"> Vehiculos</a></li>
-                <li class="breadcrumb-item"><a> Registro de vehiculos</a></li>
+                <li class="breadcrumb-item" *ngIf="editing==false" ><a> Registro de vehiculos</a></li>
+                <li class="breadcrumb-item" *ngIf="editing==true" ><a> Edición de vehiculo número {{id_entrada}}</a></li>
               </ol>
             </nav>
             <!--- Migaja de Pan -->
@@ -117,7 +118,8 @@
 
                 </div>
                 <div class="row">
-                  <button type="submit" class="btn btn-primary">Registrar</button>
+                  <button type="submit" class="btn btn-primary" *ngIf="editing==false">Registrar</button>
+                  <button type="submit" class="btn btn-primary" *ngIf="editing==true">Editar</button>
                 </div>
 
               </form>
