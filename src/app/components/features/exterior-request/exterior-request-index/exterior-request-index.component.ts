@@ -12,11 +12,11 @@ export class ExteriorRequestIndexComponent implements OnInit {
   constructor(private _exteriorRequestService:ExteriorRequestService) { }
 
   ngOnInit(): void {
-    this.getExteriorRequest();
+    this.getExteriorRequestOnHold();
   }
 
-  getExteriorRequest(){
-    this._exteriorRequestService.getRequestExterior().subscribe(
+  getExteriorRequestOnHold(){
+    this._exteriorRequestService.getExteriorRequestOnHold().subscribe(
       response =>{
         this.exteriorRequest = response.data;
       }, error =>{

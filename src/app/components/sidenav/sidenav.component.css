@@ -96,3 +96,14 @@ nav:hover + .main {
   width: calc(100% - 150px);
   left: 150px;
 }
+
+
+.subnivel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+.subnivel.hidden {
+  max-height: 0;
+}

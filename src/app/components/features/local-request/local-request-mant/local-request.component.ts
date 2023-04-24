@@ -82,7 +82,7 @@ export class LocalRequestMantComponent implements OnInit {
   loadLocalRequest() {
     if (this.id_entrada) {
       this.editing = true
-      this._localRequestService.getOneRequestLocal(this.id_entrada).subscribe(
+      this._localRequestService.getOneLocalRequest(this.id_entrada).subscribe(
         response => {
           this.localRequest = response.data.request[0]
           this.details = response.data.detailRequest
@@ -120,7 +120,7 @@ export class LocalRequestMantComponent implements OnInit {
       this._sweetAlertService.warning('Complete correctamente el formulario');
       return
     }
-      this._localRequestService.createOneRequestLocal(transportation_local).subscribe(
+      this._localRequestService.createOneLocalRequest(transportation_local).subscribe(
         response => {
           this._sweetAlertService.createAndUpdate('Se registro la solicitud correctamente');
           this.localRequest = new LocalRequestI("", "", "", "", "", "", "", 0, "", "", [])
@@ -167,7 +167,7 @@ export class LocalRequestMantComponent implements OnInit {
       detail: []
     }
     if (acceptedForm.valid) {
-      this._localRequestService.updateOneRequestLocal(accepted, this.id_entrada).subscribe(
+      this._localRequestService.updateOneLocalRequest(accepted, this.id_entrada).subscribe(
         response => {
           this._sweetAlertService.createAndUpdate('Se acepto correctamente la solicitud');
           this._router.navigate(['viajes'])
@@ -205,7 +205,7 @@ export class LocalRequestMantComponent implements OnInit {
           observations: '',
           detail: []
         }
-        this._localRequestService.updateOneRequestLocal(deny, this.id_entrada).subscribe(
+        this._localRequestService.updateOneLocalRequest(deny, this.id_entrada).subscribe(
           response => {
             this._sweetAlertService.createAndUpdate('Se denego correctamente la solicitud');
             this._router.navigate(['localRequest-index'])

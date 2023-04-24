@@ -15,8 +15,8 @@ export class LocalRequestService {
       this.url = Global.url;
     }
 
-    getRequestLocal(): Observable<any> {
-      return this._http.get(this.url + 'requestLocal', {
+    getLocalRequest(): Observable<any> {
+      return this._http.get(this.url + 'localRequest', {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")
@@ -24,8 +24,8 @@ export class LocalRequestService {
       })
     }
 
-    createOneRequestLocal(form: LocalRequestI) {
-      return this._http.post(this.url + 'requestLocal', form, {
+    getLocalRequestOnHold(): Observable<any> {
+      return this._http.get(this.url + 'localRequest/onhold', {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")
@@ -33,8 +33,8 @@ export class LocalRequestService {
       })
     }
 
-    getOneRequestLocal(id): Observable<any> {
-      return this._http.get(this.url + 'requestLocal/' + id, {
+    createOneLocalRequest(form: LocalRequestI) {
+      return this._http.post(this.url + 'localRequest', form, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")
@@ -42,8 +42,8 @@ export class LocalRequestService {
       })
     }
 
-    getOneRequestLocalComplete(id): Observable<any> {
-      return this._http.get(this.url + 'requestLocal/complete/' + id, {
+    getOneLocalRequest(id): Observable<any> {
+      return this._http.get(this.url + 'localRequest/' + id, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")
@@ -51,8 +51,17 @@ export class LocalRequestService {
       })
     }
 
-    updateOneRequestLocal(form: LocalRequestI, id) {
-      return this._http.put(this.url + 'requestLocal/' + id, form, {
+    getOneLocalRequestComplete(id): Observable<any> {
+      return this._http.get(this.url + 'localRequest/complete/' + id, {
+        headers: new HttpHeaders({
+          'Content-Type':'application/json',
+          //'x-access-token': '' + localStorage.getItem("Token")
+        })
+      })
+    }
+
+    updateOneLocalRequest(form: LocalRequestI, id) {
+      return this._http.put(this.url + 'localRequest/' + id, form, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")

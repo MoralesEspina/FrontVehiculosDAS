@@ -16,8 +16,8 @@ export class ExteriorRequestService{
       this.url = Global.url;
     }
 
-    getRequestExterior(): Observable<any> {
-      return this._http.get(this.url + 'requestExterior', {
+    getExteriorRequest(): Observable<any> {
+      return this._http.get(this.url + 'exteriorRequest', {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")
@@ -25,8 +25,8 @@ export class ExteriorRequestService{
       })
     }
 
-    getOneRequestExterior(id): Observable<any> {
-      return this._http.get(this.url + 'requestExterior/' + id, {
+    getExteriorRequestOnHold(): Observable<any> {
+      return this._http.get(this.url + 'exteriorRequest/onhold', {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")
@@ -34,8 +34,8 @@ export class ExteriorRequestService{
       })
     }
 
-    getOneRequestExteriorComplete(id): Observable<any> {
-      return this._http.get(this.url + 'requestExterior/complete/' + id, {
+    getOneExteriorRequest(id): Observable<any> {
+      return this._http.get(this.url + 'exteriorRequest/' + id, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")
@@ -43,8 +43,8 @@ export class ExteriorRequestService{
       })
     }
 
-    createNewRequestExterior(form: ExteriorRequestI) {
-      return this._http.post(this.url + 'requestExterior', form, {
+    getOneExteriorRequestComplete(id): Observable<any> {
+      return this._http.get(this.url + 'exteriorRequest/complete/' + id, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")
@@ -52,8 +52,17 @@ export class ExteriorRequestService{
       })
     }
 
-    updateOneRequestExterior(form: ExteriorRequestI, id) {
-      return this._http.put(this.url + 'requestExterior/edit/' + id, form, {
+    createNewExteriorRequest(form: ExteriorRequestI) {
+      return this._http.post(this.url + 'exteriorRequest', form, {
+        headers: new HttpHeaders({
+          'Content-Type':'application/json',
+          //'x-access-token': '' + localStorage.getItem("Token")
+        })
+      })
+    }
+
+    updateOneExteriorRequest(form: ExteriorRequestI, id) {
+      return this._http.put(this.url + 'exteriorRequest/edit/' + id, form, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")

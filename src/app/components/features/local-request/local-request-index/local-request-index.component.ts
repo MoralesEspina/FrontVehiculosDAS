@@ -12,11 +12,11 @@ export class LocalRequestIndexComponent implements OnInit {
   constructor(private _requestService:LocalRequestService) { }
 
   ngOnInit(): void {
-    this.getRequestLocal();
+    this.getLocalRequestOnHold();
   }
 
-  getRequestLocal(){
-    this._requestService.getRequestLocal().subscribe(
+  getLocalRequestOnHold(){
+    this._requestService.getLocalRequestOnHold().subscribe(
       response =>{
         this.requestsLocal = response.data;
       }, error =>{

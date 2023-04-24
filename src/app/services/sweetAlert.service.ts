@@ -19,12 +19,12 @@ export class SweetAlertService {
       icon: 'success',
       title: titulo,
       showConfirmButton: false,
-      timer: 1000
+      timer: 700
     })
     this._router.navigate(['dashboard']);
     setTimeout(()=>{                           // <<<---using ()=> syntax
       window.location.reload()
-  }, 800);
+  }, 500);
   }
 
   logout(titulo) {
