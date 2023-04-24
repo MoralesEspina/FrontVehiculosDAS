@@ -1,5 +1,6 @@
 export class VehicleI{
   constructor(
+    public idVehicle: string,
     public vin:string,
     public plate:string,
     public type: string,

@@ -34,7 +34,7 @@ export class VehiclesMantComponent implements OnInit {
     private _router: Router
     )
   {
-    this.vehicle = new VehicleI('', '', '', '', '', '', '', '', '', '');
+    this.vehicle = new VehicleI('','', '', '', '', '', '', '', '', '', '');
     this.data_response = new ResponseI('', '')
   }
 
@@ -88,7 +88,8 @@ export class VehiclesMantComponent implements OnInit {
 
   createNewVehicle(vehicleForm) {
     const vehicle: VehicleI = {
-      vin: this.editing ? this.id_entrada : vehicleForm.value.vin,
+      idVehicle: this.editing ? this.id_entrada : vehicleForm.value.idVehicle,
+      vin:  vehicleForm.value.vin,
       plate: vehicleForm.value.plate,
       type: vehicleForm.value.type,
       brand: vehicleForm.value.brand,
@@ -120,7 +121,7 @@ export class VehiclesMantComponent implements OnInit {
       this._vehicleService.createNewVehicle(vehicle).subscribe(
         response => {
           this._sweetAlertService.createAndUpdate('Se registro el vehiculo correctamente');
-          this.vehicle = new VehicleI('', '', '', '', '', '', '', '', '', '');
+          this.vehicle = new VehicleI('','', '', '', '', '', '', '', '', '', '');
           this._router.navigate(['vehicles'])
         }, error => {
           this.data_response = error;

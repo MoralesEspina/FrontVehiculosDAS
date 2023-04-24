@@ -162,8 +162,8 @@ export class ExteriorRequestMantComponent implements OnInit {
         municipality: detailExteriorForm.value.municipality,
         village: detailExteriorForm.value.village,
       }
-        this.details.push(datos);
-        this.detailrequest = {};
+      this.details.push(datos);
+      this.detailrequest = {};
 
     } else {
       this._sweetAlertService.warning('Complete correctamente la información del destino');
@@ -172,8 +172,8 @@ export class ExteriorRequestMantComponent implements OnInit {
 
   deleteDetailRequest() {
     this.details.pop();
-
   }
+
   acceptRequest(acceptedForm) {
     const accepted: ExteriorRequestI = {
       requesting_unit: '',

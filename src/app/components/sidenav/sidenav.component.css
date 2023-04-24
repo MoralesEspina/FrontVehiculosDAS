@@ -82,6 +82,7 @@ nav:hover {
 .logout {
   position: absolute;
   bottom: 0;
+   color: rgb(219, 219, 219);
 }
 
 .main{
