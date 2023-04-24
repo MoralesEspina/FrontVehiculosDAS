@@ -94,7 +94,7 @@ export class ExteriorRequestMantComponent implements OnInit {
   loadExteriorRequest() {
     if (this.id_entrada) {
       this.editing = true
-      this._exteriorRoutesService.getOneRequestExterior(this.id_entrada).subscribe(
+      this._exteriorRoutesService.getOneExteriorRequest(this.id_entrada).subscribe(
         response => {
           this.exteriorRequest = response.data.request[0]
           this.details = response.data.detailRequest
@@ -134,7 +134,7 @@ export class ExteriorRequestMantComponent implements OnInit {
       detail: this.details
     }
     if (ExteriorForm.valid) {
-      this._exteriorRoutesService.createNewRequestExterior(exteriorRequest).subscribe(
+      this._exteriorRoutesService.createNewExteriorRequest(exteriorRequest).subscribe(
         response => {
           this._sweetAlertService.createAndUpdate('Se registro la solicitud de vehiculo correctamente');
           this.exteriorRequest = new ExteriorRequestI('', '', '', '', '', '', '', 0, 0, '', '', '', '', []);
@@ -192,7 +192,7 @@ export class ExteriorRequestMantComponent implements OnInit {
       detail: []
     }
     if (acceptedForm.valid) {
-      this._exteriorRoutesService.updateOneRequestExterior(accepted, this.id_entrada).subscribe(
+      this._exteriorRoutesService.updateOneExteriorRequest(accepted, this.id_entrada).subscribe(
         response => {
           this._sweetAlertService.createAndUpdate('Se acepto correctamente la solicitud');
           this._router.navigate(['viajes'])
@@ -238,7 +238,7 @@ export class ExteriorRequestMantComponent implements OnInit {
       reason_rejected: text,
       detail: []
     }
-    this._exteriorRoutesService.updateOneRequestExterior(deny, this.id_entrada).subscribe(
+    this._exteriorRoutesService.updateOneExteriorRequest(deny, this.id_entrada).subscribe(
       response => {
         this._sweetAlertService.createAndUpdate('Se denego correctamente la solicitud');
         this._router.navigate(['localRequest-index'])

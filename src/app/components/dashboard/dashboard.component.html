@@ -10,7 +10,8 @@
 
               <div class="row">
 
-                <div routerLink="/Trips" style="cursor:pointer; margin-right: 40px;text-align: center;">
+                <div routerLink="/Trips" style="cursor:pointer; margin-right: 40px;text-align: center;"
+                *ngIf="user === 'Admin' || user==='Encargado de Transporte'">
                   <span>
                     Viajes
                     <h1> </h1>
@@ -38,7 +39,8 @@
 
               </div>
               <div class="row">
-                <div routerLink="" style="cursor:pointer; margin-right: 40px; margin-top:20px; text-align: center;">
+                <div routerLink="" style="cursor:pointer; margin-right: 40px; margin-top:20px; text-align: center;"
+                *ngIf="user === 'Admin' || user==='Encargado de Transporte'">
                   <span>
                     Pases de salida
                     <h1> </h1>
@@ -46,7 +48,8 @@
                   <i class="fa fa-file-check fa-4x"></i>
 
                 </div>
-                <div routerLink="/Vouchertable" style="cursor:pointer;margin-top:20px; text-align: center;">
+                <div routerLink="/Vouchertable" style="cursor:pointer;margin-top:20px; text-align: center;"
+                *ngIf="user === 'Admin' || user==='Encargado de Transporte'">
                   <span>
                     Vales de combustible
                     <h1> </h1>

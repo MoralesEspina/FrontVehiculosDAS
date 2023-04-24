@@ -8,11 +8,12 @@ import { environment } from 'src/environments/environment'
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
+user:any;
   constructor() { }
 
   ngOnInit(): void {
 
+    this.user = localStorage.getItem('rol');
   }
 
 }

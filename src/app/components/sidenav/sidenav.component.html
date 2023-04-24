@@ -1,5 +1,5 @@
-<body>
-    <nav>
+<body >
+    <nav >
         <ul>
             <li>
                 <a routerLink="dashboard" class="logo">
@@ -7,12 +7,74 @@
                 <span class="nav-item" style="font-size: 18px;">SOLICITUDES Y VEHICULOS DAS</span>
             </a>
             </li>
-            <li *ngFor="let item of list">
-                <a routerLink="{{item.router}}">
+            <!-- <li *ngFor="let item of list">
+                <a *ngIf="(item.number === '1' && (user === 'Admin' || user === 'Encargado de Transporte' || user === 'Secretaria/o')) || (item.number === '2' && (user === 'Admin' || user === 'Encargado de Transporte')) || (item.number === '3' && (user === 'Admin' || user === 'Encargado de Transporte')) || (item.number === '4' && user === 'Admin') || (item.number === '5' && (user === 'Admin' || user === 'Encargado de Transporte' || user === 'Secretaria/o')) || (item.number === '6' && (user === 'Admin' || user === 'Encargado de Transporte' || user === 'Secretaria/o')) || (item.number === '7' && user === 'Admin') || (item.number === '8' && (user === 'Admin' || user === 'Encargado de Transporte')) || (item.number === '9' && (user === 'Admin' || user === 'Encargado de Transporte'))" routerLink="{{item.router}}">
                 <i class="{{item.icon}}"></i>
                 <span class="nav-item">{{item.name}}</span>
             </a>
+            </li> -->
+
+            <li>
+                <a routerLink="dashboard">
+                <i class="fa fal fa-home"></i>  
+                <span class="nav-item">Inicio</span>
+            </a>
             </li>
+            <li *ngIf=" user === 'Admin'|| user === 'Encargado de Transporte'">
+                <a routerLink="vehicles">
+                <i class="fa fa-cars "></i>  
+                <span class="nav-item">Vehiculos</span>
+            </a>
+            </li>
+            <li *ngIf=" user === 'Admin'|| user === 'Encargado de Transporte'">
+                <a routerLink="persontable">
+                <i class="fa fa-user-tie "></i>  
+                <span class="nav-item">Personas</span>
+            </a>
+            </li>
+            <li *ngIf=" user === 'Admin'">
+                <a routerLink="users-index">
+                <i class="fa  fa-users "></i>  
+                <span class="nav-item">Usuarios</span>
+            </a>
+            </li>
+            <li>
+                <a routerLink="localRequest-index">
+                <i class="fa fa-file-spreadsheet"></i>  
+                <span class="nav-item">Solicitudes Locales</span>
+            </a>
+            </li>
+            <li>
+                <a routerLink="exteriorRequest-index">
+                <i class="fa fa-file-contract"></i>  
+                <span class="nav-item">Solicitudes Exteriores</span>
+            </a>
+            </li>
+            <li *ngIf=" user === 'Admin'|| user === 'Encargado de Transporte'">
+                <a routerLink="Trips">
+                <i class="fa fa-road "></i>  
+                <span class="nav-item">Viajes Activos</span>
+            </a>
+            </li>
+            <li *ngIf=" user === 'Admin'|| user === 'Encargado de Transporte'">
+                <a routerLink="Vouchertable">
+                <i class="fa fa-gas-pump"></i>  
+                <span class="nav-item">Vales de Combustible</span>
+            </a>
+            </li>
+            <li *ngIf=" user === 'Admin'|| user === 'Encargado de Transporte'">
+                <a routerLink="History-Request">
+                <i class="fa fa-list"></i>  
+                <span class="nav-item">Historial de Solicitudes</span>
+            </a>
+            </li>
+            <li *ngIf=" user === 'Admin'|| user === 'Encargado de Transporte'">
+                <a routerLink="Trips">
+                <i class="fa fa-clock "></i>  
+                <span class="nav-item">Historial de Viajes</span>
+            </a>
+            </li>
+           
             <li (click)="logOut()">
                 <a routerLink="" class="logout" >
                 <i class="fa fa-power-off " ></i>

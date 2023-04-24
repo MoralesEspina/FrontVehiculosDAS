@@ -14,6 +14,9 @@ interface SideNavToggle {
 
 })
 export class SidenavComponent implements OnInit {
+  active: boolean = false;
+  isClicked: boolean = true;
+  showSubnivel = false;
 
   list = [
     {
@@ -53,36 +56,48 @@ export class SidenavComponent implements OnInit {
       router: 'exteriorRequest-index'
     },
     {
-      number: '6',
+      number: '7',
       name: 'Historial de Solicitudes',
       icon: 'fa fa-list ',
       router: 'History-Request'
     },
     {
-      number: '7',
+      number: '8',
       name: 'Viajes',
       icon: 'fa fa-road ',
       router: 'Trips'
     },
     {
-      number: '8',
+      number: '9',
       name: 'Vales de Combustible',
       icon: 'fa fa-gas-pump',
       router: 'Vouchertable'
     },
+    
 
   ]
+  user: any;
   constructor(private _sweetAlert:SweetAlertService){
 
   }
 
   ngOnInit(): void {
-    console.log(localStorage.getItem('rol'))
+    console.log(localStorage.getItem('rol')); 
+    this.user = localStorage.getItem('rol');
   }
 
+  toggleSubnivel() {
+    this.showSubnivel = !this.showSubnivel;
+  }
+  
   logOut(){
     localStorage.removeItem('rol')
     localStorage.removeItem('Token');
     this._sweetAlert.logout('Adios!');
+  }
+
+  DisplayNone() {
+    this.active = !this.active
+    this.isClicked = !this.isClicked
   }
 }

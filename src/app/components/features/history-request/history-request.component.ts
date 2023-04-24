@@ -15,20 +15,20 @@ export class HistoryRequestComponent implements OnInit {
 
   ngOnInit(): void {
     this.getExteriorRequest();
-    this.getRequestLocal();
+    this.getLocalRequest();
   }
 
 
   getExteriorRequest(){
-    this._exteriorRequestService.getRequestExterior().subscribe(
+    this._exteriorRequestService.getExteriorRequest().subscribe(
       response =>{
         this.exteriorRequest = response.data;
       }, error =>{
       }
     )
   }
-  getRequestLocal(){
-    this._requestService.getRequestLocal().subscribe(
+  getLocalRequest(){
+    this._requestService.getLocalRequest().subscribe(
       response =>{
         this.requestsLocal = response.data;
       }, error =>{
