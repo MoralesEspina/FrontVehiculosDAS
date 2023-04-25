@@ -21,6 +21,7 @@ export class LocalRequestMantComponent implements OnInit {
   public editing: boolean = false;
   public status: boolean = false;
   public deny: boolean = false;
+  public onHold: boolean = false;
   public id_entrada;
   public person;
   public vehicles;
@@ -86,10 +87,16 @@ export class LocalRequestMantComponent implements OnInit {
         response => {
           this.localRequest = response.data.request[0]
           this.details = response.data.detailRequest
+          this.localRequest.plate = ''
+          this.localRequest.pilotName = ''
           if (this.localRequest.status == 7) {
             this.status = true;
+            this.onHold = false;
           }else if(this.localRequest.status == 9){
             this.deny = true;
+            this.onHold = false;
+          }else if(this.localRequest.status == 6){
+            this.onHold = true;
           }
         }, err => {
 

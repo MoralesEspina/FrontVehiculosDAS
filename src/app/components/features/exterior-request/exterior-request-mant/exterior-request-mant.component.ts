@@ -28,6 +28,7 @@ export class ExteriorRequestMantComponent implements OnInit {
   public editing: boolean = false;
   public status: boolean = false;
   public deny: boolean = false;
+  public onHold:boolean = false;
   detailrequest: any = {};
   details: any[] = [];
 
@@ -100,10 +101,17 @@ export class ExteriorRequestMantComponent implements OnInit {
           this.details = response.data.detailRequest
           this.getPilotsActives();
           this.getVehiclesActives();
+          this.exteriorRequest.plate = ''
+          this.exteriorRequest.pilotName = ''
           if (this.exteriorRequest.status_request == 7) {
             this.status = true;
+            this.onHold = false;
           } else if (this.exteriorRequest.status_request == 9) {
             this.deny = true;
+            this.onHold = false;
+          }
+          else if (this.exteriorRequest.status_request == 6) {
+            this.onHold = true;
           }
 
         }, error => {

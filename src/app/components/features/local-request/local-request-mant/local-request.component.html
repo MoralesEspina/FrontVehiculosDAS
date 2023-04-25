@@ -1,222 +1,226 @@
-  <div class="main">
-    <main class="content">
-      <div class="container-fluid">
-        <div class="header">
-          <div class="col-9">
-            <h1 class="header-title">
-              Registro de solicitud de vehiculos local
-            </h1>
-            <!--- Migaja de Pan -->
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Inicio</a></li>
-                <li class="breadcrumb-item"><a [routerLink]="['/localRequest-index']">Lista de solicitudes locales</a></li>
-                <li class="breadcrumb-item"><a>Registro de solicitud de vehiculos local</a></li>
-              </ol>
-            </nav>
-            <!--- Migaja de Pan -->
-          </div>
-        </div>
+<div class="main">
+  <main class="content">
+    <div class="container-fluid">
+      <div class="header">
         <div class="col-9">
-          <div class="card">
-            <div class="card-header">
-              <h5 class="card-title">Completa el formulario</h5>
-            </div>
-            <div class="card-body">
-              <!--- INICIO DE FORMULARIO-->
+          <h1 class="header-title">
+            Registro de solicitud de vehiculos local
+          </h1>
+          <!--- Migaja de Pan -->
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Inicio</a></li>
+              <li class="breadcrumb-item"><a [routerLink]="['/localRequest-index']">Lista de solicitudes locales</a>
+              </li>
+              <li class="breadcrumb-item"><a>Registro de solicitud de vehiculos local</a></li>
+            </ol>
+          </nav>
+          <!--- Migaja de Pan -->
+        </div>
+      </div>
+      <div class="col-9">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title">Completa el formulario</h5>
+          </div>
+          <div class="card-body">
+            <!--- INICIO DE FORMULARIO-->
 
-              <form #localRequestForm="ngForm" (ngSubmit)="createLocalRequest(localRequestForm)">
-                <div class="row">
-                  <div class="col-lg-10">
-                    <div class="form-group">
-                      <label class="form-label"><b>Lugar:</b></label>
-                      <input class="form-control" #place="ngModel" name="place" [(ngModel)]="localRequest.place"
-                        type="text" list="items" placeholder="Ingrese el lugar" required [disabled]="editing==true">
-                    </div>
-                  </div>
-                  <div class="col-lg-10" *ngIf="editing == true">
-                    <div class="form-group">
-                      <label class="form-label"><b>Fecha:</b></label>
-                      <input name="date" [value]="localRequest.date | date: 'd MMM y' | uppercase" required type="text"
-                        class="form-control" disabled>
-                    </div>
-                  </div>
-                  <div class="col-lg-10">
-                    <div class="form-group">
-                      <label class="form-label"><b>Unidad, sección o dep.:</b></label>
-                      <input class="form-control" #section="ngModel" name="section" [(ngModel)]="localRequest.section"
-                        type="text" list="items" placeholder="Ingrese la unidad, sección o departamento" required
-                        [disabled]="editing==true">
-                    </div>
-                  </div>
-                  <div class="col-lg-10">
-                    <div class="form-group">
-                      <label class="form-label"><b>Nombre del solicitante:</b></label>
-                      <input class="form-control" #applicantsName="ngModel" name="applicantsName"
-                        [(ngModel)]="localRequest.applicantsName" type="text"
-                        placeholder="Ingrese el nombre del solicitante" required [disabled]="editing==true">
-                    </div>
-                  </div>
-                  <div class="col-lg-10">
-                    <div class="form-group">
-                      <label class="form-label"><b>Cargo del solicitante:</b></label>
-                      <input class="form-control" #position="ngModel" name="position"
-                        [(ngModel)]="localRequest.position" type="text" placeholder="Ingrese el cargo del solicitante"
-                        required [disabled]="editing==true">
-                    </div>
-                  </div>
-                  <div class="col-lg-10">
-                    <div class="form-group">
-                      <label class="form-label"><b>Tel. oficina o móvil:</b></label>
-                      <input class="form-control" #phoneNumber="ngModel" name="phoneNumber"
-                        [(ngModel)]="localRequest.phoneNumber" type="number"
-                        placeholder="Ingrese el Tel. oficina o móvil" required [disabled]="editing==true">
-                    </div>
-                  </div>
-                  <div class="col-lg-10">
-                    <p></p>
-                  </div>
-                  <div id="destino" class="col-lg-10" *ngIf="editing == false"><label><b>-- DESTINOS --</b></label>
-                  </div>
-
-
-                  <!-- inican los datos para la tabla -->
-                  <form class="col-lg-10" #detailRequestForm="ngForm"
-                    (ngSubmit)=" createDetailLocalRequest(detailRequestForm)" *ngIf="editing == false">
-                    <div class="row">
-                      <div class="col-lg-6">
-                        <div class="form-group">
-                          <label class="form-label"><b>Fecha del:</b></label>
-                          <input class="form-control" id="inputTable" name="dateOf" [(ngModel)]="detailrequest.dateOf"
-                            type="date" required>
-                        </div>
-                      </div>
-                      <div class="col-lg-6">
-                        <div class="form-group">
-                          <label class="form-label"><b>Fecha al:</b></label>
-                          <input class="form-control" id="inputTable" name="dateTo" [(ngModel)]="detailrequest.dateTo"
-                            type="date" required>
-                        </div>
-                      </div>
-                      <div class="col-lg-6">
-                        <div class="form-group">
-                          <label class="form-label"><b>Hora de salida:</b></label>
-                          <input class="form-control" id="inputTable" name="schedule"
-                            [(ngModel)]="detailrequest.schedule" type="time" required>
-                        </div>
-                      </div>
-                      <div class="col-lg-6">
-                        <div class="form-group">
-                          <label class="form-label"><b>Destino a visitar:</b></label>
-                          <select class="form-control" id="inputTable" name="destiny"
-                            [(ngModel)]="detailrequest.destiny" required>
-                            <option value="" disabled>Seleccionar</option>
-                            <option *ngFor="let visitar of placess">{{visitar.name}}</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-lg-6">
-                        <div class="form-group">
-                          <label class="form-label"><b>No de personas:</b></label>
-                          <input class="form-control" id="inputTable" name="peopleNumber"
-                            [(ngModel)]="detailrequest.peopleNumber" type="number" placeholder="Ingrese No. de personas"
-                            required>
-                        </div>
-                      </div>
-                      <div class="col-lg-6">
-                        <div class="form-group">
-                          <label class="form-label"><b>Objetivo:</b></label>
-                          <input class="form-control" id="inputTable" name="comission"
-                            [(ngModel)]="detailrequest.comission" type="text"
-                            placeholder="Ingrese el Objeto de la Comision" required>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="text-center"><button id="btndestino" class="btn btn-primary" type="submit">Agregar
-                        destino</button></div>
-                  </form>
-
-                  <!-- finalizan los datos para la tabla -->
-                  <div class="col-lg-10">
-                    <!---  TABLA -->
-                    <table class="table table-bordered">
-                      <!---     TITULOS DE LA TABLA -->
-                      <thead class="thead-dark">
-                        <tr>
-                          <th style="text-align: center;">Fecha del:</th>
-                          <th style="text-align: center;">Fecha al:</th>
-                          <th style="text-align: center;">Hora de salida</th>
-                          <th style="text-align: center;">Destino especifico a visitar</th>
-                          <th style="text-align: center;">No. personas</th>
-                          <th style="text-align: center;">Objeto de la comision</th>
-                        </tr>
-                      </thead>
-                      <!---    TITULOS DE LA TABLA -->
-                      <tbody *ngFor="let detailrequest of details">
-                        <td style="text-align: center;">{{detailrequest.dateOf | date: 'd MMM y' | uppercase}}</td>
-                        <td style="text-align: center;">{{detailrequest.dateTo | date: 'd MMM y' | uppercase}}</td>
-                        <td style="text-align: center;"> {{detailrequest.schedule}}</td>
-                        <td style="text-align: center;">{{detailrequest.destiny | uppercase}}</td>
-                        <td style="text-align: center;">{{detailrequest.peopleNumber}}</td>
-                        <td style="text-align: center;">{{detailrequest.comission}}</td>
-                      </tbody>
-                    </table>
-                  </div>
-                  <!---   TABLA -->
-
-                  <div class="col-lg-10">
-                    <div class="form-group">
-                      <label class="form-label"><b>Observaciones:</b></label>
-                      <input class="form-control" #observations="ngModel" name="observations"
-                        [(ngModel)]="localRequest.observations" type="text" placeholder="Ingrese observaciones"
-                        [disabled]="editing==true">
-                    </div>
+            <form #localRequestForm="ngForm" (ngSubmit)="createLocalRequest(localRequestForm)">
+              <div class="row">
+                <div class="col-lg-10">
+                  <div class="form-group">
+                    <label class="form-label"><b>Lugar:</b></label>
+                    <input class="form-control" #place="ngModel" name="place" [(ngModel)]="localRequest.place"
+                      type="text" list="items" placeholder="Ingrese el lugar" required [disabled]="editing==true">
                   </div>
                 </div>
-                <form #acceptedForm="ngForm" (ngSubmit)="acceptRequest(acceptedForm)">
+                <div class="col-lg-10" *ngIf="editing == true">
+                  <div class="form-group">
+                    <label class="form-label"><b>Fecha:</b></label>
+                    <input name="date" [value]="localRequest.date | date: 'd MMM y' | uppercase" required type="text"
+                      class="form-control" disabled>
+                  </div>
+                </div>
+                <div class="col-lg-10">
+                  <div class="form-group">
+                    <label class="form-label"><b>Unidad, sección o dep.:</b></label>
+                    <input class="form-control" #section="ngModel" name="section" [(ngModel)]="localRequest.section"
+                      type="text" list="items" placeholder="Ingrese la unidad, sección o departamento" required
+                      [disabled]="editing==true">
+                  </div>
+                </div>
+                <div class="col-lg-10">
+                  <div class="form-group">
+                    <label class="form-label"><b>Nombre del solicitante:</b></label>
+                    <input class="form-control" #applicantsName="ngModel" name="applicantsName"
+                      [(ngModel)]="localRequest.applicantsName" type="text"
+                      placeholder="Ingrese el nombre del solicitante" required [disabled]="editing==true">
+                  </div>
+                </div>
+                <div class="col-lg-10">
+                  <div class="form-group">
+                    <label class="form-label"><b>Cargo del solicitante:</b></label>
+                    <input class="form-control" #position="ngModel" name="position" [(ngModel)]="localRequest.position"
+                      type="text" placeholder="Ingrese el cargo del solicitante" required [disabled]="editing==true">
+                  </div>
+                </div>
+                <div class="col-lg-10">
+                  <div class="form-group">
+                    <label class="form-label"><b>Tel. oficina o móvil:</b></label>
+                    <input class="form-control" #phoneNumber="ngModel" name="phoneNumber"
+                      [(ngModel)]="localRequest.phoneNumber" type="number" placeholder="Ingrese el Tel. oficina o móvil"
+                      required [disabled]="editing==true">
+                  </div>
+                </div>
+                <div class="col-lg-10">
+                  <p></p>
+                </div>
+                <div id="destino" class="col-lg-10" *ngIf="editing == false"><label><b>-- DESTINOS --</b></label>
+                </div>
+
+
+                <!-- inican los datos para la tabla -->
+                <form class="col-lg-10" #detailRequestForm="ngForm"
+                  (ngSubmit)=" createDetailLocalRequest(detailRequestForm)" *ngIf="editing == false">
                   <div class="row">
-                    <div class="col-lg-1" *ngIf="editing == true">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-label"><b>Fecha del:</b></label>
+                        <input class="form-control" id="inputTable" name="dateOf" [(ngModel)]="detailrequest.dateOf"
+                          type="date" required>
+                      </div>
                     </div>
-                  <div class="col-lg-5" *ngIf="editing == true">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-label"><b>Fecha al:</b></label>
+                        <input class="form-control" id="inputTable" name="dateTo" [(ngModel)]="detailrequest.dateTo"
+                          type="date" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-label"><b>Hora de salida:</b></label>
+                        <input class="form-control" id="inputTable" name="schedule" [(ngModel)]="detailrequest.schedule"
+                          type="time" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-label"><b>Destino a visitar:</b></label>
+                        <select class="form-control" id="inputTable" name="destiny" [(ngModel)]="detailrequest.destiny"
+                          required>
+                          <option value="" disabled>Seleccionar</option>
+                          <option *ngFor="let visitar of placess">{{visitar.name}}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-label"><b>No de personas:</b></label>
+                        <input class="form-control" id="inputTable" name="peopleNumber"
+                          [(ngModel)]="detailrequest.peopleNumber" type="number" placeholder="Ingrese No. de personas"
+                          required>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-label"><b>Objetivo:</b></label>
+                        <input class="form-control" id="inputTable" name="comission"
+                          [(ngModel)]="detailrequest.comission" type="text"
+                          placeholder="Ingrese el Objeto de la Comision" required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center"><button id="btndestino" class="btn btn-primary" type="submit">Agregar
+                      destino</button></div>
+                </form>
+
+                <!-- finalizan los datos para la tabla -->
+                <div class="col-lg-10">
+                  <!---  TABLA -->
+                  <table class="table table-bordered">
+                    <!---     TITULOS DE LA TABLA -->
+                    <thead class="thead-dark">
+                      <tr>
+                        <th style="text-align: center;">Fecha del:</th>
+                        <th style="text-align: center;">Fecha al:</th>
+                        <th style="text-align: center;">Hora de salida</th>
+                        <th style="text-align: center;">Destino especifico a visitar</th>
+                        <th style="text-align: center;">No. personas</th>
+                        <th style="text-align: center;">Objeto de la comision</th>
+                      </tr>
+                    </thead>
+                    <!---    TITULOS DE LA TABLA -->
+                    <tbody *ngFor="let detailrequest of details">
+                      <td style="text-align: center;">{{detailrequest.dateOf | date: 'd MMM y' | uppercase}}</td>
+                      <td style="text-align: center;">{{detailrequest.dateTo | date: 'd MMM y' | uppercase}}</td>
+                      <td style="text-align: center;"> {{detailrequest.schedule}}</td>
+                      <td style="text-align: center;">{{detailrequest.destiny | uppercase}}</td>
+                      <td style="text-align: center;">{{detailrequest.peopleNumber}}</td>
+                      <td style="text-align: center;">{{detailrequest.comission}}</td>
+                    </tbody>
+                  </table>
+                </div>
+                <!---   TABLA -->
+
+                <div class="col-lg-10">
+                  <div class="form-group">
+                    <label class="form-label"><b>Observaciones:</b></label>
+                    <input class="form-control" #observations="ngModel" name="observations"
+                      [(ngModel)]="localRequest.observations" type="text" placeholder="Ingrese observaciones"
+                      [disabled]="editing==true">
+                  </div>
+                </div>
+              </div>
+              <form #acceptedForm="ngForm" >
+                <div class="row" *ngIf="editing == true" >
+                  <div class="col-lg-1" >
+                  </div>
+                  <div class="col-lg-5" >
                     <div class="form-group">
                       <label class="form-label"><b>Nombre del piloto asignado:</b></label>
                       <select class="form-control" #pilotName="ngModel" name="pilotName"
-                        [(ngModel)]="localRequest.pilotName" required>
-                        <option value="" disabled>Seleccionar</option>
+                        [(ngModel)]="localRequest.pilotName" required [disabled]="onHold== false">
+                        <option value="" hidden selected>Seleccionar</option>
                         <option value="{{person.uuid}}" *ngFor="let person of person">{{person.fullname}}</option>
                       </select>
                     </div>
                   </div>
-                  <div class="col-lg-5" *ngIf="editing == true">
+                  <div class="col-lg-5">
                     <div class="form-group">
                       <label class="form-label"><b>Placa del vehiculo autorizado:</b></label>
                       <select class="form-control" #plate="ngModel" name="plate" [(ngModel)]="localRequest.plate"
-                        required>
-                        <option value="" disabled>Seleccionar</option>
-                        <option value="{{vehicle.idVehicle}}" *ngFor="let vehicle of vehicles">{{vehicle.plate}} - {{vehicle.brand}} - {{vehicle.model}} - {{vehicle.color}}</option>
-                      </select>
+                        required [disabled]="onHold== false">
+                        <option value="" hidden selected>Seleccionar</option>
+                        <option value="{{vehicle.idVehicle}}" *ngFor="let vehicle of vehicles">{{vehicle.plate}} -
+                          {{vehicle.brand}} - {{vehicle.model}} - {{vehicle.color}}</option>
+                        </select>
                     </div>
                   </div>
                 </div>
-                  <div class="row">
-                    <div class="col-9">
-                      <div class="text-center" *ngIf="editing == true">
-                          <button type="submit" class="btn btn-primary" style="margin-right:20px" [disabled]="status==true || deny==true">Aceptar</button>
-                          <button (click)="denyRequest()" class="btn btn-danger" style="margin-right:20px" [disabled]="status==true || deny==true">Denegar</button>
-                          <button type="button" class="btn btn-primary " [routerLink]="['/localRequest/pdf/',id_entrada]" *ngIf="status==true">Ver PDF</button>
-                      </div>
+                <div class="row" *ngIf="editing == true">
+                  <div class="col-9">
+                    <div class="text-center" >
+                      <button type="submit" class="btn btn-primary" style="margin-right:20px" (click)="acceptRequest(acceptedForm)"
+                      *ngIf="onHold==true">Aceptar</button>
+                      <button (click)="denyRequest()" class="btn btn-danger" style="margin-right:20px"
+                      *ngIf="onHold==true">Denegar</button>
+                      <button type="button" class="btn btn-primary " [routerLink]="['/localRequest/pdf/',id_entrada]"
+                        *ngIf="status==true">Ver PDF</button>
                     </div>
                   </div>
-                </form>
-                <div class="text-center" *ngIf="editing == false"><button type="submit"
-                    class="btn btn-primary">Solicitar</button></div>
+                </div>
               </form>
+              <div class="text-center" *ngIf="editing == false"><button type="submit"
+                  class="btn btn-primary">Solicitar</button></div>
+            </form>
 
-              <!--- FIN DE FORMULARIO-->
-            </div>
+            <!--- FIN DE FORMULARIO-->
           </div>
         </div>
       </div>
+    </div>
 
-    </main>
-  </div>
+  </main>
+</div>
