@@ -7,7 +7,7 @@ export class LocalRequestI{
       public section: string,
       public applicantsName:string,
       public position:string,
-      public phoneNumber:number,
+      public phoneNumber:string,
       public observations:string,
       public status:string,
       public detail: Array<any> = []

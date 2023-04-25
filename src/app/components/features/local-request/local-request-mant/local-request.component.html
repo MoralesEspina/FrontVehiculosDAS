@@ -110,8 +110,8 @@
                         <label class="form-label"><b>Destino a visitar:</b></label>
                         <select class="form-control" id="inputTable" name="destiny" [(ngModel)]="detailrequest.destiny"
                           required>
-                          <option value="" disabled>Seleccionar</option>
-                          <option *ngFor="let visitar of placess">{{visitar.name}}</option>
+                          <option value="" hidden selected>Seleccionar</option>
+                          <option *ngFor="let place of places">{{place.name}}</option>
                         </select>
                       </div>
                     </div>

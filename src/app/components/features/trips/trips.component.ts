@@ -14,12 +14,12 @@ export class TripsComponent implements OnInit {
   constructor(private _tripServicetab: TripsService,) { }
 
   ngOnInit(): void {
-      this.getTripExterior();
-      this.getTripLocal();
+      this.getTripsExteriorOnHold();
+      this.getTripsLocalOnHold();
   }
 
-  getTripExterior(){
-    this._tripServicetab.getTripExterior().subscribe(
+  getTripsExteriorOnHold(){
+    this._tripServicetab.getTripsExteriorOnHold().subscribe(
       response =>{
         this.trip_exterior = response.data;
       }, error =>{
@@ -28,8 +28,8 @@ export class TripsComponent implements OnInit {
     )
   }
 
-  getTripLocal(){
-    this._tripServicetab.getTripLocal().subscribe(
+  getTripsLocalOnHold(){
+    this._tripServicetab.getTripsLocalOnHold().subscribe(
       response =>{
         this.trip_local = response.data;
       }, error =>{

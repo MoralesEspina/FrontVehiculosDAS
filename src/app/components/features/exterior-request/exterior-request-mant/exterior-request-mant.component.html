@@ -87,7 +87,7 @@
                         <select id="inputTable" class="form-control" #department="ngModel" name="department"
                           [(ngModel)]="detailrequest.department"
                           (ngModelChange)="getOneDepartment(detailrequest.department)" required>
-                          <option value="" disabled>Seleccionar</option>
+                          <option value="" hidden selected>Seleccionar</option>
                           <option value="{{item.title}}" *ngFor="let item of departments">{{item.title}}</option>
                         </select>
                       </div>
@@ -141,9 +141,8 @@
                       </div>
                     </div>
                   </div>
-                  <div class="text-center"><button id="btndestino" class="btn btn-primary" type="submit">Agregar
+                  <div class="text-center"><button id="btndestino" class="btn btn-primary" type="submit" [hidden]="maxPlaces()" [disabled]="!detailIsValid(detailExteriorForm)" >Agregar
                       destino</button></div>
-
                 </form>
                 <!-- finalizan los datos para la tabla -->
                 <!---  TABLA -->
@@ -173,6 +172,11 @@
                     </tbody>
                   </table>
                 </div>
+                <form class="col-lg-10">
+                  <div class="text-center">
+                    <button *ngIf="editing == false" (click)="deleteDetailRequest()" [disabled]="existDetails()" class="btn btn-danger">Eliminar Destino</button>
+                  </div>
+                </form>
                 <!---   TABLA -->
                 <div class="col-lg-10">
                   <div class="form-group">
@@ -191,8 +195,8 @@
                         <select class="form-control" #provide_fuel="ngModel" name="provide_fuel"
                           [(ngModel)]="exteriorRequest.provide_fuel" required [disabled]="status==true || deny==true">
                           <option value="" hidden selected>Seleccionar</option>
-                          <option value=0>No</option>
-                          <option value=1>Si</option>
+                          <option value=1>No</option>
+                          <option value=2>Si</option>
                         </select>
                       </div>
                     </div>
@@ -203,8 +207,8 @@
                           [(ngModel)]="exteriorRequest.provide_travel_expenses" required
                           [disabled]="status==true || deny==true">
                           <option value="" hidden selected>Seleccionar</option>
-                          <option value=0>No</option>
-                          <option value=1>Si</option>
+                          <option value=1>No</option>
+                          <option value=2>Si</option>
                         </select>
                       </div>
                     </div>
@@ -225,7 +229,7 @@
                         <label class="form-label"><b>Placa del vehiculo autorizado:</b></label>
                         <select class="form-control" #plate_vehicle="ngModel" name="plate_vehicle"
                           [(ngModel)]="exteriorRequest.plate_vehicle" required [disabled]="onHold== false">
-                          <option value="" hidden [selected]="onHold == false">Seleccionar</option>
+                          <option value="" hidden selected>Seleccionar</option>
                           <option value="{{vehicle.idVehicle}}" *ngFor="let vehicle of vehicles">{{vehicle.plate}} -
                             {{vehicle.type_name}} - {{vehicle.brand}} - {{vehicle.model}}</option>
                         </select>
@@ -242,7 +246,7 @@
                   <div class="row">
                     <div class="col-9">
                       <div class="text-center" *ngIf="editing == true">
-                        <button type="submit" class="btn btn-primary" style="margin-right:20px"
+                        <button class="btn btn-primary" style="margin-right:20px"
                         *ngIf="onHold==true" (click)="acceptRequest(acceptedForm)">Aceptar</button>
                         <button (click)="denyRequest()" class="btn btn-danger" style="margin-right:20px"
                         *ngIf="onHold==true">Denegar</button>
@@ -254,7 +258,7 @@
                   </div>
                 </form>
               </div>
-              <div class="text-center" *ngIf="editing == false"><button type="submit"
+              <div class="text-center" *ngIf="editing == false"><button type="submit" [disabled]="!formIsValid(ExteriorForm)"
                   class="btn btn-primary">Solicitar</button></div>
             </form>
             <!--- FIN DE FORMULARIO-->

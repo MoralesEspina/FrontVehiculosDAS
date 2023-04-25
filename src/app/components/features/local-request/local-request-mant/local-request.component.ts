@@ -29,15 +29,16 @@ export class LocalRequestMantComponent implements OnInit {
   details: any[] = [];
   detailrequest: any = {};
 
-  placess = [
-    { id: 7, name: 'Jalapa' },
-    { id: 1, name: 'Monjas' },
-    { id: 2, name: 'San Pedro Pinula' },
-    { id: 3, name: 'Mataquescuintla' },
-    { id: 4, name: 'San Luis Jilotepeque' },
-    { id: 5, name: 'San Manuel Chaparrón' },
-    { id: 6, name: 'San Carlos Alzatate' },
+  places = [
+    { id: 1, name: 'Jalapa' },
+    { id: 2, name: 'Monjas' },
+    { id: 3, name: 'San Pedro Pinula' },
+    { id: 4, name: 'Mataquescuintla' },
+    { id: 5, name: 'San Luis Jilotepeque' },
+    { id: 6, name: 'San Manuel Chaparrón' },
+    { id: 7, name: 'San Carlos Alzatate' },
   ];
+
   today: Date = new Date();
   pipe = new DatePipe('en-US');
   todayWithPipe;
@@ -49,7 +50,8 @@ export class LocalRequestMantComponent implements OnInit {
     private _sweetAlertService: SweetAlertService,
     private _errorService: ErrorsService,
     private _router:Router) {
-    this.localRequest = new LocalRequestI("", "", "", "", "", "", "", 0, "", "", [])
+    this.localRequest = new LocalRequestI("", "", "", "", "", "", "", "", "", "", [])
+    this.detailrequest.destiny = ''
   }
 
   ngOnInit(): void {
@@ -87,8 +89,6 @@ export class LocalRequestMantComponent implements OnInit {
         response => {
           this.localRequest = response.data.request[0]
           this.details = response.data.detailRequest
-          this.localRequest.plate = ''
-          this.localRequest.pilotName = ''
           if (this.localRequest.status == 7) {
             this.status = true;
             this.onHold = false;
@@ -97,6 +97,8 @@ export class LocalRequestMantComponent implements OnInit {
             this.onHold = false;
           }else if(this.localRequest.status == 6){
             this.onHold = true;
+            this.localRequest.pilotName = ''
+            this.localRequest.plate = ''
           }
         }, err => {
 
@@ -130,7 +132,7 @@ export class LocalRequestMantComponent implements OnInit {
       this._localRequestService.createOneLocalRequest(request_local).subscribe(
         response => {
           this._sweetAlertService.createAndUpdate('Se registro la solicitud correctamente');
-          this.localRequest = new LocalRequestI("", "", "", "", "", "", "", 0, "", "", [])
+          this.localRequest = new LocalRequestI("", "", "", "", "", "", "", "", "", "", [])
         }, error => {
           this.data_response = error;
           this._errorService.error(this.data_response);
@@ -168,7 +170,7 @@ export class LocalRequestMantComponent implements OnInit {
       section: '',
       applicantsName: '',
       position: '',
-      phoneNumber: 0,
+      phoneNumber: '',
       status: "7",
       observations: '',
       detail: []
@@ -207,7 +209,7 @@ export class LocalRequestMantComponent implements OnInit {
           section: '',
           applicantsName: '',
           position: '',
-          phoneNumber: 0,
+          phoneNumber: '',
           status: "9",
           observations: '',
           detail: []

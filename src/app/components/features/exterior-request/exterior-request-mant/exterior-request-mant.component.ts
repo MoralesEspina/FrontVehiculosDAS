@@ -28,7 +28,7 @@ export class ExteriorRequestMantComponent implements OnInit {
   public editing: boolean = false;
   public status: boolean = false;
   public deny: boolean = false;
-  public onHold:boolean = false;
+  public onHold: boolean = false;
   detailrequest: any = {};
   details: any[] = [];
 
@@ -58,6 +58,8 @@ export class ExteriorRequestMantComponent implements OnInit {
     this._infoService.getDepartments().subscribe(
       response => {
         this.departments = response.data;
+        this.detailrequest.department = ''
+        this.detailrequest.municipality = ''
       }, error => {
       }
     )
@@ -101,8 +103,6 @@ export class ExteriorRequestMantComponent implements OnInit {
           this.details = response.data.detailRequest
           this.getPilotsActives();
           this.getVehiclesActives();
-          this.exteriorRequest.plate_vehicle = ''
-          this.exteriorRequest.pilot_name = ''
           if (this.exteriorRequest.status_request == 7) {
             this.status = true;
             this.onHold = false;
@@ -112,8 +112,11 @@ export class ExteriorRequestMantComponent implements OnInit {
           }
           else if (this.exteriorRequest.status_request == 6) {
             this.onHold = true;
+            this.exteriorRequest.pilot_name = ''
+            this.exteriorRequest.plate_vehicle = ''
+            this.exteriorRequest.provide_fuel = ''
+            this.exteriorRequest.provide_travel_expenses = ''
           }
-
         }, error => {
           this.data_response = error;
           this._errorService.error(this.data_response);
@@ -158,7 +161,7 @@ export class ExteriorRequestMantComponent implements OnInit {
   }
 
   createDetailRequest(detailExteriorForm) {
-    if (detailExteriorForm.valid) {
+    //if (detailExteriorForm.valid) {
       const datos: DetailExteriorRequestI = {
         dateOf: detailExteriorForm.value.dateOf,
         dateTo: detailExteriorForm.value.dateTo,
@@ -170,14 +173,44 @@ export class ExteriorRequestMantComponent implements OnInit {
       }
       this.details.push(datos);
       this.detailrequest = {};
+      this.detailrequest.department = ''
+      this.detailrequest.municipality = ''
 
-    } else {
-      this._sweetAlertService.warning('Complete correctamente la información del destino');
-    }
+   // } else {
+      //this._sweetAlertService.warning('Complete correctamente la información del destino');
+    //}
   }
 
   deleteDetailRequest() {
     this.details.pop();
+  }
+
+  existDetails() {
+    if (this.details.length == 0) {
+      return true;
+    }
+    return false;
+  }
+
+  maxPlaces() {
+    if (this.details.length == 5) {
+      return true;
+    }
+    return false;
+  }
+
+  formIsValid(form) {
+    if (this.details.length >= 1 && form.valid) {
+      return true;
+    }
+    return false;
+  }
+
+  detailIsValid(form) {
+    if (form.valid) {
+      return true;
+    }
+    return false;
   }
 
   acceptRequest(acceptedForm) {
@@ -228,6 +261,7 @@ export class ExteriorRequestMantComponent implements OnInit {
       this._sweetAlertService.warning('Debe ingresar un motivo');
       return
     }
+
     const deny: ExteriorRequestI = {
       requesting_unit: '',
       commission_manager: '',
@@ -244,6 +278,7 @@ export class ExteriorRequestMantComponent implements OnInit {
       reason_rejected: text,
       detail: []
     }
+
     this._exteriorRoutesService.updateOneExteriorRequest(deny, this.id_entrada).subscribe(
       response => {
         this._sweetAlertService.createAndUpdate('Se denego correctamente la solicitud');
@@ -251,9 +286,7 @@ export class ExteriorRequestMantComponent implements OnInit {
         setTimeout(() => {
           window.location.reload();
         }, 1000);
-
       }, error => {
-        console.log(error)
         this.data_response = error;
         this._errorService.error(this.data_response);
       }
