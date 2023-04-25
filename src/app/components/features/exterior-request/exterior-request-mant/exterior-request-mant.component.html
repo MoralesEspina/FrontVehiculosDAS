@@ -190,7 +190,7 @@
                         <label class="form-label"><b>¿La Unidad solicitante proporciona combustible?</b></label>
                         <select class="form-control" #provide_fuel="ngModel" name="provide_fuel"
                           [(ngModel)]="exteriorRequest.provide_fuel" required [disabled]="status==true || deny==true">
-                          <option value="null" hidden selected>Seleccionar</option>
+                          <option value="" hidden selected>Seleccionar</option>
                           <option value=0>No</option>
                           <option value=1>Si</option>
                         </select>
@@ -202,7 +202,7 @@
                         <select class="form-control" #provide_travel_expenses="ngModel" name="provide_travel_expenses"
                           [(ngModel)]="exteriorRequest.provide_travel_expenses" required
                           [disabled]="status==true || deny==true">
-                          <option value="null" hidden selected>Seleccionar</option>
+                          <option value="" hidden selected>Seleccionar</option>
                           <option value=0>No</option>
                           <option value=1>Si</option>
                         </select>
@@ -215,7 +215,7 @@
                         <label class="form-label"><b>Nombre del piloto asignado:</b></label>
                         <select class="form-control" #pilot_name="ngModel" name="pilot_name"
                           [(ngModel)]="exteriorRequest.pilot_name" required [disabled]="onHold== false">
-                          <option value="" hidden selected>Seleccionar</option>
+                          <option value="" hidden [selected]="onHold == false">Seleccionar</option>
                           <option value="{{person.uuid}}" *ngFor="let person of person">{{person.fullname}}</option>
                         </select>
                       </div>
@@ -225,7 +225,7 @@
                         <label class="form-label"><b>Placa del vehiculo autorizado:</b></label>
                         <select class="form-control" #plate_vehicle="ngModel" name="plate_vehicle"
                           [(ngModel)]="exteriorRequest.plate_vehicle" required [disabled]="onHold== false">
-                          <option value="" hidden selected>Seleccionar</option>
+                          <option value="" hidden [selected]="onHold == false">Seleccionar</option>
                           <option value="{{vehicle.idVehicle}}" *ngFor="let vehicle of vehicles">{{vehicle.plate}} -
                             {{vehicle.type_name}} - {{vehicle.brand}} - {{vehicle.model}}</option>
                         </select>
