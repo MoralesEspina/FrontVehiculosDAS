@@ -58,6 +58,10 @@ export class UsersService {
     })
   }
 
+  logOut(){
+    localStorage.removeItem('rol')
+    localStorage.removeItem('Token');
+  }
   // deleteOneUser(id){
   //   return this._http.delete(this.url + 'user/' + id, {
   //     headers: new HttpHeaders({

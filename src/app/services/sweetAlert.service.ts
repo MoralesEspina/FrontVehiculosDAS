@@ -19,7 +19,7 @@ export class SweetAlertService {
       icon: 'success',
       title: titulo,
       showConfirmButton: false,
-      timer: 700
+      timer: 500
     })
     this._router.navigate(['dashboard']);
     setTimeout(()=>{                           // <<<---using ()=> syntax
@@ -33,12 +33,12 @@ export class SweetAlertService {
       icon: 'info',
       title: titulo,
       showConfirmButton: false,
-      timer: 1000
+      timer: 300
     })
     this._router.navigate(['login']);
     setTimeout(()=>{                           // <<<---using ()=> syntax
       window.location.reload()
-  }, 200);
+  }, 300);
   }
 
   createAndUpdate(titulo) {
