@@ -21,6 +21,7 @@ export class LocalRequestMantComponent implements OnInit {
   public editing: boolean = false;
   public status: boolean = false;
   public deny: boolean = false;
+  public onHold: boolean = false;
   public id_entrada;
   public person;
   public vehicles;
@@ -86,10 +87,16 @@ export class LocalRequestMantComponent implements OnInit {
         response => {
           this.localRequest = response.data.request[0]
           this.details = response.data.detailRequest
+          this.localRequest.plate = ''
+          this.localRequest.pilotName = ''
           if (this.localRequest.status == 7) {
             this.status = true;
+            this.onHold = false;
           }else if(this.localRequest.status == 9){
             this.deny = true;
+            this.onHold = false;
+          }else if(this.localRequest.status == 6){
+            this.onHold = true;
           }
         }, err => {
 
@@ -102,7 +109,7 @@ export class LocalRequestMantComponent implements OnInit {
   }
 
   createLocalRequest(localRequestForm) {
-    const transportation_local: LocalRequestI = {
+    const request_local: LocalRequestI = {
       pilotName: '',
       plate: '',
       place: localRequestForm.value.place,
@@ -120,7 +127,7 @@ export class LocalRequestMantComponent implements OnInit {
       this._sweetAlertService.warning('Complete correctamente el formulario');
       return
     }
-      this._localRequestService.createOneLocalRequest(transportation_local).subscribe(
+      this._localRequestService.createOneLocalRequest(request_local).subscribe(
         response => {
           this._sweetAlertService.createAndUpdate('Se registro la solicitud correctamente');
           this.localRequest = new LocalRequestI("", "", "", "", "", "", "", 0, "", "", [])

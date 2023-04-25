@@ -28,6 +28,7 @@ export class ExteriorRequestMantComponent implements OnInit {
   public editing: boolean = false;
   public status: boolean = false;
   public deny: boolean = false;
+  public onHold:boolean = false;
   detailrequest: any = {};
   details: any[] = [];
 
@@ -100,10 +101,17 @@ export class ExteriorRequestMantComponent implements OnInit {
           this.details = response.data.detailRequest
           this.getPilotsActives();
           this.getVehiclesActives();
+          this.exteriorRequest.plate_vehicle = ''
+          this.exteriorRequest.pilot_name = ''
           if (this.exteriorRequest.status_request == 7) {
             this.status = true;
+            this.onHold = false;
           } else if (this.exteriorRequest.status_request == 9) {
             this.deny = true;
+            this.onHold = false;
+          }
+          else if (this.exteriorRequest.status_request == 6) {
+            this.onHold = true;
           }
 
         }, error => {
@@ -133,21 +141,19 @@ export class ExteriorRequestMantComponent implements OnInit {
       status_request: '',
       detail: this.details
     }
-    if (ExteriorForm.valid) {
-      this._exteriorRoutesService.createNewExteriorRequest(exteriorRequest).subscribe(
-        response => {
-          this._sweetAlertService.createAndUpdate('Se registro la solicitud de vehiculo correctamente');
-          this.exteriorRequest = new ExteriorRequestI('', '', '', '', '', '', '', 0, 0, '', '', '', '', []);
-          this.details = [];
-        }, error => {
-          console.log(error)
-          this.data_response = error;
-          this._errorService.error(this.data_response);
-        }
-      );
-    } else {
+    if (!ExteriorForm.valid) {
       this._sweetAlertService.warning('Complete correctamente el formulario');
+      return
     }
+    this._exteriorRoutesService.createNewExteriorRequest(exteriorRequest).subscribe(
+      response => {
+        this._sweetAlertService.createAndUpdate('Se registro la solicitud correctamente');
+        this.exteriorRequest = new ExteriorRequestI('', '', '', '', '', '', '', 0, 0, '', '', '', '', []);
+      }, error => {
+        this.data_response = error;
+        this._errorService.error(this.data_response);
+      }
+    )
     this._router.navigate(['/exteriorRequest-index'])
   }
 
