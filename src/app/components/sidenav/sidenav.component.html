@@ -75,10 +75,10 @@
             </a>
             </li>
 
-            <li (click)="logOut()">
-                <a routerLink="" class="logout" >
+            <li>
+                <a routerLink="" class="logout" (click)="logOut()">
                 <i class="fa fa-power-off " ></i>
-                <span class="nav-item" >Cerrar Sesion</span>
+                <span class="nav-item" (click)="logOut()" >Cerrar Sesion</span>
             </a>
             </li>
         </ul>
