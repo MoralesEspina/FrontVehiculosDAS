@@ -39,7 +39,7 @@
                     <div class="form-group">
                       <label class="form-label"><b>Cargo</b></label>
                       <select class="form-control" #job="ngModel" name="job" [(ngModel)]="personform.job" required>
-                        <option value="" disabled>Seleccionar</option>
+                        <option value="" hidden selected>Seleccionar</option>
                         <option value="{{item.id}}" *ngFor="let item of jobs">{{item.job_name}}</option>
                       </select>
                     </div>

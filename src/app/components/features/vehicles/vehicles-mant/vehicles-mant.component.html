@@ -51,7 +51,7 @@
                     <div class="form-group">
                       <label class="form-label"><b>Tipo de vehiculo</b></label>
                       <select class="form-control" #type="ngModel" name="type" [(ngModel)]="vehicle.type" required>
-                        <option value="" disabled>Seleccionar</option>
+                        <option value="" hidden selected>Seleccionar</option>
                         <option value="{{item.idvtype}}" *ngFor="let item of types">{{item.type_name}}</option>
                       </select>
                     </div>
@@ -70,7 +70,7 @@
                       <label class="form-label"><b>Ingrese tipo de gasolina</b></label>
                       <select #gas="ngModel" name="gas" [(ngModel)]="vehicle.gas" type="text" class="form-control"
                         placeholder="(Diesel, Regular)" required>
-                        <option value="" disabled>Seleccionar</option>
+                        <option value="" hidden selected>Seleccionar</option>
                         <option value= 'Regular' >Regular</option>
                         <option value= 'Diesel' >Diesel</option>
                       </select>
@@ -109,7 +109,7 @@
                       <label class="form-label"><b>Estatus del vehiculo</b></label>
                       <select class="form-control" #status="ngModel" name="status" [(ngModel)]="vehicle.status"
                         required>
-                        <option value="" disabled>Seleccionar</option>
+                        <option value="" hidden selected>Seleccionar</option>
                         <option value="{{item.idstatus}}" *ngFor="let item of type_status">{{item.status_name}}</option>
                       </select>
                     </div>
