@@ -156,6 +156,7 @@ export class LocalRequestMantComponent implements OnInit {
 
       this.details.push(detailRequest);
       this.detailrequest = {};
+      this.detailrequest.destiny = '';
     } else{
       this._sweetAlertService.warning('Complete correctamente la información del destino');
     }
@@ -226,7 +227,7 @@ export class LocalRequestMantComponent implements OnInit {
       }
     })
   }
-  
+
   deleteDetailRequest() {
     this.details.pop();
   }
@@ -239,6 +240,20 @@ export class LocalRequestMantComponent implements OnInit {
   }
   formIsValid(form) {
     if (this.details.length >= 1 && form.valid) {
+      return true;
+    }
+    return false;
+  }
+
+  detailIsValid(form) {
+    if (form.valid) {
+      return true;
+    }
+    return false;
+  }
+
+  maxPlaces() {
+    if (this.details.length == 5) {
       return true;
     }
     return false;

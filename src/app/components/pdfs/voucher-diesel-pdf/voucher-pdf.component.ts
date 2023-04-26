@@ -1,9 +1,11 @@
+import * as dayjs from "dayjs";
 import { Component, OnInit } from '@angular/core';
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
 import { VoucherDieselI } from 'src/app/models/voucher.interface';
 import { VoucherService } from 'src/app/services/voucher.service';
 import { ActivatedRoute } from '@angular/router';
+import { PdfMakeWrapper, Txt, Table, Cell, Img } from 'pdfmake-wrapper';
+import * as pdfFonts from "pdfmake/build/vfs_fonts";
+import 'dayjs/locale/es'
 
 
 @Component({
@@ -41,30 +43,30 @@ export class VoucherPdfComponent implements OnInit {
     )
   }
 
-  public downloadPDF(): void {
-    const DATA: any = document.getElementById('Data');
-    const doc = new jsPDF('p', 'pt', 'letter');
-    const options = {
-      background: 'white',
-      scale: 3
-    };
+  // public downloadPDF(): void {
+  //   const DATA: any = document.getElementById('Data');
+  //   const doc = new jsPDF('p', 'pt', 'letter');
+  //   const options = {
+  //     background: 'white',
+  //     scale: 3
+  //   };
 
-    html2canvas(DATA, options).then((canvas) => {
-      const img = canvas.toDataURL('image/PNG');
-      // Add image Canvas to PDF
-      const bufferX = 15;
-      const bufferY = 15;
-      const imgProps = (doc as any).getImageProperties(img);
-      const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
-      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+  //   html2canvas(DATA, options).then((canvas) => {
+  //     const img = canvas.toDataURL('image/PNG');
+  //     // Add image Canvas to PDF
+  //     const bufferX = 15;
+  //     const bufferY = 15;
+  //     const imgProps = (doc as any).getImageProperties(img);
+  //     const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
+  //     const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
 
-      console.log(pdfHeight)
-      doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
-      return doc;
-    }).then((docResult) => {
-      docResult.save('Vale de Combustible');
-    });
-  }
+  //     console.log(pdfHeight)
+  //     doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
+  //     return doc;
+  //   }).then((docResult) => {
+  //     docResult.save('Vale de Combustible');
+  //   });
+  // }
 
   Unidades(num) {
 
@@ -220,5 +222,71 @@ export class VoucherPdfComponent implements OnInit {
       return this.Millones(data.enteros) + ' ' + data.letrasMonedaPlural + ' ' + data.letrasCentavos;
   };
 
+  downloadPDF(){
+    PdfMakeWrapper.setFonts(pdfFonts);
 
+    const pdf = new PdfMakeWrapper()
+      pdf.pageSize('A5');
+
+      pdf.add(new Txt ('FECHA: ').relativePosition(10, 10).end)
+      pdf.add(new Txt ([dayjs(this.voucher.date).locale("ES").format('DD MMMM YYYY')]).bold().relativePosition(55, 10).end)
+      pdf.add(new Txt('_______________________').bold().relativePosition(53, 12).end)
+      pdf.add(new Txt ('Q: ').relativePosition(190, 10).end)
+      pdf.add(new Txt (this.voucher.cost).bold().relativePosition(207, 10).end)
+      pdf.add(new Txt('_______________________').bold().relativePosition(205, 12).end)
+      pdf.add(new Txt ('CANTIDAD EN LETRAS: ').relativePosition(10, 35).end)
+      pdf.add(new Txt (this.letter).bold().relativePosition(142, 35).end)
+      pdf.add(new Txt('___________________________________').bold().relativePosition(140, 37).end)
+
+      pdf.add(new Txt ('VEHÍCULO NO.: ').relativePosition(10, 60).end)
+      pdf.add(new Txt (this.voucher.idVehicle).bold().relativePosition(97, 60).end)
+      pdf.add(new Txt('__________________').bold().relativePosition(95, 62).end)
+      pdf.add(new Txt ('PLACA: ').relativePosition(205, 60).end)
+      pdf.add(new Txt (this.voucher.plate).bold().relativePosition(252, 60).end)
+      pdf.add(new Txt('_______________').bold().relativePosition(250, 62).end)
+
+      pdf.add(new Txt ('TIPO DE VEHICULO.: ').relativePosition(10, 85).end)
+      pdf.add(new Txt (this.voucher.type_name).bold().relativePosition(122, 85).end)
+      pdf.add(new Txt('_____________').bold().relativePosition(120, 87).end)
+      pdf.add(new Txt ('MARCA: ').relativePosition(205, 85).end)
+      pdf.add(new Txt (this.voucher.brand).bold().relativePosition(252, 85).end)
+      pdf.add(new Txt('_______________').bold().relativePosition(250, 87).end)
+
+      pdf.add(new Txt ('MODELO: ').relativePosition(10, 110).end)
+      pdf.add(new Txt (this.voucher.model).bold().relativePosition(67, 110).end)
+      pdf.add(new Txt('________________________').bold().relativePosition(65, 112).end)
+      pdf.add(new Txt ('COLOR: ').relativePosition(205, 110).end)
+      pdf.add(new Txt (this.voucher.color).bold().relativePosition(252, 110).end)
+      pdf.add(new Txt('_______________').bold().relativePosition(250, 112).end)
+
+      pdf.add(new Txt ('COMISIÓN A: ').relativePosition(10, 135).end)
+      pdf.add(new Txt (this.voucher.comission_to).bold().relativePosition(87, 135).end)
+      pdf.add(new Txt('______________________________________________').bold().relativePosition(85, 137).end)
+
+      pdf.add(new Txt ('PROPÓSITO: ').relativePosition(10, 160).end)
+      pdf.add(new Txt (this.voucher.objective).bold().relativePosition(87, 160).end)
+      pdf.add(new Txt('______________________________________________').bold().relativePosition(85, 162).end)
+
+      pdf.add(new Txt ('NOMBRE DEL PILOTO: ').relativePosition(10, 185).end)
+      pdf.add(new Txt (this.voucher.fullname).bold().relativePosition(132, 185).end)
+      pdf.add(new Txt('______________________________________').bold().relativePosition(130, 187).end)
+
+      pdf.add(new Txt ('DPI O LICENCIA: ').relativePosition(10, 210).end)
+      pdf.add(new Txt (this.voucher.dpi).bold().relativePosition(107, 210).end)
+      pdf.add(new Txt('__________________________________________').bold().relativePosition(105, 212).end)
+
+      pdf.add(new Txt ('FIRMA: ').relativePosition(150, 310).end)
+      pdf.add(new Txt('__________________________').bold().relativePosition(190, 310).end)
+
+      pdf.add(new Txt('________________________').fontSize(14).bold().relativePosition(10, 410).end)
+      pdf.add(new Txt('________________________').fontSize(14).bold().relativePosition(180, 410).end)
+
+      pdf.add(new Txt ('Visto bueno').bold().relativePosition(55, 430).end)
+      pdf.add(new Txt ('Gerente administrativo').bold().relativePosition(25, 450).end)
+      pdf.add(new Txt ('financiero').bold().relativePosition(58, 470).end)
+
+      pdf.add(new Txt ('Firma del encargado del').bold().relativePosition(190, 430).end)
+      pdf.add(new Txt ('combustible').bold().relativePosition(220, 450).end)
+    pdf.create().open();
+  }
 }

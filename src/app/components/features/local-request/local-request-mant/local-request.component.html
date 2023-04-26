@@ -12,7 +12,7 @@
               <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Inicio</a></li>
               <li class="breadcrumb-item" *ngIf="onHold == false"><a [routerLink]="['/History-Request']" >Historial de solicitudes</a></li>
               <li class="breadcrumb-item" *ngIf="onHold == true"><a [routerLink]="['/localRequest-index']" >Lista de solicitudes locales</a></li>
-              
+
               <li class="breadcrumb-item" *ngIf="editing==false"><a>Registro de solicitud de vehiculos local</a></li>
               <li class="breadcrumb-item" *ngIf="onHold == true && editing==true "  ><a> Aceptar o Denegar solicitud local No. {{id_entrada}}</a></li>
               <li class="breadcrumb-item" *ngIf="onHold == false && editing==true" ><a> Detalles de la solicitud local No. {{id_entrada}}</a></li>
@@ -135,8 +135,8 @@
                       </div>
                     </div>
                   </div>
-                  <div class="text-center"><button id="btndestino" class="btn btn-primary" type="submit">Agregar
-                      destino</button></div>
+                  <div class="text-center"><button id="btndestino" class="btn btn-primary" type="submit" [hidden]="maxPlaces()" [disabled]="!detailIsValid(detailRequestForm)">
+                    Agregar destino</button></div>
                 </form>
 
                 <!-- finalizan los datos para la tabla -->

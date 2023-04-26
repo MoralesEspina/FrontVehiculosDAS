@@ -46,33 +46,33 @@
                     </select>
                   </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-label"><b>Vehiculo No.</b></label>
                     <input type="number" class="form-control" placeholder="{{vehicleNum}}" disabled>
                   </div>
                 </div>
 
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-label"><b>Tipo de vehiculo</b></label>
                     <input type="text" class="form-control" placeholder="{{type_name}}" disabled>
                   </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-label"><b>Marca</b></label>
                     <input type="text" class="form-control" placeholder="{{brand}}" disabled>
                   </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-label"><b>Modelo</b></label>
                     <input type="number" class="form-control" placeholder="{{model}}" disabled>
                   </div>
                 </div>
-                <div class="col-lg-2"></div>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-label"><b>Color</b></label>
                     <input type="text" class="form-control" placeholder="{{color}}" disabled>
@@ -85,30 +85,28 @@
                         placeholder="Ingrese los km" required>
                     </div>
                   </div> -->
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label class="form-label"><b>Al servicio de</b></label>
-                    <input #service_of="ngModel" name="service_of" [(ngModel)]="voucher.service_of" type="text"
-                      class="form-control" placeholder="Ingrese el solicitante" required>
-                  </div>
-                </div>
                 <div>
-                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
-                [(ngModel)]="comission">
+
+                <mat-radio-group
+                aria-labelledby="example-radio-group-label"
+                class="example-radio-group"
+                [(ngModel)]="comission" name="comission">
                 <mat-radio-button class="example-radio-button" *ngFor="let type of types" [value]="type">
                   {{type}}
                 </mat-radio-button>
-                
               </mat-radio-group>
+
             </div>
-                <div class="col-lg-8" style="margin-left: 10px;">  
-                  <div class="form-group" >
+                <div class="col-lg-8" style="margin-left: 10px;">
+                  <div class="form-group">
                     <label class="form-label"><b>Comisión local</b></label>
-                    <select class="form-control" #comission_to="ngModel" name="comission_to"
-                      [(ngModel)]="voucher.comission_to">
+                    <select class="form-control" #local_comission="ngModel" name="local_comission"
+                      [(ngModel)]="voucher.local_comission"
+                      [disabled]="comission != 'Local'"
+                      (ngModelChange)="getOneLocalRequest(voucher.local_comission)">
                       <option value="" hidden selected>Seleccionar</option>
-                      <option value="{{local.id}}" *ngFor="let local of requestsLocal">{{local.place}} -
-                        {{local.section}} - {{local.date | date: 'd MMM y' | uppercase}} - {{local.applicantsName}}
+                      <option value="{{local.id}}" *ngFor="let local of localRequest">
+                        {{local.place}} - {{local.section}} - {{local.date | date: 'd MMM y' | uppercase}} - {{local.applicantsName}}
                       </option>
                     </select>
                     <!-- <input name="comission_to" type="text" class="form-control" #comission_to="ngModel" [(ngModel)]="voucher.comission_to"
@@ -116,11 +114,13 @@
                   </div>
                   <div class="form-group">
                     <label class="form-label"><b>Comisión exterior</b></label>
-                    <select class="form-control" #comission_to="ngModel" name="comission_to"
-                      [(ngModel)]="voucher.comission_to">
+                    <select class="form-control" #exterior_comission="ngModel" name="exterior_comission"
+                      [(ngModel)]="voucher.exterior_comission"
+                      [disabled]="comission != 'Exterior'"
+                      (ngModelChange)="getOneExteriorRequest(voucher.exterior_comission)">
                       <option value="" hidden selected>Seleccionar</option>
-                      <option value="{{local.id}}" *ngFor="let local of requestsLocal">{{local.place}} -
-                        {{local.section}} - {{local.date | date: 'd MMM y' | uppercase}} - {{local.applicantsName}}
+                      <option value="{{exterior.id}}" *ngFor="let exterior of exteriorRequest">
+                        {{exterior.commission_manager}} - {{exterior.requesting_unit}} - {{exterior.date_request | date: 'd MMM y' | uppercase}} - {{exterior.objective_request}}
                       </option>
                     </select>
                     <!-- <input name="comission_to" type="text" class="form-control" #comission_to="ngModel" [(ngModel)]="voucher.comission_to"
@@ -128,50 +128,77 @@
                   </div>
                   <div class="form-group">
                     <label class="form-label"><b>Sin comisión</b></label>
-                    <input name="comission_to" type="text" class="form-control" #comission_to="ngModel"
+                    <input name="comission_to" type="text" class="form-control" #comission_to="ngModel" [disabled]="comission != 'Sin Comisión'"
                       [(ngModel)]="voucher.comission_to" placeholder="Ingrese la comision solicitante" required>
                   </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-label"><b>Al servicio de</b></label>
+                    <input #service_of="ngModel" name="service_of" [(ngModel)]="voucher.service_of" type="text" [disabled]="comission != 'Sin Comisión'"
+                      class="form-control" placeholder="Ingrese el solicitante" required>
+                  </div>
+                </div>
+                <!-- <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-label"><b>Proposito</b></label>
                     <input name="objective" type="text" class="form-control" #objective="ngModel"
-                      [(ngModel)]="voucher.objective" placeholder="Ingrese el proposito del viaje" required>
+                      [(ngModel)]="voucher.objective" placeholder="Ingrese el proposito del viaje" required [disabled]="comission != 'Sin Comisión'">
+                  </div>
+                </div> -->
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-label"><b>Fecha de comision</b></label>
+                    <input class="form-control" placeholder="{{date | date: 'd MMM y' | uppercase}}" disabled>
                   </div>
                 </div>
-                <div class="col-lg-3">
+                <!-- <div class="col-lg-3">
                   <div class="form-group">
                     <label class="form-label"><b>Fecha de comision</b></label>
                     <input name="comission_date" type="date" class="form-control" #comission_date="ngModel"
-                      [(ngModel)]="voucher.comission_date" required>
+                      [(ngModel)]="voucher.comission_date" required [disabled]="comission != 'Sin Comisión'">
                   </div>
-                </div>
-                <div class="col-lg-3">
+                </div> -->
+                <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-label"><b>Kms. a recorrer</b></label>
                     <input name="km_to_travel" type="text" class="form-control" #km_to_travel="ngModel"
                       [(ngModel)]="voucher.km_to_travel" placeholder="Ingrese los km" required>
                   </div>
                 </div>
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="form-label"><b>Proposito</b></label>
+                    <input type="number" class="form-control" placeholder="{{objective}}" disabled>
+                  </div>
+                </div>
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-label"><b>Nombre del piloto asignado:</b></label>
+                    <input type="text" class="form-control" placeholder="{{pilotName}}" disabled>
+                  </div>
+                </div>
+
+                <!-- <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-label"><b>Nombre del piloto asignado:</b></label>
                     <select class="form-control" #uuid="ngModel" name="uuid" [(ngModel)]="voucher.uuid" required
-                      (ngModelChange)="getOnePerson(voucher.uuid)">
+                      (ngModelChange)="getOnePerson(voucher.uuid)"
+                      [disabled]="comission != 'Sin Comisión'">
                       <option value="" disabled>Seleccionar</option>
                       <option value="{{person.uuid}}" *ngFor="let person of person">{{person.fullname}}</option>
                     </select>
                   </div>
-                </div>
+                </div> -->
                 <div class="col-lg-6" style="margin: auto;">
                   <div class="form-group">
                     <label class="form-label"><b>DPI o Licencia</b></label>
-                    <input name="Licencia" type="text" class="form-control" placeholder="{{dpi}}" disabled>
+                    <input name="Licencia" type="text" class="form-control" placeholder="{{DPI}}" disabled>
                   </div>
                 </div>
               </div>
               <div class="row">
-                <button type="submit" class="btn btn-primary">Registrar</button>
+                <button type="submit" class="btn btn-primary" [disabled]="!formIsValid(voucherForm)">Registrar</button>
               </div>
             </form>
             <!--- FIN DE FORMULARIO-->
