@@ -7,13 +7,17 @@ import { VoucherService } from 'src/app/services/voucher.service';
 import { SweetAlertService } from 'src/app/services/sweetAlert.service';
 import { ErrorsService } from 'src/app/services/errors.service';
 import { Router } from '@angular/router';
+import { LocalRequestService } from 'src/app/services/localRequest.service';
+
+
 
 @Component({
   selector: 'app-voucher-diesel',
   templateUrl: './voucher-diesel.component.html',
   styleUrls: ['./voucher-diesel.component.css']
 })
-export class VoucherDieselComponent implements OnInit { public person;
+export class VoucherDieselComponent implements OnInit { 
+  public person;
   public Oneperson;
   public dpi;
   public voucher;
@@ -27,18 +31,23 @@ export class VoucherDieselComponent implements OnInit { public person;
   public brand;
   public type_name;
   public vehicleNum;
+  public requestsLocal;
 
   today: Date = new Date();
   pipe = new DatePipe('en-US');
   todayWithPipe;
 
+  comission: any;
+  types: string[] = ['Local', 'Exterior', 'Sin Comisión'];
+  
   constructor(
     private _vehicleService: VehicleService,
     private _personService: PersonService,
     private _voucherService:VoucherService,
     private _sweetAlertService: SweetAlertService,
     private _errorService: ErrorsService,
-    private _router: Router
+    private _router: Router,
+    private _requestService:LocalRequestService,
     ) {
       this.voucher=new VoucherDieselI('', '', '', '','', '', '', '', '', '', '')
      }
@@ -47,6 +56,7 @@ export class VoucherDieselComponent implements OnInit { public person;
     this.getPerson();
     this.getVehicles();
     this.todayWithPipe = this.pipe.transform(Date.now(), 'yyyy/MM/dd')
+    this.getLocalRequest();
   }
 
   getVehicles(){
@@ -119,6 +129,16 @@ export class VoucherDieselComponent implements OnInit { public person;
         }, error => {
           this.data_response = error;
           this._errorService.error(this.data_response);
+        }
+      )
+    }
+
+    getLocalRequest(){
+      this._requestService.getLocalRequest().subscribe(
+        response =>{
+          this.requestsLocal = response.data;
+          console.log(this.requestsLocal);
+        }, error =>{
         }
       )
     }

@@ -1,148 +1,183 @@
-  <div class="main">
-    <main class="content">
-      <div class="container-fluid">
-        <div class="header">
-          <div class="col-6">
-            <h1 class="header-title">
-              Generar vale de combustible diesel
-            </h1>
-            <!--- Migaja de Pan -->
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Inicio</a></li>
-                <li class="breadcrumb-item"><a [routerLink]="['/Vouchertable']"> Vales de combustible</a></li>
-                <li class="breadcrumb-item"><a>Generar vale de combustible diesel</a></li>
-              </ol>
-            </nav>
-            <!--- Migaja de Pan -->
-          </div>
-        </div>
+<div class="main">
+  <main class="content">
+    <div class="container-fluid">
+      <div class="header">
         <div class="col-6">
-          <div class="card">
-            <div class="card-header">
-              <h5 class="card-title">Completa el formulario</h5>
-            </div>
-            <div class="card-body">
-              <!--- INICIO DE FORMULARIO-->
-              <!--- Nombre Formulario dentro del Form-->
-              <!--- #vehicleForm="ngForm"-->
-              <form #voucherForm="ngForm" (ngSubmit)="createVoucher(voucherForm)">
-                <div class="row">
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label class="form-label"><b>Cantidad en Q.</b></label>
-                      <input #cost="ngModel" name="cost" [(ngModel)]="voucher.cost" type="number" class="form-control"
-                        placeholder="Ingrese la cantidad" required>
-                    </div>
+          <h1 class="header-title">
+            Generar vale de combustible diesel
+          </h1>
+          <!--- Migaja de Pan -->
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Inicio</a></li>
+              <li class="breadcrumb-item"><a [routerLink]="['/Vouchertable']"> Vales de combustible</a></li>
+              <li class="breadcrumb-item"><a>Generar vale de combustible diesel</a></li>
+            </ol>
+          </nav>
+          <!--- Migaja de Pan -->
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title">Completa el formulario</h5>
+          </div>
+          <div class="card-body">
+            <!--- INICIO DE FORMULARIO-->
+            <!--- Nombre Formulario dentro del Form-->
+            <!--- #vehicleForm="ngForm"-->
+            <form #voucherForm="ngForm" (ngSubmit)="createVoucher(voucherForm)">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-label"><b>Cantidad en Q.</b></label>
+                    <input #cost="ngModel" name="cost" [(ngModel)]="voucher.cost" type="number" class="form-control"
+                      placeholder="Ingrese la cantidad" required>
                   </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label class="form-label"><b>Placa</b></label>
-                      <select class="form-control" #idVehicle="ngModel" name="idVehicle" [(ngModel)]="voucher.idVehicle"
-                        (ngModelChange)="getOneVehicle(voucher.idVehicle)" required>
-                        <option value="" disabled>Seleccionar</option>
-                        <option value="{{vehicle.idVehicle}}" *ngFor="let vehicle of vehicles">{{vehicle.idVehicle}} - {{vehicle.plate}} - {{vehicle.type_name}} - {{vehicle.brand}} - {{vehicle.model}}</option>
-                      </select>
-                    </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-label"><b>Placa</b></label>
+                    <select class="form-control" #idVehicle="ngModel" name="idVehicle" [(ngModel)]="voucher.idVehicle"
+                      (ngModelChange)="getOneVehicle(voucher.idVehicle)" required>
+                      <option value="" disabled>Seleccionar</option>
+                      <option value="{{vehicle.idVehicle}}" *ngFor="let vehicle of vehicles">{{vehicle.idVehicle}} -
+                        {{vehicle.plate}} - {{vehicle.type_name}} - {{vehicle.brand}} - {{vehicle.model}}</option>
+                    </select>
                   </div>
-                  <div class="col-lg-3">
-                    <div class="form-group">
-                      <label class="form-label"><b>Vehiculo No.</b></label>
-                      <input type="number" class="form-control" placeholder="{{vehicleNum}}" disabled>
-                    </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label class="form-label"><b>Vehiculo No.</b></label>
+                    <input type="number" class="form-control" placeholder="{{vehicleNum}}" disabled>
                   </div>
+                </div>
 
-                  <div class="col-lg-3">
-                    <div class="form-group">
-                      <label class="form-label"><b>Tipo de vehiculo</b></label>
-                      <input type="text" class="form-control" placeholder="{{type_name}}" disabled>
-                    </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label class="form-label"><b>Tipo de vehiculo</b></label>
+                    <input type="text" class="form-control" placeholder="{{type_name}}" disabled>
                   </div>
-                  <div class="col-lg-3">
-                    <div class="form-group">
-                      <label class="form-label"><b>Marca</b></label>
-                      <input type="text" class="form-control" placeholder="{{brand}}" disabled>
-                    </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label class="form-label"><b>Marca</b></label>
+                    <input type="text" class="form-control" placeholder="{{brand}}" disabled>
                   </div>
-                  <div class="col-lg-3">
-                    <div class="form-group">
-                      <label class="form-label"><b>Modelo</b></label>
-                      <input type="number" class="form-control" placeholder="{{model}}" disabled>
-                    </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label class="form-label"><b>Modelo</b></label>
+                    <input type="number" class="form-control" placeholder="{{model}}" disabled>
                   </div>
-                  <div class="col-lg-2"></div>
-                  <div class="col-lg-3">
-                    <div class="form-group">
-                      <label class="form-label"><b>Color</b></label>
-                      <input type="text" class="form-control" placeholder="{{color}}" disabled>
-                    </div>
+                </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label class="form-label"><b>Color</b></label>
+                    <input type="text" class="form-control" placeholder="{{color}}" disabled>
                   </div>
-                  <!-- <div class="col-lg-4">
+                </div>
+                <!-- <div class="col-lg-4">
                     <div class="form-group">
                       <label class="form-label"><b>Kilometros por galon</b></label>
                       <input #km_gallon="ngModel" name="km_gallon" [(ngModel)]="voucher.km_gallon" type="text" class="form-control"
                         placeholder="Ingrese los km" required>
                     </div>
                   </div> -->
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label class="form-label"><b>Al servicio de</b></label>
-                      <input #service_of="ngModel" name="service_of" [(ngModel)]="voucher.service_of" type="text"
-                        class="form-control" placeholder="Ingrese el solicitante" required>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label class="form-label"><b>Comision a</b></label>
-                      <input name="comission_to" type="text" class="form-control" #comission_to="ngModel" [(ngModel)]="voucher.comission_to"
-                        placeholder="Ingrese la comision solicitante" required>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label class="form-label"><b>Proposito</b></label>
-                      <input name="objective" type="text" class="form-control"  #objective="ngModel" [(ngModel)]="voucher.objective"
-                        placeholder="Ingrese el proposito del viaje" required>
-                    </div>
-                  </div>
-                  <div class="col-lg-3">
-                    <div class="form-group">
-                      <label class="form-label"><b>Fecha de comision</b></label>
-                      <input name="comission_date" type="date" class="form-control"  #comission_date="ngModel" [(ngModel)]="voucher.comission_date" required>
-                    </div>
-                  </div>
-                  <div class="col-lg-3">
-                    <div class="form-group">
-                      <label class="form-label"><b>Kms. a recorrer</b></label>
-                      <input name="km_to_travel" type="text" class="form-control"  #km_to_travel="ngModel" [(ngModel)]="voucher.km_to_travel"
-                        placeholder="Ingrese los km" required>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label class="form-label"><b>Nombre del piloto asignado:</b></label>
-                      <select class="form-control" #uuid="ngModel" name="uuid" [(ngModel)]="voucher.uuid" required
-                        (ngModelChange)="getOnePerson(voucher.uuid)">
-                        <option value="" disabled>Seleccionar</option>
-                        <option value="{{person.uuid}}" *ngFor="let person of person">{{person.fullname}}</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label class="form-label"><b>DPI o Licencia</b></label>
-                      <input name="Licencia" type="text" class="form-control" placeholder="{{dpi}}" disabled>
-                    </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-label"><b>Al servicio de</b></label>
+                    <input #service_of="ngModel" name="service_of" [(ngModel)]="voucher.service_of" type="text"
+                      class="form-control" placeholder="Ingrese el solicitante" required>
                   </div>
                 </div>
-                <div class="row">
-                  <button type="submit" class="btn btn-primary">Registrar</button>
-                </div>
-              </form>
-              <!--- FIN DE FORMULARIO-->
+                <div>
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                [(ngModel)]="comission">
+                <mat-radio-button class="example-radio-button" *ngFor="let type of types" [value]="type">
+                  {{type}}
+                </mat-radio-button>
+                
+              </mat-radio-group>
             </div>
+                <div class="col-lg-8" style="margin-left: 10px;">  
+                  <div class="form-group" >
+                    <label class="form-label"><b>Comisión local</b></label>
+                    <select class="form-control" #comission_to="ngModel" name="comission_to"
+                      [(ngModel)]="voucher.comission_to">
+                      <option value="" hidden selected>Seleccionar</option>
+                      <option value="{{local.id}}" *ngFor="let local of requestsLocal">{{local.place}} -
+                        {{local.section}} - {{local.date | date: 'd MMM y' | uppercase}} - {{local.applicantsName}}
+                      </option>
+                    </select>
+                    <!-- <input name="comission_to" type="text" class="form-control" #comission_to="ngModel" [(ngModel)]="voucher.comission_to"
+                        placeholder="Ingrese la comision solicitante" required> -->
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label"><b>Comisión exterior</b></label>
+                    <select class="form-control" #comission_to="ngModel" name="comission_to"
+                      [(ngModel)]="voucher.comission_to">
+                      <option value="" hidden selected>Seleccionar</option>
+                      <option value="{{local.id}}" *ngFor="let local of requestsLocal">{{local.place}} -
+                        {{local.section}} - {{local.date | date: 'd MMM y' | uppercase}} - {{local.applicantsName}}
+                      </option>
+                    </select>
+                    <!-- <input name="comission_to" type="text" class="form-control" #comission_to="ngModel" [(ngModel)]="voucher.comission_to"
+                        placeholder="Ingrese la comision solicitante" required> -->
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label"><b>Sin comisión</b></label>
+                    <input name="comission_to" type="text" class="form-control" #comission_to="ngModel"
+                      [(ngModel)]="voucher.comission_to" placeholder="Ingrese la comision solicitante" required>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-label"><b>Proposito</b></label>
+                    <input name="objective" type="text" class="form-control" #objective="ngModel"
+                      [(ngModel)]="voucher.objective" placeholder="Ingrese el proposito del viaje" required>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label class="form-label"><b>Fecha de comision</b></label>
+                    <input name="comission_date" type="date" class="form-control" #comission_date="ngModel"
+                      [(ngModel)]="voucher.comission_date" required>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label class="form-label"><b>Kms. a recorrer</b></label>
+                    <input name="km_to_travel" type="text" class="form-control" #km_to_travel="ngModel"
+                      [(ngModel)]="voucher.km_to_travel" placeholder="Ingrese los km" required>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-label"><b>Nombre del piloto asignado:</b></label>
+                    <select class="form-control" #uuid="ngModel" name="uuid" [(ngModel)]="voucher.uuid" required
+                      (ngModelChange)="getOnePerson(voucher.uuid)">
+                      <option value="" disabled>Seleccionar</option>
+                      <option value="{{person.uuid}}" *ngFor="let person of person">{{person.fullname}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-6" style="margin: auto;">
+                  <div class="form-group">
+                    <label class="form-label"><b>DPI o Licencia</b></label>
+                    <input name="Licencia" type="text" class="form-control" placeholder="{{dpi}}" disabled>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <button type="submit" class="btn btn-primary">Registrar</button>
+              </div>
+            </form>
+            <!--- FIN DE FORMULARIO-->
           </div>
         </div>
       </div>
-    </main>
-  </div>
+    </div>
+  </main>
+</div>

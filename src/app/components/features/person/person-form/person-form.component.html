@@ -12,7 +12,8 @@
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Inicio</a></li>
               <li class="breadcrumb-item"><a [routerLink]="['/persontable']"> Personas</a></li>
-              <li class="breadcrumb-item"><a> Registro de personas</a></li>
+              <li class="breadcrumb-item" *ngIf="editing==false"><a> Registro de personas</a></li>
+              <li class="breadcrumb-item" *ngIf="editing==true" ><a> Edición de la informacion de {{personform.fullname}}</a></li>
             </ol>
           </nav>
           <!--- Migaja de Pan -->
@@ -21,7 +22,7 @@
         <div class="col-8">
           <div class="card">
             <div class="card-header">
-              <h5 class="card-title">Completa el formulario</h5>
+              <h5 class="card-title" *ngIf="editing==false">Completa el formulario</h5>
             </div>
             <div class="card-body">
               <!--- INICIO DE FORMULARIO-->

@@ -10,10 +10,9 @@
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Inicio</a></li>
-                <li class="breadcrumb-item"><a [routerLink]="['/localRequest-index']"> Lista de solicitudes
-                    locales</a></li>
-                <li class="breadcrumb-item"><a [routerLink]="['/localRequest/edit/',id_entrada]">Registro de solicitud de transporte local número {{id_entrada}}</a></li>
-                <li class="breadcrumb-item"><a>Solicitud de transporte número {{id_entrada}}</a></li>
+                <li class="breadcrumb-item" ><a [routerLink]="['/History-Request']" >Historial de solicitudes</a></li>
+                <li class="breadcrumb-item"><a [routerLink]="['/localRequest/edit/',id_entrada]">Detalles de la solicitud de transporte local No. {{id_entrada}}</a></li>
+                <li class="breadcrumb-item"><a>Solicitud de transporte No. {{id_entrada}}</a></li>
               </ol>
             </nav>
             <!--- Migaja de Pan -->

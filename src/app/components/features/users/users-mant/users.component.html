@@ -12,7 +12,8 @@
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Inicio</a></li>
                 <li class="breadcrumb-item"><a [routerLink]="['/users-index']"> Usuarios</a></li>
-                <li class="breadcrumb-item"><a> Registro de usuarios</a></li>
+                <li class="breadcrumb-item" *ngIf="editing==false" ><a> Registro de usuarios</a></li>
+                <li class="breadcrumb-item" *ngIf="editing==true" ><a> Edición del usuario: {{user.username}}</a></li>
               </ol>
             </nav>
             <!--- Migaja de Pan -->
@@ -21,8 +22,7 @@
         <div class="col-8">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title">Completa el formulario</h5>
-                <h6 class="card-subtitle text-muted">Usuarios</h6>
+                <h5 class="card-title"  *ngIf="editing==false" >Completa el formulario</h5>
               </div>
               <div class="card-body">
                 <!--- INICIO DE FORMULARIO-->

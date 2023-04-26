@@ -5,6 +5,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing.module';
+import {MatRadioModule} from '@angular/material/radio';
 
 //TODO IMPORTS VISTAS
 import { AppComponent } from './app.component';
@@ -91,6 +92,7 @@ import { HistoryRequestComponent } from './components/features/history-request//
     FormsModule,
     HttpClientModule,
     NgxPaginationModule,
+    MatRadioModule,
   ],
 
   providers: [{provide: LOCALE_ID, useValue: 'ES'}],

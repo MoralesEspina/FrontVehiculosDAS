@@ -225,7 +225,22 @@ export class LocalRequestMantComponent implements OnInit {
         );
       }
     })
+  }
+  
+  deleteDetailRequest() {
+    this.details.pop();
+  }
 
-
+  existDetails() {
+    if (this.details.length == 0) {
+      return true;
+    }
+    return false;
+  }
+  formIsValid(form) {
+    if (this.details.length >= 1 && form.valid) {
+      return true;
+    }
+    return false;
   }
 }

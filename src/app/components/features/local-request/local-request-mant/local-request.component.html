@@ -10,9 +10,12 @@
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Inicio</a></li>
-              <li class="breadcrumb-item"><a [routerLink]="['/localRequest-index']">Lista de solicitudes locales</a>
-              </li>
-              <li class="breadcrumb-item"><a>Registro de solicitud de vehiculos local</a></li>
+              <li class="breadcrumb-item" *ngIf="onHold == false"><a [routerLink]="['/History-Request']" >Historial de solicitudes</a></li>
+              <li class="breadcrumb-item" *ngIf="onHold == true"><a [routerLink]="['/localRequest-index']" >Lista de solicitudes locales</a></li>
+              
+              <li class="breadcrumb-item" *ngIf="editing==false"><a>Registro de solicitud de vehiculos local</a></li>
+              <li class="breadcrumb-item" *ngIf="onHold == true && editing==true "  ><a> Aceptar o Denegar solicitud local No. {{id_entrada}}</a></li>
+              <li class="breadcrumb-item" *ngIf="onHold == false && editing==true" ><a> Detalles de la solicitud local No. {{id_entrada}}</a></li>
             </ol>
           </nav>
           <!--- Migaja de Pan -->
@@ -21,7 +24,7 @@
       <div class="col-9">
         <div class="card">
           <div class="card-header">
-            <h5 class="card-title">Completa el formulario</h5>
+            <h5 class="card-title" *ngIf="editing==false">Completa el formulario</h5>
           </div>
           <div class="card-body">
             <!--- INICIO DE FORMULARIO-->
@@ -162,6 +165,11 @@
                     </tbody>
                   </table>
                 </div>
+                <form class="col-lg-10">
+                  <div class="text-center">
+                    <button *ngIf="editing == false" (click)="deleteDetailRequest()" [disabled]="existDetails()" class="btn btn-danger">Eliminar Destino</button>
+                  </div>
+                </form>
                 <!---   TABLA -->
 
                 <div class="col-lg-10">
@@ -212,7 +220,7 @@
                   </div>
                 </div>
               </form>
-              <div class="text-center" *ngIf="editing == false"><button type="submit"
+              <div class="text-center" *ngIf="editing == false"><button type="submit" [disabled]="!formIsValid(localRequestForm)"
                   class="btn btn-primary">Solicitar</button></div>
             </form>
 
