@@ -37,6 +37,7 @@ export class VoucherDieselComponent implements OnInit {
   public oneLocalRequest;
   public oneExteriorRequest;
   public comission;
+  public comissions;
   public applicantsName;
   public date;
   public objective;
@@ -114,13 +115,9 @@ export class VoucherDieselComponent implements OnInit {
   }
 
   createVoucher(voucherForm) {
-    let comissions;
-    if (this.comission === 'Local') {
-      comissions = voucherForm.value.local_comission;
-    } else if (this.comission === 'Exterior') {
-      comissions = voucherForm.value.exterior_comission;
-    } else if (this.comission === 'Sin Comisión') {
-      comissions = voucherForm.value.comission_to;
+    if (this.comission === 'Sin Comisión') {
+      this.comissions = voucherForm.value.comission_to;
+      this.objective = voucherForm.value.comission_to;
     }
 
     const voucher: VoucherDieselI = {
@@ -128,11 +125,11 @@ export class VoucherDieselComponent implements OnInit {
       cost:voucherForm.value.cost,
       idVehicle: voucherForm.value.idVehicle,
       vin: '',
-      comission_to: comissions,
+      comission_to: this.comissions,
       objective: this.objective,
-      id_pilot: voucherForm.value.uuid,
+      id_pilot: this.voucher.uuid,
       km_gallon: voucherForm.value.km_gallon,
-      service_of:voucherForm.value.service_of,
+      service_of: this.voucher.service_of,
       comission_date: this.todayWithPipe,//agregarle fecha
       km_to_travel:voucherForm.value.km_to_travel,
     }
@@ -174,30 +171,32 @@ export class VoucherDieselComponent implements OnInit {
     }
 
     getOneLocalRequest(id){
-      this._requestLocalService.getOneLocalRequestComplete(id).subscribe(
+      this._requestLocalService.getOneLocalRequest(id).subscribe(
         response =>{
           this.oneLocalRequest = response.data.request[0];
+          console.log(this.oneLocalRequest)
           this.voucher.service_of = this.oneLocalRequest.applicantsName;
           this.date = this.oneLocalRequest.date;
           this.objective = this.oneLocalRequest.observations;
-          this.pilotName = this.oneLocalRequest.fullname;
-          this.DPI = this.oneLocalRequest.plate;
-          console.log(this.oneLocalRequest)
+          this.voucher.uuid = this.oneLocalRequest.pilotName;
+          this.getOnePerson(this.voucher.uuid)
+          this.comissions = this.oneLocalRequest.section;
         }, error =>{
         }
       )
     }
 
     getOneExteriorRequest(id){
-      this._requestExteriorService.getOneExteriorRequestComplete(id).subscribe(
+      this._requestExteriorService.getOneExteriorRequest(id).subscribe(
         response =>{
           this.oneExteriorRequest = response.data.request[0];
           console.log(this.oneExteriorRequest)
-          this.voucher.service_of = this.oneLocalRequest.commission_manager;
-          this.date = this.oneLocalRequest.date_request;
-          this.objective = this.oneLocalRequest.objective_request;
-          this.pilotName = this.oneLocalRequest.fullname;
-          this.DPI = this.oneLocalRequest.plate;
+          this.voucher.service_of = this.oneExteriorRequest.commission_manager;
+          this.date = this.oneExteriorRequest.date_request;
+          this.objective = this.oneExteriorRequest.objective_request;
+          this.voucher.uuid = this.oneExteriorRequest.pilot_name;
+          this.getOnePerson(this.voucher.uuid)
+          this.comissions = this.oneExteriorRequest.requesting_unit;
         }, error =>{
         }
       )
