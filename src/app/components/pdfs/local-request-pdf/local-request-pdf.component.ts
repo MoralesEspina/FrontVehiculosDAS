@@ -27,7 +27,7 @@ export class LocalRequestPdfComponent implements OnInit {
   }
 
   getOneLocalRequest(){
-    this._localRequestService.getOneLocalRequestComplete(this.id_entrada).subscribe(
+    this._localRequestService.getOneLocalRequest(this.id_entrada,'complete').subscribe(
       response =>{
         this.request = response.data.request[0];
         this.detailRequest = response.data.detailRequest;

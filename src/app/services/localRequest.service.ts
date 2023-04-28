@@ -15,17 +15,8 @@ export class LocalRequestService {
       this.url = Global.url;
     }
 
-    getLocalRequest(): Observable<any> {
-      return this._http.get(this.url + 'localRequest', {
-        headers: new HttpHeaders({
-          'Content-Type':'application/json',
-          //'x-access-token': '' + localStorage.getItem("Token")
-        })
-      })
-    }
-
-    getLocalRequestOnHold(): Observable<any> {
-      return this._http.get(this.url + 'localRequest/onhold', {
+    getLocalRequest(value): Observable<any> {
+      return this._http.get(this.url + 'localRequest?value='+value, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")
@@ -42,8 +33,8 @@ export class LocalRequestService {
       })
     }
 
-    getOneLocalRequest(id): Observable<any> {
-      return this._http.get(this.url + 'localRequest/' + id, {
+    getOneLocalRequest(id, value): Observable<any> {
+      return this._http.get(this.url + 'localRequest/' + id+'?value='+value, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")
@@ -51,14 +42,7 @@ export class LocalRequestService {
       })
     }
 
-    getOneLocalRequestComplete(id): Observable<any> {
-      return this._http.get(this.url + 'localRequest/complete/' + id, {
-        headers: new HttpHeaders({
-          'Content-Type':'application/json',
-          //'x-access-token': '' + localStorage.getItem("Token")
-        })
-      })
-    }
+
 
     updateOneLocalRequest(form: LocalRequestI, id) {
       return this._http.put(this.url + 'localRequest/' + id, form, {

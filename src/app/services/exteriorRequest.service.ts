@@ -16,8 +16,8 @@ export class ExteriorRequestService{
       this.url = Global.url;
     }
 
-    getExteriorRequest(): Observable<any> {
-      return this._http.get(this.url + 'exteriorRequest', {
+    getExteriorRequest(value): Observable<any> {
+      return this._http.get(this.url + 'exteriorRequest?value='+value, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")
@@ -25,26 +25,10 @@ export class ExteriorRequestService{
       })
     }
 
-    getExteriorRequestOnHold(): Observable<any> {
-      return this._http.get(this.url + 'exteriorRequest/onhold', {
-        headers: new HttpHeaders({
-          'Content-Type':'application/json',
-          //'x-access-token': '' + localStorage.getItem("Token")
-        })
-      })
-    }
+  
 
-    getOneExteriorRequest(id): Observable<any> {
-      return this._http.get(this.url + 'exteriorRequest/' + id, {
-        headers: new HttpHeaders({
-          'Content-Type':'application/json',
-          //'x-access-token': '' + localStorage.getItem("Token")
-        })
-      })
-    }
-
-    getOneExteriorRequestComplete(id): Observable<any> {
-      return this._http.get(this.url + 'exteriorRequest/complete/' + id, {
+    getOneExteriorRequest(id,value): Observable<any> {
+      return this._http.get(this.url + 'exteriorRequest/' + id+'?value='+value, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")

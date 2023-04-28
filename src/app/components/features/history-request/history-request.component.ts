@@ -20,7 +20,7 @@ export class HistoryRequestComponent implements OnInit {
 
 
   getExteriorRequest(){
-    this._exteriorRequestService.getExteriorRequest().subscribe(
+    this._exteriorRequestService.getExteriorRequest('').subscribe(
       response =>{
         this.exteriorRequest = response.data;
       }, error =>{
@@ -28,7 +28,7 @@ export class HistoryRequestComponent implements OnInit {
     )
   }
   getLocalRequest(){
-    this._requestService.getLocalRequest().subscribe(
+    this._requestService.getLocalRequest('').subscribe(
       response =>{
         this.requestsLocal = response.data;
       }, error =>{

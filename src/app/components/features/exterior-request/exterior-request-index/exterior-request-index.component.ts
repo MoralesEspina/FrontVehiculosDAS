@@ -16,11 +16,12 @@ export class ExteriorRequestIndexComponent implements OnInit {
   }
 
   getExteriorRequestOnHold(){
-    this._exteriorRequestService.getExteriorRequestOnHold().subscribe(
+    this._exteriorRequestService.getExteriorRequest('onHold').subscribe(
       response =>{
         this.exteriorRequest = response.data;
       }, error =>{
       }
     )
   }
+  
 }

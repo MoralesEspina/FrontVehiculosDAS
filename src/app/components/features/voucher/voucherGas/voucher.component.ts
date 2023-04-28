@@ -150,7 +150,7 @@ export class VoucherComponent implements OnInit {
 
 
     getOneLocalRequest(id){
-      this._requestLocalService.getOneLocalRequest(id).subscribe(
+      this._requestLocalService.getOneLocalRequest(id,'').subscribe(
         response =>{
           this.oneLocalRequest = response.data.request[0];
           this.voucher.service_of = this.oneLocalRequest.applicantsName;
@@ -165,7 +165,7 @@ export class VoucherComponent implements OnInit {
     }
 
     getOneExteriorRequest(id){
-      this._requestExteriorService.getOneExteriorRequest(id).subscribe(
+      this._requestExteriorService.getOneExteriorRequest(id,'').subscribe(
         response =>{
           this.oneExteriorRequest = response.data.request[0];
           this.voucher.service_of = this.oneExteriorRequest.commission_manager;
@@ -187,7 +187,7 @@ export class VoucherComponent implements OnInit {
     }
 
     getLocalRequest(){
-      this._requestLocalService.getLocalRequest().subscribe(
+      this._requestLocalService.getLocalRequest('actives').subscribe(
         response =>{
           this.localRequest = response.data;
         }, error =>{
@@ -196,7 +196,7 @@ export class VoucherComponent implements OnInit {
     }
 
     getExteriorRequest(){
-      this._requestExteriorService.getExteriorRequest().subscribe(
+      this._requestExteriorService.getExteriorRequest('actives').subscribe(
         response =>{
           this.exteriorRequest = response.data;
         }, error =>{

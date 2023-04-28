@@ -97,7 +97,7 @@ export class ExteriorRequestMantComponent implements OnInit {
   loadExteriorRequest() {
     if (this.id_entrada) {
       this.editing = true
-      this._exteriorRoutesService.getOneExteriorRequest(this.id_entrada).subscribe(
+      this._exteriorRoutesService.getOneExteriorRequest(this.id_entrada,'').subscribe(
         response => {
           this.exteriorRequest = response.data.request[0]
           this.details = response.data.detailRequest

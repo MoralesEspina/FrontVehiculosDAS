@@ -85,7 +85,7 @@ export class LocalRequestMantComponent implements OnInit {
   loadLocalRequest() {
     if (this.id_entrada) {
       this.editing = true
-      this._localRequestService.getOneLocalRequest(this.id_entrada).subscribe(
+      this._localRequestService.getOneLocalRequest(this.id_entrada,'').subscribe(
         response => {
           this.localRequest = response.data.request[0]
           this.details = response.data.detailRequest

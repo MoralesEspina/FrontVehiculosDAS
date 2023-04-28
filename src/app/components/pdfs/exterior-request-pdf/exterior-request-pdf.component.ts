@@ -31,7 +31,7 @@ export class ExteriorRequestPdfComponent implements OnInit {
   }
 
   getOneExteriorRequest(){
-    this._exteriorRequestService.getOneExteriorRequestComplete(this.id_entrada).subscribe(
+    this._exteriorRequestService.getOneExteriorRequest(this.id_entrada,'complete').subscribe(
       response =>{
         this.request = response.data.request[0];
         this.detailRequest = response.data.detailRequest;
