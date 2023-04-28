@@ -127,10 +127,10 @@
                         placeholder="Ingrese la comision solicitante" required> -->
                   </div>
                   <div class="form-group">
-                    <label class="form-label"><b>Sin comisión</b></label>
+                    <label class="form-label"><b>Comisión a:</b></label>
                     <input name="comission_to" type="text" class="form-control" #comission_to="ngModel"
                       [disabled]="comission != 'Sin Comisión'" [(ngModel)]="voucher.comission_to"
-                      placeholder="Proposito" required>
+                      placeholder="" required>
                   </div>
                 </div>
                 <div class="col-lg-4">
@@ -170,7 +170,10 @@
                 <div class="col-lg-12">
                   <div class="form-group">
                     <label class="form-label"><b>Proposito</b></label>
-                    <input type="number" class="form-control" placeholder="{{objective}}" disabled>
+                    <input *ngIf="comission != 'Sin Comisión'" type="number" class="form-control" placeholder="{{objective}}" disabled>
+                    <input *ngIf="comission == 'Sin Comisión'" #service="ngModel" name="objective" [(ngModel)]="voucher.objective" type="text"
+                      class="form-control" placeholder="Ingrese el proposito" required>
+                  
                   </div>
                 </div>
                 <!-- <div class="col-lg-6">
