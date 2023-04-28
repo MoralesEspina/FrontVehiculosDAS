@@ -14,6 +14,7 @@ import { environment } from 'src/environments/environment'
 export class LoginComponent implements OnInit {
   public user;
   public token:any;
+  public verifyToken;
   public rol:any;
   public data_response;
   constructor(private _loginService:UsersService,
@@ -24,6 +25,10 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.verifyToken = localStorage.getItem('Token')
+    if (this.verifyToken) {
+      this._router.navigate(['dashboard'])
+    }
   }
 
   login(loginForm) {

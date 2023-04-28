@@ -10,9 +10,11 @@
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Inicio</a></li>
-              <li class="breadcrumb-item"><a [routerLink]="['/exteriorRequest-index']"> Lista de solicitudes
-                  exteriores</a></li>
-              <li class="breadcrumb-item"><a>Registro de solicitud de transporte exterior</a></li>
+              <li class="breadcrumb-item" *ngIf="onHold == false"><a [routerLink]="['/History-Request']" >Historial de solicitudes</a></li>
+              <li class="breadcrumb-item" *ngIf="onHold == true"><a [routerLink]="['/exteriorRequest-index']"> Lista de solicitudes exteriores</a></li>
+              <li class="breadcrumb-item" *ngIf="editing==false" ><a>Registro de solicitud de transporte exterior</a></li>
+              <li class="breadcrumb-item" *ngIf="editing==true && onHold == true" ><a> Aceptar o Denegar la solicitud exterior No. {{id_entrada}}</a></li>
+              <li class="breadcrumb-item" *ngIf="editing==true && onHold == false" ><a> Detalles de la solicitud exterior No. {{id_entrada}}</a></li>
             </ol>
           </nav>
           <!--- Migaja de Pan -->
@@ -22,7 +24,7 @@
       <div class="col-9">
         <div class="card">
           <div class="card-header">
-            <h5 class="card-title">Completa el formulario</h5>
+            <h5 class="card-title" *ngIf="editing==false">Completa el formulario</h5>
           </div>
           <div class="card-body">
             <!--- INICIO DE FORMULARIO-->
@@ -141,8 +143,8 @@
                       </div>
                     </div>
                   </div>
-                  <div class="text-center"><button id="btndestino" class="btn btn-primary" type="submit" [hidden]="maxPlaces()" [disabled]="!detailIsValid(detailExteriorForm)" >Agregar
-                      destino</button></div>
+                  <div class="text-center"><button id="btndestino" class="btn btn-primary" type="submit" [hidden]="maxPlaces()" [disabled]="!detailIsValid(detailExteriorForm)" >
+                    Agregar destino</button></div>
                 </form>
                 <!-- finalizan los datos para la tabla -->
                 <!---  TABLA -->

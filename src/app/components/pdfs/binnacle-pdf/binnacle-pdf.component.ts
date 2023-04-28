@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PdfMakeWrapper, Txt, Table, Cell, Img } from 'pdfmake-wrapper';
 import * as pdfFonts from "pdfmake/build/vfs_fonts";
+import { SweetAlertService } from 'src/app/services/sweetAlert.service';
 
 
 @Component({
@@ -15,13 +16,17 @@ export class BinnaclePdfComponent implements OnInit {
   imageSedan: string = 'https://firebasestorage.googleapis.com/v0/b/das-jalapa.appspot.com/o/watermarks%2FVehiculo%202.png?alt=media&token=a2ef4609-969e-4e41-aecf-89e20ac5f65c'
   imagePickUp: string = 'https://firebasestorage.googleapis.com/v0/b/das-jalapa.appspot.com/o/watermarks%2FVehiculo%201.png?alt=media&token=3c9e9920-0636-4248-928c-fa8bd7a12a9a'
   public id_entrada:any;
-  constructor( private router: ActivatedRoute) {
-    this.id_entrada = this.router.snapshot.params['id'];
+  constructor( private _route: ActivatedRoute,
+               private _router: Router,
+               private _sweetAlert:SweetAlertService) {
+    this.id_entrada = this._route.snapshot.params['id'];
   }
 
   ngOnInit(): void {
+    this._sweetAlert.createAndUpdate('Generando Bitacora')
     this.GenerateBinnacle()
   }
+
   getBinnacle(){
 
   }
@@ -122,11 +127,6 @@ export class BinnaclePdfComponent implements OnInit {
       new Cell(await new Img(this.imagePickUp).alignment('right').width(300).height(140).build()).colSpan(4).fontSize(7).alignment('center').end, null, null,null],
 
       [new Cell(new Txt('CODIGO DE IDENTIFICACIÓN: 0 = golpe, - = rayon, E = emblemas, F = faltante').end).colSpan(7).fontSize(9).alignment('center').end, null, null, null, null, null, null],
-      /* [new Cell(new Txt('Dirección: ' ).end).colSpan(4).fontSize(9).end, null, null, null],
-       [new Cell(new Txt('Telefono: ' ).end).colSpan(2).fontSize(9).end, null, new Cell(new Txt('Nombre jefe inmediato: ').end).colSpan(2).fontSize(9).end,null],
-       [new Cell(new Txt('Motivo del retiro: ').end).colSpan(2).fontSize(9).end, null, new Cell(new Txt('Sector: ').end).colSpan(2).fontSize(9).end,null],
-       [new Cell(new Txt('Fecha del empleo: ' + ' al ').end).colSpan(2).fontSize(9).end, null, new Cell(new Txt('Salario: Q.').end).colSpan(2).fontSize(9).end,null],
-       [new Cell(new Txt('Puesto desempeñado: ').end).colSpan(4).fontSize(9).end, null, null, null],*/
     ]).layout({
     })
       .widths([65, 65, 65, 60, 70, 65, 65])
@@ -142,6 +142,7 @@ export class BinnaclePdfComponent implements OnInit {
       pdf.add(new Txt ('Nombre, firma y sello Encargado de Transporte').relativePosition(260, 630).end)
       pdf.add(new Txt ('SELLO DE LA INSTITUCIÓN DONDE REALIZO LA COMISION').relativePosition(0, 680).end)
     pdf.create().open();
+    this._router.navigate(['Trips'])
   }
 
 }

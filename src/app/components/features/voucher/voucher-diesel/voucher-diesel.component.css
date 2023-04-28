@@ -6,7 +6,24 @@
   margin-bottom: -30px;
 }
 
+.card{
+  max-width: 1100px;
+  min-width: 650px;
+}
 .btn{
   margin: 0 auto;
 
  }
+
+ .example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  margin-top: 40px;
+  margin-left: 50px;
+  align-items: flex-start;
+}
+
+.example-radio-button {
+  margin-bottom: 45px;
+}
