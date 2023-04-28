@@ -7,6 +7,8 @@ import { VoucherService } from 'src/app/services/voucher.service';
 import { SweetAlertService } from 'src/app/services/sweetAlert.service';
 import { ErrorsService } from 'src/app/services/errors.service';
 import { Router } from '@angular/router';
+import { LocalRequestService } from 'src/app/services/localRequest.service';
+import { ExteriorRequestService } from 'src/app/services/exteriorRequest.service';
 
 
 @Component({
@@ -29,10 +31,25 @@ export class VoucherComponent implements OnInit {
   public brand;
   public type_name;
   public idVehicle;
+  public oneLocalRequest;
+  public oneExteriorRequest;
+  public comission;
+  public comissions;
+  public applicantsName;
+  public date;
+  public objective;
+  public pilotName;
+  public DPI;
+  public localRequest;
+  public exteriorRequest;
 
   today: Date = new Date();
   pipe = new DatePipe('en-US');
   todayWithPipe;
+
+  
+  types: string[] = ['Local', 'Exterior', 'Sin Comisión'];
+
 
   constructor(
     private _vehicleService: VehicleService,
@@ -40,7 +57,9 @@ export class VoucherComponent implements OnInit {
     private _voucherService:VoucherService,
     private _sweetAlertService: SweetAlertService,
     private _errorService: ErrorsService,
-    private _router: Router
+    private _router: Router,
+    private _requestLocalService:LocalRequestService,
+    private _requestExteriorService:ExteriorRequestService,
     ) {
 
       this.voucher=new VoucherDieselI('','','','','','','','','','','')
@@ -51,10 +70,12 @@ export class VoucherComponent implements OnInit {
     this.getPilots();
     this.getVehicles();
     this.todayWithPipe = this.pipe.transform(Date.now(), 'yyyy/MM/dd')
+    this.getLocalRequest();
+    this.getExteriorRequest();
   }
 
   getVehicles(){
-    this._vehicleService.getVehicles().subscribe(
+    this._vehicleService.getVehicles('regular').subscribe(
       response =>{
         this.vehicles = response.data;
         console.log(this.vehicles)
@@ -98,16 +119,19 @@ export class VoucherComponent implements OnInit {
   }
 
   createVoucher(voucherForm) {
+    if (this.comission === 'Sin Comisión') {
+      this.comissions = voucherForm.value.comission_to;
+      this.objective = voucherForm.value.objective;
+    }
     const voucher: VoucherGasolineI = {
       date: this.todayWithPipe,
       cost:voucherForm.value.cost,
       idVehicle: voucherForm.value.vin,
-      vin: voucherForm.value.vin,
-      comission_to: voucherForm.value.comission_to,
-      objective: voucherForm.value.objective,
-      id_pilot: voucherForm.value.uuid,
+      vin: '',
+      comission_to: this.comissions,
+      objective: this.objective,
+      id_pilot: this.voucher.uuid,
     }
-    console.log(voucher)
     if (!voucherForm.valid) {
       this._sweetAlertService.warning('Complete correctamente el formulario');
       return
@@ -120,6 +144,62 @@ export class VoucherComponent implements OnInit {
         }, error => {
           this.data_response = error;
           this._errorService.error(this.data_response);
+        }
+      )
+    }
+
+
+    getOneLocalRequest(id){
+      this._requestLocalService.getOneLocalRequest(id).subscribe(
+        response =>{
+          this.oneLocalRequest = response.data.request[0];
+          this.voucher.service_of = this.oneLocalRequest.applicantsName;
+          this.date = this.oneLocalRequest.date;
+          this.objective = this.oneLocalRequest.observations;
+          this.voucher.uuid = this.oneLocalRequest.pilotName;
+          this.getOnePerson(this.voucher.uuid)
+          this.comissions = this.oneLocalRequest.section;
+        }, error =>{
+        }
+      )
+    }
+
+    getOneExteriorRequest(id){
+      this._requestExteriorService.getOneExteriorRequest(id).subscribe(
+        response =>{
+          this.oneExteriorRequest = response.data.request[0];
+          this.voucher.service_of = this.oneExteriorRequest.commission_manager;
+          this.date = this.oneExteriorRequest.date_request;
+          this.objective = this.oneExteriorRequest.objective_request;
+          this.voucher.uuid = this.oneExteriorRequest.pilot_name;
+          this.getOnePerson(this.voucher.uuid)
+          this.comissions = this.oneExteriorRequest.requesting_unit;
+        }, error =>{
+        }
+      )
+    }
+
+    formIsValid(form) {
+      if (form.valid) {
+        return true;
+      }
+      return false;
+    }
+
+    getLocalRequest(){
+      this._requestLocalService.getLocalRequest().subscribe(
+        response =>{
+          this.localRequest = response.data;
+        }, error =>{
+        }
+      )
+    }
+
+    getExteriorRequest(){
+      this._requestExteriorService.getExteriorRequest().subscribe(
+        response =>{
+          this.exteriorRequest = response.data;
+        }, error =>{
         }
       )
     }

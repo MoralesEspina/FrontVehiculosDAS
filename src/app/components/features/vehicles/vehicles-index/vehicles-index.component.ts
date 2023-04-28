@@ -22,7 +22,7 @@ export class VehiclesIndexComponent implements OnInit {
   }
 
   getVehicles(){
-    this._vehicleService.getVehicles().subscribe(
+    this._vehicleService.getVehicles('').subscribe(
       response =>{
         this.vehicles = response.data;
       }, error =>{

@@ -72,7 +72,7 @@ export class VoucherDieselComponent implements OnInit {
   }
 
   getVehicles(){
-    this._vehicleService.getVehicles().subscribe(
+    this._vehicleService.getVehicles('diesel').subscribe(
       response =>{
         this.vehicles = response.data;
       }, error =>{
@@ -96,7 +96,7 @@ export class VoucherDieselComponent implements OnInit {
   }
 
   getPerson(){
-    this._personService.getPerson().subscribe(
+    this._personService.getPilots().subscribe(
       response =>{
        this.person = response.data;
       }, error =>{
@@ -117,7 +117,7 @@ export class VoucherDieselComponent implements OnInit {
   createVoucher(voucherForm) {
     if (this.comission === 'Sin Comisión') {
       this.comissions = voucherForm.value.comission_to;
-      this.objective = voucherForm.value.comission_to;
+      this.objective = voucherForm.value.objective;
     }
 
     const voucher: VoucherDieselI = {
@@ -133,28 +133,26 @@ export class VoucherDieselComponent implements OnInit {
       comission_date: this.todayWithPipe,//agregarle fecha
       km_to_travel:voucherForm.value.km_to_travel,
     }
-    console.log(voucher)
-    if (!voucherForm.valid) {
-      this._sweetAlertService.warning('Complete correctamente el formulario');
-      return
-    }
-    this._voucherService.createNewVoucherDisel(voucher).subscribe(
-      response => {
-        this._sweetAlertService.createAndUpdate('Se registro el vale correctamente');
-        this.voucher = new VoucherDieselI('', '', '', '','', '', '', '', '', '', '')
-        this._router.navigate(['Vouchertable'])
-      }, error => {
-        this.data_response = error;
-        this._errorService.error(this.data_response);
-      }
-    )
+    // if (!voucherForm.valid) {
+    //   this._sweetAlertService.warning('Complete correctamente el formulario');
+    //   return
+    // }
+    // this._voucherService.createNewVoucherDisel(voucher).subscribe(
+    //   response => {
+    //     this._sweetAlertService.createAndUpdate('Se registro el vale correctamente');
+    //     this.voucher = new VoucherDieselI('', '', '', '','', '', '', '', '', '', '')
+    //     this._router.navigate(['Vouchertable'])
+    //   }, error => {
+    //     this.data_response = error;
+    //     this._errorService.error(this.data_response);
+    //   }
+    // )
     }
 
     getLocalRequest(){
       this._requestLocalService.getLocalRequest().subscribe(
         response =>{
           this.localRequest = response.data;
-          console.log(this.localRequest)
         }, error =>{
         }
       )
@@ -164,7 +162,6 @@ export class VoucherDieselComponent implements OnInit {
       this._requestExteriorService.getExteriorRequest().subscribe(
         response =>{
           this.exteriorRequest = response.data;
-          console.log(this.exteriorRequest)
         }, error =>{
         }
       )
@@ -174,7 +171,6 @@ export class VoucherDieselComponent implements OnInit {
       this._requestLocalService.getOneLocalRequest(id).subscribe(
         response =>{
           this.oneLocalRequest = response.data.request[0];
-          console.log(this.oneLocalRequest)
           this.voucher.service_of = this.oneLocalRequest.applicantsName;
           this.date = this.oneLocalRequest.date;
           this.objective = this.oneLocalRequest.observations;
@@ -190,7 +186,6 @@ export class VoucherDieselComponent implements OnInit {
       this._requestExteriorService.getOneExteriorRequest(id).subscribe(
         response =>{
           this.oneExteriorRequest = response.data.request[0];
-          console.log(this.oneExteriorRequest)
           this.voucher.service_of = this.oneExteriorRequest.commission_manager;
           this.date = this.oneExteriorRequest.date_request;
           this.objective = this.oneExteriorRequest.objective_request;

@@ -16,14 +16,16 @@ export class VehicleService {
       this.url = Global.url;
     }
 
-    getVehicles(): Observable<any> {
-      return this._http.get(this.url + 'vehicles', {
+    getVehicles(value): Observable<any> {
+      return this._http.get(this.url + 'vehicles?value='+ value, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'Authorization:': 'Bearer' + localStorage.getItem("Token")
         })
       })
     }
+
+    
 
     getVehiclesActives(): Observable<any> {
       return this._http.get(this.url + 'vehicles/active', {
