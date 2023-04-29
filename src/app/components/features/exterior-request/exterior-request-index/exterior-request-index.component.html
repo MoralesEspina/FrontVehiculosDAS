@@ -41,7 +41,7 @@
                   <th style="text-align: center;">Unidad solicitante</th>
                   <!-- <th style="text-align: center;">Destino</th> -->
                   <th style="text-align: center;">Responsable de comision</th>
-                  <th style="text-align: center;">Fecha</th>
+                  <th style="text-align: center;">Fecha de Viaje</th>
                   <th style="text-align: center;">Duracion en dias</th>
                   <th style="text-align: center;">Celular de contacto</th>
                   <th style="text-align: center;">Estado</th>
@@ -56,7 +56,7 @@
                 <td style="text-align: center;">{{item.requesting_unit}}</td>
                 <!-- <td style="text-align: center;"></td> -->
                 <td style="text-align: center;">{{item.commission_manager}}</td>
-                <td style="text-align: center;">{{item.date_request | date: 'd MMM y' | uppercase }}</td>
+                <td style="text-align: center;">Del {{item.first_date | date: 'd MMM' | uppercase}} al {{item.latest_date | date: 'd MMM yy' | uppercase}}</td>
                 <td style="text-align: center;">{{item.duration_days}}</td>
                 <td style="text-align: center;">{{item.phoneNumber}}</td>
                 <td style="text-align: center;">{{item.status_name}}</td>

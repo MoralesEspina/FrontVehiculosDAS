@@ -40,8 +40,7 @@
                 <th>No de solicitud</th>
                 <th>Unidad solicitante</th>
                 <th>Responsable de comisión</th>
-                <th>Inicio de viaje</th>
-                <th>Finalización de viaje</th>
+                <th>Fecha de Viaje</th>
                 <th>Piloto</th>
                 <th>Vehiculo</th>
                 <th>Estado</th>
@@ -58,8 +57,7 @@
               <td style="text-align: center;">{{item.transp_request_exterior}}</td>
               <td style="text-align: center;">{{item.requesting_unit}}</td>
               <td style="text-align: center;">{{item.commission_manager}}</td>
-              <td style="text-align: center;">{{item.first_date | date: 'd MMM y' | uppercase}}</td>
-              <td style="text-align: center;">{{item.latest_date | date: 'd MMM y' | uppercase}}</td>
+              <td style="text-align: center;">Del {{item.first_date | date: 'd MMM' | uppercase}} al {{item.latest_date | date: 'd MMM yy' | uppercase}}</td>
               <td style="text-align: center;">{{item.fullname}}</td>
               <td style="text-align: center;">{{item.plate}}</td>
               <td style="text-align: center;">{{item.status_name}}</td>
@@ -137,8 +135,7 @@
                 <tr>
                   <th>No de solicitud</th>
                   <th>Nombre del solicitante</th>
-                  <th>Inicio de viaje</th>
-                  <th>Finalización de viaje</th>
+                  <th>Fecha de Viaje</th>
                   <th>Piloto</th>
                   <th>Vehiculo</th>
                   <th>Estado</th>
@@ -154,8 +151,7 @@
               <tbody *ngFor="let item of trip_local | paginate: { itemsPerPage: 8, currentPage: p }">
                 <td style="text-align: center;">{{item.transp_request_local}}</td>
                 <td style="text-align: center;">{{item.applicantsName}}</td>
-                <td style="text-align: center;">{{item.first_date | date: 'd MMM y' | uppercase}}</td>
-                <td style="text-align: center;">{{item.latest_date | date: 'd MMM y' | uppercase}}</td>
+                <td style="text-align: center;">Del {{item.first_date | date: 'd MMM' | uppercase}} al {{item.latest_date | date: 'd MMM y' | uppercase}}</td>
                 <td style="text-align: center;">{{item.fullname}}</td>
                 <td style="text-align: center;">{{item.plate}}</td>
                 <td style="text-align: center;">{{item.status_name}}</td>

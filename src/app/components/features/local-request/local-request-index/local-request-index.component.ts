@@ -16,7 +16,7 @@ export class LocalRequestIndexComponent implements OnInit {
   }
 
   getLocalRequestOnHold(){
-    this._requestService.getLocalRequest('onHold').subscribe(
+    this._requestService.getLocalRequest('onHold','6').subscribe(
       response =>{
         this.requestsLocal = response.data;
       }, error =>{

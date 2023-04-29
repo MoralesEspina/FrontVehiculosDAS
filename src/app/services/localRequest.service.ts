@@ -15,8 +15,8 @@ export class LocalRequestService {
       this.url = Global.url;
     }
 
-    getLocalRequest(value): Observable<any> {
-      return this._http.get(this.url + 'localRequest?value='+value, {
+    getLocalRequest(value, status): Observable<any> {
+      return this._http.get(`${this.url}localRequest?value=${value}&status=${status}`, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")

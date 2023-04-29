@@ -16,8 +16,8 @@ export class ExteriorRequestService{
       this.url = Global.url;
     }
 
-    getExteriorRequest(value): Observable<any> {
-      return this._http.get(this.url + 'exteriorRequest?value='+value, {
+    getExteriorRequest(value,status): Observable<any> {
+      return this._http.get(`${this.url}exteriorRequest?value=${value}&status=${status}`, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")
@@ -25,10 +25,10 @@ export class ExteriorRequestService{
       })
     }
 
-  
+
 
     getOneExteriorRequest(id,value): Observable<any> {
-      return this._http.get(this.url + 'exteriorRequest/' + id+'?value='+value, {
+      return this._http.get(`${this.url}exteriorRequest/${id}?value=${value}`, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")

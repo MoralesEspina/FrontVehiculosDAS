@@ -47,7 +47,7 @@ export class VoucherComponent implements OnInit {
   pipe = new DatePipe('en-US');
   todayWithPipe;
 
-  
+
   types: string[] = ['Local', 'Exterior', 'Sin Comisión'];
 
 
@@ -158,7 +158,7 @@ export class VoucherComponent implements OnInit {
           this.objective = this.oneLocalRequest.observations;
           this.voucher.uuid = this.oneLocalRequest.pilotName;
           this.getOnePerson(this.voucher.uuid)
-          this.comissions = this.oneLocalRequest.section;
+          this.comissions = this.oneLocalRequest.destinations;
         }, error =>{
         }
       )
@@ -173,7 +173,7 @@ export class VoucherComponent implements OnInit {
           this.objective = this.oneExteriorRequest.objective_request;
           this.voucher.uuid = this.oneExteriorRequest.pilot_name;
           this.getOnePerson(this.voucher.uuid)
-          this.comissions = this.oneExteriorRequest.requesting_unit;
+          this.comissions = this.oneExteriorRequest.destinations;
         }, error =>{
         }
       )
@@ -187,7 +187,7 @@ export class VoucherComponent implements OnInit {
     }
 
     getLocalRequest(){
-      this._requestLocalService.getLocalRequest('actives').subscribe(
+      this._requestLocalService.getLocalRequest('actives','7').subscribe(
         response =>{
           this.localRequest = response.data;
         }, error =>{
@@ -196,7 +196,7 @@ export class VoucherComponent implements OnInit {
     }
 
     getExteriorRequest(){
-      this._requestExteriorService.getExteriorRequest('actives').subscribe(
+      this._requestExteriorService.getExteriorRequest('actives','7').subscribe(
         response =>{
           this.exteriorRequest = response.data;
         }, error =>{

@@ -133,24 +133,24 @@ export class VoucherDieselComponent implements OnInit {
       comission_date: this.todayWithPipe,//agregarle fecha
       km_to_travel:voucherForm.value.km_to_travel,
     }
-    // if (!voucherForm.valid) {
-    //   this._sweetAlertService.warning('Complete correctamente el formulario');
-    //   return
-    // }
-    // this._voucherService.createNewVoucherDisel(voucher).subscribe(
-    //   response => {
-    //     this._sweetAlertService.createAndUpdate('Se registro el vale correctamente');
-    //     this.voucher = new VoucherDieselI('', '', '', '','', '', '', '', '', '', '')
-    //     this._router.navigate(['Vouchertable'])
-    //   }, error => {
-    //     this.data_response = error;
-    //     this._errorService.error(this.data_response);
-    //   }
-    // )
+    if (!voucherForm.valid) {
+      this._sweetAlertService.warning('Complete correctamente el formulario');
+      return
+    }
+    this._voucherService.createNewVoucherDisel(voucher).subscribe(
+      response => {
+        this._sweetAlertService.createAndUpdate('Se registro el vale correctamente');
+        this.voucher = new VoucherDieselI('', '', '', '','', '', '', '', '', '', '')
+        this._router.navigate(['Vouchertable'])
+      }, error => {
+        this.data_response = error;
+        this._errorService.error(this.data_response);
+      }
+    )
     }
 
     getLocalRequest(){
-      this._requestLocalService.getLocalRequest('actives').subscribe(
+      this._requestLocalService.getLocalRequest('actives','7').subscribe(
         response =>{
           this.localRequest = response.data;
         }, error =>{
@@ -159,7 +159,7 @@ export class VoucherDieselComponent implements OnInit {
     }
 
     getExteriorRequest(){
-      this._requestExteriorService.getExteriorRequest('actives').subscribe(
+      this._requestExteriorService.getExteriorRequest('actives','7').subscribe(
         response =>{
           this.exteriorRequest = response.data;
         }, error =>{
@@ -173,10 +173,10 @@ export class VoucherDieselComponent implements OnInit {
           this.oneLocalRequest = response.data.request[0];
           this.voucher.service_of = this.oneLocalRequest.applicantsName;
           this.date = this.oneLocalRequest.date;
-          this.objective = this.oneLocalRequest.observations;
+          this.objective = this.oneLocalRequest.first_objective;
           this.voucher.uuid = this.oneLocalRequest.pilotName;
           this.getOnePerson(this.voucher.uuid)
-          this.comissions = this.oneLocalRequest.section;
+          this.comissions = this.oneLocalRequest.destinations;
         }, error =>{
         }
       )
@@ -191,7 +191,7 @@ export class VoucherDieselComponent implements OnInit {
           this.objective = this.oneExteriorRequest.objective_request;
           this.voucher.uuid = this.oneExteriorRequest.pilot_name;
           this.getOnePerson(this.voucher.uuid)
-          this.comissions = this.oneExteriorRequest.requesting_unit;
+          this.comissions = this.oneExteriorRequest.destinations;
         }, error =>{
         }
       )

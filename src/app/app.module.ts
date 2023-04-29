@@ -6,8 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing.module';
 import {MatRadioModule} from '@angular/material/radio';
-
 //TODO IMPORTS VISTAS
+import { LoginComponent } from './components/login/login.component';
 import { AppComponent } from './app.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -22,6 +22,7 @@ import { VehiclesIndexComponent } from './components/features/vehicles/vehicles-
 //TODO PERSONAS
 import { PersonTableComponent } from './components/features/person/person-table/person-table.component';
 //TODO SOLICITUDES
+import { HistoryRequestComponent } from './components/features/history-request//history-request.component';
 import { LocalRequestIndexComponent } from './components/features/local-request/local-request-index/local-request-index.component';
 import { LocalRequestMantComponent } from './components/features/local-request/local-request-mant/local-request.component';
 import { ExteriorRequestIndexComponent } from './components/features/exterior-request/exterior-request-index/exterior-request-index.component';
@@ -30,25 +31,19 @@ import { ExteriorRequestMantComponent } from './components/features/exterior-req
 import { UsersComponent } from './components/features/users/users-mant/users.component';
 import { UsersIndexComponent } from './components/features/users/users-index/users-index.component';
 //TODO PDF'S
-import { FuelVoucherComponent } from './components/pdfs/fuel-voucher/fuel-voucher.component';
 import { PersonFormComponent } from './components/features/person/person-form/person-form.component';
 import { ExteriorRequestPdfComponent } from './components/pdfs/exterior-request-pdf/exterior-request-pdf.component';
 import { LocalRequestPdfComponent } from './components/pdfs/local-request-pdf/local-request-pdf.component';
-import { LoginComponent } from './components/login/login.component';
-//TODO VIAJES
-import { TripsComponent } from './components/features/trips/trips.component';
-
+import { ExitPassPdfComponent } from './components/pdfs/exit-pass-pdf/exit-pass-pdf.component';
+import { BinnaclePdfComponent } from './components/pdfs/binnacle-pdf/binnacle-pdf.component';
 import { VoucherPdfComponent } from './components/pdfs/voucher-diesel-pdf/voucher-pdf.component';
 import { VoucherRegularPdfComponent } from './components/pdfs/voucher-regular-pdf/voucher-regular-pdf.component';
+//TODO VIAJES
+import { TripsComponent } from './components/features/trips/trips.component';
+//TODO VOUCHERS
 import { VoucherDieselComponent } from './components/features/voucher/voucher-diesel/voucher-diesel.component';
 import { VoucherIndexComponent } from './components/features/voucher/voucher-index/voucher-index.component';
 import { VoucherComponent } from './components/features/voucher/voucherGas/voucher.component';
-
-
-import { ExitPassPdfComponent } from './components/pdfs/exit-pass-pdf/exit-pass-pdf.component';
-import { BinnaclePdfComponent } from './components/pdfs/binnacle-pdf/binnacle-pdf.component';
-import { HistoryRequestComponent } from './components/features/history-request//history-request.component';
-
 
 @NgModule({
   declarations: [
@@ -60,7 +55,6 @@ import { HistoryRequestComponent } from './components/features/history-request//
     PersonTableComponent,
     UsersComponent,
     ManagerviewComponent,
-    FuelVoucherComponent,
     UsersIndexComponent,
     ExteriorRequestIndexComponent,
     ExteriorRequestMantComponent,
