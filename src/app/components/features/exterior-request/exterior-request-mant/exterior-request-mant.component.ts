@@ -26,15 +26,13 @@ export class ExteriorRequestMantComponent implements OnInit {
   public person;
   public vehicles;
   public data_response;
+  public date;
   public editing: boolean = false;
   public status: boolean = false;
   public deny: boolean = false;
   public onHold: boolean = false;
   detailrequest: any = {};
   details: any[] = [];
-  date: any[] = [];
-  public initialdate;
-  public finaldate;
 
   today: Date = new Date();
   pipe = new DatePipe('en-US');
@@ -49,6 +47,7 @@ export class ExteriorRequestMantComponent implements OnInit {
     private _errorService: ErrorsService,
     private _router: Router) {
     this.exteriorRequest = new ExteriorRequestI('', '', '', '', '', '', '', 0, 0, '', '', '', '', []);
+    this.date = new DateI('','')
   }
 
   ngOnInit(): void {
@@ -78,17 +77,12 @@ export class ExteriorRequestMantComponent implements OnInit {
     )
   }
 
-  getPilotsActives() {
-
-    const date: DateI = {
-      initialDateOf: this.initialdate,
-      finalDateTo: this.finaldate,
-    }
-    console.log(date);
-          
+  getPilotsActives(date) {
+    console.log(date)
     this._personService.getPilotsActives(date).subscribe(
       response => {
         this.person = response.data;
+        console.log(this.person)
       }, error => {
         this._sweetAlertService.warning('No se pudieron cargar las personas correctamente');
       }
@@ -112,11 +106,11 @@ export class ExteriorRequestMantComponent implements OnInit {
         response => {
           this.exteriorRequest = response.data.request[0]
           this.details = response.data.detailRequest
-          
-          this.initialdate = this.exteriorRequest.first_date;
-          this.finaldate = this.exteriorRequest.latest_date;
 
-          this.getPilotsActives();
+          this.date.initialDateOf = this.exteriorRequest.first_date;
+          this.date.finalDateTo = this.exteriorRequest.latest_date;
+
+          this.getPilotsActives(this.date);
           this.getVehiclesActives();
           if (this.exteriorRequest.status_request == 7) {
             this.status = true;
