@@ -75,14 +75,14 @@
               </td>
               <td style="text-align: center;" >
                 <div class="btn-group" *ngIf="statusE == false">
-                  <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false">
+                  <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false" (click)="initializeTrips(item.transp_request_exterior)">
                     <i class="fas fa-check"></i>
                   </button>
                 </div>
               </td>
               <td style="text-align: center;">
                 <div class="btn-group" *ngIf="statusE == true">
-                  <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false">
+                  <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false" (click)="finalizeTrips(item.transp_request_exterior)">
                     <i class="fas fa-check"></i>
                   </button>
                 </div>
@@ -193,14 +193,14 @@
               </td>
               <td style="text-align: center;">
                 <div class="btn-group" *ngIf="statusL == false">
-                  <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false">
+                  <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false" (click)="initializeTrips(item.transp_request_local)">
                     <i class="fas fa-check"></i>
                   </button>
                 </div>
               </td>
               <td style="text-align: center;">
                 <div class="btn-group" *ngIf="statusL == true">
-                  <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false">
+                  <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false"  (click)="finalizeTrips(item.transp_request_local)">
                     <i class="fas fa-check"></i>
                   </button>
                 </div>

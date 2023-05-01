@@ -14,8 +14,9 @@ export class TripsService {
       this.url = Global.url;
     }
 
-    getTripsExterior(): Observable<any> {
-      return this._http.get(this.url + 'trips/exteriorRequest', {
+    getTrips(option, request): Observable<any> {
+      return this._http.get(`${this.url}trips?value=${option}&request=${request}`, 
+      {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")
@@ -23,8 +24,9 @@ export class TripsService {
       })
     }
 
-    getTripsExteriorOnHold(): Observable<any> {
-      return this._http.get(this.url + 'trips/exteriorRequest/onhold', {
+    updateTrips(id,status): Observable<any> {
+      return this._http.put(`${this.url}trips/${id}`, status,
+      {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")
@@ -32,21 +34,5 @@ export class TripsService {
       })
     }
 
-    getTripsLocal(): Observable<any> {
-      return this._http.get(this.url + 'trips/localRequest', {
-        headers: new HttpHeaders({
-          'Content-Type':'application/json',
-          //'x-access-token': '' + localStorage.getItem("Token")
-        })
-      })
-    }
-
-    getTripsLocalOnHold(): Observable<any> {
-      return this._http.get(this.url + 'trips/localRequest/onhold', {
-        headers: new HttpHeaders({
-          'Content-Type':'application/json',
-          //'x-access-token': '' + localStorage.getItem("Token")
-        })
-      })
-    }
+    
 }

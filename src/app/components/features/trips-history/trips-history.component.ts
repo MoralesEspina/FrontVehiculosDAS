@@ -19,12 +19,12 @@ export class TripsHistoryComponent implements OnInit {
   constructor(private _tripServicetab: TripsService,) { }
 
   ngOnInit(): void {
-      this.getTripsExteriorOnHold();
-      this.getTripsLocalOnHold();
+      this.getTripsExteriorActives();
+      this.getTripsLocalActives();
   }
 
-  getTripsExteriorOnHold(){
-    this._tripServicetab.getTripsExteriorOnHold().subscribe(
+  getTripsExteriorActives(){
+    this._tripServicetab.getTrips('actives','exterior').subscribe(
       response =>{
         this.trip_exterior = response.data;
       }, error =>{
@@ -33,8 +33,8 @@ export class TripsHistoryComponent implements OnInit {
     )
   }
 
-  getTripsLocalOnHold(){
-    this._tripServicetab.getTripsLocalOnHold().subscribe(
+  getTripsLocalActives(){
+    this._tripServicetab.getTrips('actives','local').subscribe(
       response =>{
         this.trip_local = response.data;
       }, error =>{
