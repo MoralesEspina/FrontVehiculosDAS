@@ -10,6 +10,7 @@ import { DatePipe } from '@angular/common';
 import { SweetAlertService } from 'src/app/services/sweetAlert.service';
 import { ErrorsService } from 'src/app/services/errors.service';
 import Swal from 'sweetalert2';
+import { DateI } from 'src/app/models/tripsdate.interface';
 
 @Component({
   selector: 'app-exterior-request-mant',
@@ -31,6 +32,9 @@ export class ExteriorRequestMantComponent implements OnInit {
   public onHold: boolean = false;
   detailrequest: any = {};
   details: any[] = [];
+  date: any[] = [];
+  public initialdate;
+  public finaldate;
 
   today: Date = new Date();
   pipe = new DatePipe('en-US');
@@ -75,7 +79,14 @@ export class ExteriorRequestMantComponent implements OnInit {
   }
 
   getPilotsActives() {
-    this._personService.getPilotsActives().subscribe(
+
+    const date: DateI = {
+      initialDateOf: this.initialdate,
+      finalDateTo: this.finaldate,
+    }
+    console.log(date);
+          
+    this._personService.getPilotsActives(date).subscribe(
       response => {
         this.person = response.data;
       }, error => {
@@ -101,6 +112,10 @@ export class ExteriorRequestMantComponent implements OnInit {
         response => {
           this.exteriorRequest = response.data.request[0]
           this.details = response.data.detailRequest
+          
+          this.initialdate = this.exteriorRequest.first_date;
+          this.finaldate = this.exteriorRequest.latest_date;
+
           this.getPilotsActives();
           this.getVehiclesActives();
           if (this.exteriorRequest.status_request == 7) {

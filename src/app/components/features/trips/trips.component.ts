@@ -27,11 +27,6 @@ export class TripsComponent implements OnInit {
     this._tripServicetab.getTripsExteriorOnHold().subscribe(
       response =>{
         this.trip_exterior = response.data;
-
-        this.exteriorRequest = response.data.request[0]
-        if (this.exteriorRequest.status == 11) {
-          this.statusE = true;
-        }
       }, error =>{
 
       }
@@ -42,11 +37,6 @@ export class TripsComponent implements OnInit {
     this._tripServicetab.getTripsLocalOnHold().subscribe(
       response =>{
         this.trip_local = response.data;
-
-        this.localRequest = response.data.request[0]
-        if (this.localRequest.status == 11) {
-          this.statusL = true;
-        }
       }, error =>{
 
       }

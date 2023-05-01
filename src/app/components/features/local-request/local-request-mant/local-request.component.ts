@@ -9,12 +9,14 @@ import { DatePipe } from '@angular/common';
 import { SweetAlertService } from 'src/app/services/sweetAlert.service';
 import { ErrorsService } from 'src/app/services/errors.service';
 import Swal from 'sweetalert2';
+import { DateI } from 'src/app/models/tripsdate.interface';
 
 @Component({
   selector: 'app-local-request',
   templateUrl: './local-request.component.html',
   styleUrls: ['./local-request.component.css']
 })
+
 export class LocalRequestMantComponent implements OnInit {
 
   public localRequest;
@@ -28,6 +30,9 @@ export class LocalRequestMantComponent implements OnInit {
   public data_response;
   details: any[] = [];
   detailrequest: any = {};
+  date: any[] = [];
+  public initialdate;
+  public finaldate;
 
   places = [
     { id: 1, name: 'Jalapa' },
@@ -42,7 +47,7 @@ export class LocalRequestMantComponent implements OnInit {
   today: Date = new Date();
   pipe = new DatePipe('en-US');
   todayWithPipe;
-
+  
   constructor(private _localRequestService: LocalRequestService,
     private router: ActivatedRoute,
     private _personService: PersonService,
@@ -63,7 +68,14 @@ export class LocalRequestMantComponent implements OnInit {
   }
 
   getPilotsActives(){
-    this._personService.getPilotsActives().subscribe(
+
+
+    const date: DateI = {
+      initialDateOf: this.initialdate,
+      finalDateTo: this.finaldate,
+    }
+console.log(date)
+    this._personService.getPilotsActives(date).subscribe(
       response =>{
        this.person = response.data;
       }, error =>{
@@ -89,6 +101,9 @@ export class LocalRequestMantComponent implements OnInit {
         response => {
           this.localRequest = response.data.request[0]
           this.details = response.data.detailRequest
+          this.initialdate = response.data.detailRequest.dateOf;
+          this.finaldate = response.data.detailRequest.dateTo;
+          console.log(response)
           if (this.localRequest.status == 7) {
             this.status = true;
             this.onHold = false;

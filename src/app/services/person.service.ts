@@ -3,6 +3,7 @@ import { Observable } from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { PersonI } from '../models/person.interface';
 import { Global } from './global.service';
+import { DateI } from '../models/tripsdate.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -34,8 +35,8 @@ export class PersonService{
       })
     }
 
-    getPilotsActives(): Observable<any> {
-      return this._http.get(this.url + 'persons/pilotsActives', {
+    getPilotsActives(date: DateI): Observable<any> {
+      return this._http.post(this.url + 'persons/pilotsActives', date, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")
