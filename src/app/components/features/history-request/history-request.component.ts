@@ -10,6 +10,7 @@ import { LocalRequestService } from 'src/app/services/localRequest.service';
 export class HistoryRequestComponent implements OnInit {
   public exteriorRequest;
   public p:number = 1;
+  public p2:number = 1;
   public requestsLocal;
   constructor(private _exteriorRequestService:ExteriorRequestService, private _requestService:LocalRequestService) { }
 

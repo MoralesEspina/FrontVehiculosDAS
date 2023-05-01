@@ -35,6 +35,7 @@ import { VoucherDieselComponent } from './components/features/voucher/voucher-di
 import { VoucherIndexComponent } from './components/features/voucher/voucher-index/voucher-index.component';
 
 import { LoginGuard } from './login.guard';
+import { TripsHistoryComponent } from './components/features/trips-history/trips-history.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -80,6 +81,7 @@ const routes: Routes = [
 
   //TODO VIAJES
   { path: 'Trips', component: TripsComponent, canActivate: [LoginGuard]  },
+  { path: 'History-trips', component: TripsHistoryComponent, canActivate: [LoginGuard]  },
 
   //TODO VALES
   { path: 'VoucherGasoline', component: VoucherComponent, canActivate: [LoginGuard]  },

@@ -45,19 +45,23 @@
                 <th>Vehiculo</th>
                 <th>Estado</th>
                 <th>Ver solicitud</th>
+                <th>Iniciar viaje</th>
                 <th>Finalizar viaje</th>
-                <th>Bitacora</th>
-                <th>Pase de Salida</th>
+                <th>Documentos</th>
+
+                <!-- <th>Bitacora</th>
+                <th>Pase de Salida</th> -->
               </tr>
             </thead>
             <!--- TITULOS DE LA TABLA -->
 
             <!--- CUERPO DE LA TABLA -->
-            <tbody *ngFor="let item of trip_exterior | paginate: { itemsPerPage: 8, currentPage: p }">
+            <tbody *ngFor="let item of trip_exterior | paginate: {id: 'Page', itemsPerPage: 10, currentPage: p }">
               <td style="text-align: center;">{{item.transp_request_exterior}}</td>
               <td style="text-align: center;">{{item.requesting_unit}}</td>
               <td style="text-align: center;">{{item.commission_manager}}</td>
-              <td style="text-align: center;">Del {{item.first_date | date: 'd MMM' | uppercase}} al {{item.latest_date | date: 'd MMM yy' | uppercase}}</td>
+              <td style="text-align: center;">Del {{item.first_date | date: 'd MMM' | uppercase}} al {{item.latest_date
+                | date: 'd MMM yyy' | uppercase}}</td>
               <td style="text-align: center;">{{item.fullname}}</td>
               <td style="text-align: center;">{{item.plate}}</td>
               <td style="text-align: center;">{{item.status_name}}</td>
@@ -69,14 +73,35 @@
                   </button>
                 </div>
               </td>
-              <td style="text-align: center;">
-                <div class="btn-group">
+              <td style="text-align: center;" >
+                <div class="btn-group" *ngIf="statusE == false">
                   <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-check"></i>
                   </button>
                 </div>
               </td>
               <td style="text-align: center;">
+                <div class="btn-group" *ngIf="statusE == true">
+                  <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-check"></i>
+                  </button>
+                </div>
+              </td>
+
+              <td  style="text-align: center;">
+                <div class="btn-group" *ngIf="statusE == true">
+                  <button type="button" class="btn mb-1 btn-primary dropdown-toggle"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-print"></i>
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class= "dropdown-item" [routerLink]="['/BitacoraExterior/',item.transp_request_exterior]">Imprimir Bitacora</a>
+                    <a class= "dropdown-item" [routerLink]="['/exitPassPDF/',item.transp_request_exterior]" >Imprimir Pase de Salida</a>
+                  </div>
+                </div>
+              </td>
+
+              <!-- <td style="text-align: center;">
                 <div class="btn-group">
                   <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false"
                     [routerLink]="['/BitacoraExterior/',item.transp_request_exterior]">
@@ -91,12 +116,12 @@
                     <i class="fas fa-eye"></i>
                   </button>
                 </div>
-              </td>
+              </td> -->
           </table>
           <!--- TABLA -->
 
         </div>
-        <pagination-controls (pageChange)="p = $event" nextLabel="Siguiente" previousLabel="Anterior">
+        <pagination-controls id="Page" (pageChange)="p = $event" nextLabel="Siguiente" previousLabel="Anterior">
         </pagination-controls>
       </div>
 
@@ -115,83 +140,107 @@
           </nav>
         </div>
       </div>
-        <!---inicia otra tabla  -->
-        <div class="col-12">
-          <div class="card">
-            <div class="card-header">
-              <div class="row">
-                <div class="btn-group">
-                  <button type="button" class="btn mb-1 btn-primary " aria-haspopup="true" aria-expanded="false"
-                    [routerLink]="['/localRequest-index']">Ver las solicitudes locales
-                  </button>
-                </div>
+      <!---inicia otra tabla  -->
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <div class="row">
+              <div class="btn-group">
+                <button type="button" class="btn mb-1 btn-primary " aria-haspopup="true" aria-expanded="false"
+                  [routerLink]="['/localRequest-index']">Ver las solicitudes locales
+                </button>
               </div>
             </div>
-            <!---  -->
-            <!--- TABLA -->
-            <table class="table table-striped table-hover">
-              <!--- TITULOS DE LA TABLA -->
-              <thead class="thead-dark">
-                <tr>
-                  <th>No de solicitud</th>
-                  <th>Nombre del solicitante</th>
-                  <th>Fecha de Viaje</th>
-                  <th>Piloto</th>
-                  <th>Vehiculo</th>
-                  <th>Estado</th>
-                  <th>Ver solicitud</th>
-                  <th>Finalizar viaje</th>
-                  <th>Bitacora</th>
-                  <th>Pase de Salida</th>
-                </tr>
-              </thead>
-              <!--- TITULOS DE LA TABLA -->
-
-              <!--- CUERPO DE LA TABLA -->
-              <tbody *ngFor="let item of trip_local | paginate: { itemsPerPage: 8, currentPage: p }">
-                <td style="text-align: center;">{{item.transp_request_local}}</td>
-                <td style="text-align: center;">{{item.applicantsName}}</td>
-                <td style="text-align: center;">Del {{item.first_date | date: 'd MMM' | uppercase}} al {{item.latest_date | date: 'd MMM y' | uppercase}}</td>
-                <td style="text-align: center;">{{item.fullname}}</td>
-                <td style="text-align: center;">{{item.plate}}</td>
-                <td style="text-align: center;">{{item.status_name}}</td>
-                <td style="text-align: center;">
-                  <div class="btn-group">
-                    <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false"
-                      [routerLink]="['/localRequest/edit/',item.transp_request_local]">
-                      <i class="fas fa-eye"></i>
-                    </button>
-                  </div>
-                </td>
-                <td style="text-align: center;">
-                  <div class="btn-group">
-                    <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-check"></i>
-                    </button>
-                  </div>
-                </td>
-                <td style="text-align: center;">
-                  <div class="btn-group">
-                    <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false"
-                      [routerLink]="['/BitacoraLocal/',item.transp_request_local]">
-                      <i class="fas fa-eye"></i>
-                    </button>
-                  </div>
-                </td>
-                <td style="text-align: center;">
-                  <div class="btn-group">
-                    <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false"
-                      [routerLink]="['/exitPassPDF/',item.transp_request_local]">
-                      <i class="fas fa-eye"></i>
-                    </button>
-                  </div>
-                </td>
-            </table>
-            <!--- TABLA -->
           </div>
-          <pagination-controls (pageChange)="p = $event" nextLabel="Siguiente" previousLabel="Anterior">
-          </pagination-controls>
+          <!---  -->
+          <!--- TABLA -->
+          <table class="table table-striped table-hover">
+            <!--- TITULOS DE LA TABLA -->
+            <thead class="thead-dark">
+              <tr>
+                <th>No de solicitud</th>
+                <th>Nombre del solicitante</th>
+                <th>Fecha de Viaje</th>
+                <th>Piloto</th>
+                <th>Vehiculo</th>
+                <th>Estado</th>
+                <th>Ver solicitud</th>
+                <th>Iniciar viaje</th>
+                <th>Finalizar viaje</th>
+                <th>Documentos</th>
+                <!-- <th>Bitacora</th>
+                <th>Pase de Salida</th> -->
+              </tr>
+            </thead>
+            <!--- TITULOS DE LA TABLA -->
+
+            <!--- CUERPO DE LA TABLA -->
+            <tbody *ngFor="let item of trip_local | paginate: {id: 'Page2', itemsPerPage: 10, currentPage: p2 }">
+              <td style="text-align: center;">{{item.transp_request_local}}</td>
+              <td style="text-align: center;">{{item.applicantsName}}</td>
+              <td style="text-align: center;">Del {{item.first_date | date: 'd MMM' | uppercase}} al {{item.latest_date
+                | date: 'd MMM y' | uppercase}}</td>
+              <td style="text-align: center;">{{item.fullname}}</td>
+              <td style="text-align: center;">{{item.plate}}</td>
+              <td style="text-align: center;">{{item.status_name}}</td>
+              <td style="text-align: center;">
+                <div class="btn-group">
+                  <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false"
+                    [routerLink]="['/localRequest/edit/',item.transp_request_local]">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                </div>
+              </td>
+              <td style="text-align: center;">
+                <div class="btn-group" *ngIf="statusL == false">
+                  <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-check"></i>
+                  </button>
+                </div>
+              </td>
+              <td style="text-align: center;">
+                <div class="btn-group" *ngIf="statusL == true">
+                  <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-check"></i>
+                  </button>
+                </div>
+              </td>
+
+              <td  style="text-align: center;">
+                <div class="btn-group" *ngIf="statusL == true">
+                  <button type="button" class="btn mb-1 btn-primary dropdown-toggle"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-print"></i>
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class= "dropdown-item" [routerLink]="['/BitacoraLocal/',item.transp_request_local]">Imprimir Bitacora</a>
+                    <a class= "dropdown-item" [routerLink]="['/exitPassPDF/',item.transp_request_local]">Imprimir Pase de Salida</a>
+                  </div>
+                </div>
+              </td>
+
+              <!-- <td style="text-align: center;">
+                <div class="btn-group">
+                  <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false"
+                    [routerLink]="['/BitacoraLocal/',item.transp_request_local]">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                </div>
+              </td>
+              <td style="text-align: center;">
+                <div class="btn-group">
+                  <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false"
+                    [routerLink]="['/exitPassPDF/',item.transp_request_local]">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                </div>
+              </td> -->
+          </table>
+          <!--- TABLA -->
         </div>
+        <pagination-controls id="Page2" (pageChange)="p2 = $event" nextLabel="Siguiente" previousLabel="Anterior">
+        </pagination-controls>
       </div>
+    </div>
   </main>
 </div>

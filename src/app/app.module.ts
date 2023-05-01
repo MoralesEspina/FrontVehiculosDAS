@@ -44,6 +44,7 @@ import { TripsComponent } from './components/features/trips/trips.component';
 import { VoucherDieselComponent } from './components/features/voucher/voucher-diesel/voucher-diesel.component';
 import { VoucherIndexComponent } from './components/features/voucher/voucher-index/voucher-index.component';
 import { VoucherComponent } from './components/features/voucher/voucherGas/voucher.component';
+import { TripsHistoryComponent } from './components/features/trips-history/trips-history.component';
 
 @NgModule({
   declarations: [
@@ -75,8 +76,9 @@ import { VoucherComponent } from './components/features/voucher/voucherGas/vouch
     VoucherComponent,
     ExitPassPdfComponent,
     BinnaclePdfComponent,
-    HistoryRequestComponent
-
+    HistoryRequestComponent,
+    TripsHistoryComponent,
+   
   ],
   imports: [
     BrowserModule,

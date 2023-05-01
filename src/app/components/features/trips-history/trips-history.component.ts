@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { TripsService } from 'src/app/services/trips.service';
 
 @Component({
-  selector: 'app-trips',
-  templateUrl: './trips.component.html',
-  styleUrls: ['./trips.component.css']
+  selector: 'app-trips-history',
+  templateUrl: './trips-history.component.html',
+  styleUrls: ['./trips-history.component.css']
 })
-export class TripsComponent implements OnInit {
+export class TripsHistoryComponent implements OnInit {
   public p:number = 1;
   public p2:number = 1;
   public trip_exterior;

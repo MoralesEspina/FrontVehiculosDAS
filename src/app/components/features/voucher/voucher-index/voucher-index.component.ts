@@ -9,6 +9,7 @@ import { VoucherService } from 'src/app/services/voucher.service';
 export class VoucherIndexComponent implements OnInit {
 
   public p:number = 1;
+  public p2:number = 1;
   public voucherGasoline;
   public voucherDiesel;
   public oneVoucher;

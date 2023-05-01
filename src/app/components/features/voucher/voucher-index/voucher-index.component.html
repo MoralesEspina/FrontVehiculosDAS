@@ -50,7 +50,7 @@
                     <!--- TITULOS DE LA TABLA -->
 
                     <!--- CUERPO DE LA TABLA -->
-                    <tbody *ngFor="let item of voucherDiesel | paginate: { itemsPerPage: 15, currentPage: p }">
+                    <tbody *ngFor="let item of voucherDiesel | paginate: {id: 'Page', itemsPerPage: 5, currentPage: p }">
                       <td style="text-align: center;">{{item.iddiesel}}</td>
                       <td style="text-align: center;">{{item.date | date: 'd MMM y' | uppercase}}</td>
                       <td style="text-align: center;">{{item.plate}}</td>
@@ -71,7 +71,7 @@
                   <!--- TABLA -->
 
             </div>
-            <pagination-controls (pageChange)="p = $event" nextLabel="Siguiente" previousLabel="Anterior">
+            <pagination-controls id="Page" (pageChange)="p = $event" nextLabel="Siguiente" previousLabel="Anterior">
             </pagination-controls>
           </div>
 
@@ -114,7 +114,7 @@
                 <!--- TITULOS DE LA TABLA -->
 
                 <!--- CUERPO DE LA TABLA -->
-                <tbody *ngFor="let item of voucherGasoline | paginate: { itemsPerPage: 15, currentPage: p }">
+                <tbody *ngFor="let item of voucherGasoline | paginate: {id: 'Page2', itemsPerPage: 5, currentPage: p2 }">
                   <td style="text-align: center;">{{item.idregular}}</td>
                   <td style="text-align: center;">{{item.date | date: 'd MMM y' | uppercase}}</td>
                   <td style="text-align: center;">{{item.plate}}</td>
@@ -134,7 +134,7 @@
               </table>
               <!--- TABLA -->
             </div>
-            <pagination-controls (pageChange)="p = $event" nextLabel="Siguiente" previousLabel="Anterior">
+            <pagination-controls id="Page2"  (pageChange)="p2 = $event" nextLabel="Siguiente" previousLabel="Anterior">
             </pagination-controls>
           </div>
         </div>

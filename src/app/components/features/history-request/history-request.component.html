@@ -50,12 +50,12 @@
             <!--- TITULOS DE LA TABLA -->
 
             <!--- CUERPO DE LA TABLA -->
-            <tbody *ngFor="let item of requestsLocal | paginate: { itemsPerPage: 15, currentPage: p }">
+            <tbody *ngFor="let item of requestsLocal | paginate: { id: 'Page', itemsPerPage: 10, currentPage: p }">
               <td style="text-align: center;">{{item.id}}</td>
               <td style="text-align: center;">{{item.section}}</td>
               <!-- <td style="text-align: center;"></td> -->
               <td style="text-align: center;">{{item.applicantsName}}</td>
-              <td style="text-align: center;">{{item.date | date: 'd MMM y' | uppercase}}</td>
+              <td style="text-align: center;">Del {{item.first_date | date: 'd MMM' | uppercase}} al {{item.latest_date | date: 'd MMM yyy' | uppercase}}</td>
               <td style="text-align: center;">{{item.phoneNumber}}</td>
               <td style="text-align: center;">{{item.status_name}}</td>
               <td style="text-align: center;">
@@ -72,7 +72,7 @@
           </table>
           <!--- TABLA -->
         </div>
-        <pagination-controls (pageChange)="p = $event" nextLabel="Siguiente" previousLabel="Anterior">
+        <pagination-controls id="Page"  (pageChange)="p = $event" nextLabel="Siguiente" previousLabel="Anterior">
         </pagination-controls>
       </div>
     </div>
@@ -123,12 +123,12 @@
             <!--- TITULOS DE LA TABLA -->
 
             <!--- CUERPO DE LA TABLA -->
-            <tbody *ngFor="let item of exteriorRequest | paginate: { itemsPerPage: 15, currentPage: p }">
+            <tbody *ngFor="let item of exteriorRequest | paginate: { id: 'Page2', itemsPerPage: 10, currentPage: p2 }" >
               <td style="text-align: center;">{{item.id}}</td>
               <td style="text-align: center;">{{item.requesting_unit}}</td>
               <!-- <td style="text-align: center;"></td> -->
               <td style="text-align: center;">{{item.commission_manager}}</td>
-              <td style="text-align: center;">{{item.date_request | date: 'd MMM y' | uppercase }}</td>
+              <td style="text-align: center;">Del {{item.first_date | date: 'd MMM' | uppercase}} al {{item.latest_date | date: 'd MMM yyy' | uppercase}}</td>
               <td style="text-align: center;">{{item.duration_days}}</td>
               <td style="text-align: center;">{{item.phoneNumber}}</td>
               <td style="text-align: center;">{{item.status_name}}</td>
@@ -145,7 +145,7 @@
           </table>
           <!--- TABLA -->
         </div>
-        <pagination-controls (pageChange)="p = $event" nextLabel="Siguiente" previousLabel="Anterior">
+        <pagination-controls id="Page2"  (pageChange)="p2 = $event" nextLabel="Siguiente" previousLabel="Anterior">
         </pagination-controls>
       </div>
     </div>
