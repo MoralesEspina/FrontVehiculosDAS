@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ResponseI } from 'src/app/models/response.interface';
 import { ErrorsService } from 'src/app/services/errors.service';
 import { SweetAlertService } from 'src/app/services/sweetAlert.service';
 import { TripsService } from 'src/app/services/trips.service';
@@ -19,13 +20,16 @@ export class TripsComponent implements OnInit {
   public statusL: boolean = false;
   public data_response;
   public statusE: boolean = false;
+  public dylangay
 
   constructor(private _tripServicetab: TripsService,
     private _route: ActivatedRoute,
     private _sweetAlertService: SweetAlertService,
     private _errorService:ErrorsService,
     private _router:Router,
-    ) { }
+    ) {
+      this.dylangay = new ResponseI('','')
+    }
 
   ngOnInit(): void {
       this.getTripsExteriorOnHold();
@@ -36,6 +40,7 @@ export class TripsComponent implements OnInit {
     this._tripServicetab.getTrips('onHold','exterior').subscribe(
       response =>{
         this.trip_exterior = response.data;
+        console.log(this.trip_exterior)
       }, error =>{
 
       }
@@ -51,9 +56,10 @@ export class TripsComponent implements OnInit {
       }
     )
   }
-  
+
   initializeTrips(id){
-    this._tripServicetab.updateTrips(id,'11').subscribe(
+    this.dylangay.status = 11;
+    this._tripServicetab.updateTrips(id,this.dylangay).subscribe(
       data => {
         this._sweetAlertService.createAndUpdate('Viaje iniciado correctamente');
       },
@@ -63,7 +69,7 @@ export class TripsComponent implements OnInit {
       })
   }
   finalizeTrips(id){
-    this._tripServicetab.updateTrips(id,'13').subscribe(
+    this._tripServicetab.updateTrips(id,this.dylangay).subscribe(
       data => {
         this._sweetAlertService.createAndUpdate('Viaje finalizado correctamente');
       },

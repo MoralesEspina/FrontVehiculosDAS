@@ -25,7 +25,7 @@ export class VehicleService {
       })
     }
 
-    
+
 
     getVehiclesActives(): Observable<any> {
       return this._http.get(this.url + 'vehicles/active', {
