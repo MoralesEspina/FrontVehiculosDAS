@@ -3,6 +3,7 @@ import { Observable } from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { VehicleI } from '../models/vehicle.interface';
 import { Global } from './global.service';
+import { DateI } from '../models/tripsdate.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -27,14 +28,14 @@ export class VehicleService {
 
 
 
-    getVehiclesActives(): Observable<any> {
-      return this._http.get(this.url + 'vehicles/active', {
+    getVehiclesActives(date: DateI): Observable<any> {
+      return this._http.post(this.url + 'vehicles/active',date, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'Authorization:': 'Bearer' + localStorage.getItem("Token")
         })
       })
-    }
+    }  
 
     getOneVehicle(id): Observable<any> {
       return this._http.get(this.url + 'vehicles/' + id, {

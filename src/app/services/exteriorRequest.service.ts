@@ -27,7 +27,7 @@ export class ExteriorRequestService{
 
 
 
-    getOneExteriorRequest(id,value): Observable<any> {
+    getOneExteriorRequest(id, value): Observable<any> {
       return this._http.get(`${this.url}exteriorRequest/${id}?value=${value}`, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',

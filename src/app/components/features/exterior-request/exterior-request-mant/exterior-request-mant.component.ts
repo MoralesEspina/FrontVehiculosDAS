@@ -89,8 +89,8 @@ export class ExteriorRequestMantComponent implements OnInit {
     )
   }
 
-  getVehiclesActives() {
-    this._vehicleService.getVehiclesActives().subscribe(
+  getVehiclesActives(date) {
+    this._vehicleService.getVehiclesActives(date).subscribe(
       response => {
         this.vehicles = response.data;
       }, error => {
@@ -111,7 +111,7 @@ export class ExteriorRequestMantComponent implements OnInit {
           this.date.finalDateTo = this.exteriorRequest.latest_date;
 
           this.getPilotsActives(this.date);
-          this.getVehiclesActives();
+          this.getVehiclesActives(this.date);
           if (this.exteriorRequest.status_request == 7) {
             this.status = true;
             this.onHold = false;

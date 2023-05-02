@@ -28,9 +28,9 @@ export class LocalRequestMantComponent implements OnInit {
   public person;
   public vehicles;
   public data_response;
+  public date;
   details: any[] = [];
   detailrequest: any = {};
-  date: any[] = [];
   public initialdate;
   public finaldate;
 
@@ -57,39 +57,32 @@ export class LocalRequestMantComponent implements OnInit {
     private _router:Router) {
     this.localRequest = new LocalRequestI("", "", "", "", "", "", "", "", "", "", [])
     this.detailrequest.destiny = ''
+    this.date = new DateI('','')
   }
 
   ngOnInit(): void {
     this.id_entrada = this.router.snapshot.params['id'];
     this.loadLocalRequest();
-    this.getPilotsActives();
-    this.getVehiclesActives();
     this.todayWithPipe = this.pipe.transform(Date.now(), 'yyyy/MM/dd')
   }
 
-  getPilotsActives(){
-
-
-    const date: DateI = {
-      initialDateOf: this.initialdate,
-      finalDateTo: this.finaldate,
-    }
-console.log(date)
+  getPilotsActives(date) {
     this._personService.getPilotsActives(date).subscribe(
-      response =>{
-       this.person = response.data;
-      }, error =>{
-
+      response => {
+        this.person = response.data;
+        console.log(this.person)
+      }, error => {
+        this._sweetAlertService.warning('No se pudieron cargar las personas correctamente');
       }
     )
   }
 
-  getVehiclesActives(){
-    this._vehicleService.getVehiclesActives().subscribe(
+  getVehiclesActives(date){
+    this._vehicleService.getVehiclesActives(date).subscribe(
       response =>{
         this.vehicles = response.data;
       }, error =>{
-
+        this._sweetAlertService.warning('No se pudieron cargar los vehiculos correctamente');
       }
     )
   }
@@ -101,9 +94,12 @@ console.log(date)
         response => {
           this.localRequest = response.data.request[0]
           this.details = response.data.detailRequest
-          this.initialdate = response.data.detailRequest.dateOf;
-          this.finaldate = response.data.detailRequest.dateTo;
-          console.log(response)
+          
+          this.date.initialDateOf = this.localRequest.first_date;
+          this.date.finalDateTo = this.localRequest.latest_date;
+
+          this.getPilotsActives(this.date);
+          this.getVehiclesActives(this.date);
           if (this.localRequest.status == 7) {
             this.status = true;
             this.onHold = false;

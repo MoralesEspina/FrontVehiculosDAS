@@ -20,7 +20,7 @@ export class TripsComponent implements OnInit {
   public statusL: boolean = false;
   public data_response;
   public statusE: boolean = false;
-  public dylangay
+  public statusTrips
 
   constructor(private _tripServicetab: TripsService,
     private _route: ActivatedRoute,
@@ -28,7 +28,7 @@ export class TripsComponent implements OnInit {
     private _errorService:ErrorsService,
     private _router:Router,
     ) {
-      this.dylangay = new ResponseI('','')
+      this.statusTrips = new ResponseI('','')
     }
 
   ngOnInit(): void {
@@ -40,7 +40,6 @@ export class TripsComponent implements OnInit {
     this._tripServicetab.getTrips('onHold','exterior').subscribe(
       response =>{
         this.trip_exterior = response.data;
-        console.log(this.trip_exterior)
       }, error =>{
 
       }
@@ -58,10 +57,12 @@ export class TripsComponent implements OnInit {
   }
 
   initializeTrips(id){
-    this.dylangay.status = 11;
-    this._tripServicetab.updateTrips(id,this.dylangay).subscribe(
+    this.statusTrips.status = 11;
+    console.log(id)
+    this._tripServicetab.updateTrips(id,this.statusTrips).subscribe(
       data => {
         this._sweetAlertService.createAndUpdate('Viaje iniciado correctamente');
+        location.reload();
       },
       error => {
         this.data_response = error;
@@ -69,9 +70,11 @@ export class TripsComponent implements OnInit {
       })
   }
   finalizeTrips(id){
-    this._tripServicetab.updateTrips(id,this.dylangay).subscribe(
+    this.statusTrips.status = 13;
+    this._tripServicetab.updateTrips(id,this.statusTrips).subscribe(
       data => {
         this._sweetAlertService.createAndUpdate('Viaje finalizado correctamente');
+        location.reload();
       },
       error => {
         this.data_response = error;

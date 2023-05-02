@@ -74,14 +74,14 @@
                 </div>
               </td>
               <td style="text-align: center;" >
-                <div class="btn-group" *ngIf="statusE == false">
+                <div class="btn-group" *ngIf="item.status_name == 'En Espera'">
                   <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false" (click)="initializeTrips(item.idtrips)">
                     <i class="fas fa-check"></i>
                   </button>
                 </div>
               </td>
               <td style="text-align: center;">
-                <div class="btn-group" *ngIf="statusE == true">
+                <div class="btn-group" *ngIf="item.status_name == 'Activo'">
                   <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false" (click)="finalizeTrips(item.idtrips)">
                     <i class="fas fa-check"></i>
                   </button>
@@ -89,7 +89,7 @@
               </td>
 
               <td  style="text-align: center;">
-                <div class="btn-group" *ngIf="statusE == true">
+                <div class="btn-group" *ngIf="item.status_name == 'Activo'">
                   <button type="button" class="btn mb-1 btn-primary dropdown-toggle"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="fas fa-print"></i>
@@ -192,22 +192,22 @@
                 </div>
               </td>
               <td style="text-align: center;">
-                <div class="btn-group" *ngIf="statusL == false">
-                  <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false" (click)="initializeTrips(item.transp_request_local)">
+                <div class="btn-group" *ngIf="item.status_name == 'En Espera'">
+                  <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false" (click)="initializeTrips(item.idtrips)">
                     <i class="fas fa-check"></i>
                   </button>
                 </div>
               </td>
               <td style="text-align: center;">
-                <div class="btn-group" *ngIf="statusL == true">
-                  <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false"  (click)="finalizeTrips(item.transp_request_local)">
+                <div class="btn-group" *ngIf="item.status_name == 'Activo' ">
+                  <button type="button" class="btn mb-1 btn-primary" aria-haspopup="true" aria-expanded="false"  (click)="finalizeTrips(item.idtrips)">
                     <i class="fas fa-check"></i>
                   </button>
                 </div>
               </td>
 
               <td  style="text-align: center;">
-                <div class="btn-group" *ngIf="statusL == true">
+                <div class="btn-group"*ngIf="item.status_name == 'Activo'">
                   <button type="button" class="btn mb-1 btn-primary dropdown-toggle"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="fas fa-print"></i>

@@ -34,7 +34,7 @@ export class LocalRequestService {
     }
 
     getOneLocalRequest(id, value): Observable<any> {
-      return this._http.get(this.url + 'localRequest/' + id+'?value='+value, {
+      return this._http.get(`${this.url}localRequest/${id}?value=${value}`, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")
