@@ -19,6 +19,7 @@ export class ExteriorRequestIndexComponent implements OnInit {
     this._exteriorRequestService.getExteriorRequest('onHold','6').subscribe(
       response =>{
         this.exteriorRequest = response.data;
+        console.log(this.exteriorRequest)
       }, error =>{
       }
     )

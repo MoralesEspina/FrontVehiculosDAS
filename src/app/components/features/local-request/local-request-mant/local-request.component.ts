@@ -47,7 +47,7 @@ export class LocalRequestMantComponent implements OnInit {
   today: Date = new Date();
   pipe = new DatePipe('en-US');
   todayWithPipe;
-  
+
   constructor(private _localRequestService: LocalRequestService,
     private router: ActivatedRoute,
     private _personService: PersonService,
@@ -94,7 +94,7 @@ export class LocalRequestMantComponent implements OnInit {
         response => {
           this.localRequest = response.data.request[0]
           this.details = response.data.detailRequest
-          
+
           this.date.initialDateOf = this.localRequest.first_date;
           this.date.finalDateTo = this.localRequest.latest_date;
 
@@ -143,13 +143,16 @@ export class LocalRequestMantComponent implements OnInit {
       this._localRequestService.createOneLocalRequest(request_local).subscribe(
         response => {
           this._sweetAlertService.createAndUpdate('Se registro la solicitud correctamente');
-          this.localRequest = new LocalRequestI("", "", "", "", "", "", "", "", "", "", [])
         }, error => {
           this.data_response = error;
           this._errorService.error(this.data_response);
         }
       )
-      this._router.navigate(['/localRequest-index'])
+      setTimeout(()=>{
+        this.localRequest = new LocalRequestI("", "", "", "", "", "", "", "", "", "", [])
+        this._router.navigate(['/localRequest-index'])
+    }, 1000);
+
     }
 
 
