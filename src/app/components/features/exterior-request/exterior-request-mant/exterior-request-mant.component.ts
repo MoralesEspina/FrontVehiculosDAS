@@ -145,8 +145,8 @@ export class ExteriorRequestMantComponent implements OnInit {
       duration_days: ExteriorForm.value.duration_days,
       phoneNumber: ExteriorForm.value.phoneNumber,
       observations: ExteriorForm.value.observations,
-      provide_fuel: 0,
-      provide_travel_expenses: 0,
+      provide_fuel: ExteriorForm.value.provide_fuel ,
+      provide_travel_expenses: ExteriorForm.value.provide_travel_expenses,
       plate_vehicle: '',
       pilot_name: '',
       reason_rejected: '',
@@ -156,7 +156,7 @@ export class ExteriorRequestMantComponent implements OnInit {
     if (!ExteriorForm.valid) {
       this._sweetAlertService.warning('Complete correctamente el formulario');
       return
-    }
+    } 
     this._exteriorRoutesService.createNewExteriorRequest(exteriorRequest).subscribe(
       response => {
         this._sweetAlertService.createAndUpdate('Se registro la solicitud correctamente');
@@ -166,8 +166,10 @@ export class ExteriorRequestMantComponent implements OnInit {
         this._errorService.error(this.data_response);
       }
     )
+    setTimeout(()=>{
     this._router.navigate(['/exteriorRequest-index'])
-  }
+  }, 1000);
+}
 
   createDetailRequest(detailExteriorForm) {
     //if (detailExteriorForm.valid) {
@@ -231,8 +233,8 @@ export class ExteriorRequestMantComponent implements OnInit {
       duration_days: '',
       phoneNumber: '',
       observations: '',
-      provide_fuel: acceptedForm.value.provide_fuel,
-      provide_travel_expenses: acceptedForm.value.provide_travel_expenses,
+      provide_fuel: 0,
+      provide_travel_expenses: 0,
       plate_vehicle: acceptedForm.value.plate_vehicle,
       pilot_name: acceptedForm.value.pilot_name,
       status_request: "7",
@@ -291,7 +293,7 @@ export class ExteriorRequestMantComponent implements OnInit {
     this._exteriorRoutesService.updateOneExteriorRequest(deny, this.id_entrada).subscribe(
       response => {
         this._sweetAlertService.createAndUpdate('Se denego correctamente la solicitud');
-        this._router.navigate(['localRequest-index'])
+        this._router.navigate(['/exteriorRequest-index'])
         setTimeout(() => {
           window.location.reload();
         }, 1000);

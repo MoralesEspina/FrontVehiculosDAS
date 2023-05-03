@@ -188,33 +188,33 @@
                       [disabled]="editing==true">
                   </div>
                 </div>
-                <!--    Datos del cuadrito                -->
-                <form class="col-lg-10" #acceptedForm="ngForm" *ngIf="editing == true">
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label class="form-label"><b>¿La Unidad solicitante proporciona combustible?</b></label>
-                        <select class="form-control" #provide_fuel="ngModel" name="provide_fuel"
-                          [(ngModel)]="exteriorRequest.provide_fuel" required [disabled]="status==true || deny==true">
-                          <option value="" hidden selected>Seleccionar</option>
-                          <option value=1>No</option>
-                          <option value=2>Si</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label class="form-label"><b>¿La Unidad solicitante proporciona viaticos?</b></label>
-                        <select class="form-control" #provide_travel_expenses="ngModel" name="provide_travel_expenses"
-                          [(ngModel)]="exteriorRequest.provide_travel_expenses" required
-                          [disabled]="status==true || deny==true">
-                          <option value="" hidden selected>Seleccionar</option>
-                          <option value=1>No</option>
-                          <option value=2>Si</option>
-                        </select>
-                      </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-label"><b>¿La Unidad solicitante proporciona combustible?</b></label>
+                      <select class="form-control" #provide_fuel="ngModel" name="provide_fuel"
+                        [(ngModel)]="exteriorRequest.provide_fuel" required [disabled]="editing==true">
+                        <option value="" hidden selected>Seleccionar</option>
+                        <option value=1>No</option>
+                        <option value=2>Si</option>
+                      </select>
                     </div>
                   </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-label"><b>¿La Unidad solicitante proporciona viaticos?</b></label>
+                      <select class="form-control" #provide_travel_expenses="ngModel" name="provide_travel_expenses"
+                        [(ngModel)]="exteriorRequest.provide_travel_expenses" required
+                        [disabled]="editing==true">
+                        <option value="" hidden selected>Seleccionar</option>
+                        <option value=1>No</option>
+                        <option value=2>Si</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <!--    Datos del cuadrito                -->
+                <form class="col-lg-10" #acceptedForm="ngForm" >
                   <div class="row" *ngIf="editing == true">
                     <div class="col-lg-6">
                       <div class="form-group">
