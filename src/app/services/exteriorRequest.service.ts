@@ -36,7 +36,7 @@ export class ExteriorRequestService{
       })
     }
 
-    createNewExteriorRequest(form: ExteriorRequestI) {
+    createNewExteriorRequest(form: ExteriorRequestI): Observable<any> {
       return this._http.post(this.url + 'exteriorRequest', form, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',

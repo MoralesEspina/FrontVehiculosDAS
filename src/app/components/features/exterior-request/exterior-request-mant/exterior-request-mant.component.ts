@@ -156,19 +156,19 @@ export class ExteriorRequestMantComponent implements OnInit {
     if (!ExteriorForm.valid) {
       this._sweetAlertService.warning('Complete correctamente el formulario');
       return
-    } 
+    }
     this._exteriorRoutesService.createNewExteriorRequest(exteriorRequest).subscribe(
       response => {
         this._sweetAlertService.createAndUpdate('Se registro la solicitud correctamente');
-        this.exteriorRequest = new ExteriorRequestI('', '', '', '', '', '', '', 0, 0, '', '', '', '', []);
+        setTimeout(()=>{
+          this.exteriorRequest = new ExteriorRequestI('', '', '', '', '', '', '', 0, 0, '', '', '', '', []);
+          this._router.navigate(['/exteriorRequest-index'])
+        }, 1000);
       }, error => {
         this.data_response = error;
         this._errorService.error(this.data_response);
       }
     )
-    setTimeout(()=>{
-    this._router.navigate(['/exteriorRequest-index'])
-  }, 1000);
 }
 
   createDetailRequest(detailExteriorForm) {
