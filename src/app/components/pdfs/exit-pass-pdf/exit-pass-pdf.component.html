@@ -11,7 +11,7 @@
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Inicio</a></li>
             <li class="breadcrumb-item"><a [routerLink]="['/Trips']"> Viajes</a></li>
-            <li class="breadcrumb-item"><a>Pase de Salida número {{id_entrada}}</a></li>
+            <li class="breadcrumb-item"><a>Pase de Salida número {{pass.idexit_pass}}</a></li>
           </ol>
         </nav>
         <!--- Migaja de Pan -->
@@ -28,7 +28,7 @@
                       <strong class="strong-header" style="color: black;"> MINISTERIO DE SALUD PUBLICA Y ASISTENCIA SOCIAL</strong>
                     </div>
                     <div class="header-text2">
-                      <strong class="strong-header" style="color: black;"> PASE DE SALIDA DE VEHICULOS NO. </strong>
+                      <strong class="strong-header" style="color: black;"> PASE DE SALIDA DE VEHICULOS NO. {{pass.idexit_pass}}</strong>
                     </div>
                   </div>
                   <div class="header-info">
@@ -37,19 +37,19 @@
                         <td> MARCA DE VEHICULO: </td>
                       </div>
                       <div class="line">
-                        <td></td>
+                        <td>{{pass.brand}}</td>
                       </div>
                       <div class="info-left-item">
                         <td> No. DE SOLICITUD: </td>
                       </div>
                         <div class="line">
-                          <td></td>
+                          <td>{{pass.id}}</td>
                         </div>
                       <div class="info-left-item">
                         <td> UNIDAD SOLICITANTE: </td>
                       </div>
                         <div class="line-bottom">
-                          <td></td>
+                          <td>{{pass.requesting_unit}}</td>
                         </div>
                     </div>
                       <div class="header-info-right">
@@ -57,13 +57,13 @@
                           <td> PILOTO DE COMISIÓN: </td>
                         </div>
                           <div class="line">
-                            <td></td>
+                            <td>{{pass.fullname}}</td>
                           </div>
                         <div class="info-right-item">
                           <td> LUGAR DE COMISIÓN: </td>
                         </div>
                           <div class="line">
-                            <td></td>
+                            <td>{{pass.destinations}}</td>
                           </div>
                           <div class="info-right-item">
                             <td> .</td>
@@ -74,10 +74,10 @@
                       </div>
                   </div>
                   <div class="header-text3">
-                    <strong class="strong-header" style="color: black;"> TIPO DE VEHICULO:  </strong>
+                    <strong class="strong-header" style="color: black;"> TIPO DE VEHICULO: {{pass.type_name}} </strong>
                   </div>
                   <div class="header-text4">
-                    <strong class="strong-header" style="color: black;"> PLACAS:  </strong>
+                    <strong class="strong-header" style="color: black;"> PLACAS: {{pass.plate}} </strong>
                   </div>
                   <div class="header-text5">
                     <strong class="strong-header" style="color: black;"> DATOS DE SALIDA Y ENTRADA DE VEHICULO</strong>
@@ -88,21 +88,21 @@
                     <div class="th3"><strong>ENTRADA</strong></div>
                     <div class="th4"><strong>OBSERVACIONES (LLENADO EXCLUSIVO DE ASISTENTE DE SEGURIDAD)</strong> </div>
                   </div>
-                  <div class="table-header1">
+                  <div class="table-header1" >
                     <div class="th1"><strong>FECHA</strong> </div>
-                    <div class="th2"><strong></strong></div>
+                    <div class="th2"><strong>{{pass.first_date | date: 'd MMM y' | uppercase}}</strong></div>
                     <div class="th3"><strong></strong></div>
                     <div class="th4"><strong></strong> </div>
                   </div>
                   <div class="table-header2">
                     <div class="th1"><strong>HORA</strong> </div>
-                    <div class="th2"><strong></strong></div>
+                    <div class="th2"><strong>{{pass.first_hour}}</strong></div>
                     <div class="th3"><strong></strong></div>
                     <div class="th4"><strong></strong> </div>
                   </div>
                   <div class="table-header3">
                     <div class="th1"><strong>KILOMETRAJE</strong> </div>
-                    <div class="th2"><strong></strong></div>
+                    <div class="th2"><strong>{{pass.km}}</strong></div>
                     <div class="th3"><strong></strong></div>
                     <div class="th4"><strong></strong> </div>
                   </div>
