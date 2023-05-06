@@ -58,7 +58,6 @@ export class TripsComponent implements OnInit {
 
   initializeTrips(id){
     this.statusTrips.status = 11;
-    console.log(id)
     this._tripServicetab.updateTrips(id,this.statusTrips).subscribe(
       data => {
         this._sweetAlertService.createAndUpdate('Viaje iniciado correctamente');

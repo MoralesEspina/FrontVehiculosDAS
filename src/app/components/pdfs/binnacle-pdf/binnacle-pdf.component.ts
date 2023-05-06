@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PdfMakeWrapper, Txt, Table, Cell, Img } from 'pdfmake-wrapper';
 import * as pdfFonts from "pdfmake/build/vfs_fonts";
+import { binnacleI } from 'src/app/models/binnacle.interface';
 import { SweetAlertService } from 'src/app/services/sweetAlert.service';
+import { TripsService } from 'src/app/services/trips.service';
 
 
 @Component({
@@ -16,48 +18,59 @@ export class BinnaclePdfComponent implements OnInit {
   imageSedan: string = 'https://firebasestorage.googleapis.com/v0/b/das-jalapa.appspot.com/o/watermarks%2FVehiculo%202.png?alt=media&token=a2ef4609-969e-4e41-aecf-89e20ac5f65c'
   imagePickUp: string = 'https://firebasestorage.googleapis.com/v0/b/das-jalapa.appspot.com/o/watermarks%2FVehiculo%201.png?alt=media&token=3c9e9920-0636-4248-928c-fa8bd7a12a9a'
   public id_entrada:any;
+  public binnacle;
   constructor( private _route: ActivatedRoute,
                private _router: Router,
-               private _sweetAlert:SweetAlertService) {
+               private _sweetAlert:SweetAlertService,
+               private _tripService:TripsService) {
     this.id_entrada = this._route.snapshot.params['id'];
+    this.binnacle = new binnacleI('','','','','','','','','','','')
   }
 
   ngOnInit(): void {
     this._sweetAlert.createAndUpdate('Generando Bitacora')
-    this.GenerateBinnacle()
+    this.getBinnacle();
+    setTimeout(()=>{
+      this.GenerateBinnacle()
+  }, 200);
   }
 
-  getBinnacle(){
-
+  getBinnacle() {
+    this._tripService.getOnePDF(this.id_entrada,'binnacle').subscribe(
+      response => {
+        this.binnacle = response.data[0];
+      }, error => {
+      }
+    )
   }
+
   async GenerateBinnacle() {
-
     PdfMakeWrapper.setFonts(pdfFonts);
 
     const pdf = new PdfMakeWrapper()
 
     pdf.add(new Table([
       [new Cell(new Txt('BITÁCORA DE LA COMISIÓN').end).colSpan(5).fontSize(9).alignment('center').end, null, null, null, null,
-      new Cell(new Txt('No. Correlativo: ').end).colSpan(1).fontSize(9).end, new Cell(new Txt('').end).colSpan(1).fontSize(9).end],
+      new Cell(new Txt('No. Correlativo: ').end).colSpan(1).fontSize(9).end, new Cell(new Txt(this.binnacle.idbinnacle).end).colSpan(1).fontSize(9).end],
       [new Cell(new Txt('DATOS GENERALES').end).colSpan(7).fontSize(9).alignment('center').end, null, null, null, null, null, null],
       [new Cell(new Txt('Piloto Asignado').end).colSpan(2).fontSize(7).end, null,
-      new Cell(new Txt('').end).colSpan(2).fontSize(7).end, null,
-      new Cell(new Txt('Número de Placas ').end).colSpan(1).fontSize(7).end, new Cell(new Txt('').end).colSpan(2).fontSize(7).end],
+      new Cell(new Txt(this.binnacle.fullname).end).colSpan(2).fontSize(7).end, null,
+      new Cell(new Txt('Número de Placas ').end).colSpan(1).fontSize(7).end, new Cell(new Txt(this.binnacle.plate).end).colSpan(2).fontSize(7).end],
 
       [new Cell(new Txt('Tipo de Vehiculo').end).colSpan(2).fontSize(7).end, null,
-      new Cell(new Txt('').end).colSpan(2).fontSize(7).end, null,
-      new Cell(new Txt('Número de Cilindros').end).colSpan(1).fontSize(7).end, new Cell(new Txt('').end).colSpan(2).fontSize(7).end],
+      new Cell(new Txt(this.binnacle.type_name).end).colSpan(2).fontSize(7).end, null,
+      new Cell(new Txt('Número de Cilindros').end).colSpan(1).fontSize(7).end, new Cell(new Txt(this.binnacle.cylinders).end).colSpan(2).fontSize(7).end],
 
       [new Cell(new Txt('Modelo').end).colSpan(2).fontSize(7).end, null,
-      new Cell(new Txt('').end).colSpan(2).fontSize(7).end, null,
-      new Cell(new Txt('Tipo de Combustible').end).colSpan(1).fontSize(7).end, new Cell(new Txt('').end).colSpan(2).fontSize(7).end],
+      new Cell(new Txt(this.binnacle.model).end).colSpan(2).fontSize(7).end, null,
+      new Cell(new Txt('Tipo de Combustible').end).colSpan(1).fontSize(7).end, new Cell(new Txt(this.binnacle.gas).end).colSpan(2).fontSize(7).end],
 
       [new Cell(new Txt('Teléfono del Responsable').end).colSpan(2).fontSize(7).end, null,
-      new Cell(new Txt('').end).colSpan(2).fontSize(7).end, null,
+      new Cell(new Txt(this.binnacle.phoneNumber).end).colSpan(2).fontSize(7).end, null,
       new Cell(new Txt('Nivel de Combustible').end).colSpan(1).fontSize(7).end, new Cell(new Txt('').end).colSpan(2).fontSize(7).end],
 
       [new Cell(new Txt('No. Correlativo de Solicitud').end).colSpan(2).fontSize(7).end, null,
-      new Cell(new Txt('').end).colSpan(5).fontSize(7).end, null, null, null, null],
+      new Cell(new Txt(this.binnacle.id).end).colSpan(5).fontSize(7).end, null, null, null, null],
 
       [new Cell(new Txt('Cupones de combustible').end).margin(6).colSpan(2).fontSize(7).rowSpan(2).alignment('center').end, null,
       new Cell(new Txt('No. de Vale').end).colSpan(2).fontSize(7).alignment('center').end, null,

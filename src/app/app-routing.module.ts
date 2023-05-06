@@ -90,8 +90,7 @@ const routes: Routes = [
 
   //TODO BITACORA
   { path: 'Bitacora', component: BinnaclePdfComponent, canActivate: [LoginGuard]  },
-  { path: 'BitacoraExterior/:id', component: BinnaclePdfComponent, canActivate: [LoginGuard]  },
-  { path: 'BitacoraLocal/:id', component: BinnaclePdfComponent, canActivate: [LoginGuard] },
+  { path: 'Binnacle/:id', component: BinnaclePdfComponent, canActivate: [LoginGuard]  }
 ];
 
 @NgModule({

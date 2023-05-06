@@ -202,7 +202,7 @@
                         required [disabled]="onHold== false">
                         <option value="" hidden selected>Seleccionar</option>
                         <option value="{{vehicle.idVehicle}}" *ngFor="let vehicle of vehicles">{{vehicle.plate}} -
-                          {{vehicle.brand}} - {{vehicle.model}} - {{vehicle.color}}</option>
+                          {{vehicle.type_name}} - {{vehicle.brand}} - {{vehicle.model}}</option>
                         </select>
                     </div>
                   </div>

@@ -11,22 +11,22 @@ import { TripsService } from 'src/app/services/trips.service';
 export class ExitPassPdfComponent implements OnInit {
   public id_entrada:any;
   public pass:any;
-  constructor( private router: ActivatedRoute, 
+  constructor( private router: ActivatedRoute,
     private _tripService: TripsService) {
-      this.pass = new exitPassI('','','','','','','','','','','',)
+      this.pass = new exitPassI('','','','','','','','','','','')
   }
 
   ngOnInit(): void {
-    this.id_entrada = this.router.snapshot.params['id']; 
+    this.id_entrada = this.router.snapshot.params['id'];
+    console.log(this.id_entrada)
     this.getExitPass()
   }
 
    getExitPass() {
-    this._tripService.getOneExitPass(this.id_entrada,'local').subscribe(
+    this._tripService.getOnePDF(this.id_entrada,'exitpass').subscribe(
       response => {
         this.pass = response.data[0];
       }, error => {
-
       }
     )
   }

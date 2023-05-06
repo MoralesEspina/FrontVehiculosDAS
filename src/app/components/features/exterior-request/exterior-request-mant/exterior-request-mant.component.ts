@@ -78,11 +78,9 @@ export class ExteriorRequestMantComponent implements OnInit {
   }
 
   getPilotsActives(date) {
-    console.log(date)
     this._personService.getPilotsActives(date).subscribe(
       response => {
         this.person = response.data;
-        console.log(this.person)
       }, error => {
         this._sweetAlertService.warning('No se pudieron cargar las personas correctamente');
       }
@@ -99,6 +97,26 @@ export class ExteriorRequestMantComponent implements OnInit {
     )
   }
 
+  getPilots() {
+    this._personService.getPilots().subscribe(
+      response => {
+        this.person = response.data;
+      }, error => {
+        this._sweetAlertService.warning('No se pudieron cargar las personas correctamente');
+      }
+    )
+  }
+
+  getVehicles(){
+    this._vehicleService.getVehicles('').subscribe(
+      response =>{
+        this.vehicles = response.data;
+      }, error =>{
+        this._sweetAlertService.warning('No se pudieron cargar los vehiculos correctamente');
+      }
+    )
+  }
+
   loadExteriorRequest() {
     if (this.id_entrada) {
       this.editing = true
@@ -110,8 +128,9 @@ export class ExteriorRequestMantComponent implements OnInit {
           this.date.initialDateOf = this.exteriorRequest.first_date;
           this.date.finalDateTo = this.exteriorRequest.latest_date;
 
-          this.getPilotsActives(this.date);
-          this.getVehiclesActives(this.date);
+          this.getPilots();
+          this.getVehicles();
+
           if (this.exteriorRequest.status_request == 7) {
             this.status = true;
             this.onHold = false;
@@ -120,6 +139,8 @@ export class ExteriorRequestMantComponent implements OnInit {
             this.onHold = false;
           }
           else if (this.exteriorRequest.status_request == 6) {
+            this.getPilotsActives(this.date);
+            this.getVehiclesActives(this.date);
             this.onHold = true;
             this.exteriorRequest.pilot_name = ''
             this.exteriorRequest.plate_vehicle = ''

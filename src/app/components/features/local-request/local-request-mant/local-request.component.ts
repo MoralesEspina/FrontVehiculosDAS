@@ -81,6 +81,27 @@ export class LocalRequestMantComponent implements OnInit {
     this._vehicleService.getVehiclesActives(date).subscribe(
       response =>{
         this.vehicles = response.data;
+        console.log(date)
+      }, error =>{
+        this._sweetAlertService.warning('No se pudieron cargar los vehiculos correctamente');
+      }
+    )
+  }
+
+  getPilots() {
+    this._personService.getPilots().subscribe(
+      response => {
+        this.person = response.data;
+      }, error => {
+        this._sweetAlertService.warning('No se pudieron cargar las personas correctamente');
+      }
+    )
+  }
+
+  getVehicles(){
+    this._vehicleService.getVehicles('').subscribe(
+      response =>{
+        this.vehicles = response.data;
       }, error =>{
         this._sweetAlertService.warning('No se pudieron cargar los vehiculos correctamente');
       }
@@ -98,8 +119,9 @@ export class LocalRequestMantComponent implements OnInit {
           this.date.initialDateOf = this.localRequest.first_date;
           this.date.finalDateTo = this.localRequest.latest_date;
 
-          this.getPilotsActives(this.date);
-          this.getVehiclesActives(this.date);
+          this.getPilots();
+          this.getVehicles();
+
           if (this.localRequest.status == 7) {
             this.status = true;
             this.onHold = false;
@@ -107,6 +129,8 @@ export class LocalRequestMantComponent implements OnInit {
             this.deny = true;
             this.onHold = false;
           }else if(this.localRequest.status == 6){
+            this.getPilotsActives(this.date);
+            this.getVehiclesActives(this.date);
             this.onHold = true;
             this.localRequest.pilotName = ''
             this.localRequest.plate = ''

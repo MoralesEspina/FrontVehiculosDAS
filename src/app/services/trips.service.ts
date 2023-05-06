@@ -35,13 +35,12 @@ export class TripsService {
       })
     }
 
-    getOneExitPass( id,option): Observable<any> {
-      return this._http.get(`${this.url}trips/exitpass/${id}?option=${option}`, {
+    getOnePDF( id,option): Observable<any> {
+      return this._http.get(`${this.url}trips/pdf/${id}?option=${option}`, {
         headers: new HttpHeaders({
           'Content-Type':'application/json',
           //'x-access-token': '' + localStorage.getItem("Token")
         })
       })
     }
-
 }
