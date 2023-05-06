@@ -10,6 +10,8 @@ export class LocalRequestI{
       public phoneNumber:string,
       public observations:string,
       public status:string,
+      public reason_rejected: string,
+      public created_by: any,
       public detail: Array<any> = []
     )
     {

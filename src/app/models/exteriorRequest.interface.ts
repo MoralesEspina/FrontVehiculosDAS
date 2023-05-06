@@ -13,7 +13,8 @@ export class ExteriorRequestI{
       public pilot_name:string,
       public reason_rejected:string,
       public status_request:string,
-      public detail: Array<any> = []
+      public created_by: any,
+      public detail: Array<any> = [],
       )
     {} }
 

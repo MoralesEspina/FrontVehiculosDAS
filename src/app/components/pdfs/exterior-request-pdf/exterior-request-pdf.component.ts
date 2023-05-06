@@ -22,7 +22,7 @@ export class ExteriorRequestPdfComponent implements OnInit {
   public id_entrada:any;
   constructor(  private _exteriorRequestService:ExteriorRequestService,
                 private router: ActivatedRoute) {
-    this.request = new ExteriorRequestI('','','','','','','',0,0,'','','','')
+    this.request = new ExteriorRequestI('','','','','','','',0,0,'','','','','',[])
     this.id_entrada = this.router.snapshot.params['id'];
   }
 

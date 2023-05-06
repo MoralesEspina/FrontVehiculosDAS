@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { Rol } from './models/rol.model';
 //TODO IMPORTS VISTAS
 import { ManagerviewComponent } from './components/features/managerview/managerview.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -36,61 +37,61 @@ import { VoucherIndexComponent } from './components/features/voucher/voucher-ind
 
 import { LoginGuard } from './login.guard';
 import { TripsHistoryComponent } from './components/features/trips-history/trips-history.component';
+import { AuthGuard } from './guards/auth.guard/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login',component: LoginComponent},
-  { path: 'dashboard', component: DashboardComponent, canActivate: [LoginGuard] },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
 
   //TODO RUTAS VEHICULOS
-  { path: 'vehicles', component: VehiclesIndexComponent, canActivate: [LoginGuard] },
-  { path: 'vehicles/add', component: VehiclesMantComponent, canActivate: [LoginGuard] },
-  { path: 'vehicles/edit/:id', component: VehiclesMantComponent, canActivate: [LoginGuard] },
+  { path: 'vehicles', component: VehiclesIndexComponent,  canActivate: [AuthGuard], data: { roles: [Rol.admin, Rol.boss] } },
+  { path: 'vehicles/add', component: VehiclesMantComponent, canActivate: [AuthGuard], data: { roles: [Rol.admin, Rol.boss] } },
+  { path: 'vehicles/edit/:id', component: VehiclesMantComponent,canActivate: [AuthGuard], data: { roles: [Rol.admin, Rol.boss] } },
   //TODO RUTAS DE SOLICITUDES
-  { path: 'History-Request', component: HistoryRequestComponent, canActivate: [LoginGuard] },
+  { path: 'History-Request', component: HistoryRequestComponent, canActivate: [AuthGuard], data: { roles: [Rol.admin, Rol.boss] } },
 
   //TODO RUTAS DE SOLICITUD LOCAL
-  { path: 'localRequest-index', component: LocalRequestIndexComponent, canActivate: [LoginGuard] },
-  { path: 'localRequest/add', component: LocalRequestMantComponent, canActivate: [LoginGuard] },
-  { path: 'localRequest/edit/:id', component: LocalRequestMantComponent, canActivate: [LoginGuard] },
-  { path: 'localRequest/pdf/:id', component: LocalRequestPdfComponent, canActivate: [LoginGuard] },
+  { path: 'localRequest-index', component: LocalRequestIndexComponent, canActivate: [AuthGuard] },
+  { path: 'localRequest/add', component: LocalRequestMantComponent, canActivate: [AuthGuard] },
+  { path: 'localRequest/edit/:id', component: LocalRequestMantComponent, canActivate: [AuthGuard]},
+  { path: 'localRequest/pdf/:id', component: LocalRequestPdfComponent, canActivate: [AuthGuard]},
 
   //TODO RUTAS DE SOLICITUD EXTERIOR
-  { path: 'exteriorRequest-index', component: ExteriorRequestIndexComponent, canActivate: [LoginGuard] },
-  { path: 'exteriorRequest/add', component: ExteriorRequestMantComponent, canActivate: [LoginGuard] },
-  { path: 'exteriorRequest/edit/:id', component: ExteriorRequestMantComponent, canActivate: [LoginGuard] },
-  { path: 'exteriorRequest/pdf/:id', component: ExteriorRequestPdfComponent, canActivate: [LoginGuard] },
+  { path: 'exteriorRequest-index', component: ExteriorRequestIndexComponent, canActivate: [AuthGuard]  },
+  { path: 'exteriorRequest/add', component: ExteriorRequestMantComponent, canActivate: [AuthGuard] },
+  { path: 'exteriorRequest/edit/:id', component: ExteriorRequestMantComponent, canActivate: [AuthGuard] },
+  { path: 'exteriorRequest/pdf/:id', component: ExteriorRequestPdfComponent, canActivate: [AuthGuard]},
 
   //TODO RUTAS PERSONA
-  { path: 'personform', component: PersonFormComponent, canActivate: [LoginGuard] },
-  { path: 'persontable', component: PersonTableComponent, canActivate: [LoginGuard] },
-  { path: 'personform/edit/:id', component: PersonFormComponent, canActivate: [LoginGuard] },
+  { path: 'personform', component: PersonFormComponent, canActivate: [AuthGuard], data: { roles: [Rol.admin, Rol.boss] } },
+  { path: 'persontable', component: PersonTableComponent, canActivate: [AuthGuard], data: { roles: [Rol.admin, Rol.boss] } },
+  { path: 'personform/edit/:id', component: PersonFormComponent, canActivate: [AuthGuard], data: { roles: [Rol.admin, Rol.boss] } },
 
   //TODO RUTAS USUARIOS
-  { path: 'users', component: UsersComponent, canActivate: [LoginGuard] },
-  { path: 'users-index', component: UsersIndexComponent, canActivate: [LoginGuard] },
-  { path: 'users/edit/:id', component: UsersComponent, canActivate: [LoginGuard] },
+  { path: 'users', component: UsersComponent, canActivate: [AuthGuard], data: { roles: [Rol.admin] } },
+  { path: 'users-index', component: UsersIndexComponent, canActivate: [AuthGuard], data: { roles: [Rol.admin] } },
+  { path: 'users/edit/:id', component: UsersComponent, canActivate: [AuthGuard], data: { roles: [Rol.admin] } },
 
   //TODO RUTAS PDF'S
-  { path: 'ExteriorRequestPDF', component: ExteriorRequestPdfComponent, canActivate: [LoginGuard] },
-  { path: 'LocalRequestPDF', component: LocalRequestPdfComponent, canActivate: [LoginGuard] },
-  { path: 'voucherDieselPDF/:id', component: VoucherPdfComponent, canActivate: [LoginGuard] },
-  { path: 'voucherRegularPDF/:id', component: VoucherRegularPdfComponent, canActivate: [LoginGuard] },
-  { path: 'exitPassPDF/:id', component: ExitPassPdfComponent, canActivate: [LoginGuard] },
-  { path: 'managerView', component: ManagerviewComponent, canActivate: [LoginGuard] },
+  { path: 'ExteriorRequestPDF', component: ExteriorRequestPdfComponent, canActivate: [AuthGuard]},
+  { path: 'LocalRequestPDF', component: LocalRequestPdfComponent, canActivate: [AuthGuard] },
+  { path: 'voucherDieselPDF/:id', component: VoucherPdfComponent, canActivate: [AuthGuard], data: { roles: [Rol.admin, Rol.boss] } },
+  { path: 'voucherRegularPDF/:id', component: VoucherRegularPdfComponent, canActivate: [AuthGuard], data: { roles: [Rol.admin, Rol.boss] } },
+  { path: 'exitPassPDF/:id', component: ExitPassPdfComponent, canActivate: [AuthGuard], data: { roles: [Rol.admin, Rol.boss] } },
 
   //TODO VIAJES
-  { path: 'Trips', component: TripsComponent, canActivate: [LoginGuard]  },
-  { path: 'History-trips', component: TripsHistoryComponent, canActivate: [LoginGuard]  },
+  { path: 'Trips', component: TripsComponent, canActivate: [AuthGuard], data: { roles: [Rol.admin, Rol.boss] }  },
+  { path: 'History-trips', component: TripsHistoryComponent, canActivate: [AuthGuard], data: { roles: [Rol.admin, Rol.boss] }  },
 
   //TODO VALES
-  { path: 'VoucherGasoline', component: VoucherComponent, canActivate: [LoginGuard]  },
-  { path: 'VoucherDiesel', component:VoucherDieselComponent, canActivate: [LoginGuard] },
-  { path: 'Vouchertable', component: VoucherIndexComponent, canActivate: [LoginGuard] },
+  { path: 'VoucherGasoline', component: VoucherComponent, canActivate: [AuthGuard], data: { roles: [Rol.admin, Rol.boss] }  },
+  { path: 'VoucherDiesel', component:VoucherDieselComponent, canActivate: [AuthGuard], data: { roles: [Rol.admin, Rol.boss] } },
+  { path: 'Vouchertable', component: VoucherIndexComponent, canActivate: [AuthGuard], data: { roles: [Rol.admin, Rol.boss] } },
 
   //TODO BITACORA
-  { path: 'Bitacora', component: BinnaclePdfComponent, canActivate: [LoginGuard]  },
-  { path: 'Binnacle/:id', component: BinnaclePdfComponent, canActivate: [LoginGuard]  }
+  { path: 'Bitacora', component: BinnaclePdfComponent, canActivate: [AuthGuard], data: { roles: [Rol.admin, Rol.boss] }  },
+  { path: 'Binnacle/:id', component: BinnaclePdfComponent, canActivate: [AuthGuard], data: { roles: [Rol.admin, Rol.boss] }  }
 ];
 
 @NgModule({
