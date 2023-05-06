@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
           this.rol = this.data_response.data.data.rol;
           localStorage.setItem('rol', this.rol)
           localStorage.setItem('Token', this.token);
+          localStorage.setItem('User', this.user.username);
           this._sweetAlert.login('Inicio de Sesión Exitoso');
             },
             error => {

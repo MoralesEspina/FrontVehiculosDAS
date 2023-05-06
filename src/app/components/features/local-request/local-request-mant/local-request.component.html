@@ -185,7 +185,7 @@
                 <div class="row" *ngIf="editing == true" >
                   <div class="col-lg-1" >
                   </div>
-                  <div class="col-lg-5" >
+                  <div class="col-lg-5" *ngIf="deny == false ">
                     <div class="form-group">
                       <label class="form-label"><b>Nombre del piloto asignado:</b></label>
                       <select class="form-control" #pilotName="ngModel" name="pilotName"
@@ -195,7 +195,7 @@
                       </select>
                     </div>
                   </div>
-                  <div class="col-lg-5">
+                  <div class="col-lg-5" *ngIf="deny == false ">
                     <div class="form-group">
                       <label class="form-label"><b>Placa del vehiculo autorizado:</b></label>
                       <select class="form-control" #plate="ngModel" name="plate" [(ngModel)]="localRequest.plate"
@@ -205,6 +205,13 @@
                           {{vehicle.type_name}} - {{vehicle.brand}} - {{vehicle.model}}</option>
                         </select>
                     </div>
+                  </div>
+                </div>
+                <div class="col-9" *ngIf="deny == true ">
+                  <div class="form-group">
+                    <label class="form-label"><b>Motivo de rechazo:</b></label>
+                    <input class="form-control" #reason_rejected="ngModel" name="reason_rejected"
+                      [(ngModel)]="localRequest.reason_rejected" type="text" disabled>
                   </div>
                 </div>
                 <div class="row" *ngIf="editing == true">

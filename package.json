@@ -29,6 +29,7 @@
     "ngx-pagination": "^6.0.2",
     "pdfmake-wrapper": "^2.1.3",
     "rxjs": "~7.5.0",
+    "secure-web-storage": "^1.0.2",
     "sweetalert2": "^11.5.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

@@ -18,7 +18,7 @@ export class LocalRequestPdfComponent implements OnInit {
   public id_entrada;
   constructor(  private _localRequestService:LocalRequestService,
                 private router: ActivatedRoute) {
-    this.request = new LocalRequestI('','','','','','','','','','',[])
+    this.request = new LocalRequestI('','','','','','','','','','','','',[])
     this.id_entrada = this.router.snapshot.params['id'];
   }
 

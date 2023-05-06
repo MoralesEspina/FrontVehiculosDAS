@@ -54,10 +54,10 @@ export class LocalRequestMantComponent implements OnInit {
     private _vehicleService: VehicleService,
     private _sweetAlertService: SweetAlertService,
     private _errorService: ErrorsService,
-    private _router:Router) {
-    this.localRequest = new LocalRequestI("", "", "", "", "", "", "", "", "", "", [])
+    private _router: Router) {
+    this.localRequest = new LocalRequestI("", "", "", "", "", "", "", "", "", "","","", [])
     this.detailrequest.destiny = ''
-    this.date = new DateI('','')
+    this.date = new DateI('', '')
   }
 
   ngOnInit(): void {
@@ -77,12 +77,12 @@ export class LocalRequestMantComponent implements OnInit {
     )
   }
 
-  getVehiclesActives(date){
+  getVehiclesActives(date) {
     this._vehicleService.getVehiclesActives(date).subscribe(
-      response =>{
+      response => {
         this.vehicles = response.data;
         console.log(date)
-      }, error =>{
+      }, error => {
         this._sweetAlertService.warning('No se pudieron cargar los vehiculos correctamente');
       }
     )
@@ -98,11 +98,11 @@ export class LocalRequestMantComponent implements OnInit {
     )
   }
 
-  getVehicles(){
+  getVehicles() {
     this._vehicleService.getVehicles('').subscribe(
-      response =>{
+      response => {
         this.vehicles = response.data;
-      }, error =>{
+      }, error => {
         this._sweetAlertService.warning('No se pudieron cargar los vehiculos correctamente');
       }
     )
@@ -111,7 +111,7 @@ export class LocalRequestMantComponent implements OnInit {
   loadLocalRequest() {
     if (this.id_entrada) {
       this.editing = true
-      this._localRequestService.getOneLocalRequest(this.id_entrada,'').subscribe(
+      this._localRequestService.getOneLocalRequest(this.id_entrada, '').subscribe(
         response => {
           this.localRequest = response.data.request[0]
           this.details = response.data.detailRequest
@@ -125,10 +125,10 @@ export class LocalRequestMantComponent implements OnInit {
           if (this.localRequest.status == 7) {
             this.status = true;
             this.onHold = false;
-          }else if(this.localRequest.status == 9){
+          } else if (this.localRequest.status == 9) {
             this.deny = true;
             this.onHold = false;
-          }else if(this.localRequest.status == 6){
+          } else if (this.localRequest.status == 6) {
             this.getPilotsActives(this.date);
             this.getVehiclesActives(this.date);
             this.onHold = true;
@@ -157,6 +157,8 @@ export class LocalRequestMantComponent implements OnInit {
       phoneNumber: localRequestForm.value.phoneNumber,
       observations: localRequestForm.value.observations,
       status: '',
+      reason_rejected: '',
+      created_by: localStorage.getItem('User'),
       detail: this.details
     }
 
@@ -164,20 +166,20 @@ export class LocalRequestMantComponent implements OnInit {
       this._sweetAlertService.warning('Complete correctamente el formulario');
       return
     }
-      this._localRequestService.createOneLocalRequest(request_local).subscribe(
-        response => {
-          this._sweetAlertService.createAndUpdate('Se registro la solicitud correctamente');
-        }, error => {
-          this.data_response = error;
-          this._errorService.error(this.data_response);
-        }
-      )
-      setTimeout(()=>{
-        this.localRequest = new LocalRequestI("", "", "", "", "", "", "", "", "", "", [])
-        this._router.navigate(['/localRequest-index'])
+    this._localRequestService.createOneLocalRequest(request_local).subscribe(
+      response => {
+        this._sweetAlertService.createAndUpdate('Se registro la solicitud correctamente');
+      }, error => {
+        this.data_response = error;
+        this._errorService.error(this.data_response);
+      }
+    )
+    setTimeout(() => {
+      this.localRequest = new LocalRequestI("", "", "", "", "", "", "", "", "", "", '','',[])
+      this._router.navigate(['/localRequest-index'])
     }, 1000);
 
-    }
+  }
 
 
   createDetailLocalRequest(detailRequestForm) {
@@ -195,13 +197,13 @@ export class LocalRequestMantComponent implements OnInit {
       this.details.push(detailRequest);
       this.detailrequest = {};
       this.detailrequest.destiny = '';
-    } else{
+    } else {
       this._sweetAlertService.warning('Complete correctamente la información del destino');
     }
   }
 
-  acceptRequest(acceptedForm){
-    const accepted:LocalRequestI = {
+  acceptRequest(acceptedForm) {
+    const accepted: LocalRequestI = {
       pilotName: acceptedForm.value.pilotName,
       plate: acceptedForm.value.plate,
       place: '',
@@ -212,6 +214,8 @@ export class LocalRequestMantComponent implements OnInit {
       phoneNumber: '',
       status: "7",
       observations: '',
+      reason_rejected: '',
+      created_by: '',
       detail: []
     }
     if (acceptedForm.valid) {
@@ -229,42 +233,49 @@ export class LocalRequestMantComponent implements OnInit {
     }
   }
 
-  async denyRequest(){
-    Swal.fire({
-      title: 'Esta seguro?',
-      text: "Esta acción no se podra revertir!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, denegar!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        const deny:LocalRequestI = {
-          pilotName: '',
-          plate: '',
-          place: '',
-          date: '',
-          section: '',
-          applicantsName: '',
-          position: '',
-          phoneNumber: '',
-          status: "9",
-          observations: '',
-          detail: []
-        }
-        this._localRequestService.updateOneLocalRequest(deny, this.id_entrada).subscribe(
-          response => {
-            this._sweetAlertService.createAndUpdate('Se denego correctamente la solicitud');
-            this._router.navigate(['localRequest-index'])
-          }, error => {
-            this.data_response = error;
-            this._errorService.error(this.data_response);
-          }
-        );
-      }
+  async denyRequest() {
+    const { value: text } = await Swal.fire({
+      input: 'textarea',
+      inputLabel: 'Indique el motivo del rechazo:',
+      inputPlaceholder: 'Escribe acá el motivo...',
+      inputAttributes: {
+        'aria-label': 'Type your message here'
+      },
+      showCancelButton: true
     })
+    if (!text) {
+      this._sweetAlertService.warning('Debe ingresar un motivo');
+      return
+    }
+    const deny: LocalRequestI = {
+      pilotName: '',
+      plate: '',
+      place: '',
+      date: '',
+      section: '',
+      applicantsName: '',
+      position: '',
+      phoneNumber: '',
+      status: "9",
+      observations: '',
+      reason_rejected: text,
+      created_by: '',
+      detail: []
+    }
+    this._localRequestService.updateOneLocalRequest(deny, this.id_entrada).subscribe(
+      response => {
+        this._sweetAlertService.createAndUpdate('Se denego correctamente la solicitud');
+        this._router.navigate(['localRequest-index'])
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      }, error => {
+        this.data_response = error;
+        this._errorService.error(this.data_response);
+      }
+    );
   }
+
 
   deleteDetailRequest() {
     this.details.pop();

@@ -46,7 +46,7 @@ export class ExteriorRequestMantComponent implements OnInit {
     private _sweetAlertService: SweetAlertService,
     private _errorService: ErrorsService,
     private _router: Router) {
-    this.exteriorRequest = new ExteriorRequestI('', '', '', '', '', '', '', 0, 0, '', '', '', '', []);
+    this.exteriorRequest = new ExteriorRequestI('', '', '', '', '', '', '', 0, 0, '', '', '', '','', []);
     this.date = new DateI('','')
   }
 
@@ -172,7 +172,8 @@ export class ExteriorRequestMantComponent implements OnInit {
       pilot_name: '',
       reason_rejected: '',
       status_request: '',
-      detail: this.details
+      detail: this.details,
+      created_by: localStorage.getItem('User'),
     }
     if (!ExteriorForm.valid) {
       this._sweetAlertService.warning('Complete correctamente el formulario');
@@ -182,7 +183,7 @@ export class ExteriorRequestMantComponent implements OnInit {
       response => {
         this._sweetAlertService.createAndUpdate('Se registro la solicitud correctamente');
         setTimeout(()=>{
-          this.exteriorRequest = new ExteriorRequestI('', '', '', '', '', '', '', 0, 0, '', '', '', '', []);
+          this.exteriorRequest = new ExteriorRequestI('', '', '', '', '', '', '', 0, 0, '', '', '', '','', []);
           this._router.navigate(['/exteriorRequest-index'])
         }, 1000);
       }, error => {
@@ -260,7 +261,8 @@ export class ExteriorRequestMantComponent implements OnInit {
       pilot_name: acceptedForm.value.pilot_name,
       status_request: "7",
       reason_rejected: '',
-      detail: []
+      detail: [],
+      created_by: '',
     }
     if (acceptedForm.valid) {
       this._exteriorRoutesService.updateOneExteriorRequest(accepted, this.id_entrada).subscribe(
@@ -308,7 +310,8 @@ export class ExteriorRequestMantComponent implements OnInit {
       pilot_name: '',
       status_request: "9",
       reason_rejected: text,
-      detail: []
+      detail: [],
+      created_by: '',
     }
 
     this._exteriorRoutesService.updateOneExteriorRequest(deny, this.id_entrada).subscribe(
