@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { ResponseI } from 'src/app/models/response.interface';
+import { DenyTripsI } from 'src/app/models/tripsdate.interface';
 import { ErrorsService } from 'src/app/services/errors.service';
 import { SweetAlertService } from 'src/app/services/sweetAlert.service';
 import { TripsService } from 'src/app/services/trips.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-trips',
@@ -21,6 +23,7 @@ export class TripsComponent implements OnInit {
   public data_response;
   public statusE: boolean = false;
   public statusTrips;
+  public denyTrips;
   public isLoad: boolean = false;
 
 
@@ -31,6 +34,7 @@ export class TripsComponent implements OnInit {
     private _router:Router,
     ) {
       this.statusTrips = new ResponseI('','')
+      this.denyTrips = new DenyTripsI('','')
     }
 
   ngOnInit(): void {
@@ -79,5 +83,37 @@ export class TripsComponent implements OnInit {
         this._errorService.error(this.data_response)
       })
   }
+
+
+  async denyRequest(id) {
+    const { value: text } = await Swal.fire({
+      input: 'textarea',
+      inputLabel: 'Indique el motivo de la cancelación:',
+      inputPlaceholder: 'Escribe acá el motivo...',
+      inputAttributes: {
+        'aria-label': 'Type your message here'
+      },
+      showCancelButton: true
+    })
+
+    if (!text) {
+      this._sweetAlertService.warning('Debe ingresar un motivo');
+      return
+    }
+
+    this.denyTrips.status = 8;
+    this.denyTrips.reason_rejected= text;
+ 
+    this._tripServicetab.updateTrips(id,this.denyTrips).subscribe(
+      data => {
+        this._sweetAlertService.createAndUpdate('Viaje cancelado correctamente');
+        location.reload();
+      },
+      error => {
+        this.data_response = error;
+        this._errorService.error(this.data_response)
+      })  ;
+  }
+
 
 }

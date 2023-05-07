@@ -128,25 +128,25 @@
                   <div class="form-group">
                     <label class="form-label"><b>Comisión a:</b></label>
                     <input name="comission_to" type="text" class="form-control" #comission_to="ngModel"
-                      [disabled]="comission != 'Sin Comisión'" [(ngModel)]="voucher.comission_to"
+                      [disabled]="comission != 'Sin Viaje'" [(ngModel)]="voucher.comission_to"
                       placeholder="Ingrese el motivo" required>
                   </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4" *ngIf="comission != 'Sin Viaje'">
                   <div class="form-group">
                     <label class="form-label"><b>Al servicio de</b></label>
                     <input #service_of="ngModel" name="service_of" [(ngModel)]="voucher.service_of" type="text"
-                      [disabled]="comission != 'Sin Comisión'" class="form-control" placeholder="" required>
+                     disabled class="form-control" placeholder="" required>
                   </div>
                 </div>
                 <!-- <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-label"><b>Proposito</b></label>
                     <input name="objective" type="text" class="form-control" #objective="ngModel"
-                      [(ngModel)]="voucher.objective" placeholder="Ingrese el proposito del viaje" required [disabled]="comission != 'Sin Comisión'">
+                      [(ngModel)]="voucher.objective" placeholder="Ingrese el proposito del viaje" required [disabled]="comission != 'Sin Viaje'">
                   </div>
                 </div> -->
-                <div class="col-lg-4">
+                <div class="col-lg-4" *ngIf="comission != 'Sin Viaje'">
                   <div class="form-group">
                     <label class="form-label"><b>Fecha de comision</b></label>
                     <input class="form-control" placeholder="{{date | date: 'd MMM y' | uppercase}}" disabled>
@@ -156,21 +156,21 @@
                   <div class="form-group">
                     <label class="form-label"><b>Fecha de comision</b></label>
                     <input name="comission_date" type="date" class="form-control" #comission_date="ngModel"
-                      [(ngModel)]="voucher.comission_date" required [disabled]="comission != 'Sin Comisión'">
+                      [(ngModel)]="voucher.comission_date" required [disabled]="comission != 'Sin Viaje'">
                   </div>
                 </div> -->
-                <div class="col-lg-4">
+                <div class="col-lg-4"  style="margin: auto;">
                   <div class="form-group">
                     <label class="form-label"><b>Kms. a recorrer</b></label>
                     <input name="km_to_travel" type="text" class="form-control" #km_to_travel="ngModel"
-                      [(ngModel)]="voucher.km_to_travel" placeholder="Ingrese los km" required>
+                      [(ngModel)]="voucher.km_to_travel" placeholder="Ingrese los km a recorrer" required>
                   </div>
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
                     <label class="form-label"><b>Proposito</b></label>
-                    <input *ngIf="comission != 'Sin Comisión'" type="number" class="form-control" placeholder="{{objective}}" disabled>
-                    <input *ngIf="comission == 'Sin Comisión'" #service="ngModel" name="objective" [(ngModel)]="voucher.objective" type="text"
+                    <input *ngIf="comission != 'Sin Viaje'" type="number" class="form-control" placeholder="{{objective}}" disabled>
+                    <input *ngIf="comission == 'Sin Viaje'" #service="ngModel" name="objective" [(ngModel)]="voucher.objective" type="text"
                       class="form-control" placeholder="Ingrese el proposito" required>
                   
                   </div>
@@ -186,7 +186,7 @@
                   <div class="form-group">
                     <label class="form-label"><b>Nombre del piloto asignado:</b></label>
                     <select class="form-control" #uuid="ngModel" name="uuid" [(ngModel)]="voucher.uuid" required
-                      (ngModelChange)="getOnePerson(this.voucher.uuid)" [disabled]="comission != 'Sin Comisión'">
+                      (ngModelChange)="getOnePerson(this.voucher.uuid)" [disabled]="comission != 'Sin Viaje'">
                       <option value="" disabled>Seleccionar</option>
                       <option value="{{person.uuid}}" *ngFor="let person of person">{{person.fullname}}</option>
                     </select>

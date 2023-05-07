@@ -50,7 +50,7 @@ export class VoucherDieselComponent implements OnInit {
   pipe = new DatePipe('en-US');
   todayWithPipe;
 
-  types: string[] = ['Local', 'Exterior', 'Sin Comisión'];
+  types: string[] = ['Local', 'Exterior', 'Sin Viaje'];
 
   constructor(
     private _vehicleService: VehicleService,
@@ -119,7 +119,7 @@ export class VoucherDieselComponent implements OnInit {
   }
 
   createVoucher(voucherForm) {
-    if (this.comission === 'Sin Comisión') {
+    if (this.comission === 'Sin Viaje') {
       this.comissions = voucherForm.value.comission_to;
       this.objective = voucherForm.value.objective;
       this.idTrips = '';
@@ -135,28 +135,26 @@ export class VoucherDieselComponent implements OnInit {
       km_to_travel: voucherForm.value.km_to_travel,
       idtrips: this.voucher.idtrips
     }
-    console.log(this.idTrips)
-    // if (!voucherForm.valid) {
-    //   this._sweetAlertService.warning('Complete correctamente el formulario');
-    //   return
-    // }
-    // this._voucherService.createNewVoucherDisel(voucher).subscribe(
-    //   response => {
-    //     this._sweetAlertService.createAndUpdate('Se registro el vale correctamente');
-    //     this.voucher = new VoucherDieselI('', '', '', '','', '', '', '', '', '', '')
-    //     this._router.navigate(['Vouchertable'])
-    //   }, error => {
-    //     this.data_response = error;
-    //     this._errorService.error(this.data_response);
-    //   }
-    // )
+    if (!voucherForm.valid) {
+      this._sweetAlertService.warning('Complete correctamente el formulario');
+      return
+    }
+    this._voucherService.createNewVoucherDisel(voucher).subscribe(
+      response => {
+        this._sweetAlertService.createAndUpdate('Se registro el vale correctamente');
+        this.voucher = new VoucherDieselI('', '', '', '','', '', '', '')
+        this._router.navigate(['Vouchertable'])
+      }, error => {
+        this.data_response = error;
+        this._errorService.error(this.data_response);
+      }
+    )
   }
 
   getLocalTrips() {
     this._tripsService.getTrips('onHold', 'local').subscribe(
       response => {
         this.localTrips = response.data;
-        console.log(this.localTrips)
       }, error => {
       }
     )
@@ -166,7 +164,6 @@ export class VoucherDieselComponent implements OnInit {
     this._tripsService.getTrips('onHold', 'exterior').subscribe(
       response => {
         this.exteriorTrips = response.data;
-        console.log(this.exteriorTrips)
       }, error => {
       }
     )
