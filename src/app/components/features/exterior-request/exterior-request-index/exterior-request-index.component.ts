@@ -10,10 +10,17 @@ export class ExteriorRequestIndexComponent implements OnInit {
   public exteriorRequest;
   public p:number = 1;
   public username;
+  public rol;
+  public secre: boolean = false;
+  public isLoad: boolean = false;
   constructor(private _exteriorRequestService:ExteriorRequestService) { }
 
   ngOnInit(): void {
     this.username = localStorage.getItem('User');
+    this.rol= localStorage.getItem('rol')
+    if(this.rol == 'Secretaria/o'){
+      this.secre = true
+    };
     this.getExteriorRequestOnHold();
     
   }
@@ -23,7 +30,7 @@ export class ExteriorRequestIndexComponent implements OnInit {
     this._exteriorRequestService.getExteriorRequest('onHold','6',this.username).subscribe(
       response =>{
         this.exteriorRequest = response.data;
-        console.log(this.exteriorRequest)
+        this.isLoad = true;
       }, error =>{
       }
     )

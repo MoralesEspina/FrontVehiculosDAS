@@ -18,6 +18,8 @@ export class PersonFormComponent implements OnInit {
   public id_entrada;
   public jobs;
   public data_response;
+  public isLoad: boolean = false;
+
 
   constructor(private _infoService: InfoService,
               private _personService: PersonService,
@@ -54,12 +56,14 @@ export class PersonFormComponent implements OnInit {
         response => {
           this.personform = response.data[0]
           this.getJobs();
+          this.isLoad = true;
         },
         error => {
         }
       )
     } else {
       this.editing = false;
+      this.isLoad = true;
     }
   }
 

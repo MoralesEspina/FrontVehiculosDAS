@@ -13,29 +13,30 @@ export class HistoryRequestComponent implements OnInit {
   public p2:number = 1;
   public requestsLocal;
   public username;
+  public isLoad: boolean = false;
+
   constructor(private _exteriorRequestService:ExteriorRequestService, private _requestService:LocalRequestService) { }
 
   ngOnInit(): void {
-    this.getExteriorRequest();
-    this.getLocalRequest();
     this.username = localStorage.getItem('User');
+    this.getRequests();
   }
 
-
-  getExteriorRequest(){
-    this._exteriorRequestService.getExteriorRequest('','',this.username).subscribe(
-      response =>{
-        this.exteriorRequest = response.data;
-      }, error =>{
-      }
-    )
-  }
-  getLocalRequest(){
+  getRequests(){
     this._requestService.getLocalRequest('','',this.username).subscribe(
       response =>{
         this.requestsLocal = response.data;
       }, error =>{
       }
     )
+    this._exteriorRequestService.getExteriorRequest('','',this.username).subscribe(
+      response =>{
+        this.exteriorRequest = response.data;
+        this.isLoad = true;
+      }, error =>{
+      } 
+    )
+    
   }
+  
 }

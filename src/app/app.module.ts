@@ -14,8 +14,6 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import localeEs from '@angular/common/locales/es-GT'
 import { registerLocaleData } from '@angular/common';
 registerLocaleData(localeEs, 'ES')
-//TODO --------------------
-import { ManagerviewComponent } from './components/features/managerview/managerview.component';
 //TODO VEHICULOS
 import { VehiclesMantComponent } from './components/features/vehicles/vehicles-mant/vehicles-mant.component';
 import { VehiclesIndexComponent } from './components/features/vehicles/vehicles-index/vehicles-index.component';
@@ -55,7 +53,6 @@ import { TripsHistoryComponent } from './components/features/trips-history/trips
     VehiclesIndexComponent,
     PersonTableComponent,
     UsersComponent,
-    ManagerviewComponent,
     UsersIndexComponent,
     ExteriorRequestIndexComponent,
     ExteriorRequestMantComponent,

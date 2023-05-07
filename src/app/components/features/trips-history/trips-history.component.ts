@@ -15,15 +15,15 @@ export class TripsHistoryComponent implements OnInit {
   public exteriorRequest;
   public statusL: boolean = false;
   public statusE: boolean = false;
+  public isLoad: boolean = false;
 
   constructor(private _tripServicetab: TripsService,) { }
 
   ngOnInit(): void {
-      this.getTripsExteriorActives();
-      this.getTripsLocalActives();
+      this.getTripsActives();
   }
 
-  getTripsExteriorActives(){
+  getTripsActives(){
     this._tripServicetab.getTrips('actives','exterior').subscribe(
       response =>{
         this.trip_exterior = response.data;
@@ -31,16 +31,13 @@ export class TripsHistoryComponent implements OnInit {
 
       }
     )
-  }
-
-  getTripsLocalActives(){
     this._tripServicetab.getTrips('actives','local').subscribe(
       response =>{
         this.trip_local = response.data;
+        this.isLoad = true;
       }, error =>{
 
       }
     )
   }
-
 }

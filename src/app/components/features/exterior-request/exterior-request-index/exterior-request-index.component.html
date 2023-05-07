@@ -1,4 +1,4 @@
-<div class="main">
+<div class="main" *ngIf="isLoad == true">
     <main class="content">
       <div class="container-fluid">
         <div class="header">
@@ -19,7 +19,7 @@
         <!---  -->
         <div class="col-11">
           <div class="card">
-            <div class="card-header">
+            <div class="card-header" *ngIf="secre ==true">
               <div class="row">
                 <div class="col-lg-6">
                   <div class="btn-group">

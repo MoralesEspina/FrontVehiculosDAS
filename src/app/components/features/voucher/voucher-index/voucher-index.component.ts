@@ -13,14 +13,15 @@ export class VoucherIndexComponent implements OnInit {
   public voucherGasoline;
   public voucherDiesel;
   public oneVoucher;
+  public isLoad: boolean = false;
+
   constructor(private _voucherService:VoucherService) { }
 
   ngOnInit(): void {
-    this.getVoucherGasoline();
-    this.getVoucherDiesel();
+    this.getVouchers();
   }
 
-  getVoucherGasoline(){
+  getVouchers(){
     this._voucherService.getVoucherRegular().subscribe(
       response =>{
         this.voucherGasoline = response.data;
@@ -28,15 +29,14 @@ export class VoucherIndexComponent implements OnInit {
 
       }
     )
-  }
-  getVoucherDiesel(){
     this._voucherService.getVoucherDiesel().subscribe(
       response =>{
         this.voucherDiesel = response.data;
+          this.isLoad = true;
       }, error =>{
 
       }
     )
   }
-
+ 
 }

@@ -13,6 +13,7 @@ export class PersonTableComponent implements OnInit {
   public jobs
   public p:number = 1;
   public person;
+  public isLoad: boolean = false;
 
   constructor(private _infoService: InfoService,
               private _personServicetab: PersonService,) { }
@@ -24,6 +25,7 @@ export class PersonTableComponent implements OnInit {
     this._personServicetab.getPerson().subscribe(
       response =>{
         this.person = response.data;
+        this.isLoad = true;
       }, error =>{
 
       }

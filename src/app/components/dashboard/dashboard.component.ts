@@ -12,7 +12,6 @@ user:any;
   constructor() { }
 
   ngOnInit(): void {
-
     this.user = localStorage.getItem('rol');
   }
 

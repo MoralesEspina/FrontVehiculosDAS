@@ -22,6 +22,7 @@ export class UsersComponent implements OnInit {
   public id_entrada;
   public persons;
   public data_response;
+  public isLoad: boolean = false;
 
   constructor(
     private _infoService: InfoService,
@@ -71,12 +72,14 @@ export class UsersComponent implements OnInit {
           this.user = response.data[0]
           this.getRols();
           this.getPersons();
+          this.isLoad = true;
         },
         error => {
         }
       )
     } else {
       this.editing = false;
+      this.isLoad = true;
     }
   }
 

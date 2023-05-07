@@ -14,6 +14,9 @@ export class UsersIndexComponent implements OnInit {
   public persons
   public p: number = 1;
   public users;
+  public isLoad: boolean = false;
+
+
   constructor(private _infoService: InfoService,
               private _personService: PersonService,
               private _userService: UsersService,) { }
@@ -28,6 +31,7 @@ export class UsersIndexComponent implements OnInit {
     this._userService.getUsers().subscribe(
       response => {
         this.users = response.data;
+        this.isLoad = true;
       }, error => {
 
       }

@@ -20,7 +20,9 @@ export class TripsComponent implements OnInit {
   public statusL: boolean = false;
   public data_response;
   public statusE: boolean = false;
-  public statusTrips
+  public statusTrips;
+  public isLoad: boolean = false;
+
 
   constructor(private _tripServicetab: TripsService,
     private _route: ActivatedRoute,
@@ -32,11 +34,10 @@ export class TripsComponent implements OnInit {
     }
 
   ngOnInit(): void {
-      this.getTripsExteriorOnHold();
-      this.getTripsLocalOnHold();
+      this.getTripsOnHold();
   }
 
-  getTripsExteriorOnHold(){
+  getTripsOnHold(){
     this._tripServicetab.getTrips('onHold','exterior').subscribe(
       response =>{
         this.trip_exterior = response.data;
@@ -44,12 +45,10 @@ export class TripsComponent implements OnInit {
 
       }
     )
-  }
-
-  getTripsLocalOnHold(){
     this._tripServicetab.getTrips('onHold','local').subscribe(
       response =>{
         this.trip_local = response.data;
+        this.isLoad = true;
       }, error =>{
 
       }
