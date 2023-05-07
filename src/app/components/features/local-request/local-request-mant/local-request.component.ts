@@ -33,6 +33,9 @@ export class LocalRequestMantComponent implements OnInit {
   detailrequest: any = {};
   public initialdate;
   public finaldate;
+  public secre: boolean = false;
+  public rol;
+
 
   places = [
     { id: 1, name: 'Jalapa' },
@@ -55,13 +58,14 @@ export class LocalRequestMantComponent implements OnInit {
     private _sweetAlertService: SweetAlertService,
     private _errorService: ErrorsService,
     private _router: Router) {
-    this.localRequest = new LocalRequestI("", "", "", "", "", "", "", "", "", "","","", [])
+    this.localRequest = new LocalRequestI("", "", "", "", "", "", "", "", "", "", "", "", [])
     this.detailrequest.destiny = ''
     this.date = new DateI('', '')
   }
 
   ngOnInit(): void {
     this.id_entrada = this.router.snapshot.params['id'];
+    this.rol = localStorage.getItem('rol')
     this.loadLocalRequest();
     this.todayWithPipe = this.pipe.transform(Date.now(), 'yyyy/MM/dd')
   }
@@ -123,7 +127,6 @@ export class LocalRequestMantComponent implements OnInit {
           this.getVehicles();
 
           if (this.localRequest.status == 7) {
-            this.status = true;
             this.onHold = false;
           } else if (this.localRequest.status == 9) {
             this.deny = true;
@@ -134,7 +137,13 @@ export class LocalRequestMantComponent implements OnInit {
             this.onHold = true;
             this.localRequest.pilotName = ''
             this.localRequest.plate = ''
+            if (this.rol == 'Secretaria/o') {
+              this.secre = true;
+            }else{
+              this.secre = false;
+            }
           }
+
         }, err => {
 
         }
@@ -175,7 +184,7 @@ export class LocalRequestMantComponent implements OnInit {
       }
     )
     setTimeout(() => {
-      this.localRequest = new LocalRequestI("", "", "", "", "", "", "", "", "", "", '','',[])
+      this.localRequest = new LocalRequestI("", "", "", "", "", "", "", "", "", "", '', '', [])
       this._router.navigate(['/localRequest-index'])
     }, 1000);
 

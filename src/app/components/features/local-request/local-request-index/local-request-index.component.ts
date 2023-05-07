@@ -9,16 +9,20 @@ import { LocalRequestService } from 'src/app/services/localRequest.service';
 export class LocalRequestIndexComponent implements OnInit {
   public p:number = 1;
   public requestsLocal;
+  public username;
+  
   constructor(private _requestService:LocalRequestService) { }
 
   ngOnInit(): void {
+    this.username = localStorage.getItem('User');
     this.getLocalRequestOnHold();
   }
 
   getLocalRequestOnHold(){
-    this._requestService.getLocalRequest('onHold','6').subscribe(
+    this._requestService.getLocalRequest('onHold','6', this.username).subscribe(
       response =>{
         this.requestsLocal = response.data;
+        
       }, error =>{
       }
     )

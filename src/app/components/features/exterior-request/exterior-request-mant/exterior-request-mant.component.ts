@@ -28,15 +28,15 @@ export class ExteriorRequestMantComponent implements OnInit {
   public data_response;
   public date;
   public editing: boolean = false;
-  public status: boolean = false;
   public deny: boolean = false;
   public onHold: boolean = false;
+  public secre: boolean = false;
   detailrequest: any = {};
   details: any[] = [];
-
   today: Date = new Date();
   pipe = new DatePipe('en-US');
   todayWithPipe;
+  public rol;
 
   constructor(private _infoService: InfoService,
     private _exteriorRoutesService: ExteriorRequestService,
@@ -46,12 +46,14 @@ export class ExteriorRequestMantComponent implements OnInit {
     private _sweetAlertService: SweetAlertService,
     private _errorService: ErrorsService,
     private _router: Router) {
-    this.exteriorRequest = new ExteriorRequestI('', '', '', '', '', '', '', 0, 0, '', '', '', '','', []);
-    this.date = new DateI('','')
+    this.exteriorRequest = new ExteriorRequestI('', '', '', '', '', '', '', 0, 0, '', '', '', '', '', []);
+    this.date = new DateI('', '')
   }
 
   ngOnInit(): void {
     this.id_entrada = this.router.snapshot.params['id'];
+    this.rol = localStorage.getItem('rol')
+    
     this.loadExteriorRequest()
     this.getDepartments();
     this.todayWithPipe = this.pipe.transform(Date.now(), 'yyyy/MM/dd')
@@ -107,11 +109,11 @@ export class ExteriorRequestMantComponent implements OnInit {
     )
   }
 
-  getVehicles(){
+  getVehicles() {
     this._vehicleService.getVehicles('').subscribe(
-      response =>{
+      response => {
         this.vehicles = response.data;
-      }, error =>{
+      }, error => {
         this._sweetAlertService.warning('No se pudieron cargar los vehiculos correctamente');
       }
     )
@@ -120,7 +122,7 @@ export class ExteriorRequestMantComponent implements OnInit {
   loadExteriorRequest() {
     if (this.id_entrada) {
       this.editing = true
-      this._exteriorRoutesService.getOneExteriorRequest(this.id_entrada,'').subscribe(
+      this._exteriorRoutesService.getOneExteriorRequest(this.id_entrada, '').subscribe(
         response => {
           this.exteriorRequest = response.data.request[0]
           this.details = response.data.detailRequest
@@ -132,7 +134,6 @@ export class ExteriorRequestMantComponent implements OnInit {
           this.getVehicles();
 
           if (this.exteriorRequest.status_request == 7) {
-            this.status = true;
             this.onHold = false;
           } else if (this.exteriorRequest.status_request == 9) {
             this.deny = true;
@@ -144,8 +145,11 @@ export class ExteriorRequestMantComponent implements OnInit {
             this.onHold = true;
             this.exteriorRequest.pilot_name = ''
             this.exteriorRequest.plate_vehicle = ''
-            this.exteriorRequest.provide_fuel = ''
-            this.exteriorRequest.provide_travel_expenses = ''
+            if (this.rol == 'Secretaria/o') {
+              this.secre = true;
+            } else {
+              this.secre = false;
+            }
           }
         }, error => {
           this.data_response = error;
@@ -166,7 +170,7 @@ export class ExteriorRequestMantComponent implements OnInit {
       duration_days: ExteriorForm.value.duration_days,
       phoneNumber: ExteriorForm.value.phoneNumber,
       observations: ExteriorForm.value.observations,
-      provide_fuel: ExteriorForm.value.provide_fuel ,
+      provide_fuel: ExteriorForm.value.provide_fuel,
       provide_travel_expenses: ExteriorForm.value.provide_travel_expenses,
       plate_vehicle: '',
       pilot_name: '',
@@ -182,8 +186,8 @@ export class ExteriorRequestMantComponent implements OnInit {
     this._exteriorRoutesService.createNewExteriorRequest(exteriorRequest).subscribe(
       response => {
         this._sweetAlertService.createAndUpdate('Se registro la solicitud correctamente');
-        setTimeout(()=>{
-          this.exteriorRequest = new ExteriorRequestI('', '', '', '', '', '', '', 0, 0, '', '', '', '','', []);
+        setTimeout(() => {
+          this.exteriorRequest = new ExteriorRequestI('', '', '', '', '', '', '', 0, 0, '', '', '', '', '', []);
           this._router.navigate(['/exteriorRequest-index'])
         }, 1000);
       }, error => {
@@ -191,26 +195,26 @@ export class ExteriorRequestMantComponent implements OnInit {
         this._errorService.error(this.data_response);
       }
     )
-}
+  }
 
   createDetailRequest(detailExteriorForm) {
     //if (detailExteriorForm.valid) {
-      const datos: DetailExteriorRequestI = {
-        dateOf: detailExteriorForm.value.dateOf,
-        dateTo: detailExteriorForm.value.dateTo,
-        hour: detailExteriorForm.value.hour,
-        department: detailExteriorForm.value.department,
-        number_people: detailExteriorForm.value.number_people,
-        municipality: detailExteriorForm.value.municipality,
-        village: detailExteriorForm.value.village,
-      }
-      this.details.push(datos);
-      this.detailrequest = {};
-      this.detailrequest.department = ''
-      this.detailrequest.municipality = ''
+    const datos: DetailExteriorRequestI = {
+      dateOf: detailExteriorForm.value.dateOf,
+      dateTo: detailExteriorForm.value.dateTo,
+      hour: detailExteriorForm.value.hour,
+      department: detailExteriorForm.value.department,
+      number_people: detailExteriorForm.value.number_people,
+      municipality: detailExteriorForm.value.municipality,
+      village: detailExteriorForm.value.village,
+    }
+    this.details.push(datos);
+    this.detailrequest = {};
+    this.detailrequest.department = ''
+    this.detailrequest.municipality = ''
 
-   // } else {
-      //this._sweetAlertService.warning('Complete correctamente la información del destino');
+    // } else {
+    //this._sweetAlertService.warning('Complete correctamente la información del destino');
     //}
   }
 

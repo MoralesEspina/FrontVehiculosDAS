@@ -13,8 +13,8 @@
               <li class="breadcrumb-item" *ngIf="onHold == false"><a [routerLink]="['/History-Request']" >Historial de solicitudes</a></li>
               <li class="breadcrumb-item" *ngIf="onHold == true"><a [routerLink]="['/exteriorRequest-index']"> Lista de solicitudes exteriores</a></li>
               <li class="breadcrumb-item" *ngIf="editing==false" ><a>Registro de solicitud de transporte exterior</a></li>
-              <li class="breadcrumb-item" *ngIf="editing==true && onHold == true" ><a> Aceptar o Denegar la solicitud exterior No. {{id_entrada}}</a></li>
-              <li class="breadcrumb-item" *ngIf="editing==true && onHold == false" ><a> Detalles de la solicitud exterior No. {{id_entrada}}</a></li>
+              <li class="breadcrumb-item" *ngIf="editing==true && onHold == true && secre == false" ><a> Aceptar o Denegar la solicitud exterior No. {{id_entrada}}</a></li>
+              <li class="breadcrumb-item" *ngIf="editing==true && onHold == false || editing==true && secre == true" ><a> Detalles de la solicitud exterior No. {{id_entrada}}</a></li>
             </ol>
           </nav>
           <!--- Migaja de Pan -->
@@ -216,7 +216,7 @@
                 </div>
               </div>
                 <!--    Datos del cuadrito                -->
-                <form class="col-lg-10" #acceptedForm="ngForm" >
+                <form class="col-lg-10" #acceptedForm="ngForm" *ngIf="secre == false">
                   <div class="row" *ngIf="editing == true">
                     <div class="col-lg-6">
                       <div class="form-group">
@@ -249,7 +249,7 @@
                   </div>
                   <div class="row">
                     <div class="col-9">
-                      <div class="text-center" *ngIf="editing == true">
+                      <div class="text-center">
                         <button class="btn btn-primary" style="margin-right:20px"
                         *ngIf="onHold==true" (click)="acceptRequest(acceptedForm)">Aceptar</button>
                         <button (click)="denyRequest()" class="btn btn-danger" style="margin-right:20px"

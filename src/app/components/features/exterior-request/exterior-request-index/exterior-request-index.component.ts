@@ -9,14 +9,18 @@ import { ExteriorRequestService } from 'src/app/services/exteriorRequest.service
 export class ExteriorRequestIndexComponent implements OnInit {
   public exteriorRequest;
   public p:number = 1;
+  public username;
   constructor(private _exteriorRequestService:ExteriorRequestService) { }
 
   ngOnInit(): void {
+    this.username = localStorage.getItem('User');
     this.getExteriorRequestOnHold();
+    
   }
 
   getExteriorRequestOnHold(){
-    this._exteriorRequestService.getExteriorRequest('onHold','6').subscribe(
+    console.log(this.username)
+    this._exteriorRequestService.getExteriorRequest('onHold','6',this.username).subscribe(
       response =>{
         this.exteriorRequest = response.data;
         console.log(this.exteriorRequest)
