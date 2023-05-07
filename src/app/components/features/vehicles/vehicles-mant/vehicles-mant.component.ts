@@ -24,6 +24,7 @@ export class VehiclesMantComponent implements OnInit {
   public editing: boolean = false;
   public id_entrada;
   public data_response;
+  public isLoad: boolean = false;
 
   constructor(
     private _infoService: InfoService,
@@ -56,6 +57,7 @@ export class VehiclesMantComponent implements OnInit {
           this.vehicle = response.data[0]
           this.getTypes();
           this.getStatus();
+          this.isLoad = true;
         },
         error => {
           this._sweetAlertService.warning('No se pudieron cargar los datos correctamente');
@@ -63,6 +65,7 @@ export class VehiclesMantComponent implements OnInit {
       )
     } else {
       this.editing = false;
+      this.isLoad = true;
     }
   }
 

@@ -35,6 +35,7 @@ export class LocalRequestMantComponent implements OnInit {
   public finaldate;
   public secre: boolean = false;
   public rol;
+  public isLoad: boolean = false;
 
 
   places = [
@@ -143,13 +144,16 @@ export class LocalRequestMantComponent implements OnInit {
               this.secre = false;
             }
           }
+          this.isLoad = true;
 
-        }, err => {
-
+        }, error => {
+          this.data_response = error;
+          this._errorService.error(this.data_response);
         }
       )
     } else {
       this.editing = false
+      this.isLoad = true;
     }
 
   }

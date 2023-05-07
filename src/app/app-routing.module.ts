@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Rol } from './models/rol.model';
-//TODO IMPORTS VISTAS
-import { ManagerviewComponent } from './components/features/managerview/managerview.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 //TODO --------------------
 //TODO VEHICULOS

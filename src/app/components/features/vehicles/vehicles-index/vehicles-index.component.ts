@@ -14,6 +14,8 @@ export class VehiclesIndexComponent implements OnInit {
   public vehicles;
   public result;
   public data_response;
+  public isLoad: boolean = false;
+
   constructor(private _vehicleService: VehicleService,
               private _sweetAlertService: SweetAlertService) { }
 
@@ -25,6 +27,7 @@ export class VehiclesIndexComponent implements OnInit {
     this._vehicleService.getVehicles('').subscribe(
       response =>{
         this.vehicles = response.data;
+        this.isLoad = true;
       }, error =>{
         this._sweetAlertService.error('Parece que algo salio mal :(');
       }
