@@ -1,4 +1,4 @@
-<div class="main">
+<div class="main" *ngIf="isLoad == true">
   <main class="content">
     <div class="container-fluid">
       <div class="header">
@@ -7,7 +7,7 @@
             Registro de solicitud de transporte exterior
           </h1>
           <!--- Migaja de Pan -->
-          <nav aria-label="breadcrumb">
+          <nav aria-label="breadcrumb" >
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a [routerLink]="['/dashboard']"> Inicio</a></li>
               <li class="breadcrumb-item" *ngIf="onHold == false"><a [routerLink]="['/History-Request']" >Historial de solicitudes</a></li>
@@ -21,7 +21,7 @@
         </div>
       </div>
 
-      <div class="col-9">
+      <div class="col-9" >
         <div class="card">
           <div class="card-header">
             <h5 class="card-title" *ngIf="editing==false">Completa el formulario</h5>
