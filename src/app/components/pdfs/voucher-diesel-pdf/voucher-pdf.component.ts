@@ -20,7 +20,7 @@ export class VoucherPdfComponent implements OnInit {
   public letter;
   constructor(private _vocuherService: VoucherService,
     private _route: ActivatedRoute) {
-      this.voucher=new VoucherDieselI('','','','','','','','','','','')
+      this.voucher=new VoucherDieselI('','','','','','','','')
   }
   ngOnInit(): void {
     this.id_entrada = this._route.snapshot.params['id'];

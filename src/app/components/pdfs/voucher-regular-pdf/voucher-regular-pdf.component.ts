@@ -19,7 +19,7 @@ export class VoucherRegularPdfComponent implements OnInit {
   public letter;
   constructor(private _vocuherService: VoucherService,
     private _route: ActivatedRoute) {
-      this.voucher = new VoucherGasolineI("",0,"","","","","")
+      this.voucher = new VoucherGasolineI("",0,"","","","","",'')
      }
 
   ngOnInit(): void {

@@ -62,7 +62,7 @@ export class VoucherComponent implements OnInit {
     private _requestExteriorService:ExteriorRequestService,
     ) {
 
-      this.voucher=new VoucherDieselI('','','','','','','','','','','')
+      this.voucher=new VoucherDieselI('','','','','','','','')
 
      }
 
@@ -127,10 +127,11 @@ export class VoucherComponent implements OnInit {
       date: this.todayWithPipe,
       cost:voucherForm.value.cost,
       idVehicle: voucherForm.value.vin,
-      vin: '',
       comission_to: this.comissions,
       objective: this.objective,
       id_pilot: this.voucher.uuid,
+      km_to_travel:'',
+      idtrips:''
     }
     if (!voucherForm.valid) {
       this._sweetAlertService.warning('Complete correctamente el formulario');
@@ -139,7 +140,7 @@ export class VoucherComponent implements OnInit {
       this._voucherService.createNewVoucherRegular(voucher).subscribe(
         response => {
           this._sweetAlertService.createAndUpdate('Se registro el vale correctamente');
-          this.voucher = new VoucherGasolineI("",0,"","","","","")
+          this.voucher = new VoucherGasolineI("",0,"","","","","",'')
           this._router.navigate(['Vouchertable'])
         }, error => {
           this.data_response = error;

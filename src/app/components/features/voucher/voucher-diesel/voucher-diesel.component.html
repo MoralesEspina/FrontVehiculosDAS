@@ -86,10 +86,10 @@
                     </div>
                   </div> -->
                 <div>
-                  <div class="col-lg-12">
+                  <div class="col-lg-12" >
                     <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
-                      [(ngModel)]="comission" name="comission">
-                      <mat-radio-button class="example-radio-button" *ngFor="let type of types" [value]="type">
+                      [(ngModel)]="comission" name="comission"> 
+                      <mat-radio-button class="example-radio-button" *ngFor="let type of types" [value]="type" (click)="clear()">
                         {{type}}
                       </mat-radio-button>
                     </mat-radio-group>
@@ -99,28 +99,27 @@
                 </div>
                 <div class="col-lg-8" style="margin-left: 10px;">
                   <div class="form-group">
-                    <label class="form-label"><b>Comisión local</b></label>
+                    <label class="form-label"><b>Viaje local</b></label>
                     <select class="form-control" #local_comission="ngModel" name="local_comission"
                       [(ngModel)]="voucher.local_comission" [disabled]="comission != 'Local'"
                       (ngModelChange)="getOneLocalRequest(voucher.local_comission)">
                       <option value="" hidden selected>Seleccionar</option>
-                      <option value="{{local.id}}" *ngFor="let local of localRequest">
-                        {{local.place}} - {{local.section}} - {{local.date | date: 'd MMM y' | uppercase}} -
-                        {{local.applicantsName}}
+                      <option value="{{local.transp_request_local}}" *ngFor="let local of localTrips">
+                        {{local.applicantsName}} - {{local.section}} - {{local.date | date: 'd MMM y' | uppercase}} 
                       </option>
                     </select>
                     <!-- <input name="comission_to" type="text" class="form-control" #comission_to="ngModel" [(ngModel)]="voucher.comission_to"
                         placeholder="Ingrese la comision solicitante" required> -->
                   </div>
                   <div class="form-group">
-                    <label class="form-label"><b>Comisión exterior</b></label>
+                    <label class="form-label"><b>Viaje exterior</b></label>
                     <select class="form-control" #exterior_comission="ngModel" name="exterior_comission"
                       [(ngModel)]="voucher.exterior_comission" [disabled]="comission != 'Exterior'"
                       (ngModelChange)="getOneExteriorRequest(voucher.exterior_comission)">
                       <option value="" hidden selected>Seleccionar</option>
-                      <option value="{{exterior.id}}" *ngFor="let exterior of exteriorRequest">
+                      <option value="{{exterior.transp_request_exterior}}" *ngFor="let exterior of exteriorTrips">
                         {{exterior.commission_manager}} - {{exterior.requesting_unit}} - {{exterior.date_request | date:
-                        'd MMM y' | uppercase}} - {{exterior.objective_request}}
+                        'd MMM y' | uppercase}} 
                       </option>
                     </select>
                     <!-- <input name="comission_to" type="text" class="form-control" #comission_to="ngModel" [(ngModel)]="voucher.comission_to"
@@ -130,7 +129,7 @@
                     <label class="form-label"><b>Comisión a:</b></label>
                     <input name="comission_to" type="text" class="form-control" #comission_to="ngModel"
                       [disabled]="comission != 'Sin Comisión'" [(ngModel)]="voucher.comission_to"
-                      placeholder="" required>
+                      placeholder="Ingrese el motivo" required>
                   </div>
                 </div>
                 <div class="col-lg-4">
