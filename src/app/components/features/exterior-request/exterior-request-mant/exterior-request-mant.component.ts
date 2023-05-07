@@ -31,6 +31,7 @@ export class ExteriorRequestMantComponent implements OnInit {
   public deny: boolean = false;
   public onHold: boolean = false;
   public secre: boolean = false;
+  public isLoad: boolean = false;
   detailrequest: any = {};
   details: any[] = [];
   today: Date = new Date();
@@ -53,8 +54,7 @@ export class ExteriorRequestMantComponent implements OnInit {
   ngOnInit(): void {
     this.id_entrada = this.router.snapshot.params['id'];
     this.rol = localStorage.getItem('rol')
-    
-    this.loadExteriorRequest()
+    this.loadExteriorRequest();
     this.getDepartments();
     this.todayWithPipe = this.pipe.transform(Date.now(), 'yyyy/MM/dd')
   }
@@ -151,6 +151,7 @@ export class ExteriorRequestMantComponent implements OnInit {
               this.secre = false;
             }
           }
+          this.isLoad = true;
         }, error => {
           this.data_response = error;
           this._errorService.error(this.data_response);
@@ -158,7 +159,9 @@ export class ExteriorRequestMantComponent implements OnInit {
       )
     } else {
       this.editing = false
+      this.isLoad = true;
     }
+
   }
 
   createNewExteriorRequest(ExteriorForm) {
