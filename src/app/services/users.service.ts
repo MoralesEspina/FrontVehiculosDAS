@@ -12,7 +12,7 @@ import { LocalService } from './local.service';
 export class UsersService {
   private userSubject: BehaviorSubject<Claims>;
   public user: Observable<Claims>;
-  
+
   public url;
   constructor(private _http: HttpClient,private localStorage: LocalService) {
     this.userSubject = new BehaviorSubject<Claims>(JSON.parse(localStorage.getJsonValue('claims')));
@@ -38,7 +38,7 @@ export class UsersService {
       }
       return Claims;
     }))
-    
+
   }
 
   createNewUser(form: UserI) {
@@ -70,6 +70,15 @@ export class UsersService {
 
   updateOneUser(form: UserI, id) {
     return this._http.put(this.url + 'auth/edit/' + id, form, {
+      headers: new HttpHeaders({
+        'Content-Type':'application/json',
+        //'x-access-token': '' + localStorage.getItem("Token")
+      })
+    })
+  }
+
+  deleteOneUser(id) {
+    return this._http.delete(this.url + 'auth/user/' + id, {
       headers: new HttpHeaders({
         'Content-Type':'application/json',
         //'x-access-token': '' + localStorage.getItem("Token")

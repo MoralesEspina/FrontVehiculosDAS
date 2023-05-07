@@ -22,6 +22,7 @@ export class UsersComponent implements OnInit {
   public id_entrada;
   public persons;
   public data_response;
+  public password;
   public isLoad: boolean = false;
 
   constructor(
@@ -84,14 +85,18 @@ export class UsersComponent implements OnInit {
   }
 
   createNewUser(userForm) {
+    if (!userForm.value.password) {
+      userForm.value.password = '';
+    }
+
     const user: UserI = {
       username: userForm.value.username,
       password: userForm.value.password,
       rol_id: userForm.value.rol_id,
-      uuidPerson: userForm.value.uuidPerson,
+      uuidPerson: this.id_entrada,
     }
 
-    if (!userForm.valid) {
+    if (!userForm.valid && !this.editing) {
       this._sweetAlertService.warning('Complete correctamente el formulario');
       return
     }
