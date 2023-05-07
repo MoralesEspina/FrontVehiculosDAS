@@ -150,7 +150,7 @@ export class VoucherDieselComponent implements OnInit {
     }
 
     getLocalRequest(){
-      this._requestLocalService.getLocalRequest('actives','7').subscribe(
+      this._requestLocalService.getLocalRequest('actives','7','').subscribe(
         response =>{
           this.localRequest = response.data;
         }, error =>{
@@ -159,7 +159,7 @@ export class VoucherDieselComponent implements OnInit {
     }
 
     getExteriorRequest(){
-      this._requestExteriorService.getExteriorRequest('actives','7').subscribe(
+      this._requestExteriorService.getExteriorRequest('actives','7','').subscribe(
         response =>{
           this.exteriorRequest = response.data;
         }, error =>{

@@ -14,8 +14,8 @@
               <li class="breadcrumb-item" *ngIf="onHold == true"><a [routerLink]="['/localRequest-index']" >Lista de solicitudes locales</a></li>
 
               <li class="breadcrumb-item" *ngIf="editing==false"><a>Registro de solicitud de vehiculos local</a></li>
-              <li class="breadcrumb-item" *ngIf="onHold == true && editing==true "  ><a> Aceptar o Denegar solicitud local No. {{id_entrada}}</a></li>
-              <li class="breadcrumb-item" *ngIf="onHold == false && editing==true" ><a> Detalles de la solicitud local No. {{id_entrada}}</a></li>
+              <li class="breadcrumb-item" *ngIf="onHold == true && editing==true && secre == false"  ><a> Aceptar o Denegar solicitud local No. {{id_entrada}}</a></li>
+              <li class="breadcrumb-item"*ngIf="editing==true && onHold == false || editing==true && secre == true" ><a> Detalles de la solicitud local No. {{id_entrada}}</a></li>
             </ol>
           </nav>
           <!--- Migaja de Pan -->
@@ -182,7 +182,7 @@
                 </div>
               </div>
               <form #acceptedForm="ngForm" >
-                <div class="row" *ngIf="editing == true" >
+                <div class="row" *ngIf="editing == true && secre == false" >
                   <div class="col-lg-1" >
                   </div>
                   <div class="col-lg-5" *ngIf="deny == false ">
@@ -214,13 +214,13 @@
                       [(ngModel)]="localRequest.reason_rejected" type="text" disabled>
                   </div>
                 </div>
-                <div class="row" *ngIf="editing == true">
+                <div class="row" *ngIf="editing == true ">
                   <div class="col-9">
                     <div class="text-center" >
                       <button type="submit" class="btn btn-primary" style="margin-right:20px" (click)="acceptRequest(acceptedForm)"
-                      *ngIf="onHold==true">Aceptar</button>
+                      *ngIf="onHold==true && secre == false">Aceptar</button>
                       <button (click)="denyRequest()" class="btn btn-danger" style="margin-right:20px"
-                      *ngIf="onHold==true">Denegar</button>
+                      *ngIf="onHold==true && secre == false">Denegar</button>
                       <button type="button" class="btn btn-primary " [routerLink]="['/localRequest/pdf/',id_entrada]"
                         *ngIf="status==true">Ver PDF</button>
                     </div>

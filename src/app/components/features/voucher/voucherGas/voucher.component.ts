@@ -187,7 +187,7 @@ export class VoucherComponent implements OnInit {
     }
 
     getLocalRequest(){
-      this._requestLocalService.getLocalRequest('actives','7').subscribe(
+      this._requestLocalService.getLocalRequest('actives','7','').subscribe(
         response =>{
           this.localRequest = response.data;
         }, error =>{
@@ -196,7 +196,7 @@ export class VoucherComponent implements OnInit {
     }
 
     getExteriorRequest(){
-      this._requestExteriorService.getExteriorRequest('actives','7').subscribe(
+      this._requestExteriorService.getExteriorRequest('actives','7','').subscribe(
         response =>{
           this.exteriorRequest = response.data;
         }, error =>{
