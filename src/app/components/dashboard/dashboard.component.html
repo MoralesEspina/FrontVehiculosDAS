@@ -8,18 +8,18 @@
 
           <div class="card">
 
-              <div class="row">
+              <div class="row" style="margin-top: 2px;">
 
-                <div routerLink="/Trips" style="cursor:pointer; margin-right: 40px;text-align: center;"
+                <div routerLink="/Trips" style="cursor:pointer; width: 150px;  text-align: center; border-right: rgb(179, 179, 179) 2px solid;"
                 *ngIf="user === 'Admin' || user==='Encargado de Transporte'">
-                  <span>
-                    Viajes
-                    <h1> </h1>
+                <span>
+                    Viajes <br> activos
+                    <h1></h1>
                   </span>
                     <i class="fa fa-road fa-4x"></i>
 
                 </div>
-                <div routerLink="/exteriorRequest-index" style="cursor:pointer; margin-right: 40px;text-align: center;">
+                <div routerLink="/exteriorRequest-index" style="cursor:pointer;width: 150px;  text-align: center; border-right: rgb(179, 179, 179) 2px solid;">
                   <span>
                     Solicitudes exteriores
                     <h1> </h1>
@@ -28,7 +28,7 @@
 
                 </div>
 
-                <div routerLink="/localRequest-index" style="cursor:pointer; text-align: center;">
+                <div routerLink="/localRequest-index" style="cursor:pointer; width: 150px;  text-align: center; ">
                   <span>
                     Solicitudes locales
                     <h1> </h1>
@@ -38,17 +38,26 @@
                 </div>
 
               </div>
-              <div class="row">
-                <div routerLink="" style="cursor:pointer; margin-right: 40px; margin-top:20px; text-align: center;"
+              <div class="row" style=" margin-top: 15px;">
+                <div routerLink="/History-trips" style="cursor:pointer; width: 150px;  text-align: center; border-right: rgb(179, 179, 179) 2px solid;"
                 *ngIf="user === 'Admin' || user==='Encargado de Transporte'">
-                  <span>
-                    Pases de salida
+                  <span >
+                    Historial de viajes
                     <h1> </h1>
                   </span>
-                  <i class="fa fa-file-check fa-4x"></i>
+                  <i class="fa fa-clock fa-4x"></i>
 
                 </div>
-                <div routerLink="/Vouchertable" style="cursor:pointer;margin-top:20px; text-align: center;"
+                <div routerLink="/History-Request" style="cursor:pointer;  width: 150px; text-align: center;border-right: rgb(179, 179, 179) 2px solid;"
+                *ngIf="user === 'Admin' || user==='Encargado de Transporte'">
+                  <span>
+                    Historial de solicitudes
+                    <h1> </h1>
+                  </span>
+                  <i class="fa fa-list fa-4x"></i>
+
+                </div>
+                <div routerLink="/Vouchertable" style="cursor:pointer; text-align: center;width: 150px;"
                 *ngIf="user === 'Admin' || user==='Encargado de Transporte'">
                   <span>
                     Vales de combustible
