@@ -12,6 +12,11 @@ img{
   margin-top: 15px;
 }
 
+.row{
+  align-items: center;
+  justify-content: center;
+}
+
 .imagen{
   display: grid;
   align-items: center;
