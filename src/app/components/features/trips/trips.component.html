@@ -81,7 +81,7 @@
                   <div class="dropdown-menu">
                     <a class= "dropdown-item" *ngIf="item.status_name == 'En Espera'"  (click)="initializeTrips(item.idtrips)" > <i class="fas fa-play"></i> Iniciar Viaje</a>
                     <a class= "dropdown-item" *ngIf="item.status_name == 'Activo'" (click)="finalizeTrips(item.idtrips)" ><i class="fas fa-flag"></i> Finalizar Viaje</a>
-                    <a class= "dropdown-item"><i class="fa fa-ban"></i>  Cancelar Viaje</a>
+                    <a class= "dropdown-item" (click)="denyRequest(item.idtrips)"><i class="fa fa-ban"></i>  Cancelar Viaje</a>
                   </div>
                 </div>
               </td>
@@ -211,7 +211,7 @@
                   <div class="dropdown-menu">
                     <a class= "dropdown-item"  *ngIf="item.status_name == 'En Espera'"  (click)="initializeTrips(item.idtrips)"><i class="fas fa-play"></i>  Iniciar Viaje</a>
                     <a class= "dropdown-item" *ngIf="item.status_name == 'Activo' " (click)="finalizeTrips(item.idtrips)"><i class="fas fa-flag"></i>  Finalizar Viaje</a>
-                    <a class= "dropdown-item"><i class="fa fa-ban"></i>  Cancelar Viaje</a>
+                    <a class= "dropdown-item" (click)="denyRequest(item.idtrips)"><i class="fa fa-ban" ></i>  Cancelar Viaje</a>
                   </div>
                 </div>
               </td>
