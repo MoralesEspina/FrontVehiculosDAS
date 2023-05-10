@@ -27,7 +27,6 @@ export class UsersIndexComponent implements OnInit {
   }
 
   getUsers() {
-
     this._userService.getUsers().subscribe(
       response => {
         this.users = response.data;
@@ -55,33 +54,33 @@ export class UsersIndexComponent implements OnInit {
     )
   }
 
-  // deleteUser(id){
-  //   Swal.fire({
-  //     title: 'Estas seguro?',
-  //     text: "No podras revertir esta acción!",
-  //     icon: 'warning',
-  //     showCancelButton: true,
-  //     cancelButtonText: 'No, Cancelar!',
-  //     confirmButtonColor: '#3085d6',
-  //     cancelButtonColor: '#d33',
-  //     confirmButtonText: 'Si, Borralo!'
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       this._userService.deleteOneUser(id).subscribe(data => {
-  //         Swal.fire(
-  //           'Eliminado!',
-  //           'Vehiculo Eliminado con Exito',
-  //           'success'
-  //         )
-  //         this.getUsers();
-  //       }, error => {
-  //         Swal.fire({
-  //           icon: 'error',
-  //           title: 'No se ha podido eliminar el producto',
-  //           text: error.error.data,
-  //         })
-  //       });
-  //     }
-  //   })
-  // }
+  deleteOneUser(id){
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "No podras revertir esta acción!",
+      icon: 'warning',
+      showCancelButton: true,
+      cancelButtonText: 'No, Cancelar!',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, Borralo!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._userService.deleteOneUser(id).subscribe(data => {
+          Swal.fire(
+            'Eliminado!',
+            'Usuario eliminado con exito',
+            'success'
+          )
+          this.getUsers();
+        }, error => {
+          Swal.fire({
+            icon: 'error',
+            title: 'No se ha podido eliminar el usuario',
+            text: error.error.data,
+          })
+        });
+      }
+    })
+  }
 }
