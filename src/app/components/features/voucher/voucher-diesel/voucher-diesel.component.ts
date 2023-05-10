@@ -88,13 +88,13 @@ export class VoucherDieselComponent implements OnInit {
     this._vehicleService.getOneVehicleForVoucher(id).subscribe(
       response => {
         this.Onevehicle = response.data[0];
-        console.log(this.Onevehicle)
         this.brand = this.Onevehicle.brand
         this.color = this.Onevehicle.color
         this.model = this.Onevehicle.model
         this.type_name = this.Onevehicle.type_name
         this.vehicleNum = this.Onevehicle.idVehicle
       }, error => {
+        this._sweetAlertService.error('No se pudo cargar la información del vehiculo' + error)
       }
     )
   }
@@ -104,6 +104,7 @@ export class VoucherDieselComponent implements OnInit {
       response => {
         this.person = response.data;
       }, error => {
+        this._sweetAlertService.error('No se pudo cargar la información de la persona' + error)
       }
     )
   }
@@ -114,6 +115,7 @@ export class VoucherDieselComponent implements OnInit {
         this.Oneperson = response.data[0];
         this.dpi = this.Oneperson.dpi
       }, error => {
+        this._sweetAlertService.error('No se pudo cargar la información de la persona' + error)
       }
     )
   }

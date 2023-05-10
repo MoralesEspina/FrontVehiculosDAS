@@ -4,6 +4,7 @@ import { exitPassI } from 'src/app/models/exitPass.interface';
 import { TripsService } from 'src/app/services/trips.service';
 import { PdfMakeWrapper, Txt, Table, Cell, Img } from 'pdfmake-wrapper';
 import * as pdfFonts from "pdfmake/build/vfs_fonts";
+import { SweetAlertService } from 'src/app/services/sweetAlert.service';
 
 @Component({
   selector: 'app-exit-pass-pdf',
@@ -13,14 +14,14 @@ import * as pdfFonts from "pdfmake/build/vfs_fonts";
 export class ExitPassPdfComponent implements OnInit {
   public id_entrada:any;
   public pass:any;
-  constructor( private router: ActivatedRoute,
-    private _tripService: TripsService) {
+  constructor(  private router: ActivatedRoute,
+                private _tripService: TripsService,
+                private _sweetAlertService: SweetAlertService) {
       this.pass = new exitPassI('','','','','','','','','','','')
   }
 
   ngOnInit(): void {
     this.id_entrada = this.router.snapshot.params['id'];
-    console.log(this.id_entrada)
     this.getExitPass()
   }
 
@@ -29,6 +30,7 @@ export class ExitPassPdfComponent implements OnInit {
       response => {
         this.pass = response.data[0];
       }, error => {
+        this._sweetAlertService.error('No se pudo cargar la información del pase de salida' + error)
       }
     )
   }

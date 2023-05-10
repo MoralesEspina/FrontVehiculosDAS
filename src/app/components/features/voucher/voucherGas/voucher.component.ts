@@ -184,7 +184,7 @@ export class VoucherComponent implements OnInit {
       }, error => {
       }
     )
-    
+
   }
 
   clear() {
@@ -210,8 +210,8 @@ export class VoucherComponent implements OnInit {
     this._tripsService.getTrips('onHold', 'local').subscribe(
       response => {
         this.localTrips = response.data;
-        console.log(this.localTrips)
       }, error => {
+
       }
     )
   }
@@ -220,8 +220,8 @@ export class VoucherComponent implements OnInit {
     this._tripsService.getTrips('onHold', 'exterior').subscribe(
       response => {
         this.exteriorTrips = response.data;
-        console.log(this.exteriorTrips)
       }, error => {
+
       }
     )
   }

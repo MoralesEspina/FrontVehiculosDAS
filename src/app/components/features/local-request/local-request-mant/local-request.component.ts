@@ -75,7 +75,6 @@ export class LocalRequestMantComponent implements OnInit {
     this._personService.getPilotsActives(date).subscribe(
       response => {
         this.person = response.data;
-        console.log(this.person)
       }, error => {
         this._sweetAlertService.warning('No se pudieron cargar las personas correctamente');
       }
@@ -86,7 +85,6 @@ export class LocalRequestMantComponent implements OnInit {
     this._vehicleService.getVehiclesActives(date).subscribe(
       response => {
         this.vehicles = response.data;
-        console.log(date)
       }, error => {
         this._sweetAlertService.warning('No se pudieron cargar los vehiculos correctamente');
       }
@@ -145,7 +143,6 @@ export class LocalRequestMantComponent implements OnInit {
             }
           }
           this.isLoad = true;
-
         }, error => {
           this.data_response = error;
           this._errorService.error(this.data_response);

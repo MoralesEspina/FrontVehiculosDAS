@@ -277,7 +277,6 @@ export class ExteriorRequestMantComponent implements OnInit {
           this._sweetAlertService.createAndUpdate('Se acepto correctamente la solicitud');
           this._router.navigate(['Trips'])
         }, error => {
-          console.log(error)
           this.data_response = error;
           this._errorService.error(this.data_response);
         }

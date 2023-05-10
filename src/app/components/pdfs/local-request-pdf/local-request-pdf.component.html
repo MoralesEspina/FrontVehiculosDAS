@@ -1,4 +1,4 @@
-<div class="main">
+<div class="main" *ngIf="isLoad == true">
     <main class="content">
       <div class="container-fluid">
         <div class="header">
@@ -24,7 +24,7 @@
               <!--- INICIO DE FORMULARIO-->
               <form #local_trasportationForm="ngForm" id="Data">
                 <div class="imagen">
-                  <img src="https://firebasestorage.googleapis.com/v0/b/das-jalapa.appspot.com/o/avatars%2Flogo-mspas%20(1).png?alt=media&token=5a4e689a-b3d9-402d-b7da-df99d43c642d" alt="">
+                  <img [src]="imagenSrc" [alt]="">
                 </div>
                 <div class="form">
                   <div class="header-form">

@@ -4,6 +4,8 @@ import html2canvas from 'html2canvas';
 import { LocalRequestService } from 'src/app/services/localRequest.service';
 import { LocalRequestI } from 'src/app/models/localRequest.interface';
 import { ActivatedRoute } from '@angular/router';
+import { SweetAlertService } from 'src/app/services/sweetAlert.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-local-request-pdf',
@@ -16,10 +18,15 @@ export class LocalRequestPdfComponent implements OnInit {
   public detailRequest;
   public status:boolean = false;
   public id_entrada;
+  public isLoad: boolean = false;
+  public imagenSrc;
   constructor(  private _localRequestService:LocalRequestService,
-                private router: ActivatedRoute) {
+                private router: ActivatedRoute,
+                private _sweetAlertService: SweetAlertService,
+                private sanitizer: DomSanitizer) {
     this.request = new LocalRequestI('','','','','','','','','','','','',[])
     this.id_entrada = this.router.snapshot.params['id'];
+    this.imagenSrc = this.sanitizer.bypassSecurityTrustResourceUrl('../assets/img/logo-mspas.png');
   }
 
   ngOnInit(): void {
@@ -31,8 +38,10 @@ export class LocalRequestPdfComponent implements OnInit {
       response =>{
         this.request = response.data.request[0];
         this.detailRequest = response.data.detailRequest;
+        this.isLoad = true;
       }, error =>{
-
+        this._sweetAlertService.error('No se pudo cargar la información correctamente')
+        this.isLoad = true;
       }
     )
   }
@@ -54,7 +63,6 @@ export class LocalRequestPdfComponent implements OnInit {
       const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
       const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
 
-      console.log(pdfHeight)
       doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
       return doc;
     }).then((docResult) => {

@@ -3,8 +3,9 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { ExteriorRequestService } from 'src/app/services/exteriorRequest.service';
 import { ExteriorRequestI } from 'src/app/models/exteriorRequest.interface';
-import { DetailExteriorRequestI } from 'src/app/models/exteriorRequest.interface';
 import { ActivatedRoute } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
+import { SweetAlertService } from 'src/app/services/sweetAlert.service';
 
 
 @Component({
@@ -19,11 +20,16 @@ export class ExteriorRequestPdfComponent implements OnInit {
   public fuel:boolean = false;
   public viatic:boolean = false;
   public status:boolean = false;
+  public isLoad: boolean = false;
   public id_entrada:any;
+  public imagenSrc;
   constructor(  private _exteriorRequestService:ExteriorRequestService,
-                private router: ActivatedRoute) {
+                private router: ActivatedRoute,
+                private _sweetAlertService: SweetAlertService,
+                private sanitizer: DomSanitizer) {
     this.request = new ExteriorRequestI('','','','','','','',0,0,'','','','','',[])
     this.id_entrada = this.router.snapshot.params['id'];
+    this.imagenSrc = this.sanitizer.bypassSecurityTrustResourceUrl('../assets/img/logo-mspas.png');
   }
 
   ngOnInit(): void {
@@ -44,8 +50,10 @@ export class ExteriorRequestPdfComponent implements OnInit {
         if (this.request.status_request == 7) {
           this.status = true;
         }
+        this.isLoad = true;
       }, error =>{
-
+        this._sweetAlertService.error('No se pudo cargar la información correctamente')
+        this.isLoad = true;
       }
     )
   }

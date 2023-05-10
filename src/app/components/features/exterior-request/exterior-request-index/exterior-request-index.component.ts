@@ -22,11 +22,10 @@ export class ExteriorRequestIndexComponent implements OnInit {
       this.secre = true
     };
     this.getExteriorRequestOnHold();
-    
+
   }
 
   getExteriorRequestOnHold(){
-    console.log(this.username)
     this._exteriorRequestService.getExteriorRequest('onHold','6',this.username).subscribe(
       response =>{
         this.exteriorRequest = response.data;

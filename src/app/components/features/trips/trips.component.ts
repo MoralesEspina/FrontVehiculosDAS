@@ -35,7 +35,7 @@ export class TripsComponent implements OnInit {
     private _sweetAlertService: SweetAlertService,
     private _errorService:ErrorsService,
     private _router:Router,
-    
+
     private _vehicleService: VehicleService,
     ) {
       this.statusTrips = new ResponseI('','')
@@ -51,7 +51,6 @@ export class TripsComponent implements OnInit {
     this._tripServicetab.getTrips('onHold','exterior').subscribe(
       response =>{
         this.trip_exterior = response.data;
-        console.log(this.trip_exterior)
       }, error =>{
 
       }
@@ -60,7 +59,6 @@ export class TripsComponent implements OnInit {
       response =>{
         this.trip_local = response.data;
         this.isLoad = true;
-        console.log(this.trip_local)
       }, error =>{
 
       }
@@ -81,35 +79,35 @@ export class TripsComponent implements OnInit {
   }
   async finalizeTrips(id){
 
-    // const { value: text } = await Swal.fire({
-    //   input: 'text',
-    //   title: 'Indique el kilometraje de llegada del vehiculo:',
-    //   inputPlaceholder: 'Escribe acá el kilometraje',
-    //   inputAttributes: {
-    //     'aria-label': 'Type your message here'
-    //   },
-    //   icon: 'question',
-    //   showCancelButton: true
-    // })
+    const { value: text } = await Swal.fire({
+      input: 'text',
+      title: 'Indique el kilometraje de llegada del vehiculo:',
+      inputPlaceholder: 'Escribe acá el kilometraje',
+      inputAttributes: {
+        'aria-label': 'Type your message here'
+      },
+      icon: 'question',
+      showCancelButton: true
+    })
 
-    // if (!text) {
-    //   this._sweetAlertService.warning('Debe ingresar el kilometraje');
-    //   return
-    // } 
+    if (!text) {
+      this._sweetAlertService.warning('Debe ingresar el kilometraje');
+      return
+    }
 
-    // const vehicle: VehicleI = {
-    //   idVehicle: '',
-    //   vin:  '',
-    //   plate: '',
-    //   type: '',
-    //   brand:'',
-    //   model: '',
-    //   km: text,
-    //   gas:'',
-    //   status: '',
-    //   color: '',
-    //   cylinders: '',
-    // }
+    const vehicle: VehicleI = {
+      idVehicle: '',
+      vin:  '',
+      plate: '',
+      type: '',
+      brand:'',
+      model: '',
+      km: text,
+      gas:'',
+      status: '',
+      color: '',
+      cylinders: '',
+    }
 
 
     this.statusTrips.status = 13;
@@ -137,7 +135,7 @@ export class TripsComponent implements OnInit {
       inputAttributes: {
         'aria-label': 'Type your message here'
       },
-      
+
       showCancelButton: true
     })
 
@@ -148,7 +146,7 @@ export class TripsComponent implements OnInit {
 
     this.denyTrips.status = 8;
     this.denyTrips.reason_rejected= text;
- 
+
     this._tripServicetab.updateTrips(id,this.denyTrips).subscribe(
       data => {
         this._sweetAlertService.createAndUpdate('Viaje cancelado correctamente');
