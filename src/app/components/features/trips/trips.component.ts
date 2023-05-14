@@ -15,8 +15,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./trips.component.css']
 })
 export class TripsComponent implements OnInit {
-  public p:number = 1;
-  public p2:number = 1;
+  public p: number = 1;
+  public p2: number = 1;
   public trip_exterior;
   public trip_local;
   public localRequest;
@@ -33,41 +33,40 @@ export class TripsComponent implements OnInit {
   constructor(private _tripServicetab: TripsService,
     private _route: ActivatedRoute,
     private _sweetAlertService: SweetAlertService,
-    private _errorService:ErrorsService,
-    private _router:Router,
-
+    private _errorService: ErrorsService,
+    private _router: Router,
     private _vehicleService: VehicleService,
-    ) {
-      this.statusTrips = new ResponseI('','')
-      this.denyTrips = new DenyTripsI('','')
-      this.vehicle = new VehicleI('','', '', '', '', '', '', '', '', '', '');
-    }
+  ) {
+    this.statusTrips = new ResponseI('', '')
+    this.denyTrips = new DenyTripsI('', '')
+    this.vehicle = new VehicleI('', '', '', '', '', '', '', '', '', '', '');
+  }
 
   ngOnInit(): void {
-      this.getTripsOnHold();
+    this.getTripsOnHold();
   }
 
-  getTripsOnHold(){
-    this._tripServicetab.getTrips('onHold','exterior').subscribe(
-      response =>{
+  getTripsOnHold() {
+    this._tripServicetab.getTrips('onHold', 'exterior').subscribe(
+      response => {
         this.trip_exterior = response.data;
-      }, error =>{
+      }, error => {
 
       }
     )
-    this._tripServicetab.getTrips('onHold','local').subscribe(
-      response =>{
+    this._tripServicetab.getTrips('onHold', 'local').subscribe(
+      response => {
         this.trip_local = response.data;
         this.isLoad = true;
-      }, error =>{
+      }, error => {
 
       }
     )
   }
 
-  initializeTrips(id){
+  initializeTrips(id) {
     this.statusTrips.status = 11;
-    this._tripServicetab.updateTrips(id,this.statusTrips).subscribe(
+    this._tripServicetab.updateTrips(id, this.statusTrips).subscribe(
       data => {
         this._sweetAlertService.createAndUpdate('Viaje iniciado correctamente');
         location.reload();
@@ -77,7 +76,7 @@ export class TripsComponent implements OnInit {
         this._errorService.error(this.data_response)
       })
   }
-  async finalizeTrips(id){
+  async finalizeTrips(id) {
 
     const { value: text } = await Swal.fire({
       input: 'text',
@@ -97,13 +96,13 @@ export class TripsComponent implements OnInit {
 
     const vehicle: VehicleI = {
       idVehicle: '',
-      vin:  '',
+      vin: '',
       plate: '',
       type: '',
-      brand:'',
+      brand: '',
       model: '',
       km: text,
-      gas:'',
+      gas: '',
       status: '',
       color: '',
       cylinders: '',
@@ -111,7 +110,7 @@ export class TripsComponent implements OnInit {
 
 
     this.statusTrips.status = 13;
-    this._tripServicetab.updateTrips(id,this.statusTrips).subscribe(
+    this._tripServicetab.updateTrips(id, this.statusTrips).subscribe(
       data => {
         this._sweetAlertService.createAndUpdate('Viaje finalizado correctamente');
 
@@ -145,9 +144,9 @@ export class TripsComponent implements OnInit {
     }
 
     this.denyTrips.status = 8;
-    this.denyTrips.reason_rejected= text;
+    this.denyTrips.reason_rejected = text;
 
-    this._tripServicetab.updateTrips(id,this.denyTrips).subscribe(
+    this._tripServicetab.updateTrips(id, this.denyTrips).subscribe(
       data => {
         this._sweetAlertService.createAndUpdate('Viaje cancelado correctamente');
         location.reload();
@@ -155,7 +154,7 @@ export class TripsComponent implements OnInit {
       error => {
         this.data_response = error;
         this._errorService.error(this.data_response)
-      })  ;
+      });
   }
 
 

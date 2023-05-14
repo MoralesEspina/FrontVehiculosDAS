@@ -32,7 +32,7 @@ export class BinnaclePdfComponent implements OnInit {
     this.getBinnacle();
     setTimeout(()=>{
       this.GenerateBinnacle()
-  }, 200);
+  }, 150);
   }
 
   getBinnacle() {
@@ -78,8 +78,8 @@ export class BinnaclePdfComponent implements OnInit {
       new Cell(new Txt('Total comisiones asignadas').end).colSpan(1).fontSize(5).alignment('center').end],
 
       [null, null,
-        new Cell(new Txt('').end).colSpan(2).fontSize(7).alignment('center').end, null,
-        new Cell(new Txt('').end).colSpan(2).fontSize(7).alignment('center').end, null,
+        new Cell(new Txt(this.binnacle.idVoucher).end).colSpan(2).fontSize(7).alignment('center').end, null,
+        new Cell(new Txt(this.binnacle.cost).end).colSpan(2).fontSize(7).alignment('center').end, null,
         new Cell(new Txt('').end).colSpan(1).fontSize(5).alignment('center').end],
 
       [new Cell(new Txt('').end).colSpan(7).fontSize(7).alignment('center').end, null, null, null, null, null, null],
