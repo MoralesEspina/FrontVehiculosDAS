@@ -89,6 +89,7 @@ export class UsersService {
   logOut(){
     localStorage.removeItem('rol')
     localStorage.removeItem('Token');
+    localStorage.removeItem('User');
   }
   // deleteOneUser(id){
   //   return this._http.delete(this.url + 'user/' + id, {

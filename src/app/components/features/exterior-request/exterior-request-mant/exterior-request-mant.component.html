@@ -258,7 +258,7 @@
                         <button (click)="denyRequest()" class="btn btn-danger" style="margin-right:20px"
                         *ngIf="onHold==true">Denegar</button>
                         <button type="button" class="btn btn-primary "
-                          [routerLink]="['/exteriorRequest/pdf/',id_entrada]" *ngIf="onHold==false">Ver PDF</button>
+                          [routerLink]="['/exteriorRequest/pdf/',id_entrada]" *ngIf="onHold==false && editing == true">Ver PDF</button>
                         <h1></h1>
                       </div>
                     </div>

@@ -13,12 +13,14 @@ export class HistoryRequestComponent implements OnInit {
   public p2:number = 1;
   public requestsLocal;
   public username;
+  rol:any;
   public isLoad: boolean = false;
 
   constructor(private _exteriorRequestService:ExteriorRequestService, private _requestService:LocalRequestService) { }
 
   ngOnInit(): void {
     this.username = localStorage.getItem('User');
+    this.rol = localStorage.getItem('rol');
     this.getRequests();
   }
 

@@ -118,7 +118,7 @@ export class LocalRequestMantComponent implements OnInit {
         response => {
           this.localRequest = response.data.request[0]
           this.details = response.data.detailRequest
-
+console.log(response)
           this.date.initialDateOf = this.localRequest.first_date;
           this.date.finalDateTo = this.localRequest.latest_date;
 

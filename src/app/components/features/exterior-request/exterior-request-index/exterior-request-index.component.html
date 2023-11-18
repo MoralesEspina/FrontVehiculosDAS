@@ -45,7 +45,8 @@
                   <th style="text-align: center;">Duracion en dias</th>
                   <th style="text-align: center;">Celular de contacto</th>
                   <th style="text-align: center;">Estado</th>
-                  <th style="text-align: center;">Aceptar/Denegar</th>
+                  <th *ngIf="secre ==false" style="text-align: center;"  >Aceptar/Denegar</th>
+                  <th  *ngIf="secre ==true" style="text-align: center;" >Ver detalles</th>
                 </tr>
               </thead>
               <!--- TITULOS DE LA TABLA -->

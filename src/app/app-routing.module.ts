@@ -47,7 +47,7 @@ const routes: Routes = [
   { path: 'vehicles/add', component: VehiclesMantComponent, canActivate: [AuthGuard], data: { roles: [Rol.admin, Rol.boss] } },
   { path: 'vehicles/edit/:id', component: VehiclesMantComponent,canActivate: [AuthGuard], data: { roles: [Rol.admin, Rol.boss] } },
   //TODO RUTAS DE SOLICITUDES
-  { path: 'History-Request', component: HistoryRequestComponent, canActivate: [AuthGuard], data: { roles: [Rol.admin, Rol.boss] } },
+  { path: 'History-Request', component: HistoryRequestComponent, canActivate: [AuthGuard]},
 
   //TODO RUTAS DE SOLICITUD LOCAL
   { path: 'localRequest-index', component: LocalRequestIndexComponent, canActivate: [AuthGuard] },
