@@ -135,7 +135,7 @@ export class VoucherComponent implements OnInit {
       objective: this.objective,
       id_pilot: this.voucher.uuid,
       km_to_travel: voucherForm.value.km_to_travel,
-      idtrips: this.voucher.idtrips,
+      idtrips: this.idTrips,
     }
     if (!voucherForm.valid) {
       this._sweetAlertService.warning('Complete correctamente el formulario');
